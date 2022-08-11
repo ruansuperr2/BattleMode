@@ -3,10 +3,10 @@ Plataforma de criação, organização e participação de torneios para vários
 
 ## Equipe
 
-- Diego
-- Marcos
-- Matheus
-- Raí
+- [Diego](https://github.com/DiegoGM-Senai)
+- [Marcos](https://github.com/lMarkinl/)
+- [Matheus](https://github.com/notmathee)
+- [Raí Souza](https://github.com/MonoDryad)
 
 ## Criação de Torneio
 Possui várias opções de personalização para o seu torneio, além de muita custumização para melhorar o seu torneio!
