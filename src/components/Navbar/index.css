@@ -1,0 +1,15 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #121212;
+	height: 70px;
+	color: #EBDBA9;
+}
+
+div {
+	width: 100%;
+	position: sticky;
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+}
