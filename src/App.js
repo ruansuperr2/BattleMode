@@ -5,6 +5,7 @@ import Home from './components/Home'
 import Feed from './components/Feed'
 import Jogos from './components/Jogos'
 import Sobre from './components/Sobre'
+import Footer from './components/Footer'
 import PaginaNaoEncontrada from './components/PaginaNaoEncontrada'
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 
@@ -22,6 +23,7 @@ function App() {
                       <Route path="*" element={<PaginaNaoEncontrada />} />
                   </Routes>
               </div>
+              <Footer/>
           </BrowserRouter>
       </div>
   );

@@ -1,11 +1,11 @@
 .divLeftNavbar, .divRightNavbar {
 	width: 100%;
-	position: sticky;
 	display: flex;
 	flex-direction: row;
 	gap: 20px;
 	margin-left: 0.5rem;
 	margin-right: 0.5rem;
+	
 }
 
 .divRightNavbar {
@@ -53,6 +53,7 @@
 	align-items: center;
 	background-color: #121212;
 	border-bottom: 1px #151515 solid;
+	box-shadow: 0px 2px 8px 2px #000000;
 }
 
 .fontNavbar {

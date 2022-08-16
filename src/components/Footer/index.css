@@ -1,0 +1,131 @@
+.divLeftFooter, .divRightFooter {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 10px;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
+
+.divRightFooter {
+	justify-content: flex-end;
+	align-items: center;
+	width: 35%;
+}
+
+.divLeftFooter {
+	gap: 40px;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.divLeftFooter img {
+	width: 50px;
+	height: 50px;
+	transition: 0.5s
+}
+
+.divRightFooter img {
+	width: 2.5rem;
+	height: 2.5rem;
+	background-color: #191919;
+	border-radius: 30px;
+	border: 1px transparent solid;
+}
+
+.divRightFooter img:hover {
+	width: 2.5rem;
+	height: 2.5rem;
+	transition: 0.5s;
+	cursor: pointer;
+	background-color: #191919;
+	border-radius: 30px;
+	border: 1px orange solid;
+}
+
+.divDividerFooter {
+	height: 200px;
+	width: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.divMiddleFooter{
+	display:flex; 
+	justify-content: center;
+	width: 80%;
+}
+
+.fontFooter {
+	font-size: 1rem;
+	cursor: pointer;
+	font-weight: bold;
+	transition: 0.5s;
+	color: #EBDBA9;
+	text-decoration-line: none;
+}
+
+.fontFooter:hover {
+	color: white;
+	transition: 0.5s;
+}
+
+.buttonPrimaryFooter, .buttonSecundaryFooter {
+	font-size: 1.5rem;
+	transition: 0.5s;
+	border: 0px;
+	padding: 0.6rem;
+	border-radius: 10px;
+	color: white;
+}
+
+.buttonPrimaryFooter {
+	background-color: #004503;
+}
+
+.buttonSecundaryFooter {
+	background-color: #004703;
+}
+
+.buttonPrimaryFooter:hover, .buttonSecundaryFooter:hover {
+	background-color: #025c06;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.divContainerFooter {
+	background-color: #121212;
+	text-align: center;
+	margin-top: 3.2rem;
+	border-top: 1px solid #262626;
+	box-shadow: 0px -5px 14px 5px #000000;
+}
+
+.divLeftSocialContainers {
+	border: 2px solid #b27300;
+	padding: 15px;
+	border-radius: 10px;
+	transition: 0.5s
+}
+
+.divLeftSocialContainers:hover {
+	background-color: #262626;
+	cursor: pointer;
+	transition: 0.5s
+}
+
+a{
+	text-decoration: none;
+	color: white;
+}
+
+.imgLogo{
+	width: 150px;
+	height: 150px;
+}
