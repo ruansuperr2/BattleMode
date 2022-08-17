@@ -39,7 +39,7 @@
 	cursor: pointer;
 	background-color: #191919;
 	border-radius: 30px;
-	border: 1px orange solid;
+	border: 1px #EBDBA9 solid;
 }
 
 .divDividerNavbar {
@@ -81,15 +81,27 @@
 }
 
 .buttonPrimaryNavbar {
-	background-color: #004503;
+	background-color: #10653E;
+	border-radius: 100px;
+	height: 8%;
+	width: 16%;
+	transition: 0.5s;
+	border: 1px transparent solid;
+	font-size: 16px;
 }
 
 .buttonSecundaryNavbar {
-	background-color: #004703;
+	background-color: #118A52;
+	transition: 0.5s;
+	border: 1px transparent solid;
+	height: 8%;
+	width: 20%;
+	font-size: 16px;
+	border-radius: 100px;
 }
 
 .buttonPrimaryNavbar:hover, .buttonSecundaryNavbar:hover {
-	background-color: #025c06;
+	border: 2px solid #EBDBA9;
 	cursor: pointer;
 	transition: 0.5s;
 }

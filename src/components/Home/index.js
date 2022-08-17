@@ -13,27 +13,19 @@ function Home() {
                 
             </div>
             <Noticias/>
-            <div>
+            <div className='divSecondMainContainerHome'>
+                <div className='divSubSecondContainerHome'>
+                    <h1 className='h1DivSecond'>Título maneiro</h1>
+                    <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor. 
+                        Trata-se de uma produção textual objetiva, 
+                        normalmente em prosa, com linguagem clara e direta. 
+                        Tem como objetivo principal transmitir informação sobre algo, 
+                        estando isento de duplas interpretações.</p>
+                </div>
 
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
-                <p>Olá mundo!</p>
+                <div className='divSubSecondDoisContainerHome'>
+                    <img src={require("./assets/branco.png")}/>
+                </div>
             </div>
         </div>
         )
