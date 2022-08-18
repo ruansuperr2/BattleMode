@@ -19,6 +19,63 @@
     position: absolute;
     height: 595px;
     width: 100%;
-    background-color: rgb(0, 0, 0, 0.22);
+    background-color: rgb(0, 0, 0, 0);
     box-shadow: inset 0px -100px 57px -5px #121212;
+
+}
+
+.divDots{
+    display: flex;
+    gap: 20px;
+    left: 45%;
+    top: 80%;
+    position: absolute;
+}
+
+.divDots input {
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: 0.5s; 
+
+}
+
+.divDots input {
+    display: none;
+}
+
+.divDots label {
+    cursor: pointer;
+    margin: 10px 10px;
+}
+
+.divDots label:before {
+    content: '';
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 2;
+    transition: box-shadow .4s ease, background .3s ease;
+}
+
+.divDots input:checked + label:before {
+    box-shadow: inset 0px 3px 0 2px #3e3a2e;
+    background: #EBDBA9;
+}
+
+.divDots input:checked {
+    width: 50px;
+    transition: 0.5s;
+}
+
+.divLabelCarrosselMainContainerHome{
+    position: absolute;
+    top: 55%;
+    left: 3%;
+    background-color: rgb(14, 14, 14, 0.55);
+    padding: 1%;
+    border-radius: 10px;
 }
