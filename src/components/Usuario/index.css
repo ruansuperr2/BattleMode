@@ -1,0 +1,198 @@
+/* Usuario */
+.divUsuarioMainContainer{
+    width: 100%;
+    height: 470px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+}
+
+.divUsuarioSubMainContainer{
+    width: 90%;
+    height: 460px;
+    background-color: #262626;
+    display: flex;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.divUsuarioSubMainContainer button{
+    position: absolute;
+    top: 140px;
+    left: 83.5%;
+    background-color: #10653E;
+	border-radius: 100px;
+	height: 5%;
+	width: 7%;
+	transition: 0.5s;
+	border: 1px transparent solid;
+	font-size: 16px;
+    color: white;
+}
+.divUsuarioSubMainContainer button:hover{
+    border: 2px solid #EBDBA9;
+	cursor: pointer;
+	transition: 0.5s;
+}
+/* Fundo */
+.divFundoMainContainer{
+    width: 40%;
+    height: 35%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    background-image: url(components/assets/CastelolAnimado.jpg);
+    border: 2px solid #EBDBA9;
+    -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
+    box-shadow: inset -11px -7px 36px 0px #000000; 
+}
+.divFundoImg{
+    width: 30px;
+    position: absolute;
+    height: 30px;
+    top: 210px;
+    left: 41%;
+    border-radius: 100px;
+    padding: 4px;
+    background-image: url(components/assets/unknown2.png);
+    background-size: cover;
+    transition: 0.5s;
+    
+}
+.divFundoImg:hover{
+    background-image: url(components/assets/unknown3.png);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.divFundoMainContainer h1{
+    margin-bottom: 50px;
+    color: #EBDBA9;
+}
+
+
+.divImgFundoMainContainer{
+    background-color: rgb(198, 103, 103);
+    border-radius: 200px;
+    width: 0%;
+    height: 80%;
+    padding: 60px;
+    border: 2px solid #EBDBA9;
+}
+
+/* JogosFav */
+
+.divJogosFavMainContainer{
+    width: 40%;
+    height: 35%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 60px;
+    background-color: #121212;
+    border: 2px solid #EBDBA9
+}
+
+.divJogosFavoritosSubContainer{
+    height: 80%;
+    width: 15%;
+    background-color: white;
+    border-radius: 10px;
+    margin: 15px;
+    background-size: cover;
+    background-image: url(components/assets/transferir.png);
+    transition: 0.5s;
+    border: 2px solid #EBDBA9;
+    -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
+    box-shadow: inset -11px -7px 36px 0px #000000; 
+}
+.divJogosFavoritosSubContainer:hover{
+    padding: 10px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+/* Descrição */
+
+.divDescricaoMainContainer{
+    width: 40%;
+    height: 35%;
+    border-radius: 15px;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #EBDBA9;
+    margin-top: 20px;
+}
+
+
+.divDescricaoMainContainer textarea{
+    resize: none;
+    width: 92%;
+    height: 75%;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.divDescricaoImg{
+    width: 30px;
+    position: absolute;
+    height: 30px;
+    top: 421px;
+    left: 41%;
+    border-radius: 200px;
+    padding: 4px;
+    background-image: url(components/assets/unknown2.png);
+    background-size: cover;
+    transition: 0.5s
+}
+.divDescricaoImg:hover{
+    background-image: url(components/assets/unknown3.png);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.divDescricaoMainContainer textarea:focus{
+    outline: none;
+}
+
+/* Conquistas */
+
+.divConquistasMainContainer{
+    width: 40%;
+    height: 35%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #121212;
+    border: 2px solid #EBDBA9
+}
+.divConquistasSubContainer{
+    height: 80%;
+    width: 30%;
+    background-color: white;
+    border-radius: 10px;
+    margin: 15px;
+    background-size: cover;
+    background-image: url(components/assets/transferir.png);
+    transition: 0.5s;
+    border: 2px solid #EBDBA9;
+    -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
+    box-shadow: inset -11px -7px 36px 0px #000000;
+}
+.divConquistasSubContainer:hover{
+    padding: 10px;
+    transition: 0.5s;
+    cursor: pointer;
+}
