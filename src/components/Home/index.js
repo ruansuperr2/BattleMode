@@ -1,33 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './index.css'
 import Noticias from '../Noticias'
 
 function Home() {
-    let dotVideo = 1
-    let video1 = true
-    let video2 = false
-    let video3 = false
-    const videoCarrossel = () => {
-        console.log(dotVideo)
-        dotVideo++
-        console.log(dotVideo)
-        if (dotVideo == 4) {
-            dotVideo = 1
-        }
-        switch (dotVideo) {
-            case 1:
+    let dotImage = 1
 
-                break
-            case 2:
-                break
-            case 3:
-                break
-        }
+    const [imageDotOne, setImageDotOne] = useState(true)
+    const [imageDotTwo, setImageDotTwo] = useState(false)
+    const [imageDotThree, setImageDotThree] = useState(false)
+    const [carrosselImage, setCarrosselImage] = useState('./assets/CSGO.png')
+    
+    function callbackTimeout() {
+        setTimeout(() => {
+            dotImage++
+            if(dotImage === 4){
+                dotImage = 1
+            }
+
+            switch(dotImage){
+                case 1:
+                    setCarrosselImage('./assets/CSGO.png')
+                    setImageDotOne(true)
+                    setImageDotTwo(false)
+                    setImageDotThree(false)
+                    setTimeout(() => {
+                        callbackTimeout() 
+                    }, 5000);
+                   
+                    break
+                case 2:
+                    setCarrosselImage('./assets/F1_2022.png')
+                    setImageDotOne(false)
+                    setImageDotTwo(true)
+                    setImageDotThree(false)
+                    setTimeout(() => {
+                        callbackTimeout() 
+                    }, 5000);
+                    break
+                case 3:
+                    setCarrosselImage('./assets/R6S.png')
+                    setImageDotOne(false)
+                    setImageDotTwo(false)
+                    setImageDotThree(true)
+                    setTimeout(() => {
+                        callbackTimeout() 
+                    }, 5000);
+                    break
+                default:
+                    break
+            }
+
+        }, 5000)
     }
 
+    
 
     return (
-        <div className="divMainContainerHome">
+        <div className="divMainContainerHome" onLoad={callbackTimeout()}>
             <div className="divCarrosselMainContainerHome">
                 <div className="divVideoMainContainerHome">
                     <div className="divVideoShadowMainContainerHome" />
@@ -35,17 +64,15 @@ function Home() {
                         <h1 className="h1DivSecond">Título</h1>
                         <label>O texto informativo é um texto em que o escritor expõe brevemente um tema</label>
                     </div>
-                    <video width="100%" autoPlay muted loop onEnded={() => videoCarrossel()}>
-                        <source src={require("./assets/viideo.webm")} type="video/webm"/>
-                    </video>
+                <img className="imgCarrossel" src={require(`${carrosselImage}`)}/>
                 </div>
                 <div className="divDots">
                     <div>
-                        <input checked={video1} type="radio" id="rad1" name="rads"/>
+                        <input checked={imageDotOne} type="radio" id="rad1" name="rads"/>
                         <label></label>
-                        <input checked={video2} type="radio" id="rad2" name="rads" />
+                        <input checked={imageDotTwo}  type="radio" id="rad2" name="rads" />
                         <label></label>
-                        <input checked={video3} type="radio" id="rad3" name="rads" />
+                        <input checked={imageDotThree}  type="radio" id="rad3" name="rads" />
                         <label></label>
                     </div>
                 </div>
