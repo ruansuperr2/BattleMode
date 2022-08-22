@@ -1,14 +1,11 @@
 import React from 'react'
 import './index.css'
+import Prediletos from './components/Prediletos'
 
 function Feed() {
     return (
         <div className="divMainContainer">
-            <p>Feed!</p>
-            <p>Ola Mundo!</p>
-            <p>Ola Mundo!</p>
-            <p>Ola Mundo!</p>
-            <p>Ola Mundo!</p>
+            <Prediletos/>
         </div>
         )
 }

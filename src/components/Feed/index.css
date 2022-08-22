@@ -1,0 +1,111 @@
+/* Principal */
+
+.divMainContainer{
+    width: 100%;
+    height: 100%;
+}
+
+/* Prediletos */
+
+.divPrediletosMainContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+}
+.TittlePrediletos{
+    color: #EBDBA9;
+}
+
+.NameGamePrediletos{
+    position: absolute;
+    color: #232323;
+    margin-bottom: 210px;
+    padding-left: 20px;
+}
+
+.divPrediletosUmSubContainer{
+    width: 70%;
+    height: 240px;
+    background-color: wheat;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Torneio */
+.TonerioUm{
+    width: 30%;
+    height: 150px;
+    background-image: url(assets/CastelolAnimado.jpg);
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
+    box-shadow: inset -11px -7px 36px 0px #000000; 
+    transition: 0.5s;
+    margin-top: 50px;
+}
+.TorneioH1{
+    color: #EBDBA9;
+    height: 20px;
+    padding-top: 60px;
+    padding-left: 20px;
+}
+
+.TonerioDois{
+    width: 30%;
+    height: 150px;
+    background-image: url(assets/CastelolAnimado.jpg);
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
+    box-shadow: inset -11px -7px 36px 0px #000000; 
+    transition: 0.5s;
+    margin-top: 50px;
+}
+
+.TonerioTres{
+    width: 30%;
+    height: 150px;
+    background-image: url(assets/CastelolAnimado.jpg);
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
+    box-shadow: inset -11px -7px 36px 0px #000000; 
+    transition: 0.5s;
+    margin-top: 50px;
+}
+.TonerioUm:hover,.TonerioDois:hover,.TonerioTres:hover{
+    padding: 10px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+
+/* Prediletos Dois */
+
+.divPrediletosDoisSubContainer{
+    width: 70%;
+    height: 240px;
+    background-color: #EBDBA9;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 30px;
+}
+
