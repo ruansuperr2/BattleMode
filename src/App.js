@@ -7,6 +7,7 @@ import Jogos from './components/Jogos'
 import Sobre from './components/Sobre'
 import Footer from './components/Footer'
 import Login from './components/Login'
+import Usuario from './components/Usuario'
 import PaginaNaoEncontrada from './components/PaginaNaoEncontrada'
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 
@@ -22,7 +23,9 @@ function App() {
                          <Route path="/feed" element={<Feed />} />
                          <Route path="/games" element={<Jogos />} />
                          <Route path="/about" element={<Sobre />} />
+                         <Route path="/usuario" element={<Usuario/>} />
                          <Route path="*" element={<PaginaNaoEncontrada />} />
+                         
                   </Routes>
                   <Footer />
               </div>
