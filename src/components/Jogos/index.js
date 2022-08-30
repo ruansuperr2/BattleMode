@@ -3,56 +3,167 @@ import './index.css'
 
 function Jogos() {
     return (
-        <div className="divMainContainer">
-            <p>Jogos!</p>
-           <div className='divJogosContainer'>
-            <div>
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
+        <div className="divJogosMainContainer">
+            <div className='divJogosSubContainer'>
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
+
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
+
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
+
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
+
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
+
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
+
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
+
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
+
+                <div className='divJogosContainer'>
+                    <div className='divJogosImg'>
+
+                    </div>
+
+                    <div>
+                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
+                    </div>
+                </div>
+
             </div>
-            <div>
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            </div>
-            <div>
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            </div>
-            <div>
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            </div>
-            <div>
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            </div>
-            <div>
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            </div>
-            <div>
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            </div>
-            <div>
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            </div>
-            <div>
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            <img width={140} src='https://notadogame.com/uploads/game/cover/250x/5ec161df463ab.jpg' />
-            </div>
-           
-           </div>
         </div>
         )
 }

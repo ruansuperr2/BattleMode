@@ -21,7 +21,7 @@
 
 .NameGamePrediletos{
     position: absolute;
-    color: #232323;
+    color: #EBDBA9;
     margin-bottom: 210px;
     padding-left: 20px;
 }
@@ -29,7 +29,7 @@
 .divPrediletosUmSubContainer{
     width: 70%;
     height: 240px;
-    background-color: wheat;
+    background-color: #262626;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
@@ -51,6 +51,7 @@
     box-shadow: inset -11px -7px 36px 0px #000000; 
     transition: 0.5s;
     margin-top: 50px;
+    border: 3px solid #EBDBA9;
 }
 .TorneioH1{
     color: #EBDBA9;
@@ -71,6 +72,7 @@
     -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
     box-shadow: inset -11px -7px 36px 0px #000000; 
     transition: 0.5s;
+    border: 3px solid #EBDBA9;
     margin-top: 50px;
 }
 
@@ -86,6 +88,7 @@
     -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
     box-shadow: inset -11px -7px 36px 0px #000000; 
     transition: 0.5s;
+    border: 3px solid #EBDBA9;
     margin-top: 50px;
 }
 .TonerioUm:hover,.TonerioDois:hover,.TonerioTres:hover{
@@ -100,7 +103,7 @@
 .divPrediletosDoisSubContainer{
     width: 70%;
     height: 240px;
-    background-color: #EBDBA9;
+    background-color: #262626;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
