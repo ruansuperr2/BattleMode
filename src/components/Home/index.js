@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './index.css'
-import Noticias from '../Noticias'
+import Noticias from './components/Noticias'
+import LoginOrUpcomings from './components/LoginOrUpcomings'
 
 function Home() {
 
@@ -73,6 +74,7 @@ function Home() {
                     <img src={require("./assets/branco.png")}/>
                 </div>
             </div>
+            <LoginOrUpcomings/>
         </div>
         )
 }
