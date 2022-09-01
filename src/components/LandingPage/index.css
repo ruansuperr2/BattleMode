@@ -1,0 +1,103 @@
+.divMainLanding{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.divMainLandingPageNavbar{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row-reverse;
+    position: absolute;
+}
+
+.buttonNavbar{
+    width: 12%;
+    height: 50%;
+    margin: 20px;
+    background: transparent;
+    border-radius: 20px;
+    border: 2px solid #fc6b03;
+    color: #fc6b03;
+    font-size: 16px;
+    transition: 0.5s;
+    z-index: 99;
+}
+
+.buttonNavbar:hover{
+    border: 2px solid rgb(224, 219, 219);
+    transition: 0.5s;
+    color: rgb(224, 219, 219);
+    cursor: pointer;
+}
+
+.divDivisaoTelasLandingPage{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+}
+
+.divImgInfoLandingPage{
+    height: 100%;
+    width: 70%;
+    background-image: url("./assets/kkk.png");
+    z-index: 98;
+    position: absolute;
+    background-size: cover;
+}
+.divImgInfoLandingPage h1{
+    color:#fc6b03;
+    font-size: 7vh;
+    padding-left: 5%;
+    padding-right: 50%;
+    padding-top: 15%;
+    
+}
+.divImgInfoLandingPage p{
+    color: #fff;
+    font-size: 3.5vh;
+    padding-left: 5%;
+    padding-right: 50%;
+}
+.divImgInfoLandingPage button{
+    font-size: 20px;
+    height: 6vh;
+    width: 20%;
+    border: 2px solid #fc6b03;
+    border-radius: 20px;
+    margin-left: 5%;
+    color: #fff;
+    background: transparent;
+}
+
+.divVideoLandingPage{
+    width: 100%;
+    z-index: 90;
+}
+
+.logo{
+    width: 30vh;
+    height: 30vh;
+    z-index: 99;
+    padding-left: 5%;
+    position: absolute;
+}
+
+.divIconsRedesLandingPage{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 30px;
+    padding-top: 6%;
+    padding-left: 5%;
+    
+}
+
+
+.discord{
+    width: 8vh;
+    height: 8vh;
+}
