@@ -56,6 +56,10 @@
 	
 }
 
+.divContainerFooter{
+	height: 300px;
+}
+
 .divMiddleFooter{
 	display:flex; 
 	justify-content: center;
@@ -67,7 +71,7 @@
 	cursor: pointer;
 	font-weight: bold;
 	transition: 0.5s;
-	color: #EBDBA9;
+	color: #fc6b03;
 	text-decoration-line: none;
 }
 
@@ -108,7 +112,7 @@
 }
 
 .divLeftSocialContainers {
-	border: 2px solid #EBDBA9;
+	border: 2px solid #fc6b03;
 	padding: 15px;
 	border-radius: 10px;
 	transition: 0.5s
@@ -133,25 +137,6 @@ a{
 
 /* Second Page */
 
-.divSecondMainContainerHome{
-	width: 100%;
-    height: 400px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
-.divSubSecondContainerHome{
-	width: 60%;
-	padding-left: 100px;
-	padding-right: 80px;
-}
-.h1DivSecond{
-	color: #EBDBA9;
-	font-size: 40px;
-}
-.divSubSecondDoisContainerHome{
-	width: 40%;
-}
+
 
 

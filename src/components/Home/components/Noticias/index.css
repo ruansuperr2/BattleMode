@@ -11,9 +11,9 @@
 .divNoticiaMainContainerNoticias{
     width: 30%;
     height: 150px;
-    border: 3px solid #EBDBA9;
+    border: 3px solid #ffffff;
     border-radius: 10px;
-    background-image: url(CastelolAnimado.jpg);
+    background: rgb(78, 78, 78);
 }
 .divInfoSubContainerNoticias{
     padding-left: 20px;
@@ -21,7 +21,7 @@
     flex-direction: column;
 }
 .h1TittleNoticias{
-    color: #EBDBA9;
+    color: #fc6b03;
     height: 20px;
     padding-top: 40px;
 }

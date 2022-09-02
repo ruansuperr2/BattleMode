@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import './index.css'
 import Noticias from './components/Noticias'
 import LoginOrUpcomings from './components/LoginOrUpcomings'
+import Navbar from '../Navbar'
+import Footer from '../Footer'
+
 
 function Home() {
 
@@ -39,42 +42,43 @@ function Home() {
 
     return (
         <div className="divMainContainerHome">
-            <div className="divCarrosselMainContainerHome">
-                <div className="divVideoMainContainerHome">
-                    <div className="divVideoShadowMainContainerHome" />
-                    <div className="divLabelCarrosselMainContainerHome">
-                        <h1 className="h1DivSecond">Título</h1>
-                        <label>O texto informativo é um texto em que o escritor expõe brevemente um tema</label>
+            <Navbar page="Home"/>
+            <div className='paddingLeft'>
+                <div className="divCarrosselMainContainerHome">
+                    <div className="divVideoMainContainerHome">
+                        <div className="divVideoShadowMainContainerHome" />
+                        <div className="divLabelCarrosselMainContainerHome">
+                            <h1 className="h1DivSecond">Título</h1>
+                            <label>O texto informativo é um texto em que o escritor expõe brevemente um tema</label>
+                        </div>
+                        <img className="imgCarrossel" src={require(`${carrosselImage}`)} />
+                        <div className="divDots">
+                        <div>
+                            <input checked={imageDotOne} type="radio" id="rad1" name="rads"/>
+                            <label></label>
+                            <input checked={imageDotTwo}  type="radio" id="rad2" name="rads" />
+                            <label></label>
+                            <input checked={imageDotThree}  type="radio" id="rad3" name="rads" />
+                            <label></label>
+                        </div>
                     </div>
-                    <img className="imgCarrossel" src={require(`${carrosselImage}`)} />
-                </div>
-                <div className="divDots">
-                    <div>
-                        <input checked={imageDotOne} type="radio" id="rad1" name="rads"/>
-                        <label></label>
-                        <input checked={imageDotTwo}  type="radio" id="rad2" name="rads" />
-                        <label></label>
-                        <input checked={imageDotThree}  type="radio" id="rad3" name="rads" />
-                        <label></label>
                     </div>
-                </div>
-            </div>
-            <Noticias/>
-            <div className='divSecondMainContainerHome'>
-                <div className='divSubSecondContainerHome'>
-                    <h1 className='h1DivSecond'>Título maneiro</h1>
-                    <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor. 
-                        Trata-se de uma produção textual objetiva, 
-                        normalmente em prosa, com linguagem clara e direta. 
-                        Tem como objetivo principal transmitir informação sobre algo, 
-                        estando isento de duplas interpretações.</p>
-                </div>
 
-                <div className='divSubSecondDoisContainerHome'>
-                    <img src={require("./assets/branco.png")}/>
                 </div>
+                <Noticias/>
+                <div className='divSecondMainContainerHome'>
+                    <div className='divSubSecondContainerHome'>
+                        <h1 className='h1DivSecond'>Campeonatos personalizados</h1>
+                        <p>Organizar um torneio a mão pode ser uma tarefa complicada, a BattleMode™ permite que você organize-os sem dor de cabeça e com uma personalização incrível, permitindo que o seu campeonato cresce e tenha um maior conhecimento atravez da plataforma BattleMode™</p>
+                    </div>
+
+                    <div className='divSubSecondDoisContainerHome'>
+                        <img src={require("./assets/logo.png")}/>
+                    </div>
+                </div>
+                <LoginOrUpcomings/>
+                <Footer/>
             </div>
-            <LoginOrUpcomings/>
         </div>
         )
 }

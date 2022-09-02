@@ -35,7 +35,7 @@ export default function Footer() {
                     </a>
                 </div>
                 <div className="divMiddleFooter">
-                    <img className="imgLogo" src={require("./assets/branco.png")} />
+                    <img className="imgLogo" src={require("./assets/logo.png")} />
                 </div>
                 <div className="divRightFooter">
                     <Link to="/" className="fontFooter">Início</Link>
