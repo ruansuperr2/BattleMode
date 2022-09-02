@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './index.css'
 import HomeIcon from '@mui/icons-material/Home';
@@ -7,8 +7,28 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import InfoIcon from '@mui/icons-material/Info';
 import LanguageIcon from '@mui/icons-material/Language';
 import LoginIcon from '@mui/icons-material/Login';
+import { cleanup } from '@testing-library/react';
 
 export default function Navbar(props) {
+
+    const [navbar, setNavbar] = useState(false);
+
+    const changeNoneButtons = () =>{
+        if(window.scrollY >= 80){
+            setNavbar(true)
+        }else{
+            setNavbar(false)
+        }
+    }
+    useEffect(() =>{
+        window.addEventListener("scroll", changeNoneButtons)
+        return () => {
+            window.removeEventListener("scroll", changeNoneButtons)
+        }
+    }, [])
+
+
+
     return (
         <div className="divDividerNavbar">
             <div className="divLeftNavbar">
@@ -24,9 +44,10 @@ export default function Navbar(props) {
                 
 
             </div>
-            <div className="divSideLoginRegister">
-                <button>Entrar </button>
+
+            <div className={`divSideLoginRegister ${navbar && "navbarActive"}` }>
                 <button>Cadastrar-se </button>
+                <button>Entrar</button>
             </div>
         </div>
     )
