@@ -47,23 +47,23 @@ function Home() {
                 <div className="divCarrosselMainContainerHome">
                     <div className="divVideoMainContainerHome">
                         <div className="divVideoShadowMainContainerHome" />
-                        <div className="divLabelCarrosselMainContainerHome">
+                        {/* <div className="divLabelCarrosselMainContainerHome">
                             <h1 className="h1DivSecond">Título</h1>
                             <label>O texto informativo é um texto em que o escritor expõe brevemente um tema</label>
-                        </div>
+                        </div> */}
+                        <img className='imgPassing' src={require('./assets/passing.png')}/>
                         <img className="imgCarrossel" src={require(`${carrosselImage}`)} />
                         <div className="divDots">
-                        <div>
-                            <input checked={imageDotOne} type="radio" id="rad1" name="rads"/>
-                            <label></label>
-                            <input checked={imageDotTwo}  type="radio" id="rad2" name="rads" />
-                            <label></label>
-                            <input checked={imageDotThree}  type="radio" id="rad3" name="rads" />
-                            <label></label>
+                            <div>
+                                <input checked={imageDotOne} type="radio" id="rad1" name="rads"/>
+                                <label></label>
+                                <input checked={imageDotTwo}  type="radio" id="rad2" name="rads" />
+                                <label></label>
+                                <input checked={imageDotThree}  type="radio" id="rad3" name="rads" />
+                                <label></label>
+                            </div>
                         </div>
                     </div>
-                    </div>
-
                 </div>
                 <Noticias/>
                 <div className='divSecondMainContainerHome'>

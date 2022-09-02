@@ -45,7 +45,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="divNotAffiliated">
-                <p>This competition is not affiliated with or sponsored by Riot Games, Inc. or League of Legends Esports.</p>    
+                <p>Os campeonatos registrados nessa plataforma não estão co-relacionados com a equipe da BattleMode, cada organizadora de torneio deve ser responsabilizar por problemas internos.</p>    
                 <p>©{ano}: Inexorabilis Team</p>
             </div>
                
