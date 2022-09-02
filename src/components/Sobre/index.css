@@ -1,0 +1,22 @@
+.divMainContainer {
+    color: #fff;
+}
+.divMainContainerSobre {
+    margin-left: 5.2%;
+}
+.divConteudo {
+    display: flex;
+    flex-direction: row;
+}
+.divImagens {
+    width: 50%;
+}
+.divTextoSobre {
+    width: 50%;
+    align-items: center;
+    text-align: center;
+}
+p {
+    padding-left: 15%;
+    padding-right: 15%;
+}
