@@ -5,6 +5,7 @@ import Home from './components/Home'
 import Feed from './components/Feed'
 import Jogos from './components/Jogos'
 import Sobre from './components/Sobre'
+import Cadastro from './components/Cadastro'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import Usuario from './components/Usuario'
@@ -20,6 +21,7 @@ function App() {
                   <Routes>
 			 <Route path="/" element={<LandingPage />} />
                          <Route exact path="/login" element={<Login />} />
+                         <Route exact path="/cadastro" element={<Cadastro />} />
                          <Route path="/home" element={<Home />} />
                          <Route path="/feed" element={<Feed />} />
                          <Route path="/games" element={<Jogos />} />
