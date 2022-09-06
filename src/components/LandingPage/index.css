@@ -15,7 +15,7 @@
 }
 
 .buttonNavbar{
-    width: 12%;
+    width: 15%;
     height: 50%;
     margin: 20px;
     background-color: #272727;
@@ -65,7 +65,7 @@
 }
 .divImgInfoLandingPage button{
     font-size: 20px;
-    height: 6vh;
+    height: 6%;
     width: 20%;
     border: 2px solid #fc6b03;
     border-radius: 20px;
@@ -73,7 +73,12 @@
     color: #fff;
     background: transparent;
 }
-
+.divVideoLandingPage video{
+    width: 140%;
+    height: 110%;
+    background-size: cover;
+    margin-left: -10%;
+}
 .divVideoLandingPage{
     width: 100vw;
     height: 100vh;
@@ -111,7 +116,6 @@
     }
 
     .divImgInfoLandingPage{
-
         width: 100%;
         background-image: url("./assets/kkk.png");
         z-index: 98;
@@ -140,6 +144,7 @@
         font-size: 16px;
         transition: 0.5s;
         z-index: 99;
+        left: 40px;
     }
 
     .divDivisaoTelasLandingPage{

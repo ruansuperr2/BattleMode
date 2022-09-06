@@ -26,7 +26,7 @@ function LandingPage() {
                     </div>
                 </div>
                 <div className='divVideoLandingPage'>
-                    <video loop autoPlay={true} muted width="100%"  src={require('./assets/video.mp4')} type='video/mp4'>
+                    <video loop autoPlay={true} muted src={require('./assets/video.mp4')} type='video/mp4'>
                     </video>
                 </div>
             </div>

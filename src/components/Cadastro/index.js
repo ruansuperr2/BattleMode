@@ -10,12 +10,14 @@ function Login() {
                 <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade. </p>
             </div>
             <div className="divLoginRightContainer">
-                <div className='divLoginRightSubContaner'>
-                    <h1>Entrar</h1>
+                <div className='divCadastrarRightSubContaner'>
+                    <h1>Cadastre-se</h1>
                     <p className='p'>Entre com sua conta ja cadastrada</p>
 
                     <input placeholder='Usuário'></input>
+                    <input placeholder='Email'></input>
                     <input placeholder='Senha'></input>
+                    <input placeholder='Confirmar senha'></input>
                     <button>Entrar</button>
 
                     <a><p>Esqueceu sua senha?</p></a>

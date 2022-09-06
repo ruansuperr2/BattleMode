@@ -50,18 +50,18 @@
     background-size: cover;
 }
 
-.divLoginRightSubContaner{
+.divCadastrarRightSubContaner{
     display: flex;
     flex-direction: column;
     width: 60%;
     background-color: #121212;
     justify-content: center;
-    height: 80%;
+    height: 90%;
     border-radius: 10%;
     align-items: center;
 }
 
-.divLoginRightSubContaner h1{
+.divCadastrarRightSubContaner h1{
     color:#fc6b03;
     font-size: 7vh;
     position: relative;
@@ -72,9 +72,9 @@
     margin-top: -10px;
 }
 
-.divLoginRightSubContaner input{
+.divCadastrarRightSubContaner input{
     width: 70%;
-    height: 8%;
+    height: 10%;
     margin: 10px;
     padding-left: 20px;
     border-radius: 20px;
@@ -82,9 +82,9 @@
     font-size: 16px;
 }
 
-.divLoginRightSubContaner button{
+.divCadastrarRightSubContaner button{
     width: 75%;
-    height: 8%;
+    height: 10%;
     margin: 10px;
     background-color: #272727;
     border-radius: 20px;
@@ -96,14 +96,14 @@
 }
 
 
-.divLoginRightSubContaner button:hover{
+.divCadastrarRightSubContaner button:hover{
     border: 2px solid rgb(224, 219, 219);
     transition: 0.5s;
     color: rgb(224, 219, 219);
     cursor: pointer;
 }
 
-.divLoginRightSubContaner a {
+.divCadastrarRightSubContaner a {
     margin: -10px;
     color:#fff;
     font-size: 3vh;
