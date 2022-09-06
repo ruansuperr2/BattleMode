@@ -1,0 +1,35 @@
+.dropDown{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-left: 0;
+    padding: 0;
+}
+
+.labelDropdown{
+    font-size: 1.6rem;
+    width: 100%;
+    text-align: center;
+}
+
+.selectDropdown{
+    -webkit-box-shadow: 0px 0px 15px 1px #000000; 
+    box-shadow: 0px 0px 15px 1px #000000;
+    width: 100%;
+    height: 2.2rem;
+    margin: 20px;
+    background-color: #272727;
+    border-radius: 20px;
+    border: 2px solid #fc6b03;
+    color: #fc6b03;
+    font-size: 16px;
+    transition: 0.5s;
+    z-index: 99;
+}
+
+.selectDropdown option{
+    -webkit-box-shadow: 0px 0px 15px 7px #000000; 
+    box-shadow: 0px 0px 15px 7px #000000;
+}
