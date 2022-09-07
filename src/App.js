@@ -19,7 +19,7 @@ function App() {
           <BrowserRouter>
               <div>
                   <Routes>
-			            <Route path="/" element={<LandingPage />} />
+			<Route path="/" element={<LandingPage />} />
                         <Route exact path="/login" element={<Login />} />
                         <Route exact path="/cadastro" element={<Cadastro />} />
                         <Route path="/now" element={<Home />} />
@@ -27,7 +27,6 @@ function App() {
                         <Route path="/games" element={<Jogos />} />
                         <Route path="/about" element={<Sobre />} />
                         <Route path="/usuario" element={<Usuario/>} />
-                        <Route path="*" element={<PaginaNaoEncontrada />} /> 
                   </Routes>
               </div>
           </BrowserRouter>
