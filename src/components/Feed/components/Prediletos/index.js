@@ -1,25 +1,14 @@
 import React from 'react'
 import '../../index.css'
-import TorneioUm from './components/TorneioUm'
-import TorneioDois from './components/TorneioDois'
-import TorneioTres from './components/TorneioTres'
+import Torneio from './Torneio'
 
 function Prediletos() {
     return (
         <div className="divPrediletosMainContainer">
-            <h1 className='TittlePrediletos'>Seus Favoritos</h1>
-            <div className='divPrediletosUmSubContainer'>
-                <h1 className='NameGamePrediletos'>Valorant</h1>
-                <TorneioUm/>
-                <TorneioDois/>
-                <TorneioTres/>
-            </div>
             
-            <div className='divPrediletosDoisSubContainer'>
-            <h1 className='NameGamePrediletos'>Rainbow-six</h1>
-                <TorneioUm/>
-                <TorneioDois/>
-                <TorneioTres/>
+            <div className='divPrediletosUmSubContainer'>
+                <h1 className='NameGamePrediletos'>League of Legends</h1>
+                <Torneio/>
             </div>
         </div>
         )

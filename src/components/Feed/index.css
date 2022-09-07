@@ -8,6 +8,7 @@
 /* Prediletos */
 
 .divPrediletosMainContainer{
+    margin-bottom: 2%;
     width: 100%;
     height: 100%;
     display: flex;
@@ -15,13 +16,14 @@
     justify-content: center;
     align-items: center ;
 }
-.TittlePrediletos{
-    color: #EBDBA9;
+.TitlePrediletos{
+    padding-left: 15%;
+    color: #ffffff;
 }
 
 .NameGamePrediletos{
     position: absolute;
-    color: #EBDBA9;
+    color: #fc6b03;
     margin-bottom: 210px;
     padding-left: 20px;
 }
@@ -38,10 +40,10 @@
 }
 
 /* Torneio */
-.TonerioUm{
+.Torneio{
+
     width: 30%;
     height: 150px;
-    background-image: url(assets/CastelolAnimado.jpg);
     background-size: cover;
     align-items: center;
     justify-content: center;
@@ -51,47 +53,16 @@
     box-shadow: inset -11px -7px 36px 0px #000000; 
     transition: 0.5s;
     margin-top: 50px;
-    border: 3px solid #EBDBA9;
+    border: 3px solid #fc6b03;
 }
 .TorneioH1{
-    color: #EBDBA9;
+    color: #ffffff;
     height: 20px;
-    padding-top: 60px;
-    padding-left: 20px;
+    padding-top: 80px;
+    padding-left: 15px;
 }
 
-.TonerioDois{
-    width: 30%;
-    height: 150px;
-    background-image: url(assets/CastelolAnimado.jpg);
-    background-size: cover;
-    align-items: center;
-    justify-content: center;
-    margin: 20px;
-    border-radius: 10px;
-    -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
-    box-shadow: inset -11px -7px 36px 0px #000000; 
-    transition: 0.5s;
-    border: 3px solid #EBDBA9;
-    margin-top: 50px;
-}
-
-.TonerioTres{
-    width: 30%;
-    height: 150px;
-    background-image: url(assets/CastelolAnimado.jpg);
-    background-size: cover;
-    align-items: center;
-    justify-content: center;
-    margin: 20px;
-    border-radius: 10px;
-    -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
-    box-shadow: inset -11px -7px 36px 0px #000000; 
-    transition: 0.5s;
-    border: 3px solid #EBDBA9;
-    margin-top: 50px;
-}
-.TonerioUm:hover,.TonerioDois:hover,.TonerioTres:hover{
+.Torneio:hover{
     padding: 10px;
     transition: 0.5s;
     cursor: pointer;
