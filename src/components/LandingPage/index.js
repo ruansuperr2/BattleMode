@@ -17,7 +17,7 @@ function LandingPage() {
                     <img className='logo' src={require("./assets/logo.png")}></img>
                     <h1>Sua escalada começa aqui</h1>
                     <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade. </p>
-                    <button onClick={() => {window.location.href = "./home"}}>Começar</button>
+                    <button onClick={() => {window.location.href = "./now"}}>Começar</button>
 
                     <div className='divIconsRedesLandingPage'>
                         <GitHubIcon sx={{fontSize: "8vh", color: "#fc6b03"}}></GitHubIcon>

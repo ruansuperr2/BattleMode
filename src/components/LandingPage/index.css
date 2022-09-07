@@ -50,6 +50,7 @@
     background-size: cover;
 }
 .divImgInfoLandingPage h1{
+    font-style: SegoeUI-Bold;
     color:#fc6b03;
     font-size: 7vh;
     padding-left: 5%;
