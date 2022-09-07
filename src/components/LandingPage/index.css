@@ -72,6 +72,16 @@
     margin-left: 5%;
     color: #fff;
     background: transparent;
+    transition: 0.2s;
+}
+
+.divImgInfoLandingPage button:hover{
+    transition: 0.2s;
+    border: 2px solid rgb(224, 219, 219);
+    border-radius: 20px;
+    margin-left: 5%;
+    color: #fff;
+    cursor: pointer;
 }
 .divVideoLandingPage video{
     width: 140%;

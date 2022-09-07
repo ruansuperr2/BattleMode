@@ -34,7 +34,7 @@ export default function Navbar(props) {
             <div className="divLeftNavbar">
                 <img src={require("./assets/logo.png")} />
                 <hr className="HR"/>
-                <Link to="/" className="fontNavbar"><HomeIcon sx={{color: "#fff", fontSize: 35}}/></Link>
+                <Link to="/home" className="fontNavbar"><HomeIcon sx={{color: "#fff", fontSize: 35}}/></Link>
                 <Link to="/feed" className="fontNavbar"><EmojiEventsIcon sx={{color: "#fff", fontSize: 35}}/></Link>
                 <Link to="/games" className="fontNavbar"><SportsEsportsIcon sx={{color: "#fff", fontSize: 35}}/></Link>
                 <Link to="/about" className="fontNavbar"><InfoIcon sx={{color: "#fff", fontSize: 35}}/></Link>
