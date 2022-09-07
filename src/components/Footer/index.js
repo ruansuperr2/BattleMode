@@ -45,8 +45,8 @@ export default function Footer() {
                 </div>
             </div>
             <div className="divNotAffiliated">
-                <p>Os campeonatos registrados nessa plataforma não estão co-relacionados com a equipe da BattleMode, cada organizadora de torneio deve ser responsabilizar por problemas internos.</p>    
-                <p>©{ano}: Inexorabilis Team</p>
+                <h4>Os campeonatos registrados nessa plataforma não estão co-relacionados com a equipe da BattleMode, cada organizadora de torneio deve ser responsabilizar por problemas internos.</h4>    
+                <h5>©{ano}: Inexorabilis Team</h5>
             </div>
                
         </div>

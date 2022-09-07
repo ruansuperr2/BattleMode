@@ -1,168 +1,30 @@
 import React from 'react'
+import Navbar from '../Navbar'
+import Footer from '../Footer'
+import Jogo from './components/Jogo'
 import './index.css'
 
 function Jogos() {
     return (
-        <div className="divJogosMainContainer">
-            <div className='divJogosSubContainer'>
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
+        <div>
+            <Navbar page="jogos"/>
+            <div className="paddingLeft divMainJogos">
+                <h3 className="titleGames">O maior show de competição! Adicione o seu jogo favorito ao seu perfil!</h3>
+                <div className="divJogosMainContainer">
+                    
+                    <Jogo/>
+                    <Jogo/>
+                    <Jogo/>
+                    <Jogo/>
+                    <Jogo/>
+                    <Jogo/>
+                    <Jogo/>
+                    <Jogo/>
+                    <Jogo/>
+                    <Jogo/>
+                    <Jogo/>
                 </div>
-
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
-                </div>
-
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
-                </div>
-
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
-                </div>
-
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
-                </div>
-
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
-                </div>
-
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
-                </div>
-
-
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
-                </div>
-
-
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
-                </div>
-
-
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
-                </div>
-
-
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
-                </div>
-
-
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
-                </div>
-
-
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
-                </div>
-
-
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
-                </div>
-
-
-                <div className='divJogosContainer'>
-                    <div className='divJogosImg'>
-
-                    </div>
-
-                    <div>
-                        <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor.</p>
-                    </div>
-                </div>
-
+                <Footer/>
             </div>
         </div>
         )
