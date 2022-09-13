@@ -5,8 +5,11 @@ function Fundo(){
     return(
         <div className='divFundoMainContainer'>
           <div className='divFundoImg'/>
-            <div className='divImgFundoMainContainer'></div>
+          <div className='divContainerFundoMainContainer'>
+            <div className='divImgFundoMainContainer'/>
             <h1>MonoDryad</h1>
+          </div>
+
         </div>
     )
 }

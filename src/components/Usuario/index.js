@@ -4,17 +4,24 @@ import Fundo from './components/Fundo'
 import JogosFav from './components/JogosFav'
 import Descricao from './components/Descricao'
 import Conquistas from './components/Conquistas'
+import Navbar from '../Navbar'
+import Footer from '../Footer'
+
 
 function Usuario(){
     return(
-        <div className='divUsuarioMainContainer'>
-            <div className='divUsuarioSubMainContainer'>
-                <button>Editar</button>
-                <Fundo/>
-                <JogosFav/>
-                <Descricao/>
-                <Conquistas/>
+        <div className="divUsuarioDMainContainer">
+            <Navbar/>
+            <div className='divUsuarioMainContainer'>
+                <div className='divUsuarioSubMainContainer paddingLeft'>
+                    <button>Editar</button>
+                    <Fundo/>
+                    <Descricao/>
+                    <JogosFav/>
+                    <Conquistas/>
+                </div>
             </div>
+            <Footer/>
         </div>
     )
 }
