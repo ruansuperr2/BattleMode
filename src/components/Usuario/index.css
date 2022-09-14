@@ -1,21 +1,28 @@
-.divUsuarioMainContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.divUsuarioDMainContainer{
     background-color: #121212;
+}
+
+.divUsuarioMainContainer{
+    height: 100%;
 }
 
 .divUsuarioSubMainContainer{
-
+    height: 100%;
     background-color: #121212;
     display: flex;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: column;
+
 }
+
+.divUsuarioSubMainContainerCompo{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .divUsuarioSubMainContainer button{
     position: absolute;
     top: 140px;
@@ -30,30 +37,27 @@
     color: white;
 }
 .divUsuarioSubMainContainer button:hover{
-    border: 2px solid #fc6b03;
+    border: 1px solid #fc6b03;
 	cursor: pointer;
 	transition: 0.5s;
 }
 /* Fundo */
 .divFundoMainContainer{
     width: 100%;
-    height: 35%;
+    height: 35vh;
     margin-bottom: 5.5%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+
     background-image: url(components/assets/CastelolAnimado.jpg);
     border-bottom: 2px solid #fc6b03;
     -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
     box-shadow: inset -11px -7px 36px 0px #000000; 
 }
 .divFundoImg{
-    width: 30px;
+    width: 20px;
     position: absolute;
-    height: 30px;
-    top: 210px;
-    left: 71%;
+    height: 20px;
+    left: 110%;
+    top: 25%;
     border-radius: 100rem;
     padding: 4px;
     background-image: url(components/assets/unknown2.png);
@@ -94,28 +98,40 @@
 
 /* JogosFav */
 
+.divJogosFavMainContainerD{
+    width: 55%;
+    height: 25.5vh;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-color: #121212;
+    border: 1px solid #fc6b03;
+    padding: 2%;
+}
+
+.divJogosFavMainContainerD h1{
+    color: #fc6b03;
+    margin-top: -1%;
+}
+
 .divJogosFavMainContainer{
-    width: 40%;
-    height: 25%;
-    border-radius: 15px;
+    height: 90%;
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
     align-items: center;
-    background-color: #121212;
-    border: 2px solid #fc6b03
+
 }
 
 .divJogosFavoritosSubContainer{
     height: 80%;
-    width: 15%;
+    width: 100%;
     background-color: white;
     border-radius: 10px;
     margin: 15px;
-    background-size: cover;
+    background-size: contain;
     background-image: url(components/assets/transferir.png);
     transition: 0.5s;
-    border: 2px solid #fc6b03;
+    border: 1px solid #fc6b03;
     -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
     box-shadow: inset -11px -7px 36px 0px #000000; 
 }
@@ -129,13 +145,33 @@
 
 .divDescricaoMainContainer{
     width: 40%;
-    height: 25%;
-    border-radius: 15px;
+    height: 30vh;
+
     background-color: #121212;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #fc6b03;
+    /* border: 2px solid #fc6b03; */
+}
+
+.divBiografia{
+    height: 100%;
+    width: 100%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 1px solid #fc6b03;
+    padding: 2%;
+}
+
+.divBiografia textarea{
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    font-family: SegoeUI-VF ;
+}
+
+.divBiografia h1{
+    color: #fc6b03;
 }
 
 
@@ -150,10 +186,9 @@
 }
 .divDescricaoImg{
     width: 30px;
-    position: absolute;
     height: 30px;
-    top: 421px;
-    left: 41%;
+    margin-left: 100%;
+
     border-radius: 200px;
     padding: 4px;
     background-image: url(components/assets/unknown2.png);
@@ -172,28 +207,40 @@
 
 /* Conquistas */
 
-.divConquistasMainContainer{
-    width: 40%;
-    height: 35%;
+.divConquistasMainContainerD{
+    width: 80%;
+    height: 30vh;
+    margin-left: 10%;
     border-radius: 15px;
+    margin-top: 20px;
+    background-color: #121212;
+    border: 1px solid #fc6b03;
+    padding: 1%;
+}
+
+.divConquistasMainContainerD h1{
+    margin: 0;
+    color: #fc6b03;
+    font-weight: bolder;
+}
+
+.divConquistasMainContainer{
+    height: 100%;
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
     align-items: center;
-    margin-top: 20px;
-    background-color: #121212;
-    border: 2px solid #fc6b03
 }
 .divConquistasSubContainer{
-    height: 80%;
+    height: 70%;
     width: 30%;
     background-color: white;
     border-radius: 10px;
     margin: 15px;
-    background-size: cover;
+    background-size: contain;
     background-image: url(components/assets/transferir.png);
     transition: 0.5s;
-    border: 2px solid #fc6b03;
+    border: 1px solid #fc6b03;
     -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
     box-shadow: inset -11px -7px 36px 0px #000000;
 }

@@ -4,10 +4,10 @@ import '../../index.css'
 function Fundo(){
     return(
         <div className='divFundoMainContainer'>
-          <div className='divFundoImg'/>
+          
           <div className='divContainerFundoMainContainer'>
             <div className='divImgFundoMainContainer'/>
-            <h1>MonoDryad</h1>
+            <h1>MonoDryad<div className='divFundoImg'/></h1>
           </div>
 
         </div>

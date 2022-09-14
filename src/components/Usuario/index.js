@@ -12,15 +12,17 @@ function Usuario(){
     return(
         <div className="divUsuarioDMainContainer">
             <Navbar/>
-            <div className='divUsuarioMainContainer'>
-                <div className='divUsuarioSubMainContainer paddingLeft'>
+
+                <div className='divUsuarioSubMainContainer paddingLeft '>
                     <button>Editar</button>
                     <Fundo/>
-                    <Descricao/>
-                    <JogosFav/>
-                    <Conquistas/>
+                    <div className='divUsuarioSubMainContainerCompo' >
+                        <Descricao/>
+                        <JogosFav/>
+                        <Conquistas/>
+                    </div>
                 </div>
-            </div>
+
             <Footer/>
         </div>
     )

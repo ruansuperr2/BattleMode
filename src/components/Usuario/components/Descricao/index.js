@@ -4,8 +4,10 @@ import '../../index.css'
 function Descricao(){
     return(
         <div className='divDescricaoMainContainer'>
-            <div className='divDescricaoImg'/>
-            <textarea></textarea>
+            <div className='divBiografia'>
+                <h1>Biografia<div className='divDescricaoImg'/></h1>
+                <textarea maxlength="350"></textarea>
+            </div>
         </div>
     )
 }
