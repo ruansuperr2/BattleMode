@@ -1,0 +1,43 @@
+.divParticiparMainContainer {
+    height: 100vh;
+    background-color: #121212;
+}
+.divMainTorneio {
+    /* display: flex; */
+    width: 100%;
+    height: 35vh;
+    margin-bottom: 5.5%;
+
+    background-image: url(assets/arteOnda2.png);
+    border-bottom: 2px solid #fc6b03;
+    -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
+    box-shadow: inset -11px -7px 36px 0px #000000; 
+}
+.divContentMainFundo {
+    position: absolute;
+    left: 8%;
+    top: 20%;
+}
+.divTorneioImg {
+    background-image: url(assets/arteOnda2.png);
+    border-radius: 1rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 25vw;
+    height: 10vw;
+    right: 3%;
+    border: 2px solid #fc6b03;
+}
+.divTorneioDesc {
+    display: flex;
+    align-items: center;
+    height: 30vh;
+    width: 30vw;
+    float: left;
+}
+.divTorneioEntrar {
+    margin: 0;
+    height: 30vh;
+    width: 30vw;
+    float: right;
+}
