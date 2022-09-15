@@ -99,6 +99,7 @@
 /* JogosFav */
 
 .divJogosFavMainContainerD{
+    position: relative;
     width: 55%;
     height: 25.5vh;
     border-top-left-radius: 15px;
@@ -161,6 +162,7 @@
     border-bottom-right-radius: 15px;
     border: 1px solid #fc6b03;
     padding: 2%;
+    position: relative;
 }
 
 .divBiografia textarea{
@@ -184,18 +186,47 @@
     padding-left: 10px;
     padding-top: 10px;
 }
-.divDescricaoImg{
+
+.divDescricaoImg1{
     width: 30px;
     height: 30px;
-    margin-left: 100%;
-
+    position: absolute;
+    top: 12%;
+    left: 33%;
     border-radius: 200px;
     padding: 4px;
     background-image: url(components/assets/unknown2.png);
     background-size: cover;
     transition: 0.5s
 }
-.divDescricaoImg:hover{
+
+.divDescricaoImg2{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    border-radius: 200px;
+    padding: 4px;
+    background-image: url(components/assets/unknown2.png);
+    background-size: cover;
+    transition: 0.5s
+}
+
+.divDescricaoImg3{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 8%;
+    left: 15%;
+    border-radius: 200px;
+    padding: 4px;
+    background-image: url(components/assets/unknown2.png);
+    background-size: cover;
+    transition: 0.5s
+}
+
+.divDescricaoImg3:hover, .divDescricaoImg2:hover, .divDescricaoImg1:hover{
     background-image: url(components/assets/unknown3.png);
     transition: 0.5s;
     cursor: pointer;
@@ -208,6 +239,7 @@
 /* Conquistas */
 
 .divConquistasMainContainerD{
+    position: relative;
     width: 80%;
     height: 30vh;
     margin-left: 10%;

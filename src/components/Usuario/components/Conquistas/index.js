@@ -4,7 +4,7 @@ import '../../index.css'
 function Conquistas(){
     return(
         <div className='divConquistasMainContainerD'>
-            <h1>Conquistas<div className='divDescricaoImg'/></h1>
+            <h1>Conquistas</h1>
             <div className='divConquistasMainContainer'>
                 <div className='divConquistasSubContainer'>
 
