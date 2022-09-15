@@ -70,6 +70,7 @@
     color:#fff;
     font-size: 3vh;
     margin-top: -10px;
+    text-align: center;
 }
 
 .divLoginRightSubContaner input{
@@ -111,3 +112,17 @@
 
 
 
+
+@media only screen and (max-width: 768px) {
+    .divLoginLeftContainer{
+        display: none;
+    }
+    .divLoginRightContainer {
+        width: 100%;
+    }
+    .divLoginRightSubContaner{
+        width: 90%;
+        border-radius: 10%;
+
+    }
+}

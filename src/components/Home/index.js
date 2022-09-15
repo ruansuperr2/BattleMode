@@ -47,10 +47,6 @@ function Home() {
                 <div className="divCarrosselMainContainerHome">
                     <div className="divVideoMainContainerHome">
                         <div className="divVideoShadowMainContainerHome" />
-                        {/* <div className="divLabelCarrosselMainContainerHome">
-                            <h1 className="h1DivSecond">Título</h1>
-                            <label>O texto informativo é um texto em que o escritor expõe brevemente um tema</label>
-                        </div> */}
                         <img className='imgPassing' src={require('./assets/passing.png')}/>
                         <img className="imgCarrossel" src={require(`${carrosselImage}`)} />
                         <div className="divDots">
@@ -65,7 +61,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                {/* <Noticias/> */}
+                <Noticias/>
                 <div className='divSecondMainContainerHome'>
                     <div className='divSubSecondContainerHome'>
                         <h1>Campeonatos personalizados</h1>

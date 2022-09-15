@@ -11,7 +11,7 @@
     align-items: center;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    padding-left: 5%;
+    padding-left: 18%;
 }
 
 .valueDropdown{
@@ -37,3 +37,5 @@
     align-items: center;
     text-align: center;
 }
+
+

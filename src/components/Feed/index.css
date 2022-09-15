@@ -83,3 +83,16 @@
     margin-top: 30px;
 }
 
+
+/* Responsividade */
+
+@media only screen and (max-width: 768px) {
+    .Torneio{
+        width: 80%;
+    }
+    .divPrediletosUmSubContainer{
+        width: 80%;
+    }
+
+   
+}

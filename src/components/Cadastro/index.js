@@ -18,10 +18,9 @@ function Login() {
                     <input placeholder='Email'></input>
                     <input placeholder='Senha'></input>
                     <input placeholder='Confirmar senha'></input>
-                    <button>Entrar</button>
+                    <button>Cadastrar-se</button>
 
-                    <a><p>Esqueceu sua senha?</p></a>
-                    <a><p>Não possui conta?</p></a>
+
                 </div>
             </div>
         </div>

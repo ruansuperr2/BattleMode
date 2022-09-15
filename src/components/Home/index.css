@@ -121,7 +121,7 @@
         flex-direction: column;
         display: flex; 
         text-align: center;
-        margin-top: 200px;
+        margin-top: 350px;
     }
     .divSubSecondContainerHome{
         text-align: center;
@@ -129,6 +129,13 @@
     .divSubSecondContainerHome h1{
         font-size: 30px;
     }
+    .divDots{
+        left: 32%;
+    }
+    .paddingLeft{
+        padding-left: 0;
+    }
+    
     
 
 }
