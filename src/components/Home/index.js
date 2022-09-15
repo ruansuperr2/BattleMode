@@ -65,10 +65,10 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <Noticias/>
+                {/* <Noticias/> */}
                 <div className='divSecondMainContainerHome'>
                     <div className='divSubSecondContainerHome'>
-                        <h1 className='h1DivSecond'>Campeonatos personalizados</h1>
+                        <h1>Campeonatos personalizados</h1>
                         <p>Organizar um torneio a mão pode ser uma tarefa complicada, a BattleMode™ permite que você organize-os sem dor de cabeça e com uma personalização incrível, permitindo que o seu campeonato cresce e tenha um maior conhecimento atravez da plataforma BattleMode™</p>
                     </div>
 

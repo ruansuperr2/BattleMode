@@ -18,19 +18,16 @@ export default function Footer() {
                     <a href="https://github.com/MonoDryad/BattleMode">
                         <div className="divLeftSocialContainers">
                             <GitHubIcon color="white" sx={{ fontSize: 50 }} />
-                            <p>Acesse o nosso GitHub</p>
                         </div>
                     </a>
                     <a href="https://twitter.com/gaiacup">
                         <div className="divLeftSocialContainers">
                             <TwitterIcon color="white" sx={{ fontSize: 50 }} />
-                            <p>Acesse o nosso Twitter</p>
                          </div>
                     </a>
                     <a href="https://github.com/MonoDryad/BattleMode">
                         <div className="divLeftSocialContainers">
                             <img src={require("./assets/discord.png")} />
-                            <p>Acesse o nosso Discord</p>
                         </div>
                     </a>
                 </div>
@@ -44,10 +41,10 @@ export default function Footer() {
                     <Link to="/about" className="fontFooter">Sobre</Link>
                 </div>
             </div>
-            <div className="divNotAffiliated">
+            {/* <div className="divNotAffiliated">
                 <h4>Os campeonatos registrados nessa plataforma não estão co-relacionados com a equipe da BattleMode, cada organizadora de torneio deve ser responsabilizar por problemas internos.</h4>    
                 <h5>©{ano}: Inexorabilis Team</h5>
-            </div>
+            </div> */}
                
         </div>
     )

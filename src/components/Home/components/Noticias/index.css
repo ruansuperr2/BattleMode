@@ -27,3 +27,16 @@
     height: 20px;
     padding-top: 40px;
 }
+
+/* Responsividade */
+
+@media screen and (max-width: 768px) {
+    .divMainContainerNoticias{
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .divNoticiaMainContainerNoticias{
+        width: 70%;
+    }
+    
+}

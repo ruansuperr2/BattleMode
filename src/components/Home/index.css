@@ -90,7 +90,7 @@
 	padding-left: 100px;
 	padding-right: 80px;
 }
-.h1DivSecond{
+.divSubSecondContainerHome h1{
 	color: #fc6b03;
 	font-size: 40px;
 }
@@ -108,4 +108,27 @@
     top: 85%;
     width: 100%;
     z-index: 0;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .divSubSecondContainerHome{
+        width: 60%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .divSecondMainContainerHome{
+        flex-direction: column;
+        display: flex; 
+        text-align: center;
+        margin-top: 200px;
+    }
+    .divSubSecondContainerHome{
+        text-align: center;
+    }
+    .divSubSecondContainerHome h1{
+        font-size: 30px;
+    }
+    
+
 }

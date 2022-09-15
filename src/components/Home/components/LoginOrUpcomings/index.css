@@ -39,3 +39,20 @@
     justify-content: center;
     align-items: center;
 }
+
+
+@media screen and (max-width: 768px) {
+    .divMainContainerLoginOrUpcoming{
+        margin-top: 20%;
+    }
+    .divMainContainerAskingAccount{
+        flex-direction: column;
+        text-align: center;
+        
+    }
+    .divMainContainerAsking{
+        border-right: 0;
+        border-bottom: 2px solid white;
+        padding-right: 0;
+    }
+}
