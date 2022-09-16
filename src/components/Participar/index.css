@@ -2,10 +2,14 @@
     height: 100vh;
     background-color: #121212;
 }
+.divHeader {
+    height: 100vh;
+}
 .divMainTorneio {
-    /* display: flex; */
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 35vh;
+    height: 35%;
     margin-bottom: 5.5%;
 
     background-image: url(assets/arteOnda2.png);
@@ -13,27 +17,63 @@
     -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
     box-shadow: inset -11px -7px 36px 0px #000000; 
 }
+.divMainFundo {
+    height: 35vh;
+}
 .divContentMainFundo {
     position: absolute;
-    left: 8%;
-    top: 20%;
+    left: 12%;
+    top: 22%;
 }
 .divTorneioImg {
+    position: absolute;
+    left: 8%;
     background-image: url(assets/arteOnda2.png);
     border-radius: 1rem;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 25vw;
-    height: 10vw;
-    right: 3%;
+    width: 20rem;
+    height: 8rem;
+    /* right: 3%; */
     border: 2px solid #fc6b03;
 }
 .divTorneioDesc {
     display: flex;
+    flex-direction: row;
+    color: #fff;
+    /* width: 100%; */
+    margin-left: 8%;
+    margin-top: 2rem;
+    float: left;
+    word-break: break-all;
+}
+.divButtonParticipar {
+    float: right;
+    /* margin-top: 3rem; */
+    min-width: 30%;
+}
+.buttonParticipar {
+    position: absolute;
+    left: 14.5%;
+    top: 50%;
+    width: 15rem;
+    padding: .5rem;
+	margin: 5px;
+    background-color: #272727;
+    border-radius: 20px;
+    border: 2px solid #fc6b03;
+    color: #fc6b03;
+    font-size: 16px;
+    transition: 0.5s;
+    z-index: 99;
+}
+.divDesc {
+    float: right;
+    display: flex;
     align-items: center;
     height: 30vh;
-    width: 30vw;
-    float: left;
+    width: 60%;
+    margin-inline: 10%;
 }
 .divTorneioEntrar {
     margin: 0;

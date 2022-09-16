@@ -9,15 +9,19 @@ function Participar() {
         <div className='divParticiparMainContainer'>
             <Navbar/>
                 <div className="divMainTorneio">
-                    <TorneioHeader/>
-                    <div className="divTorneioDesc">
-                        <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                        <button>
-
-                        </button>
+                    <div className="divHeader">
+                        <TorneioHeader/>
                     </div>
+                    <div className="divTorneioDesc">
+                        <div className="divButtonParticipar">
+                            <button className="buttonParticipar">Participar</button>
+                        </div>
+                        <div className="divDesc">
+                            <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                        </div>
+                    </div>
+                    <Footer/>
                 </div>
-            <Footer/>
         </div>
     )
 }
