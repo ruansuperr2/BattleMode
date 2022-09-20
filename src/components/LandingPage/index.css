@@ -4,8 +4,6 @@
     overflow: hidden;
 }
 
-
-
 .divMainLandingPageNavbar{
     width: 100%;
     height: 70px;
@@ -112,7 +110,6 @@
     gap: 30px;
     padding-top: 6%;
     padding-left: 5%;
-    
 }
 
 
@@ -121,38 +118,37 @@
     height: 8vh;
 }
 
-@media screen and (max-width: 496px){
+@media screen and (max-width: 768px){
     .divVideoLandingPage{
         display: none;
     }
-
+    .divMainLandingPageNavbar{
+        justify-content: center;
+    }
     .divImgInfoLandingPage{
         width: 100%;
-        background-image: url("./assets/kkk.png");
         z-index: 98;
-        position: absolute;
         background-size: cover;
+        justify-content: center;
+        position: 0;
     }
 
     .divImgInfoLandingPage button{
-        font-size: 20px;
+        font-size: 30px;
         height: 6vh;
         width: 90%;
         border: 2px solid #fc6b03;
-        border-radius: 20px;
-        margin-left: 5%;
-        color: #fff;
-        background: transparent;
+        border-radius: 30px;
     }
 
     .buttonNavbar{
-        width: 30%;
-        height: 50%;
+        width: 40%;
+        height: 70%;
         background: transparent;
-        border-radius: 20px;
+        border-radius: 30px;
         border: 2px solid #fc6b03;
         color: #fc6b03;
-        font-size: 16px;
+        font-size: 24px;
         transition: 0.5s;
         z-index: 99;
         left: 40px;
@@ -169,23 +165,33 @@
         width: 30vh;
         height: 30vh;
         z-index: 99;
-        padding-left: 2%;
+        padding-left: 20%;
+        padding-top: 52%;
         position: absolute;
+
     }
     
     .divImgInfoLandingPage h1{
         color:#fc6b03;
         font-size: 7vh;
-        padding-left: 5%;
-        padding-right: 0%;
-        padding-top: 35%;
-        
+        padding-left: 0;
+        padding-right:0;
+        text-align: center;
     }
 
     .divImgInfoLandingPage p{
         color: #fff;
         font-size: 3.5vh;
-        padding-left: 5%;
-        padding-right: 0%;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+        margin-top: 45%;
+    }
+    .divIconsRedesLandingPage{
+        width: 50%;
+        display: flex;
+        gap: 80px;
+        padding-top: 10%;
     }
 }
+
