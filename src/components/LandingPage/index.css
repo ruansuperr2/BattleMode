@@ -134,7 +134,7 @@
     }
 
     .divImgInfoLandingPage button{
-        font-size: 30px;
+        font-size: 22px;
         height: 6vh;
         width: 90%;
         border: 2px solid #fc6b03;
@@ -148,7 +148,7 @@
         border-radius: 30px;
         border: 2px solid #fc6b03;
         color: #fc6b03;
-        font-size: 24px;
+        font-size: 22px;
         transition: 0.5s;
         z-index: 99;
         left: 40px;
@@ -190,7 +190,8 @@
     .divIconsRedesLandingPage{
         width: 50%;
         display: flex;
-        gap: 80px;
+        gap: 40px;
+        padding-left: 17%;
         padding-top: 10%;
     }
 }
