@@ -11,6 +11,7 @@ import Login from './components/Login'
 import Usuario from './components/Usuario'
 import PaginaNaoEncontrada from './components/PaginaNaoEncontrada'
 import LandingPage from './components/LandingPage'
+import Participar from './components/Participar'
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                         <Route path="/games" element={<Jogos />} />
                         <Route path="/about" element={<Sobre />} />
                         <Route path="/usuario" element={<Usuario/>} />
+                        <Route path="/participar" element={<Participar />} />
                   </Routes>
               </div>
           </BrowserRouter>
