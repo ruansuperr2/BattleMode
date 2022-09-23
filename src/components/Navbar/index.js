@@ -39,10 +39,9 @@ export default function Navbar(props) {
                 <Link to="/games" className="fontNavbar"><SportsEsportsIcon sx={{color: "#fff", fontSize: 35}}/></Link>
                 <Link to="/about" className="fontNavbar"><InfoIcon sx={{color: "#fff", fontSize: 35}}/></Link>
             </div>
+            
             <div className="divRightNavbar">
                 <p><LanguageIcon className="LanguageIcon" sx={{color: "#fff", fontSize: 35}}/> pt-br</p>
-                
-
             </div>
 
             <div className={`divSideLoginRegister ${navbar && "navbarActive"}` }>
