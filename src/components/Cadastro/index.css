@@ -109,6 +109,18 @@
     font-size: 3vh;
 }
 
+.RedesCadastro img{
+    width: 8vh;
+    height: 8vh;
+    margin-left: 2%;
+}
+.RedesCadastro{
+    width: 100%;
+    display: flex;
+    margin: 5%;
+    gap: 95px;
+    margin-right: 5%;
+}
 
 
 @media only screen and (max-width: 768px) {

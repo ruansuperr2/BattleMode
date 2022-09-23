@@ -110,6 +110,18 @@
     font-size: 3vh;
 }
 
+.divIconsRedesLogin img{
+    width: 8vh;
+    height: 8vh;
+    margin-left: 2%;
+}
+.divIconsRedesLogin{
+    width: 100%;
+    display: flex;
+    margin: 5%;
+    gap: 95px;
+    margin-right: 5%;
+}
 
 
 
