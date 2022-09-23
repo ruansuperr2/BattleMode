@@ -34,14 +34,15 @@ export default function Navbar(props) {
             <div className="divLeftNavbar">
                 <img src={require("./assets/logo.png")} />
                 <hr className="HR"/>
-                <Link to="/now" className="fontNavbar"><HomeIcon sx={{color: "#fff", fontSize: 35}}/></Link>
-                <Link to="/feed" className="fontNavbar"><EmojiEventsIcon sx={{color: "#fff", fontSize: 35}}/></Link>
-                <Link to="/games" className="fontNavbar"><SportsEsportsIcon sx={{color: "#fff", fontSize: 35}}/></Link>
-                <Link to="/about" className="fontNavbar"><InfoIcon sx={{color: "#fff", fontSize: 35}}/></Link>
+                <Link to="/now" className="fontNavbar"><HomeIcon sx={{color: "#fff", fontSize: 35}}/>Home</Link>
+                <Link to="/feed" className="fontNavbar"><EmojiEventsIcon sx={{color: "#fff", fontSize: 35}}/>Torneios</Link>
+                <Link to="/games" className="fontNavbar"><SportsEsportsIcon sx={{color: "#fff", fontSize: 35}}/>Jogos</Link>
+                <Link to="/about" className="fontNavbar"><InfoIcon sx={{color: "#fff", fontSize: 35}}/>Sobre</Link>
             </div>
-            
             <div className="divRightNavbar">
                 <p><LanguageIcon className="LanguageIcon" sx={{color: "#fff", fontSize: 35}}/> pt-br</p>
+                
+
             </div>
 
             <div className={`divSideLoginRegister ${navbar && "navbarActive"}` }>
