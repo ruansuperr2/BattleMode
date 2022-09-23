@@ -1,10 +1,30 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './index.css'
 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
-function Login() {
+function Cadastro() {
+
+    const [users, setUsers] = useState()
+
+    const getUsers = async () => {
+        try{
+            const response = await fetch('http://localhost:3000/api/user')
+            const data = response.json()
+            console.log(data)
+            data.then(
+                (val) => setUsers(val.data)
+            )
+        }catch(error){
+            console.log(error)
+        }
+   }
+
+   console.log('USUÁRIOS > ',users)
+
+   getUsers()
+
     return (
         <div className="divLoginMainContainer">
             <div className="divLoginLeftContainer">
@@ -36,4 +56,4 @@ function Login() {
         )
 }
 
-export default Login
+export default Cadastro
