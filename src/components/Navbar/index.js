@@ -6,10 +6,43 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import InfoIcon from '@mui/icons-material/Info';
 import LanguageIcon from '@mui/icons-material/Language';
-import LoginIcon from '@mui/icons-material/Login';
-import { cleanup } from '@testing-library/react';
 
-export default function Navbar(props) {
+
+export const Navbar = (props) => {
+    const [find, setFind] = useState()
+    let loggedUser = {}
+    const getLogged = async() => {
+        if(find == undefined){
+            try{
+                const response = await fetch('http://localhost:3000/api/user')
+                const data = response.json()
+                data.then(
+                    (val) => {
+                        let userContent = val.data.find((account) => {return account.id === JSON.parse(localStorage.getItem('dasiBoard')) })
+                        loggedUser = userContent
+                        setFind(1)
+                        console.log(find)
+                        loggedUser.logged = true
+                        console.log(loggedUser)
+                        if(loggedUser.logged === true){
+                            document.querySelector('.loggedUserNameNavBar').style.display = 'block'
+                            document.querySelector('.EntrarRegistroNavBar').style.display = 'none'
+                            document.querySelector('.userNameP').textContent = loggedUser.username
+                            document.querySelector('.imgIconP').setAttribute("src", loggedUser.icon)
+                        }else{
+                            document.querySelector('.loggedUserNameNavBar').style.display = 'none'
+                            document.querySelector('.EntrarRegistroNavBar').style.display = 'block'
+                        }
+                    }
+                )
+            }catch(error){
+                
+                console.log(error)
+            }
+        }
+    }
+        
+    getLogged(find)
 
     const [navbar, setNavbar] = useState(false);
 
@@ -20,13 +53,14 @@ export default function Navbar(props) {
             setNavbar(false)
         }
     }
-    useEffect(() =>{
+    useEffect(() =>{    
+ 
+
         window.addEventListener("scroll", changeNoneButtons)
         return () => {
             window.removeEventListener("scroll", changeNoneButtons)
         }
     }, [])
-
 
 
     return (
@@ -46,9 +80,17 @@ export default function Navbar(props) {
             </div>
 
             <div className={`divSideLoginRegister ${navbar && "navbarActive"}` }>
-                <button>Cadastrar-se </button>
-                <button>Entrar</button>
+                <div className='EntrarRegistroNavBar'>
+                    <button>Cadastrar-se </button>
+                    <button>Entrar</button>
+                </div>
+                <div className='loggedUserNameNavBar'>
+                    <img className='imgIconP' width='60px' height='60px'/>
+                    <p className='userNameP'></p>
+                </div>
             </div>
         </div>
     )
 }
+
+export default Navbar

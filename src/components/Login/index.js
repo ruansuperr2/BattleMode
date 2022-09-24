@@ -4,55 +4,47 @@ import './index.css'
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
-export const loggedUser = []
-
 function Login() {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-
+    const loggedUser = []
     const [users, setUsers] = useState([])
 
-    const getUsers = async () => {
+    const callAgentLogin = async () => {
+        
         try{
             const response = await fetch('http://localhost:3000/api/user')
             const data = response.json()
             data.then(
                 (val) => setUsers(val.data)
             )
-            
+            console.log(users)
+            setTimeout(() => {
+                
+                console.log(username, password)
+                console.log(users.find((account) => {return account.username === username }))
+                if(users.find((account) => {return account.username === username }) != undefined){
+                    if(users.find((account) => {return password === account.password}) != undefined && users.find((account) => {return account.username === username }) != undefined){
+                        loggedUser.push(users.find((account) => {return account.username === username }))
+                        console.log(loggedUser)
+                        localStorage.setItem('dasiBoard', JSON.stringify(loggedUser[0].id))
+                        setTimeout(() => {
+                            alert('correto1')
+                            window.location.href = './now '
+                        }, 600)
+                    }else{
+                        alert('errou2')
+                    }
+                }else{
+                    alert('errou1')
+                }
+            }, 700)
         }catch(error){
             console.log(error)
         }
     }
-    getUsers()
-    const callAgentLogin = () =>{
-        
-        console.log(users)
-        setTimeout(() => {
-            console.log(username, password)
-            console.log(users.find((account) => {return account.username === username }))
-            if(users.find((account) => {return account.username === username }) != undefined){
-                if(users.find((account) => {return password === account.password}) != undefined && users.find((account) => {return account.username === username }) != undefined){
-                    setTimeout(() => {
-                        alert('correto1')
-                        let placeholder = users.find((account) => {return password === account.password})
-                        console.log(placeholder)
-                        loggedUser.push(placeholder)
-                        console.log(loggedUser)
-                        window.location.href = './now '
-                    }, 600)
-                }else{
-                    alert('errou2')
-                }
-            }else{
-                alert('errou1')
-            }
-        }, 100)
-    }
-    
-
 
     return (
         <div className="divLoginMainContainer">
@@ -73,7 +65,7 @@ function Login() {
                     <p className='p'>Entre com sua conta ja cadastrada</p>
 
                     <input value={username} onChange={event => {setUsername(event.target.value)}} placeholder='Usuário'></input>
-                    <input value={password} onChange={event => {setPassword(event.target.value)}}  type='password' placeholder='Senha'></input>
+                    <input value={password} onChange={event => {setPassword(event.target.value)}} type='password' placeholder='Senha'></input>
                     <button onClick={() => callAgentLogin()}>Entrar</button>
 
                     <a><p>Esqueceu sua senha?</p></a>

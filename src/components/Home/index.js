@@ -13,7 +13,6 @@ function Home() {
     const [imageDotThree, setImageDotThree] = useState(false)
     const [carrosselImage, setCarrosselImage] = useState('./assets/CSGO.png')
 
-    console.log(imageDotOne, imageDotTwo, imageDotThree, carrosselImage)
     setTimeout(() => {
         if (imageDotOne === false && imageDotThree === true && imageDotTwo === false) {
             setCarrosselImage('./assets/CSGO.png')

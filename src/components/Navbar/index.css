@@ -152,6 +152,30 @@
 	top: -300px;
 }
 
+.loggedUserNameNavBar{
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.loggedUserNameNavBar img{
+	border-radius: 60px;
+	border: 1px solid #fc6b03
+}
+
+.loggedUserNameNavBar p{
+	color: #fff;
+	font-size: 30px;
+	width: 100%;
+	position: absolute;
+	top: -30%;
+	left: 25%
+}
+
+
+
 @media only screen and (max-width: 1230px) {
 	.HR{
 		display: none;
