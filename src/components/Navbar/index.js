@@ -27,7 +27,7 @@ export const Navbar = (props) => {
                         if(loggedUser.logged === true){
                             document.querySelector('.loggedUserNameNavBar').style.display = 'block'
                             document.querySelector('.EntrarRegistroNavBar').style.display = 'none'
-                            document.querySelector('.userNameP').textContent = loggedUser.username
+                            document.querySelector('.userNameP').textContent = loggedUser.username 
                             document.querySelector('.imgIconP').setAttribute("src", loggedUser.icon)
                         }else{
                             document.querySelector('.loggedUserNameNavBar').style.display = 'none'
@@ -41,7 +41,9 @@ export const Navbar = (props) => {
             }
         }
     }
-        
+
+    
+    let getOpenedNavbar
     getLogged(find)
 
     const [navbar, setNavbar] = useState(false);
@@ -85,9 +87,39 @@ export const Navbar = (props) => {
                     <button>Entrar</button>
                 </div>
                 <div className='loggedUserNameNavBar'>
-                    <img className='imgIconP' width='60px' height='60px'/>
+                    
+                    <img className='imgIconP'/>
                     <p className='userNameP'></p>
+                    <div onClick={() => {
+                                    if(document.querySelector('.buttonShowMoreNavbar').classList.contains('buttonShowMoreNavbarActivated')){
+                                        document.querySelector('.buttonShowMoreNavbar').classList.remove('buttonShowMoreNavbarActivated')
+                                        document.querySelector('.NavbarDropDown').classList.add('showBlockAnimation')
+                                        setTimeout(() =>{
+                                            document.querySelector('.NavbarDropDown').classList.remove('showBlockAnimation')
+                                            
+                                        },500)
+                                    }else{
+                                        document.querySelector('.buttonShowMoreNavbar').classList.add('buttonShowMoreNavbarActivated')
+                                        document.querySelector('.NavbarDropDown').style.display = 'block'
+                                        document.querySelector('.NavbarDropDown').classList.remove('showBlockAnimation')
+                                        document.querySelector('.NavbarDropDown').classList.add('showBlockAnimation')
+                                        setTimeout(() =>{
+                                            document.querySelector('.NavbarDropDown').classList.remove('showBlockAnimation')
+                                            
+                                        },500)
+                                        
+                                    }
+                                }
+                            }
+                        className='buttonShowMoreNavbar'/>
                 </div>
+                    <div className="NavbarDropDown">
+                            <p>testestestestestestes</p>
+                            <p>testestestestestestes</p>
+                            <p>testestestestestestes</p>
+                            <p>testestestestestestes</p>
+                            <p>testestestestestestes</p>    
+                    </div>
             </div>
         </div>
     )

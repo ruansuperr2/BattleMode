@@ -162,8 +162,47 @@
 
 .loggedUserNameNavBar img{
 	border-radius: 60px;
-	border: 1px solid #fc6b03
+	border: 1px solid #fc6b03;
+	width: 60px;
+	height: 60px;
 }
+
+.buttonShowMoreNavbar{
+	background-image: url('./assets/border-arrow-up.png');
+	background-size: cover;
+	border: none;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 30%;
+	left: 80%;
+}
+
+.buttonShowMoreNavbar:hover{
+	background-image: url('./assets/border-arrow-up-hover.png');
+	background-size: cover;
+	cursor: pointer;
+	border: none;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 30%;
+	left: 80%;
+}
+
+.buttonShowMoreNavbarActivated{
+	background-image: url('./assets/border-arrow-up-hover-down.png') !important;
+	background-size: cover;
+	transform: rotate('90deg') !important;
+	cursor: pointer;
+	border: none;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 30%;
+	left: 80%;
+}
+
 
 .loggedUserNameNavBar p{
 	color: #fff;
@@ -172,6 +211,32 @@
 	position: absolute;
 	top: -30%;
 	left: 25%
+}
+
+.NavbarDropDown{
+	display: none;
+	width: 100%;
+	top: 90%;
+	position: absolute;
+	background-color: #121212;
+}
+
+.showBlockAnimation{
+	animation: showBlock 0.5s linear;
+}
+
+.showBlockAnimationReverse{
+	animation: showBlock 0.5s linear reverse;
+}
+
+@keyframes showBlock{
+	0%{
+		height: 0%;	
+	}
+
+	100%{
+		height: 200%;
+	}
 }
 
 
