@@ -38,6 +38,7 @@
     font-size: 3.5vh;
     padding-left: 7%;
     padding-right: 40%;
+    margin-top: 0;
 }
 
 .divLoginRightContainer {
@@ -110,18 +111,7 @@
     font-size: 3vh;
 }
 
-.divIconsRedesLogin img{
-    width: 8vh;
-    height: 8vh;
-    margin-left: 2%;
-}
-.divIconsRedesLogin{
-    width: 100%;
-    display: flex;
-    margin: 5%;
-    gap: 95px;
-    margin-right: 5%;
-}
+
 
 
 @media only screen and (max-width: 768px) {

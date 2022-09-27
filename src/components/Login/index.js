@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './index.css'
+import swal from 'sweetalert'
 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -31,14 +32,14 @@ function Login() {
                         console.log(loggedUser)
                         localStorage.setItem('dasiBoard', JSON.stringify(loggedUser[0].id))
                         setTimeout(() => {
-                            alert('correto1')
+                            swal("Tudo certo", "Você logou com sucesso", "success");
                             window.location.href = './now '
                         }, 600)
                     }else{
-                        alert('errou2')
+                        swal("Algo deu errado", "Verifique suas credenciais", "error");
                     }
                 }else{
-                    alert('errou1')
+                    swal("Algo deu errado", "Verifique suas credenciais", "error");
                 }
             }, 700)
         }catch(error){
@@ -53,10 +54,11 @@ function Login() {
                 <h1>Sua escalada começa aqui</h1>
                 <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade. </p>
 
-                <div className='divIconsRedesLogin'>
+                <div className='links'>
                     <GitHubIcon sx={{fontSize: "8vh", color: "#fc6b03"}}></GitHubIcon>
                     <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
-                     <img className="discord" src={require("./assets/discord.png")}></img>
+                    <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
+                     {/* <img className="discord" src={require("./assets/discord.png")}></img> */}
                 </div>
             </div>
             <div className="divLoginRightContainer">
