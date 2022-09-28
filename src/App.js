@@ -27,7 +27,7 @@ function App() {
                         <Route path="/feed" element={<Feed />} />
                         <Route path="/games" element={<Jogos />} />
                         <Route path="/about" element={<Sobre />} />
-                        <Route path="/usuario" element={<Usuario/>} />
+                        <Route path="/usuario/:id" element={<Usuario/>} />
                         <Route path="/participar" element={<Participar />} />
                   </Routes>
               </div>
