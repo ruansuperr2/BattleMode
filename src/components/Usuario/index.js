@@ -6,20 +6,23 @@ import Descricao from './components/Descricao'
 import Conquistas from './components/Conquistas'
 import Navbar from '../Navbar'
 import Footer from '../Footer'
-
+import { useParams } from 'react-router-dom';
 
 function Usuario(){
+    const { id } = useParams();
+    console.log(id)
     return(
+        
         <div className="divUsuarioDMainContainer">
-            <Navbar/>
+            <Navbar page={'usuario'}/>
 
                 <div className='divUsuarioSubMainContainer paddingLeft '>
                     <button>Editar</button>
-                    <Fundo/>
+                    <Fundo id={id}/>
                     <div className='divUsuarioSubMainContainerCompo' >
-                        <Descricao/>
-                        <JogosFav/>
-                        <Conquistas/>
+                        <Descricao id={id}/>
+                        <JogosFav id={id}/>
+                        <Conquistas id={id}/>
                     </div>
                 </div>
 

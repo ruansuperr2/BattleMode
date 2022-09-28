@@ -6,7 +6,7 @@ function Descricao(){
         <div className='divDescricaoMainContainer'>
             <div className='divBiografia'>
                 <h1>Biografia<div className='divDescricaoImg2'/></h1>
-                <textarea maxlength="350"></textarea>
+                <textarea maxLength="350"></textarea>
             </div>
         </div>
     )
