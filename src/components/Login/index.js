@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import './index.css'
 import swal from 'sweetalert'
-
+import ModalCustom from '../Modal'
+import { showModal, closeModal } from '../Modal'
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
@@ -13,42 +14,46 @@ function Login() {
     const loggedUser = []
     const [users, setUsers] = useState([])
 
-    const callAgentLogin = async () => {
-        
-        try{
-            const response = await fetch('http://localhost:3000/api/user')
-            const data = response.json()
-            data.then(
-                (val) => setUsers(val.data)
-            )
-            console.log(users)
-            setTimeout(() => {
-                
-                console.log(username, password)
-                console.log(users.find((account) => {return account.username === username }))
-                if(users.find((account) => {return account.username === username }) != undefined){
-                    if(users.find((account) => {return password === account.password}) != undefined && users.find((account) => {return account.username === username }) != undefined){
-                        loggedUser.push(users.find((account) => {return account.username === username }))
-                        console.log(loggedUser)
-                        localStorage.setItem('dasiBoard', JSON.stringify(loggedUser[0].id))
-                        setTimeout(() => {
-                            swal("Tudo certo", "Você logou com sucesso", "success");
-                            window.location.href = './now '
-                        }, 600)
-                    }else{
-                        swal("Algo deu errado", "Verifique suas credenciais", "error");
+    const callAgentLogin = () => {
+        showModal('spin','Aguarde',false)
+        setTimeout(async() => {
+
+            try{
+                const response = await fetch('http://localhost:3000/api/user')
+                const data = response.json()
+                data.then(
+                    (val) => {setUsers(val.data)
+                        console.log(username, password)
+                        console.log(users.find((account) => {return account.username === username }))
+                        if(users.find((account) => {return account.username === username }) != undefined){
+                            if(users.find((account) => {return password === account.password}) != undefined && users.find((account) => {return account.username === username }) != undefined){
+                                loggedUser.push(users.find((account) => {return account.username === username }))
+                                console.log(loggedUser)
+                                localStorage.setItem('dasiBoard', JSON.stringify(loggedUser[0].id))
+                                setTimeout(() => {
+                                    closeModal('Conectado!','Você será redirecionado',false)
+                                    window.location.href = './now '
+                                }, 600)
+                            }else{
+                                console.log(showModal)
+                                closeModal('erro','Credenciais incorretas',false)
+                            }
+                        }else{
+                            console.log(showModal)
+                            closeModal('erro','Credenciais incorretas',false)
+                        }
                     }
-                }else{
-                    swal("Algo deu errado", "Verifique suas credenciais", "error");
-                }
-            }, 700)
-        }catch(error){
-            console.log(error)
-        }
+                )
+                console.log(users)
+            }catch(error){
+                console.log(error)
+            }
+        },2500)
     }
 
     return (
         <div className="divLoginMainContainer">
+            <ModalCustom/>
             <div className="divLoginLeftContainer">
                 <img src={require("./assets/logo.png")} />
                 <h1>Sua escalada começa aqui</h1>

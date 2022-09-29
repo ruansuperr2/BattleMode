@@ -1,0 +1,69 @@
+.divModalContainer div{
+    background-color: black;
+    z-index: 250;
+    color: white;
+    font-size: 30px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.divModalContainer div div{
+    /* border-top: 1px solid #fc6b03; */
+    /* width: 100%; */
+}
+
+.divModalContainer{
+    transition: 0.5s;
+    z-index: 256;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.514);
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.barProgressionClosing div{
+    display: flex;    
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    background-color: #fc6b03;
+    border: 1px solid #fc6b03;
+    width: 0px;
+}
+
+.opacity{
+    animation: opacity 0.2s linear;
+}
+
+.opacityReverse{
+    animation: opacity 0.2s reverse;
+}
+
+@keyframes opacity {
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
+.spin-gif{
+    background-image: url('./assets/spin.gif');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}
+
+.erro-png{
+    background-image: url('./assets/erro.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}
