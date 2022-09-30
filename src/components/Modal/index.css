@@ -1,69 +1,131 @@
-.divModalContainer div{
-    background-color: black;
-    z-index: 250;
-    color: white;
-    font-size: 30px;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-.divModalContainer div div{
-    /* border-top: 1px solid #fc6b03; */
-    /* width: 100%; */
-}
-
-.divModalContainer{
-    transition: 0.5s;
-    z-index: 256;
-    display: none;
-    background-color: rgba(0, 0, 0, 0.514);
-    position: absolute;
-    justify-content: center;
-    align-items: center;
+.divLoginMainContainer{
     width: 100vw;
     height: 100vh;
+    z-index: 3;
+    background-color: #121212;
+    position: absolute;
+    padding-top: 0;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
 }
 
-.barProgressionClosing div{
-    display: flex;    
-    align-items: center;
+.divLoginLeftContainer {
+    width: 50%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.divLoginLeftContainer img{
+    width: 30vh;
+    height: 30vh;
+    z-index: 99;
+    padding-left: 3.4%;
+    position: absolute;
+}
+
+.divLoginLeftContainer h1{
+    color:#fc6b03;
+    font-size: 7vh;
+    padding-left: 7%;
+    padding-right: 30%;
+    padding-top: 21%;
+    
+}
+.divLoginLeftContainer p{
+    color: #fff;
+    font-size: 3.5vh;
+    padding-left: 7%;
+    padding-right: 40%;
+    margin-top: 0;
+}
+
+.divLoginRightContainer {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    height: 30px;
-    background-color: #fc6b03;
-    border: 1px solid #fc6b03;
-    width: 0px;
-}
-
-.opacity{
-    animation: opacity 0.2s linear;
-}
-
-.opacityReverse{
-    animation: opacity 0.2s reverse;
-}
-
-@keyframes opacity {
-    0%{
-        opacity: 0%;
-    }
-    100%{
-        opacity: 100%;
-    }
-}
-
-.spin-gif{
-    background-image: url('./assets/spin.gif');
+    align-items: center;
+    width: 50%;
+    background: url('./assets/img_background.png');
     background-size: cover;
-    width: 50px;
-    height: 50px;
 }
 
-.erro-png{
-    background-image: url('./assets/erro.png');
-    background-size: cover;
-    width: 50px;
-    height: 50px;
+.divLoginRightSubContaner{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    background-color: #121212;
+    justify-content: center;
+    height: 80%;
+    border-radius: 10%;
+    align-items: center;
+}
+
+.divLoginRightSubContaner h1{
+    color:#fc6b03;
+    font-size: 7vh;
+    position: relative;
+}
+.p{
+    color:#fff;
+    font-size: 3vh;
+    margin-top: -10px;
+    text-align: center;
+}
+
+.divLoginRightSubContaner input{
+    width: 70%;
+    height: 8%;
+    margin: 10px;
+    padding-left: 20px;
+    border-radius: 20px;
+    border: 2px solid #fc6b03;
+    font-size: 16px;
+}
+
+.divLoginRightSubContaner button{
+    width: 75%;
+    height: 8%;
+    margin: 10px;
+    background-color: #272727;
+    border-radius: 20px;
+    border: 2px solid #fc6b03;
+    color: #fc6b03;
+    font-size: 16px;
+    transition: 0.5s;
+    z-index: 20;
+}
+
+
+.divLoginRightSubContaner button:hover{
+    border: 2px solid rgb(224, 219, 219);
+    transition: 0.5s;
+    color: rgb(224, 219, 219);
+    cursor: pointer;
+}
+
+.divLoginRightSubContaner a {
+    margin: -10px;
+    color:#fff;
+    font-size: 3vh;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+    .divLoginLeftContainer{
+        display: none;
+    }
+    .divLoginRightContainer {
+        width: 100%;
+    }
+    .divLoginRightSubContaner{
+        width: 90%;
+        border-radius: 10%;
+
+    }
 }
