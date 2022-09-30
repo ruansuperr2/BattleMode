@@ -126,4 +126,8 @@
     .divCadastroRightContainer{
         width: 100%;
     }
+    
+    divCadastrarRightSubContaner{
+        width: 90%
+    }
 }
