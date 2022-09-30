@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './index.css'
-import swal from 'sweetalert'
 import ModalCustom from '../Modal'
 import { showModal, closeModal } from '../Modal'
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -31,16 +30,14 @@ function Login() {
                                 console.log(loggedUser)
                                 localStorage.setItem('dasiBoard', JSON.stringify(loggedUser[0].id))
                                 setTimeout(() => {
-                                    closeModal('Conectado!','Você será redirecionado',false)
+                                    closeModal('success','Conectado! Você será redirecionado para a página principal.','barLoading')
                                     window.location.href = './now '
                                 }, 600)
                             }else{
-                                console.log(showModal)
-                                closeModal('erro','Credenciais incorretas',false)
+                                closeModal('erro','Credenciais incorretas','barLoading')
                             }
                         }else{
-                            console.log(showModal)
-                            closeModal('erro','Credenciais incorretas',false)
+                            closeModal('erro','Credenciais incorretas','barLoading')
                         }
                     }
                 )
@@ -48,7 +45,7 @@ function Login() {
             }catch(error){
                 console.log(error)
             }
-        },2500)
+        },200)
     }
 
     return (
