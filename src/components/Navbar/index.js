@@ -28,13 +28,13 @@ export const Navbar = (props) => {
                         if(props.page === 'usuario'){
 
                         }else if(loggedUser.logged === true && props.page != 'usuario'){
-                            document.querySelector('.loggedUserNameNavBar').style.display = 'block'
+                            document.querySelector('.loggedUserNameNavBar').style.display = 'flex'
                             document.querySelector('.EntrarRegistroNavBar').style.display = 'none'
                             document.querySelector('.userNameP').textContent = loggedUser.username 
                             document.querySelector('.imgIconP').setAttribute("src", loggedUser.icon)
                         }else{
                             document.querySelector('.loggedUserNameNavBar').style.display = 'none'
-                            document.querySelector('.EntrarRegistroNavBar').style.display = 'block'
+                            document.querySelector('.EntrarRegistroNavBar').style.display = 'flex'
                         }
                     }
                     )
@@ -77,7 +77,7 @@ export const Navbar = (props) => {
                 },500)
             }else{
                 document.querySelector('.buttonShowMoreNavbar').classList.add('buttonShowMoreNavbarActivated')
-                document.querySelector('.NavbarDropDown').style.display = 'block'
+                document.querySelector('.NavbarDropDown').style.display = 'flex'
                 document.querySelector('.NavbarDropDown').classList.remove('showBlockAnimation')
                 document.querySelector('.NavbarDropDown').classList.add('showBlockAnimation')
                 setTimeout(() =>{

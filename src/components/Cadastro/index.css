@@ -123,11 +123,12 @@
     .divCadastroLeftContainer{
         display: none;
     }
+    
     .divCadastroRightContainer{
         width: 100%;
     }
     
-    divCadastrarRightSubContaner{
+    .divCadastrarRightSubContaner{
         width: 90%
     }
 }

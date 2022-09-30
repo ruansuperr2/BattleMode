@@ -7,7 +7,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 
 function Cadastro () {
 
-    const [users, setUsers] = useState()
+    const [users, setUsers] = useState([])
     const icon = `https://raw.communitydragon.org/12.18/game/assets/ux/summonericons/profileicon${Math.floor(Math.random() * 5000)}.png`
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -32,9 +32,10 @@ function Cadastro () {
         getUsers()
         console.log('USUÁRIOS > ',users)
         showModal('spin','Aguarde',false)
-        if(email.match(/^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/)){
-            if(username.length > 3){
-                if(password === confirmPassword && password.length > 5){
+        if(email.match(/([a-zA-Z0-9]+)([.{1}])?([a-zA-Z0-9]+)@gmail([.])com/g) && email != users.find((account) => {return account.email === email })){
+            console.log('> ', username.match(/^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/))
+            if(username.match(/^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/) && username != users.find((account) => {return account.username === username })){
+                if(password === confirmPassword && password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)){
                     setTimeout(async () => {
                         closeModal('success','Você será redirecionado para o loading!','barLoading')
                         
