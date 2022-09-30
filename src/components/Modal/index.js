@@ -1,83 +1,125 @@
-import React, { useState } from 'react'
 import './index.css'
-import ModalCustom from '../Modal'
-import { showModal, closeModal } from '../Modal'
-import GitHubIcon from '@mui/icons-material/GitHub';
-import TwitterIcon from '@mui/icons-material/Twitter';
 
-function Login() {
+export const closeModal = (titulo, corpo, funcao) => {
+    // Adição dos Textos inseridos pelos props.
+    document.querySelector('.modalTitulo').textContent = titulo
+    document.querySelector('.modalCorpo').textContent = corpo
 
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
 
-    const loggedUser = []
-    const [users, setUsers] = useState([])
+    // Adicionar icones no titulo
+    if(titulo === 'spin'){
+        document.querySelector('.modalTitulo').classList.remove('spin-gif')
+    }else if(titulo === 'erro'){
+        document.querySelector('.modalTitulo').textContent = ''
+        document.querySelector('.modalTitulo').classList.add('erro-png')
+        console.log('barloading')
 
-    const callAgentLogin = () => {
-        showModal('spin','Aguarde',false)
-        setTimeout(async() => {
+    }else if(titulo === 'success'){
+        document.querySelector('.modalTitulo').textContent = ''
+        document.querySelector('.modalTitulo').classList.add('check-png')
+    }
+    
 
-            try{
-                const response = await fetch('http://localhost:3000/api/user')
-                const data = response.json()
-                data.then(
-                    (val) => {setUsers(val.data)
-                        console.log(username, password)
-                        console.log(users.find((account) => {return account.username === username }))
-                        if(users.find((account) => {return account.username === username }) != undefined){
-                            if(users.find((account) => {return password === account.password}) != undefined && users.find((account) => {return account.username === username }) != undefined){
-                                loggedUser.push(users.find((account) => {return account.username === username }))
-                                console.log(loggedUser)
-                                localStorage.setItem('dasiBoard', JSON.stringify(loggedUser[0].id))
-                                setTimeout(() => {
-                                    closeModal('success','Conectado! Você será redirecionado para a página principal.','barLoading')
-                                    window.location.href = './now '
-                                }, 600)
-                            }else{
-                                closeModal('erro','Credenciais incorretas','barLoading')
-                            }
-                        }else{
-                            closeModal('erro','Credenciais incorretas','barLoading')
-                        }
-                    }
-                )
-                console.log(users)
-            }catch(error){
-                console.log(error)
-            }
-        },200)
+    // Verificar se o Modal terá função OU não.
+    if(funcao === false || funcao === null || funcao === 'barLoading'){
+
+        document.querySelector('.modalButton').style.display = 'none'
+    }else{
+        document.querySelector('.modalButton').style.display = 'block'
+        document.querySelector('.modalButton').textContent = funcao
     }
 
-    return (
-        <div className="divLoginMainContainer">
-            <ModalCustom/>
-            <div className="divLoginLeftContainer">
-                <img src={require("./assets/logo.png")} />
-                <h1>Sua escalada começa aqui</h1>
-                <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade. </p>
+    // Animação da barra de fechamento
+    if(funcao === 'barLoading'){
+        document.querySelector('.barProgressionClosingI').classList.add('Anwidth')
+        
+    }
 
-                <div className='links'>
-                    <GitHubIcon sx={{fontSize: "8vh", color: "#fc6b03"}}></GitHubIcon>
-                    <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
-                    <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
-                     {/* <img className="discord" src={require("./assets/discord.png")}></img> */}
+    // Finalização
+    setTimeout(() => {
+        document.querySelector('.divModalContainer').classList.add('opacityReverse')
+        setTimeout(() => {
+            document.querySelector('.divModalContainer').style.display = 'none'
+            document.querySelector('.divModalContainer').classList.remove('opacityReverse')
+            document.querySelector('.barProgressionClosingI').classList.remove('Anwidth')
+        },460)
+    },1000)
+}
+
+export const showModal = (titulo, corpo, funcao) => {
+    // Adição dos Textos inseridos pelos props.
+    document.querySelector('.modalTitulo').textContent = titulo
+    document.querySelector('.modalCorpo').textContent = corpo
+
+
+    // Adicionar icones no titulo
+    if(titulo === 'spin'){
+        document.querySelector('.modalTitulo').classList.remove('erro-png')
+        document.querySelector('.modalTitulo').classList.remove('check-png')
+        document.querySelector('.modalTitulo').textContent = ''
+        document.querySelector('.modalTitulo').classList.add('spin-gif')
+    }else if(titulo === 'erro'){
+        document.querySelector('.modalTitulo').textContent = ''
+        document.querySelector('.modalTitulo').classList.remove('spin-gif')
+        document.querySelector('.modalTitulo').classList.remove('check-png')
+        document.querySelector('.modalTitulo').classList.add('erro-png')
+    }else if(titulo === 'success'){
+        document.querySelector('.modalTitulo').textContent = ''
+        document.querySelector('.modalTitulo').classList.remove('check-png')
+        document.querySelector('.modalTitulo').classList.remove('erro-png')
+        document.querySelector('.modalTitulo').classList.add('check-png')
+    }
+
+
+    // Verificar se o Modal terá função OU não.
+    if(funcao === false || funcao === null || funcao === 'barLoading'){
+        document.querySelector('.modalButton').style.display = 'none'
+    }else{
+        document.querySelector('.modalButton').style.display = 'block'
+        document.querySelector('.modalButton').textContent = funcao
+    }
+
+    if(funcao === 'barLoading'){
+        document.querySelector('.barProgressionClosingI').classList.add('Anwidth')
+
+        // Finalização com a Barra de Loading
+        setTimeout(() => {
+            document.querySelector('.divModalContainer').classList.add('opacityReverse')
+            setTimeout(() => {
+                document.querySelector('.divModalContainer').style.display = 'none'
+                document.querySelector('.divModalContainer').classList.remove('opacityReverse')
+                document.querySelector('.barProgressionClosingI').classList.remove('Anwidth')
+            },460)
+        },1000)
+    }
+    
+
+    // Animação de aparição
+    document.querySelector('.divModalContainer').style.display = 'flex'
+    document.querySelector('.divModalContainer').classList.add('opacity')
+    setTimeout(() => {
+        document.querySelector('.divModalContainer').classList.remove('opacity')
+    },500)
+}
+
+function ModalCustom(props){
+
+
+    return(
+        <div className="divModalContainer">
+            <div className="divModalContent">
+                <label className='modalTitulo'/>
+                <h5 className='modalCorpo'></h5>
+                <div>
+                    <h5 className='modalButton'></h5>
                 </div>
-            </div>
-            <div className="divLoginRightContainer">
-                <div className='divLoginRightSubContaner'>
-                    <h1>Entrar</h1>
-                    <p className='p'>Entre com sua conta ja cadastrada</p>
-
-                    <input value={username} onChange={event => {setUsername(event.target.value)}} placeholder='Usuário'></input>
-                    <input value={password} onChange={event => {setPassword(event.target.value)}} type='password' placeholder='Senha'></input>
-                    <button onClick={() => callAgentLogin()}>Entrar</button>
-
-                    <a><p>Esqueceu sua senha?</p></a>
-                    <a><p>Não possui conta?</p></a>
+                <div className='barProgressionClosing'>
+                    <div className='barProgressionClosingI'/>
                 </div>
             </div>
         </div>
-        )
+    )
 }
 
-export default Login
+
+export default ModalCustom
