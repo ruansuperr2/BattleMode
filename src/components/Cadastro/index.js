@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './index.css'
-import swal from 'sweetalert'
+import ModalCustom ,{ showModal, closeModal } from '../Modal';
 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -31,41 +31,48 @@ function Cadastro () {
    const registerUser = () => {
         getUsers()
         console.log('USUÁRIOS > ',users)
+        showModal('spin','Aguarde',false)
         if(email.match(/^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/)){
-            if(password == confirmPassword){
-                setTimeout(async () => {
-                    swal("Tudo certo", "Você criou sua conta com sucesso", "success");
-                    
-                    try{
-                        const requestOptions = {
-                             method: 'POST',
-                             headers: {'Content-type': 'application/json'},
-                             body: JSON.stringify({
-                                username: username,
-                                email: email,
-                                icon: icon,
-                                password: password,
-                             })
-                             
+            if(username.length > 3){
+                if(password === confirmPassword && password.length > 5){
+                    setTimeout(async () => {
+                        closeModal('success','Você será redirecionado para o loading!','barLoading')
+                        
+                        try{
+                            const requestOptions = {
+                                 method: 'POST',
+                                 headers: {'Content-type': 'application/json'},
+                                 body: JSON.stringify({
+                                    username: username,
+                                    email: email,
+                                    icon: icon,
+                                    password: password,
+                                 })
+                                 
+                            }
+                            await fetch('http://localhost:3000/api/user',  requestOptions)
+                            setTimeout(() => {
+                                window.location.href = './login '
+                            }, 1000)
+                        }catch(error){
+                                console.log(error)
                         }
-                        await fetch('http://localhost:3000/api/user',  requestOptions)
-                        setTimeout(() => {
-                            window.location.href = './login '
-                        }, 300)
-                    }catch(error){
-                            console.log(error)
-                    }
-                }, 600)
+                    }, 600)
+                }else{
+                    closeModal('erro','Verifique a sua senha','barLoading')
+                }
+
             }else{
-                swal("Algo deu errado", "Verifique suas credenciais", "error");
+                closeModal('erro','Preencha o campo de Usuário','barLoading')
             }
         }else{
-            swal("Algo deu errado", "Verifique suas credenciais", "error");
+            closeModal('erro','Esse email já esta em uso ou não uma formatação correta','barLoading')
         }
    }
 
     return (
         <div className="divCadastroMainContainer">
+            <ModalCustom/>
             <div className="divCadastroLeftContainer">
                 <div>
                     <img src={require("./assets/logo.png")} />
