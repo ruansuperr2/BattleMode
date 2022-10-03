@@ -23,19 +23,7 @@
     flex-wrap: wrap;
 }
 
-.divUsuarioSubMainContainer button{
-    position: absolute;
-    top: 140px;
-    left: 83.5%;
-    background-color: #10653E;
-	border-radius: 100px;
-	height: 5%;
-	width: 7%;
-	transition: 0.5s;
-	border: 1px transparent solid;
-	font-size: 16px;
-    color: white;
-}
+
 .divUsuarioSubMainContainer button:hover{
     border: 1px solid #fc6b03;
 	cursor: pointer;
@@ -45,7 +33,7 @@
 .divFundoMainContainer{
     width: 100%;
     height: 35vh;
-    margin-bottom: 5.5%;
+    margin-bottom: 1.5%;
 
     background-image: url(components/assets/CastelolAnimado.jpg);
     border-bottom: 2px solid #fc6b03;
@@ -54,10 +42,7 @@
 }
 .divFundoImg{
     width: 20px;
-    position: absolute;
     height: 20px;
-    left: 110%;
-    top: 25%;
     border-radius: 100rem;
     padding: 4px;
     background-image: url(components/assets/unknown2.png);
@@ -83,8 +68,9 @@
     background-color: rgb(198, 103, 103);
     border-radius: 100rem;
     left: 3%;
-    width: 10vw;
-    height: 10vw;
+    width: 7vw;
+    height: 7vw;
+    margin-right: 20px;
     border: 2px solid #fc6b03;
     background-size: cover;
 }
@@ -279,4 +265,39 @@
     padding: 10px;
     transition: 0.5s;
     cursor: pointer;
+}
+
+.UserNameOnProfile{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin-left: 2%;
+}
+
+.imgUsuarioGearEditing{
+    background-image: url('./components/assets/gear.png');
+    background-size: contain;
+	height: 30px;
+	width: 30px;
+	transition: 0.5s;
+	border: 1px transparent solid;
+    color: white;
+}
+
+.imgUsuarioGearEditing:hover{
+    background-image: url('./components/assets/gear_hover.png');
+    background-size: contain;
+	height: 30px;
+	width: 30px;
+    cursor: pointer;
+	transition: 0.5s;
+	border: 1px transparent solid;
+    color: white;
+}
+
+.perfilConfigGear{
+    display: flex;
+    color: white;
+    align-items: center;
 }
