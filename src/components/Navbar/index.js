@@ -25,17 +25,20 @@ export const Navbar = (props) => {
                         console.log(find)
                         loggedUser.logged = true
                         console.log('dwdw', loggedUser)
-                        if(props.page === 'usuario'){
-
-                        }else if(loggedUser.logged === true && props.page != 'usuario'){
-                            document.querySelector('.loggedUserNameNavBar').style.display = 'flex'
-                            document.querySelector('.EntrarRegistroNavBar').style.display = 'none'
-                            document.querySelector('.userNameP').textContent = loggedUser.username 
-                            document.querySelector('.imgIconP').setAttribute("src", loggedUser.icon)
+                        if(props.page != 'usuario'){
+                            if(loggedUser.logged === true && props.page != 'usuario'){
+                                document.querySelector('.loggedUserNameNavBar').style.display = 'flex'
+                                document.querySelector('.EntrarRegistroNavBar').style.display = 'none'
+                                document.querySelector('.userNameP').textContent = loggedUser.username 
+                                document.querySelector('.imgIconP').setAttribute("src", loggedUser.icon)
+                            }else{
+                                document.querySelector('.loggedUserNameNavBar').style.display = 'none'
+                                document.querySelector('.EntrarRegistroNavBar').style.display = 'flex'
+                            }
                         }else{
-                            document.querySelector('.loggedUserNameNavBar').style.display = 'none'
-                            document.querySelector('.EntrarRegistroNavBar').style.display = 'flex'
-                        }
+                            document.querySelector('.divSideLoginRegister').style.display = 'none'
+                            
+                        } 
                     }
                     )
                 }catch(error){
@@ -123,7 +126,7 @@ export const Navbar = (props) => {
                 </div>
                 <div className="NavbarDropDown">
                     <div className="contentNavbarDropDown">
-                        <label onClick={() => {window.location.href = `/usuario/${loggedUser.id}`}}><div className='imgNavbarUserGo'/> Perfil</label>
+                        <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo'/> Perfil</label>
                         <label><div className='imgNavbarTeamGo'/> Criar Equipe</label>
                         <label><div className='imgNavbarTourneamentGo'/> Criar Torneio</label>
                     </div>
