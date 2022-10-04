@@ -7,6 +7,9 @@
     background-color: #121212;
     padding-top: 20px;
     color: rgb(255, 255, 255);
+
+    animation: fadeIn;
+    animation-duration: 1s;
 }
 
 .imgCarrossel {
@@ -84,6 +87,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+
 }
 .divSubSecondContainerHome{
 	width: 60%;

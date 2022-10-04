@@ -1,12 +1,16 @@
 import React from 'react'
 import './index.css'
+import { useTransition, animated } from 'react-spring'
+import { useState, useEffect } from 'react'
+import 'animate.css';
 
 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
 function LandingPage() {
-    return(
+    
+    return (
         <div className='divMainLanding'>
             <div className='divMainLandingPageNavbar'>
                 <button onClick={() => {window.location.href = "./login"}} className="buttonNavbar">Entrar</button>
@@ -15,7 +19,7 @@ function LandingPage() {
             <div className='divDivisaoTelasLandingPage'>
                 <div className='divImgInfoLandingPage'>
                     <img className='logo' src={require("./assets/logo.png")}></img>
-                    <h1>Sua escalada começa aqui</h1>
+                    <h1 classNome = 'h1_Animate'>Sua escalada começa aqui</h1>
                     <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade. </p>
                     <button onClick={() => {window.location.href = "./now"}}>Começar</button>
 

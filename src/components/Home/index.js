@@ -4,9 +4,12 @@ import Noticias from './components/Noticias'
 import LoginOrUpcomings from './components/LoginOrUpcomings'
 import Navbar from '../Navbar'
 import Footer from '../Footer'
+import { useTransition, animated } from 'react-spring'
+import { style } from '@mui/system'
 
 
 function Home() {
+
 
     const [imageDotOne, setImageDotOne] = useState(true)
     const [imageDotTwo, setImageDotTwo] = useState(false)
@@ -75,7 +78,7 @@ function Home() {
                 <Footer/>
             </div>
         </div>
-        )
+    )
 }
 
 export default Home

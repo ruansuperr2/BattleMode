@@ -23,6 +23,10 @@
     font-size: 16px;
     transition: 0.5s;
     z-index: 99;
+    
+	animation: slideInLeft;
+    animation-duration: 1s;
+
 }
 
 .buttonNavbar:hover{
@@ -54,13 +58,20 @@
     padding-left: 5%;
     padding-right: 50%;
     padding-top: 15%;
+
+    animation: slideInLeft;
+    animation-duration: 1s;
     
 }
+
 .divImgInfoLandingPage p{
     color: #fff;
     font-size: 3.5vh;
     padding-left: 5%;
     padding-right: 50%;
+
+    animation: slideInLeft;
+    animation-duration: 1s;
 }
 .divImgInfoLandingPage button{
     font-size: 20px;
@@ -72,6 +83,9 @@
     color: #fff;
     background: transparent;
     transition: 0.2s;
+
+    animation: slideInLeft;
+    animation-duration: 1s;
 }
 
 .divImgInfoLandingPage button:hover{
@@ -100,6 +114,9 @@
     z-index: 99;
     padding-left: 5%;
     position: absolute;
+
+    animation: slideInLeft;
+    animation-duration: 1s;
 }
 
 .divIconsRedesLandingPage{
@@ -107,12 +124,16 @@
     display: flex;
     margin: 5%;
     gap: 30px;
+    animation: slideInLeft;
+    animation-duration: 1s;
 }
 
 
 .discord{
     width: 8vh;
     height: 8vh;
+    animation: slideInLeft;
+    animation-duration: 1s;
 }
 
 @media screen and (max-width: 768px){
