@@ -52,7 +52,16 @@
     scroll-behavior: smooth;
 }
 .torneioContainer::-webkit-scrollbar {
-    display: none;
+    /* display: none; */
+    width: 5px;
+    height: 8px;
+    background-color: #101010;
+    border-radius: 6px;
+}
+.torneioContainer::-webkit-scrollbar-thumb {
+    /* display: none; */
+    background-color: #fc6b03;
+    border-radius: 6px;
 }
 
 .Torneio{
@@ -79,6 +88,7 @@
 .containerTorneioSetas {
     display: flex;
     flex-direction: row;
+    margin-top: .5rem;
 }
 .torneioSetasMainContainer {
     display: flex;
