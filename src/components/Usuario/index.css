@@ -13,15 +13,16 @@
     flex-direction: column;
 
 }
+/* comentei pq tava dando erro. se der ruim no futuro descomenta */
 
-.divUsuarioSubMainContainerCompo{
+/* .divUsuarioSubMainContainerCompo{
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
-}
+} */
 
 
 .divUsuarioSubMainContainer button:hover{
@@ -266,7 +267,7 @@
     cursor: pointer;
 }
 
-.UserNameOnProfile{
+.UserNameOnProfile, .TeamsOnProfile{
     color: #fff;
     display: flex;
     align-items: center;
@@ -279,7 +280,7 @@
     background-size: cover;
 	height: 40px;
 	width: 40px;
-	transition: 0.5s;
+	transition: 0.5s ease-in-out;
     margin-right: 10px;
 	border: 1px transparent solid;
     color: white;
@@ -292,7 +293,7 @@
 	height: 40px;
 	width: 40px;
     cursor: pointer;
-	transition: 0.5s;
+	transition: 0.5s ease-in-out;
 	border: 1px transparent solid;
     color: white;
 

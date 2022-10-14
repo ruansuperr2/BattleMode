@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './index.css'
 import Navbar from '../Navbar'
 import Footer from '../Footer'
@@ -14,6 +14,7 @@ function Usuario(){
     const [currentTeams, setCurrentTeams] = useState({})
     const [users, setUsers] = useState([])
     const [teams, setTeams] = useState({})
+    const [page, setPage] = useState('geral')
 
     console.log('wfwefiosvzp]kosvvff', teams)
     const getUsers = async () => {
@@ -53,7 +54,7 @@ function Usuario(){
     }
     getUsers()
     
-    const callSubPage = (page) => {
+    useEffect(() => {
         switch(page){
             case 'geral':
                 document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'flex'
@@ -100,9 +101,8 @@ function Usuario(){
                 document.querySelector('.config').classList.add('perfilActive')
                 break
         }
-    }
+    })
     
-
     return(
         
         <div className="divUsuarioDMainContainer">
@@ -114,10 +114,10 @@ function Usuario(){
                         <div className='divContainerFundoMainContainer'/>
                     </div>
                     <div className='perfilNavigation'>
-                        <div onClick={() => callSubPage('geral')} className='perfilConfig geral'><div className='imgUsuarioGearEditing'/>Visão Geral</div>
-                        <div onClick={() => callSubPage('equipe')} className='perfilConfig equipe'><div className='imgUsuarioGearEditing'/>Equipes</div>
-                        <div onClick={() => callSubPage('torneio')} className='perfilConfig torneio'><div className='imgUsuarioGearEditing'/>Torneios</div>
-                        <div onClick={() => callSubPage('config')} className='perfilConfig config'><div className='imgUsuarioGearEditing'/>Configurar Perfil</div>
+                        <div onClick={() => setPage('geral')} className='perfilConfig geral'><div className='imgUsuarioGearEditing'/>Visão Geral</div>
+                        <div onClick={() => setPage('equipe')} className='perfilConfig equipe'><div className='imgUsuarioGearEditing'/>Equipes</div>
+                        <div onClick={() => setPage('torneio')} className='perfilConfig torneio'><div className='imgUsuarioGearEditing'/>Torneios</div>
+                        <div onClick={() => setPage('config')} className='perfilConfig config'><div className='imgUsuarioGearEditing'/>Configurar Perfil</div>
                     </div>
                     <div className='divUsuarioSubMainContainerCompo' >
                         <h1 className="UserNameOnProfile"><div className='divImgFundoMainContainer' style={{backgroundImage: `url(${loggedUser.icon}`}}/>{loggedUser.username}</h1>
