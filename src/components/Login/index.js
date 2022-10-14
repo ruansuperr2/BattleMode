@@ -4,6 +4,7 @@ import ModalCustom from '../Modal'
 import { showModal, closeModal } from '../Modal'
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import { SettingsRemoteTwoTone } from '@mui/icons-material';
 
 function Login() {
 
@@ -12,40 +13,42 @@ function Login() {
 
     const loggedUser = []
     const [users, setUsers] = useState([])
-
-    const callAgentLogin = () => {
+    
+    const Login = () => {
         showModal('spin','Aguarde',false)
-        setTimeout(async() => {
-
-            try{
-                const response = await fetch('http://localhost:3000/api/user')
-                const data = response.json()
-                data.then(
-                    (val) => {setUsers(val.data)
-                        console.log(username, password)
-                        console.log(users.find((account) => {return account.username === username }))
-                        if(users.find((account) => {return account.username === username }) != undefined){
-                            if(users.find((account) => {return password === account.password}) != undefined && users.find((account) => {return account.username === username }) != undefined){
-                                loggedUser.push(users.find((account) => {return account.username === username }))
-                                console.log(loggedUser)
-                                localStorage.setItem('dasiBoard', JSON.stringify(loggedUser[0].id))
-                                setTimeout(() => {
-                                    closeModal('success','Conectado! Você será redirecionado para a página principal.','barLoading')
-                                    window.location.href = './now '
-                                }, 600)
-                            }else{
-                                closeModal('erro','Credenciais incorretas','barLoading')
-                            }
-                        }else{
-                            closeModal('erro','Credenciais incorretas','barLoading')
-                        }
-                    }
-                )
-                console.log(users)
-            }catch(error){
-                console.log(error)
+        if(users.find((account) => {return account.username === username }) != undefined){
+            if(users.find((account) => {return password === account.password}) != undefined && users.find((account) => {return account.username === username }) != undefined){
+                loggedUser.push(users.find((account) => {return account.username === username }))
+                console.log(loggedUser)
+                localStorage.setItem('dasiBoard', JSON.stringify(loggedUser[0].id))
+                setTimeout(() => {
+                    closeModal('success','Conectado! Você será redirecionado para a página principal.','barLoading')
+                    window.location.href = './now '
+                }, 600)
+            }else{
+                closeModal('erro','Credenciais incorretas','barLoading')
             }
-        },200)
+        }else{
+            closeModal('erro','Credenciais incorretas','barLoading')
+        }
+    }
+    
+    const callAgentFinder = async() => {
+    
+        try{
+            const response = await fetch('http://localhost:3000/api/user')
+            const data = response.json()
+            data.then(
+                (val) => {setUsers(val.data)
+                    
+                    console.log(username, password)
+                    console.log(users.find((account) => {return account.username === username }))            
+                    Login()
+                })
+                console.log(users)
+        }catch(error){
+            console.log(error)
+        }
     }
 
     return (
@@ -70,7 +73,7 @@ function Login() {
 
                     <input value={username} onChange={event => {setUsername(event.target.value)}} placeholder='Usuário'></input>
                     <input value={password} onChange={event => {setPassword(event.target.value)}} type='password' placeholder='Senha'></input>
-                    <button onClick={() => callAgentLogin()}>Entrar</button>
+                    <button onClick={() => callAgentFinder()}>Entrar</button>
 
                     <a><p>Esqueceu sua senha?</p></a>
                     <a><p>Não possui conta?</p></a>
