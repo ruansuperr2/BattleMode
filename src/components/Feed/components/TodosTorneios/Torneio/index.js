@@ -27,7 +27,7 @@ function TorneioUm() {
         carousel.current.scrollLeft += carousel.current.offsetWidth
         setTimeout(() => {
             setCooldown('')
-        }, 500);
+        }, 550);
     }
 
     return (
@@ -39,6 +39,30 @@ function TorneioUm() {
                 </a>
 
                 <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt2})`}}>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
                     <h1 className='TorneioH1'>Gaia Cup</h1>
                 </a>
 
