@@ -1,4 +1,7 @@
 import './index.css'
+import { IoIosClose } from 'react-icons/io';
+import { display, fontSize } from '@mui/system';
+import { alignProperty } from '@mui/material/styles/cssUtils';
 
 export const closeModal = (titulo, corpo, funcao) => {
     // Adição dos Textos inseridos pelos props.
@@ -44,6 +47,15 @@ export const closeModal = (titulo, corpo, funcao) => {
             document.querySelector('.barProgressionClosingI').classList.remove('Anwidth')
         },460)
     },1000)
+}
+
+const fecharImm = () => {
+    document.querySelector('.divModalContainer').classList.add('opacityReverse')
+        setTimeout(() => {
+            document.querySelector('.divModalContainer').style.display = 'none'
+            document.querySelector('.divModalContainer').classList.remove('opacityReverse')
+            document.querySelector('.barProgressionClosingI').classList.remove('Anwidth')
+        },460)
 }
 
 export const showModal = (titulo, corpo, funcao) => {
@@ -108,10 +120,21 @@ function ModalCustom(props){
     return(
         <div className="divModalContainer">
             <div className="divModalContent">
+                <div className='divCloseButton'>
+                    <button className='closeButton' onClick={fecharImm}>
+                        <IoIosClose style={{
+                            color: '#fc6b03', 
+                            fontSize: '50px', 
+                            display: 'flex',
+                            alignSelf: 'flex-end',
+                            float: 'right'
+                            }}/>
+                    </button>
+                </div>
                 <label className='modalTitulo'/>
                 <h5 className='modalCorpo'></h5>
                 <div>
-                    <h5 className='modalButton'></h5>
+                    <button className='modalButton' onClick={() => closeModal('success', 'Você está participando do torneio', null)}></button>
                 </div>
                 <div className='barProgressionClosing'>
                     <div className='barProgressionClosingI'/>
