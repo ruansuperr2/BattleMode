@@ -11,9 +11,9 @@ function Participar() {
 
     const callModal = () => {
         showModal('spin', 'Deseja participar do Torneio?', 'Participar')
-        setTimeout(() => {
-            closeModal('success', 'deu certo', 'Participar')
-        }, 2000);
+        // setTimeout(() => {
+        //     closeModal('success', 'deu certo', 'Participar')
+        // }, 2000);
     }
 
     useEffect(() => {
@@ -51,14 +51,14 @@ function Participar() {
     return (
         <div className='divParticiparMainContainer'>
             <Navbar page={'usuario'} />
+            <ModalCustom/>
             <div className="divMainTorneio" />
 
             <div>
-                <ModalCustom/>
                 <div className='perfilNavigation'>
-                    <div onClick={() => setPage('geral')} className='perfilConfig geral'><div className='imgUsuarioGearEditing'/>Visão Geral</div>
-                    <div onClick={() => setPage('equipe')} className='perfilConfig equipe'><div className='imgUsuarioGearEditing'/>Equipes</div>
-                    <div onClick={() => callModal()} className='perfilConfig torneio'><div className='imgUsuarioGearEditing'/>Torneios</div>
+                    <div onClick={() => setPage('geral')} className='perfilConfig geral'><div className='imgVisaoGearEditing'/>Visão Geral</div>
+                    <div onClick={() => setPage('equipe')} className='perfilConfig equipe'><div className='imgEquipeGearEditing'/>Equipes</div>
+                    <div onClick={() => callModal()} className='perfilConfig torneio'><div className='imgParticiparGearEditing'/>Participar</div>
                     {/* <div onClick={() => setPage('config')} className='perfilConfig config'><div className='imgUsuarioGearEditing'/>Configurar Perfil</div> */}
                 </div>
                 <div className='divCampoGeral campos' >
