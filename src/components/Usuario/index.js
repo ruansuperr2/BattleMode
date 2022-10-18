@@ -3,6 +3,7 @@ import './index.css'
 import Navbar from '../Navbar'
 import Footer from '../Footer'
 import { useParams } from 'react-router-dom';
+import MDEditor from '@uiw/react-md-editor';
 
 let oneResponseONLY = 0
 let times
@@ -100,6 +101,8 @@ function Usuario(){
                 break
         }
     })
+    console.log('editor:', document.getElementsByClassName('public-DraftStyleDefault-block span'))
+    const [value, setValue] = React.useState("**Hello world!!!**");
     
     return(
         
@@ -136,7 +139,17 @@ function Usuario(){
                         </div>
                         <div>
                             <div className='divUsuarioSubMainContainerCompo' >
-                                <h1>ALOU</h1>
+                            <MDEditor
+                                className='wrapper'
+                                height={'52.4vh'}
+                                fullscreen={false}
+                                value={value}
+                                onChange={setValue}
+                                preview={'edit'}
+
+                            />
+                            {/* <MDEditor.Markdown source={value} style={{ whiteSpace: 'pre-wrap' }} /> */}
+
                             </div>
                             <div className='divEquipesSubMainContainerCompo' >
                             </div>
