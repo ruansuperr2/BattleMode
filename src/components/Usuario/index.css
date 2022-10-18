@@ -1,266 +1,9 @@
 .divUsuarioDMainContainer{
     background-color: #121212;
-}
 
-.divUsuarioMainContainer{
-    height: 100%;
-}
-
-.divUsuarioSubMainContainer{
-    height: 100%;
-    background-color: #121212;
-    display: flex;
-    flex-direction: column;
-
-}
-/* comentei pq tava dando erro. se der ruim no futuro descomenta */
-
-/* .divUsuarioSubMainContainerCompo{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-} */
-
-
-.divUsuarioSubMainContainer button:hover{
-    border: 1px solid #fc6b03;
-	cursor: pointer;
-	transition: 0.5s;
-}
-/* Fundo */
-.divFundoMainContainer{
-    width: 100%;
-    height: 35vh;
-
-    background-image: url(components/assets/CastelolAnimado.jpg);
-    border-bottom: 2px solid #fc6b03;
-    -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
-    box-shadow: inset -11px -7px 36px 0px #000000; 
-}
-.divFundoImg{
-    width: 20px;
-    height: 20px;
-    border-radius: 100rem;
-    padding: 4px;
-    background-image: url(components/assets/unknown2.png);
-    background-size: cover;
-    transition: 0.5s;
-    
-}
-.divFundoImg:hover{
-    background-image: url(components/assets/unknown3.png);
-    transition: 0.5s;
-    cursor: pointer;
-}
-
-.divFundoMainContainer h1{
-    position: absolute;
-    top: 56%;
-    left: 110%;
-    color: #fc6b03;
-}
-
-
-.divImgFundoMainContainer{
-    background-color: rgb(198, 103, 103);
-    border-radius: 100rem;
-    left: 3%;
-    width: 7vw;
-    height: 7vw;
-    margin-right: 20px;
-    border: 2px solid #fc6b03;
-    background-size: cover;
-}
-
-.divContainerFundoMainContainer{
-    position: absolute;
-    left: 8%;
-    top: 20%;
-}
-
-/* JogosFav */
-
-.divJogosFavMainContainerD{
-    position: relative;
-    width: 55%;
-    height: 25.5vh;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    background-color: #121212;
-    border: 1px solid #fc6b03;
-    padding: 2%;
-}
-
-.divJogosFavMainContainerD h1{
-    color: #fc6b03;
-    margin-top: -1%;
-}
-
-.divJogosFavMainContainer{
-    height: 90%;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    align-items: center;
-
-}
-
-.divJogosFavoritosSubContainer{
-    height: 80%;
-    width: 100%;
-    background-color: white;
-    border-radius: 10px;
-    margin: 15px;
-    background-size: contain;
-    background-image: url(components/assets/transferir.png);
-    transition: 0.5s;
-    border: 1px solid #fc6b03;
-    -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
-    box-shadow: inset -11px -7px 36px 0px #000000; 
-}
-.divJogosFavoritosSubContainer:hover{
-    padding: 10px;
-    transition: 0.5s;
-    cursor: pointer;
-}
-
-/* Descrição */
-
-.divDescricaoMainContainer{
-    width: 40%;
-    height: 30vh;
-
-    background-color: #121212;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* border: 2px solid #fc6b03; */
-}
-
-.divBiografia{
-    height: 100%;
-    width: 100%;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border: 1px solid #fc6b03;
-    padding: 2%;
-    position: relative;
-}
-
-.divBiografia textarea{
-    background-color: transparent;
     color: white;
-    font-size: 16px;
-    font-family: SegoeUI-VF ;
 }
 
-.divBiografia h1{
-    color: #fc6b03;
-}
-
-
-.divDescricaoMainContainer textarea{
-    resize: none;
-    width: 92%;
-    height: 75%;
-    border-radius: 10px;
-    border: none;
-    padding-left: 10px;
-    padding-top: 10px;
-}
-
-.divDescricaoImg1{
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 12%;
-    left: 33%;
-    border-radius: 200px;
-    padding: 4px;
-    background-image: url(components/assets/unknown2.png);
-    background-size: cover;
-    transition: 0.5s
-}
-
-.divDescricaoImg2{
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 15%;
-    left: 25%;
-    border-radius: 200px;
-    padding: 4px;
-    background-image: url(components/assets/unknown2.png);
-    background-size: cover;
-    transition: 0.5s
-}
-
-.divDescricaoImg3{
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 8%;
-    left: 15%;
-    border-radius: 200px;
-    padding: 4px;
-    background-image: url(components/assets/unknown2.png);
-    background-size: cover;
-    transition: 0.5s
-}
-
-.divDescricaoImg3:hover, .divDescricaoImg2:hover, .divDescricaoImg1:hover{
-    background-image: url(components/assets/unknown3.png);
-    transition: 0.5s;
-    cursor: pointer;
-}
-
-.divDescricaoMainContainer textarea:focus{
-    outline: none;
-}
-
-/* Conquistas */
-
-.divConquistasMainContainerD{
-    position: relative;
-    width: 80%;
-    height: 30vh;
-    margin-left: 10%;
-    border-radius: 15px;
-    margin-top: 20px;
-    background-color: #121212;
-    border: 1px solid #fc6b03;
-    padding: 1%;
-}
-
-.divConquistasMainContainerD h1{
-    margin: 0;
-    color: #fc6b03;
-    font-weight: bolder;
-}
-
-.divConquistasMainContainer{
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    align-items: center;
-}
-.divConquistasSubContainer{
-    height: 70%;
-    width: 30%;
-    background-color: white;
-    border-radius: 10px;
-    margin: 15px;
-    background-size: contain;
-    background-image: url(components/assets/transferir.png);
-    transition: 0.5s;
-    border: 1px solid #fc6b03;
-    -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
-    box-shadow: inset -11px -7px 36px 0px #000000;
-}
 .divConquistasSubContainer:hover{
     padding: 10px;
     transition: 0.5s;
@@ -278,8 +21,8 @@
 .imgUsuarioGearEditing{
     background-image: url('./components/assets/gear.png');
     background-size: cover;
-	height: 40px;
-	width: 40px;
+	height: 30px;
+	width: 30px;
 	transition: 0.5s ease-in-out;
     margin-right: 10px;
 	border: 1px transparent solid;
@@ -290,8 +33,8 @@
 .imgUsuarioGearEditing:hover{
     background-image: url('./components/assets/gear_hover.png');
     background-size: cover;
-	height: 40px;
-	width: 40px;
+	height: 30px;
+	width: 30px;
     cursor: pointer;
 	transition: 0.5s ease-in-out;
 	border: 1px transparent solid;
@@ -307,6 +50,7 @@
     border-bottom: #f2f2f2 1px solid;
     transition: 0.5s;
     padding-top: 0.5%;
+    width: 100%;
     background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,212,255,0) 100%);    
 
 }
@@ -318,10 +62,10 @@
     padding-left: 10px;
     padding-right: 10px;
     align-content: center;
-    justify-content: center;
-    align-items: center;
-    transition: 0.5s;
 
+    transition: 0.5s;
+    font-size: 20px;
+    font-weight: 200;
 }
 
 .perfilConfig:hover{
@@ -339,4 +83,87 @@
 
 .perfilActive{
     background: linear-gradient(0deg, rgb(80, 45, 0) 0%, rgba(80, 36, 0,0) 100%);
+}
+
+.divUsuarioComplexContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.divUsuarioSubMainContainerGeneral{
+    width: 100%;
+    height: 100%;
+    border-left: 1px solid #fc6b03;
+}
+
+.divRightUserInfoCompo{
+    position: relative;
+    /* background-color: red; */
+    border-bottom: 1px solid #fc6b03;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 2%;
+
+}
+
+.divRightSubMainContainerCompo{
+    position: relative;
+    /* background-color: red; */
+    border-bottom: 1px solid #fc6b03;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.divRightSubMainContainerCompo div{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.divRightSubMainContainerCompo div label{
+    background-color: #202020;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 5px;
+}
+
+.divRightSubMainContainerCompo div label img{
+    position: absolute;
+    right: 0;
+}
+
+.divRightSubMainContainerCompo div label img:hover{
+    cursor: pointer;
+}
+
+.UserPlan{
+    position: absolute;
+    transform: rotate(-90deg);
+    right: -15%;
+    color: #474747;
+}
+
+.divRightMainComplexoContainerCompo{
+    height: 100%;
+    width: 40vw;
+    
+}
+
+.imgUserprofileIcon{
+    border: 1px solid #fc6b03;
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    border-radius: 100px;
 }

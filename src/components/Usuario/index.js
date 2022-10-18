@@ -27,10 +27,8 @@ function Usuario(){
             if(oneResponseONLY === 0){
                 dataTeam.then(
                     (val) => {
-                        console.log(times, 'cavalo')
                         times = val.data.find((team) => {return team.id === 1 })
-                        setTeams(times);
-                        console.log(teams, 'essacaceta')
+                        setTeams(times)
                     }
                     )
                 data.then(
@@ -107,34 +105,49 @@ function Usuario(){
         
         <div className="divUsuarioDMainContainer">
             <Navbar page={'usuario'}/>
-
-                <div className='divUsuarioSubMainContainer paddingLeft '>
-
-                    <div className='divFundoMainContainer'>
-                        <div className='divContainerFundoMainContainer'/>
+            <div className='divFundoMainContainer'>
+                <div className='divContainerFundoMainContainer'/>
+            </div>
+            <div className='divUsuarioSubMainContainer paddingLeft '>
+                <div className='divUsuarioComplexContainer'>
+                    <div className='divRightMainComplexoContainerCompo'>
+                        <div className='divRightUserInfoCompo'>
+                            <div className='imgUserprofileIcon' style={{backgroundImage: `url(${loggedUser.icon})`}}></div>
+                            <h2>{loggedUser.username}</h2>
+                            <h4>Data de Criação: 15/10/2022</h4>
+                            <h1 className='UserPlan'>Plano Básico</h1>
+                        </div>
+                        <div className='divRightSubMainContainerCompo'>
+                            <h3>Contatos</h3>
+                            <div>
+                                <label>Twitter: <a href={`https://twitter.com/${'feef'}`}> @Teste</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
+                                <label>Instagram: <a href={`https://instagram.com/${'feef'}`}> @Teste</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
+                                <label>Discord: <a> Teste#5353</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
+                                <label>Twitch: <a href={`https://twitch.tv/${'feef'}`}> /Teste</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
+                            </div>
+                        </div>
                     </div>
-                    <div className='perfilNavigation'>
-                        <div onClick={() => setPage('geral')} className='perfilConfig geral'><div className='imgUsuarioGearEditing'/>Visão Geral</div>
-                        <div onClick={() => setPage('equipe')} className='perfilConfig equipe'><div className='imgUsuarioGearEditing'/>Equipes</div>
-                        <div onClick={() => setPage('torneio')} className='perfilConfig torneio'><div className='imgUsuarioGearEditing'/>Torneios</div>
-                        <div onClick={() => setPage('config')} className='perfilConfig config'><div className='imgUsuarioGearEditing'/>Configurar Perfil</div>
-                    </div>
-                    <div className='divUsuarioSubMainContainerCompo' >
-                        <h1 className="UserNameOnProfile"><div className='divImgFundoMainContainer' style={{backgroundImage: `url(${loggedUser.icon}`}}/>{loggedUser.username}</h1>
-                    
-                    </div>
-                    <div className='divEquipesSubMainContainerCompo' >
-                        <h1 className="TeamsOnProfile"><div className='divImgFundoMainContainer' style={{backgroundImage: `url(${loggedUser.icon})`}}/>{teams.nome}2</h1>
-                    </div>
-                    <div className='divTorneiosSubMainContainerCompo' >
-                        <h1 className="UserNameOnProfile"><div className='divImgFundoMainContainer' style={{backgroundImage: `url(${loggedUser.icon})`}}/>{loggedUser.username}3</h1>
-                    
-                    </div>
-                    <div className='divConfigSubMainContainerCompo' >
-                        <h1 className="UserNameOnProfile"><div className='divImgFundoMainContainer' style={{backgroundImage: `url(${loggedUser.icon})`}}/>{loggedUser.username}4</h1>
-                    
+                    <div className='divUsuarioSubMainContainerGeneral'>
+                        <div className='perfilNavigation'>
+                            <div onClick={() => setPage('geral')} className='perfilConfig geral'><div className='imgUsuarioGearEditing'/>Visão Geral</div>
+                            <div onClick={() => setPage('equipe')} className='perfilConfig equipe'><div className='imgUsuarioGearEditing'/>Equipes</div>
+                            <div onClick={() => setPage('torneio')} className='perfilConfig torneio'><div className='imgUsuarioGearEditing'/>Torneios</div>
+                            <div onClick={() => setPage('config')} className='perfilConfig config'><div className='imgUsuarioGearEditing'/>Configurar Perfil</div>
+                        </div>
+                        <div>
+                            <div className='divUsuarioSubMainContainerCompo' >
+                                <h1>ALOU</h1>
+                            </div>
+                            <div className='divEquipesSubMainContainerCompo' >
+                            </div>
+                            <div className='divTorneiosSubMainContainerCompo' >
+                            </div>
+                            <div className='divConfigSubMainContainerCompo' >                    
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
             <Footer/>
         </div>
