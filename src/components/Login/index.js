@@ -6,6 +6,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { SettingsRemoteTwoTone } from '@mui/icons-material';
 
+let getUsersTry = 0
 function Login() {
 
     const [username, setUsername] = useState('')
@@ -43,12 +44,17 @@ function Login() {
                     
                     console.log(username, password)
                     console.log(users.find((account) => {return account.username === username }))            
-                    Login()
+                    
                 })
                 console.log(users)
         }catch(error){
             console.log(error)
         }
+    }
+
+    if(getUsersTry < 10){
+        getUsersTry++
+        callAgentFinder()
     }
 
     return (
@@ -74,7 +80,7 @@ function Login() {
 
                         <input value={username} onChange={event => {setUsername(event.target.value)}} placeholder='Usuário'></input>
                         <input value={password} onChange={event => {setPassword(event.target.value)}} type='password' placeholder='Senha'></input>
-                        <button onClick={() => callAgentFinder()}>Entrar</button>
+                        <button onClick={() => Login()}>Entrar</button>
 
                         <a><p>Esqueceu sua senha?</p></a>
                         <a><p>Não possui conta?</p></a>

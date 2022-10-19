@@ -5,62 +5,67 @@ import Footer from '../Footer'
 import { useParams } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
 
-let oneResponseONLY = 0
-let times
+let getUsersTry = 0
+
 function Usuario(){
+    
     const { id } = useParams();
-    console.log(id)
+    
+    const [loggedUser, setLoggedUser] = useState({})
+    const [viewingUser, setViewingUser] = useState({})
 
-    const [loggedUser, setLoggedUser] = useState({}) 
-    const [currentTeams, setCurrentTeams] = useState({})
-    const [users, setUsers] = useState([])
-    const [teams, setTeams] = useState({})
     const [page, setPage] = useState('geral')
-
-    console.log('wfwefiosvzp]kosvvff', teams)
     const getUsers = async () => {
         try{
-            const responseTeam = await fetch('http://localhost:3000/api/time')
-            const response = await fetch('http://localhost:3000/api/user')
-            const data = response.json()
-            const dataTeam = responseTeam.json()
-            console.log(data)
-            if(oneResponseONLY === 0){
-                dataTeam.then(
-                    (val) => {
-                        times = val.data.find((team) => {return team.id === 1 })
-                        setTeams(times)
-                    }
-                    )
-                data.then(
-                    (val) => {
-                        setUsers(val.data)
-                        setLoggedUser(val.data.find((account) => {return account.username === id }))
-                        document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
-                        document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
-                        document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
-                        if(loggedUser.id === id){
-                            document.querySelector('.divmdEditor').style.display = 'none'
-                        }else if(loggedUser.id !== id){
-                            document.querySelector('.divmdEditor').style.display = 'none'
-                            document.querySelector('.editMarkdownButton').style.display = 'none'
-                        }
-                        
-                        
-                        document.querySelector('.geral').classList.add('perfilActive')
-                        oneResponseONLY = 1
-                        
-                    }
-                        
-                )
-                
-            }
+            const responseUser = await fetch('http://localhost:3000/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
+            const dataUser = responseUser.json()
+
+            const responseUsers = await fetch('http://localhost:3000/api/user/')
+            const dataUsers = responseUsers.json()
+            dataUsers.then(
+                (val) => {
+                    setViewingUser(val.data.find((account) => {return account.username === id }))
+                }
+            )
+            dataUser.then(
+                (val) => {
+                    setLoggedUser(val.data)
+                    
+                }
+            )
+            
+            
+            
         }catch(error){
-          console.log(error)
+            console.log(error)
         }
     }
-    getUsers()
+
+    if(getUsersTry < 10){
+        getUsersTry++
+        getUsers()
+    }
     
+    const makeEverythingWork = () => {
+        document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
+        document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
+        document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
+        console.log('ViewingUser: ',viewingUser, 'loggedUser: ', loggedUser,'username: ', loggedUser.username, 'id: ', id)
+        console.log('If Else:', loggedUser.username !== undefined, loggedUser.username === undefined )
+        if(loggedUser.username !== viewingUser.username){
+            document.querySelector('.divmdEditor').style.display = 'none'
+            document.querySelector('.editMarkdownButton').style.display = 'flex'
+        }else{
+            document.querySelector('.divmdEditor').style.display = 'none'
+            document.querySelector('.editMarkdownButton').style.display = 'none'
+        }
+        document.querySelector('.geral').classList.add('perfilActive')
+        console.log('loggeduser and viewinguser',loggedUser, viewingUser)
+
+    }
+    setTimeout(() => {
+        makeEverythingWork()
+    }, 500)
     useEffect(() => {
         switch(page){
             case 'geral':
@@ -109,7 +114,7 @@ function Usuario(){
                 break
         }
     })
-    console.log('editor:', document.getElementsByClassName('public-DraftStyleDefault-block span'))
+
     const [value, setValue] = React.useState("**Hello world!!!**");
 
     const callEditMarkdownEditor = (type) =>{
@@ -133,8 +138,8 @@ function Usuario(){
                 <div className='divUsuarioComplexContainer'>
                     <div className='divRightMainComplexoContainerCompo'>
                         <div className='divRightUserInfoCompo'>
-                            <div className='imgUserprofileIcon' style={{backgroundImage: `url(${loggedUser.icon})`}}></div>
-                            <h2>{loggedUser.username}</h2>
+                            <div className='imgUserprofileIcon' style={{backgroundImage: `url(${viewingUser.icon})`}}></div>
+                            <h2>{viewingUser.username}</h2>
                             <h4>Data de Criação: 15/10/2022</h4>
                             <h1 className='UserPlan'>Plano Básico</h1>
                         </div>
@@ -169,11 +174,11 @@ function Usuario(){
                                             preview={'edit'}
 
                                         />
-                                        <div className='editMarkdownButton' onClick={() => callEditMarkdownEditor('exit')}><p>Editar</p></div>
+                                        <div className='editMarkdownButton exitMarkdown' onClick={() => callEditMarkdownEditor('exit')}><p>Editar</p></div>
                                     </div>
                                     <div className='divmdViewer'>
                                         <MDEditor.Markdown className='markdownShower' source={value} style={{ whiteSpace: 'pre-wrap' }} />
-                                        <div className='editMarkdownButton' onClick={() => callEditMarkdownEditor('enter')}><p>Editar</p></div>
+                                        <div className='editMarkdownButton enterMarkdown' onClick={() => callEditMarkdownEditor('enter')}><p>Editar</p></div>
                                     </div>
                                 </div>
 
