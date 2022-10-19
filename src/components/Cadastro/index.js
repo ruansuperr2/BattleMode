@@ -74,34 +74,36 @@ function Cadastro () {
     }
 
     return (
-        <div className="divCadastroMainContainer">
-            <ModalCustom/>
-            <div className="divCadastroLeftContainer">
-                <div>
-                    <img src={require("./assets/logo.png")} />
-                    <h1>Sua escalada começa aqui</h1>
-                    <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade. </p>
+        <div className='divMainCadastroLindo'>
+            <div className="divCadastroMainContainer">
+                <ModalCustom/>
+                <div className="divCadastroLeftContainer">
+                    <div>
+                        <img src={require("./assets/logo.png")} />
+                        <h1>Sua escalada começa aqui</h1>
+                        <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade. </p>
 
-                        <div className='links'>
-                            <GitHubIcon sx={{fontSize: "8vh", color: "#fc6b03"}}></GitHubIcon>
-                            <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
-                            <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
-                            {/* <img className="discord" src={require("./assets/discord.png")}></img> */}
-                        </div>
+                            <div className='links'>
+                                <GitHubIcon sx={{fontSize: "8vh", color: "#fc6b03"}}></GitHubIcon>
+                                <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
+                                <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
+                                {/* <img className="discord" src={require("./assets/discord.png")}></img> */}
+                            </div>
+                    </div>
                 </div>
-            </div>
-            <div className="divCadastroRightContainer">
-                <div className='divCadastrarRightSubContaner'>
-                    <h1>Cadastre-se</h1>
-                    <p className='p'>Entre com sua conta ja cadastrada</p>
+                <div className="divCadastroRightContainer">
+                    <div className='divCadastrarRightSubContaner'>
+                        <h1>Cadastre-se</h1>
+                        <p className='p'>Entre com sua conta ja cadastrada</p>
 
-                    <input value={username} onChange={event => {setUsername(event.target.value)}} placeholder='Usuário'></input>
-                    <input value={email} onChange={event => {setEmail(event.target.value)}} placeholder='Email'></input>
-                    <input value={password} onChange={event => {setPassword(event.target.value)}} placeholder='Senha'></input>
-                    <input value={confirmPassword} onChange={event => {setConfirmPassword(event.target.value)}} placeholder='Confirmar senha'></input>
-                    <button onClick={() => registerUser()}>Cadastrar-se</button>
+                        <input value={username} onChange={event => {setUsername(event.target.value)}} placeholder='Usuário'></input>
+                        <input value={email} onChange={event => {setEmail(event.target.value)}} placeholder='Email'></input>
+                        <input value={password} onChange={event => {setPassword(event.target.value)}} placeholder='Senha'></input>
+                        <input value={confirmPassword} onChange={event => {setConfirmPassword(event.target.value)}} placeholder='Confirmar senha'></input>
+                        <button onClick={() => registerUser()}>Cadastrar-se</button>
 
 
+                    </div>
                 </div>
             </div>
         </div>
