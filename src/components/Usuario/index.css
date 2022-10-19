@@ -5,8 +5,7 @@
 }
 
 .divUsuarioSubMainContainer{
-    height: 100vh;
-
+    border-left: 1px solid #fc6b03;
     background-color: #121212;
     display: flex;
     flex-direction: column;
@@ -98,13 +97,6 @@
     display: flex;
     flex-direction: row;
 }
-
-.divUsuarioSubMainContainerGeneral{
-    width: 100%;
-    height: 100%;
-    border-left: 1px solid #fc6b03;
-}
-
 .divRightUserInfoCompo{
     position: relative;
     /* background-color: red; */
@@ -164,9 +156,12 @@
 }
 
 .divRightMainComplexoContainerCompo{
-    height: 100%;
     width: 40vw;
-    
+    border-right: 1px solid #fc6b03;
+}
+
+.divUsuarioSubMainContainerGeneral{
+    width: 100%;
 }
 
 .imgUserprofileIcon{
@@ -180,14 +175,6 @@
 .textareaUsuarioSubMainContainerCompo{
     width: 100%;
     overflow: hidden;
-}
-
-.toolbar{
-    overflow: hidden;
-}
-
-.editor{
-    overflow: visible;
 }
 
 .w-md-editor{
@@ -209,7 +196,18 @@
     background-color: #121212 !important;
     border: 1px solid transparent !important;
     color: white !important;
-    width: 100%;
+
+}
+
+.wrapper img{
+    width: 25%;
+    height: 25%;
+    object-fit: contain;
+}
+
+.markdownShower img{
+    width: 25%;
+    height: 25%;
 }
 
 .wmde-markdown{
@@ -219,4 +217,50 @@
 
 .wmde-markdown pre > code{
     color: black
+}
+
+.divmdEditor{
+    width: 100%;
+    min-width: 100%;
+}
+
+.divmdViwer{
+    height: 46.5vh;
+    overflow-y: scroll;
+    border-bottom: 1px solid #fc6b03;
+    position: relative;
+}
+
+.divmdViewer ::-webkit-scrollbar{
+    display: none;
+}
+
+.divContainerUsuarioContent{
+    width: 100%;
+}
+
+.editMarkdownButton{
+    position: absolute;
+    top: 85%;
+    right: 2%;
+    width: 12%;
+    height: 30px;
+    margin: 20px;
+    background-color: #272727;
+    border-radius: 20px;
+    border: 2px solid #fc6b03;
+    color: #fc6b03;
+    font-size: 16px;
+    transition: 0.5s;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editMarkdownButton:hover{
+    border: 2px solid rgb(224, 219, 219);
+    transition: 0.5s;
+    color: rgb(224, 219, 219);
+    cursor: pointer;
 }

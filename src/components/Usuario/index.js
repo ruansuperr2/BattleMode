@@ -39,6 +39,8 @@ function Usuario(){
                         document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
                         document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
                         document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
+                        document.querySelector('.divmdEditor').style.display = 'none'
+                        
                         document.querySelector('.geral').classList.add('perfilActive')
                         oneResponseONLY = 1
                         
@@ -137,18 +139,26 @@ function Usuario(){
                             <div onClick={() => setPage('torneio')} className='perfilConfig torneio'><div className='imgUsuarioGearEditing'/>Torneios</div>
                             <div onClick={() => setPage('config')} className='perfilConfig config'><div className='imgUsuarioGearEditing'/>Configurar Perfil</div>
                         </div>
-                        <div>
+                        <div className='divAllContainersUser'>
                             <div className='divUsuarioSubMainContainerCompo' >
-                            <MDEditor
-                                className='wrapper'
-                                height={'52.4vh'}
-                                fullscreen={false}
-                                value={value}
-                                onChange={setValue}
-                                preview={'edit'}
+                                <div className='divContainerUsuarioContent'>
+                                    <div className='divmdEditor'>
+                                        <MDEditor
+                                            className='wrapper'
+                                            visibleDragbar={false}
+                                            height={'52.4vh'}
+                                            fullscreen={false}
+                                            value={value}
+                                            onChange={setValue}
+                                            preview={'edit'}
 
-                            />
-                            {/* <MDEditor.Markdown source={value} style={{ whiteSpace: 'pre-wrap' }} /> */}
+                                        />
+                                    </div>
+                                    <div className='divmdViewer'>
+                                        <MDEditor.Markdown className='markdownShower' source={value} style={{ whiteSpace: 'pre-wrap' }} />
+                                        <div className='editMarkdownButton'><p>Editar</p></div>
+                                    </div>
+                                </div>
 
                             </div>
                             <div className='divEquipesSubMainContainerCompo' >
