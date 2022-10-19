@@ -39,7 +39,13 @@ function Usuario(){
                         document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
                         document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
                         document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
-                        document.querySelector('.divmdEditor').style.display = 'none'
+                        if(loggedUser.id === id){
+                            document.querySelector('.divmdEditor').style.display = 'none'
+                        }else if(loggedUser.id !== id){
+                            document.querySelector('.divmdEditor').style.display = 'none'
+                            document.querySelector('.editMarkdownButton').style.display = 'none'
+                        }
+                        
                         
                         document.querySelector('.geral').classList.add('perfilActive')
                         oneResponseONLY = 1
@@ -105,6 +111,16 @@ function Usuario(){
     })
     console.log('editor:', document.getElementsByClassName('public-DraftStyleDefault-block span'))
     const [value, setValue] = React.useState("**Hello world!!!**");
+
+    const callEditMarkdownEditor = (type) =>{
+        if(type === 'enter'){
+            document.querySelector('.divmdEditor').style.display = 'block'
+            document.querySelector('.divmdViewer').style.display = 'none'
+        }else{
+            document.querySelector('.divmdEditor').style.display = 'none'
+            document.querySelector('.divmdViewer').style.display = 'block'
+        }
+    }
     
     return(
         
@@ -153,10 +169,11 @@ function Usuario(){
                                             preview={'edit'}
 
                                         />
+                                        <div className='editMarkdownButton' onClick={() => callEditMarkdownEditor('exit')}><p>Editar</p></div>
                                     </div>
                                     <div className='divmdViewer'>
                                         <MDEditor.Markdown className='markdownShower' source={value} style={{ whiteSpace: 'pre-wrap' }} />
-                                        <div className='editMarkdownButton'><p>Editar</p></div>
+                                        <div className='editMarkdownButton' onClick={() => callEditMarkdownEditor('enter')}><p>Editar</p></div>
                                     </div>
                                 </div>
 

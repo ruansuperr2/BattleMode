@@ -225,14 +225,29 @@
 }
 
 .divmdViwer{
-    height: 46.5vh;
+
     overflow-y: scroll;
     border-bottom: 1px solid #fc6b03;
     position: relative;
+
+}
+
+.wmde-markdown{
+    height: 50.4vh;
+    max-height: 50.4vh !important;
+    overflow-y: scroll !important;
+    border-bottom: #fc6b03 1px solid;
+    padding: 20px !important;
+}
+
+.wmde-markdown h6, .wmde-markdown h5, .wmde-markdown h4, .wmde-markdown h3, .wmde-markdown h2, .wmde-markdown h1{
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    
 }
 
 .divmdViewer ::-webkit-scrollbar{
-    display: none;
+    /* display: none; */
 }
 
 .divContainerUsuarioContent{
