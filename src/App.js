@@ -28,6 +28,7 @@ function App() {
                         <Route path="/games" element={<Jogos />} />
                         <Route path="/about" element={<Sobre />} />
                         <Route path="/u/:id" element={<Usuario/>} />
+                        <Route path="/t/:id" element={<Participar />} />
                         <Route path="/participar" element={<Participar />} />
                   </Routes>
               </div>

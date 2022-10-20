@@ -115,7 +115,7 @@ function Usuario(){
         }
     })
 
-    const [value, setValue] = React.useState("**Hello world!!!**");
+    const [value, setValue] = React.useState("**Eu ainda não possuo uma biografia!**");
 
     const callEditMarkdownEditor = (type) =>{
         if(type === 'enter'){

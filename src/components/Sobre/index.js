@@ -27,6 +27,7 @@ function Sobre() {
                 <div className='divDropdown'>
                     <Dropdown
                         label="FAQ - Perguntas Frequentes"
+                        key={'index'}
                         options={options}
                         value={value}
                         onChange={handleChange}

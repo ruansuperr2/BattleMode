@@ -111,8 +111,8 @@ export const Navbar = (props) => {
 
         <div className={`divSideLoginRegister ${navbar && "navbarActive"}` }>
             <div className='EntrarRegistroNavBar'>
-                <button>Cadastrar-se </button>
-                <button>Entrar</button>
+                <button onClick={() => {window.location.href = './cadastro'}}>Cadastrar-se </button>
+                <button onClick={() => {window.location.href = './login'}}>Entrar</button>
             </div>
             <div className='loggedUserNameNavBar'>
                 <img className='imgIconP'/>
@@ -122,8 +122,8 @@ export const Navbar = (props) => {
             <div className="NavbarDropDown">
                 <div className="contentNavbarDropDown">
                     <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo'/> Perfil</label>
-                    <label><div className='imgNavbarTeamGo'/> Criar Equipe</label>
-                    <label><div className='imgNavbarTourneamentGo'/> Criar Torneio</label>
+                    <label onClick={() => {window.location.href = `/t/criar`}}><div className='imgNavbarTeamGo'/> Criar Equipe</label>
+                    <label onClick={() => {window.location.href = `/u/criar`}}><div className='imgNavbarTourneamentGo'/> Criar Torneio</label>
                 </div>
             </div>
         </div>
