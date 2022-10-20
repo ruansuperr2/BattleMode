@@ -3,33 +3,37 @@
 }
 
 .divDropdown{
-    width: 60%;
-    height: 40vh;
-    margin-bottom: 2%;
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    padding-left: 18%;
+    justify-content: center;
 }
 
-.valueDropdown{
-    width: 80%;
+.divDropdown div{
+    width: 60%;
 }
 
 .divMainContainerSobre .divFundoDropdown{
     width: 100%;
-    margin-top: -5%;
+
 }
 
 .divConteudo {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10%;
 }
 .divImagens {
-    width: 50%;
+    width: 26vw;
+    height: 26vw;
+    background-image: url('./assets/time.png');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
+
 .divTextoSobre {
     width: 40%;
     padding-left: 2%;

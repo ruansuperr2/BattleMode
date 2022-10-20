@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Navbar from '../Navbar'
 import Footer from '../Footer'
-import { Dropdown } from './components/dropdown'
+// import { Dropdown } from './components/dropdown'
 import './index.css'
 
 function Sobre() {
@@ -25,18 +25,30 @@ function Sobre() {
             <div className='divMainContainerSobre paddingLeft'>
                 <img className='divFundoDropdown' src={require('./assets/fundo.png')}/>
                 <div className='divDropdown'>
-                    <Dropdown
+                    {/* <Dropdown
                         label="FAQ - Perguntas Frequentes"
                         key={'index'}
                         options={options}
                         value={value}
                         onChange={handleChange}
-                    />
-                    <p className='valueDropdown'>{value}</p>
+                    /> */}
+                    {/* <p className='valueDropdown'>{value}</p> */}
+                    <h2>FaQ - Perguntas Frequentes</h2>
+                    <div>
+                        <h4>Não consigo entrar em um torneio, o que devo fazer?</h4>
+                        <p>Verifique se o seu time está em ordem para entrar no torneio, é possível que o torneio esteja cheio ou em andamento. Todo problema que pode aparecer pode ser resolvido pelo organizador do torneio ou pelo suporte da BattleMode™</p>
+                    </div>
+                    <div>
+                        <h4>Tomei punição em um jogo, como eu faço para continuar jogando os torneios</h4>
+                        <p>Se você sofreu alguma punição durante, antes ou depois de um torneio, a organização do torneio e a equipe BattleMode™ não deverá ser responsabilidade por isso, todos os jogadores e organizadores concordam em seguir as regras dos jogos durante um torneio.</p>
+                    </div>
+                    <div>
+                        <h4>Não consigo chamar meus amigos para o time</h4>
+                        <p>Verifique se esse usuário realmente existe, se o problema persistir, contate o suporte da BattleMode™</p>
+                    </div>
                 </div>
                 <div className='divConteudo'>
                     <div className='divImagens'>
-                        <p>a</p>
                     </div>
                     <div className='divTextoSobre'>
                         <h1>Sobre BattleMode™</h1>
