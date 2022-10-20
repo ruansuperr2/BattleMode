@@ -36,9 +36,9 @@ function Cadastro () {
         callAgentFinder()
         console.log('USUÁRIOS > ',users)
         showModal('spin','Aguarde',false)
-        if(email.match(/([a-zA-Z0-9]+)([.{1}])?([a-zA-Z0-9]+)@gmail([.])com/g) && email != users.find((account) => {return account.email === email })){
+        if(email.match(/([a-zA-Z0-9]+)([.{1}])?([a-zA-Z0-9]+)@gmail([.])com/g) && email !== users.find((account) => {return account.email === email })){
             console.log('> ', username.match(/^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/))
-            if(username.match(/^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/) && username != users.find((account) => {return account.username === username })){
+            if(username.match(/^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/) && username !== users.find((account) => {return account.username === username })){
                 if(password === confirmPassword && password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)){
                     closeModal('success','Você será redirecionado para o loading!','barLoading')
                     

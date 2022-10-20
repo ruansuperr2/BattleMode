@@ -1,7 +1,5 @@
 import React from 'react'
 import './index.css'
-import { useTransition, animated } from 'react-spring'
-import { useState, useEffect } from 'react'
 import 'animate.css';
 
 

@@ -10,8 +10,6 @@ import LanguageIcon from '@mui/icons-material/Language';
 let getUsersTry = 0
 
 export const Navbar = (props) => {
-    const [find, setFind] = useState()
-
     const [loggedUser, setLoggedUser] = useState({})
     const getUsers = async () => {
         try{
@@ -23,7 +21,7 @@ export const Navbar = (props) => {
                     
                 }
             )
-            if(props.page != 'usuario'){
+            if(props.page !== 'usuario'){
                 if(loggedUser.username !== undefined && props.page != 'usuario'){
                     document.querySelector('.loggedUserNameNavBar').style.display = 'flex'
                     document.querySelector('.EntrarRegistroNavBar').style.display = 'none'
