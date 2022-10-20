@@ -9,7 +9,9 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
 function LandingPage() {
-    
+    if(JSON.parse(localStorage.getItem('dasiBoard')) !== null){
+        window.location.href = './now'
+    }
     return (
         <div className='divMainLanding'>
             <div className='divMainLandingPageNavbar'>

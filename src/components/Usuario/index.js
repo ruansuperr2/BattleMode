@@ -52,7 +52,7 @@ function Usuario(){
         document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
         console.log('ViewingUser: ',viewingUser, 'loggedUser: ', loggedUser,'username: ', loggedUser.username, 'id: ', id)
         console.log('If Else:', loggedUser.username !== undefined, loggedUser.username === undefined )
-        if(loggedUser.username !== viewingUser.username){
+        if(loggedUser.username === viewingUser.username){
             document.querySelector('.divmdEditor').style.display = 'none'
             document.querySelector('.editMarkdownButton').style.display = 'flex'
         }else{
@@ -181,7 +181,15 @@ function Usuario(){
                                         <div className='editMarkdownButton enterMarkdown' onClick={() => callEditMarkdownEditor('enter')}><p>Editar</p></div>
                                     </div>
                                 </div>
+                                <div className='divConquistaEfavoritos'>
+                                    <div>
+                                        <h2>Teste</h2>
+                                    </div>
 
+                                    <div>
+                                        <h2>Teste</h2>
+                                    </div>
+                                </div>
                             </div>
                             <div className='divEquipesSubMainContainerCompo' >
                             </div>

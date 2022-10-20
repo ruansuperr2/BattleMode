@@ -279,3 +279,12 @@
     color: rgb(224, 219, 219);
     cursor: pointer;
 }
+
+.divUsuarioSubMainContainerCompo{
+    display: flex;
+    flex-direction: column;
+}
+
+.divConquistaEfavoritos{
+    width: 100%;
+}
