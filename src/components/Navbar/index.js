@@ -39,7 +39,7 @@ export const Navbar = (props) => {
         }
     }
         
-    if(getUsersTry < 10 && JSON.parse(localStorage.getItem('dasiBoard')) !== undefined){
+    if(getUsersTry < 10 && JSON.parse(localStorage.getItem('dasiBoard')) !== null){
         getUsersTry++
         getUsers()
     }
