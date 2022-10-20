@@ -1,3 +1,24 @@
 .paddingLeft{
     padding-left: 5%;
 }
+
+::-webkit-scrollbar{
+    background-color: #121212;
+    width: 1.6vh;
+}
+
+::-webkit-scrollbar-button{
+    background-color: #7e7e7e;
+}
+
+::-webkit-scrollbar-button:hover{
+    background-color: #cfcfcf;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #fc6b03;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: #ffa86b;
+}
