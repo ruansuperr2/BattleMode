@@ -50,9 +50,11 @@ function Participar() {
 
     return (
         <div className='divParticiparMainContainer'>
-            <Navbar page={'usuario'} />
+            <Navbar page="Participar" />
             <ModalCustom/>
-            <div className="divMainTorneio" />
+            <div className="divMainTorneio">
+                <h1 className="tituloTorneio">Gaia Cup</h1>
+            </div>
 
             <div>
                 <div className='perfilNavigation'>
@@ -67,7 +69,7 @@ function Participar() {
                         <TorneioHeader/>
                     </div>
                     <div className="divDesc">
-                        <p className="descricao">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                        <p className="descricao">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac</p>
                     </div>
                 </div>
                 <div className='divCampoEquipe campos' >
@@ -75,10 +77,9 @@ function Participar() {
                 </div>
                 <div className='divCampoParticipar campos' >
                     <h1 className="UserNameOnProfile"><div className='divImgFundoMainContainer'/>3</h1>
-                
                 </div>
+                <Footer/>
             </div>
-            <Footer/>
         </div>
     )
 }
