@@ -2,10 +2,12 @@ import React, { useEffect, useState, useRef } from 'react'
 import Navbar from "../Navbar"
 import './index.css'
 
+import $ from 'jquery'
+
+let index = 0
 
 export default function NewHome () {
     const [currentPage, setCurrentPage] = useState('')
-    const [index, setIndex] = useState(0)
     const callPageChanger = () => {
         switch(currentPage){
             case 'pageOne':
@@ -30,13 +32,14 @@ export default function NewHome () {
             setCurrentPage('pageOne')
             document.querySelector('.containerPageOneHomeContent').scrollIntoView({
                 behavior: 'smooth'
-            }, 50)
-        }else if(funcProp === 5){
+            }, 500)
+        }else if(funcProp === 8){
+            $('.labelPageTwoHome').text('CHUPA MINHA PIKA')
             setCurrentPage('pageTwo')
             document.querySelector('.containerPageTwoHomeContent').scrollIntoView({
                 behavior: 'smooth'
             }, 500)
-        }else if(funcProp === 10){
+        }else if(funcProp === 16){
             setCurrentPage('pageThree')
             document.querySelector('.containerPageThreeHomeContent').scrollIntoView({
                 behavior: 'smooth'
@@ -45,26 +48,47 @@ export default function NewHome () {
     }
 
     useEffect(() => {
-        window.addEventListener("wheel", (event) => {
-            console.log(event)
-            if(event.deltaY === 100){
-                if(index === 10){
-                    setIndex(10)
-                }else{
-                    setIndex(index + 1)   
-                    
-                }
-            }else if(event.deltaY === -100){
+        $( window ).on('mousewheel', function(e){
+            if(e.originalEvent.wheelDelta /120 > 0) {
+                console.log('up')
                 if(index === 0){
-                    setIndex(0)
+                    index = 0
                 }else{
-                    setIndex(index - 1)    
+                    index--
                 }
+                pageHandling(index)
             }
-            console.log(index)
+            else{
+                console.log('down')
+                if(index === 16){
+                    index = 16
+                }else{
+                    index++
+                }
+                pageHandling(index)
+            }
         })
+        // window.addEventListener("wheel", (event) => {
+        //     console.log(document.querySelector('.containerPageTwoHomeContent').getBoundingClientRect())
+        //     console.log(event)
+        //     if(event.deltaY === 100){
+        //         if(index === 16){
+        //             index = 16
+        //         }else{
+        //             index++
+        //         }
+        //     }else if(event.deltaY === -100){
+        //         if(index === 0){
+        //             index = 0
+        //         }else{
+        //             index--   
+        //         }
+        //     }
+        //     console.log(index)
+            
+        //     pageHandling(index)
+        // })
         
-        pageHandling(index)
     })
     callPageChanger()
 
@@ -84,7 +108,7 @@ export default function NewHome () {
 
                                     <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
                                 </div>
-                                <div style={{backgroundImage: `url(https://am-a.akamaihd.net/image?resize=384:200&f=http%3A%2F%2Fstatic.lolesports.com%2Fdrops%2F1666107653920_JDG.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightTwo'>
+                                <div style={{backgroundImage: `url(https://i.ytimg.com/vi/Zahi70uvvJg/sddefault_live.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightTwo'>
                                     <div className='tourneamentHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgTwo'></div> */}
                                     <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
@@ -100,7 +124,7 @@ export default function NewHome () {
                                 <label>Faça um <a href='./login'>login agora</a> e dê uma olhada nos torneios de várias modalidades e jogos na plataforma!</label>
                             </label>
                         </div>
-                        <div className='containerDivider'/>
+                        <div className='containerDivider containerTwoDivider'/>
                         <div className="containerPageTwoHomeContent" >
                             
                         
@@ -125,7 +149,7 @@ export default function NewHome () {
 
                             </div>
                         </div>
-                        <div className='containerDivider'/>
+                        <div className='containerDivider containerThreeDivider'/>
                         <div className="containerPageThreeHomeContent" >
                             
                         
@@ -160,15 +184,18 @@ export default function NewHome () {
             </div>
             <div className="containerPagesSelector">
                 <div onClick={() => {
-                        setIndex(0)
+                        index = 0
                         setCurrentPage('pageOne')
                         callPageChanger()
+                        // document.querySelector('.containerPageOneHomeContent').scrollIntoView({
+                        //     behavior: 'smooth'
+                        // }, 500)
                         document.querySelector('.containerPageOneHomeContent').scrollIntoView({
                             behavior: 'smooth'
                         }, 500)
                     }} className="pageSelector pageNumberOne currentPageHome"></div>
                 <div onClick={() => {
-                        setIndex(4)
+                        index = 8   
                         setCurrentPage('pageTwo')
                         callPageChanger()
                         document.querySelector('.containerPageTwoHomeContent').scrollIntoView({
@@ -176,7 +203,7 @@ export default function NewHome () {
                         }, 500)
                     }} className="pageSelector pageNumberTwo"></div>
                 <div onClick={() => {
-                        setIndex(8)
+                        index = 16
                         setCurrentPage('pageThree')
                         callPageChanger()
                         document.querySelector('.containerPageThreeHomeContent').scrollIntoView({
