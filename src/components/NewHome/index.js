@@ -25,6 +25,24 @@ export default function NewHome () {
                 break
         }
     }
+    const pageHandling = (funcProp) => {
+        if(funcProp === 0){
+            setCurrentPage('pageOne')
+            document.querySelector('.containerPageOneHomeContent').scrollIntoView({
+                behavior: 'smooth'
+            }, 50)
+        }else if(funcProp === 5){
+            setCurrentPage('pageTwo')
+            document.querySelector('.containerPageTwoHomeContent').scrollIntoView({
+                behavior: 'smooth'
+            }, 500)
+        }else if(funcProp === 10){
+            setCurrentPage('pageThree')
+            document.querySelector('.containerPageThreeHomeContent').scrollIntoView({
+                behavior: 'smooth'
+            }, 500)
+        }
+    }
 
     useEffect(() => {
         window.addEventListener("wheel", (event) => {
@@ -44,26 +62,10 @@ export default function NewHome () {
                 }
             }
             console.log(index)
-            if(index === 0){
-                setCurrentPage('pageOne')
-                document.querySelector('.containerPageOneHomeContent').scrollIntoView({
-                    behavior: 'smooth'
-                }, 50)
-            }else if(index === 4){
-                setCurrentPage('pageTwo')
-                document.querySelector('.containerPageTwoHomeContent').scrollIntoView({
-                    behavior: 'smooth'
-                }, 500)
-            }else if(index === 8){
-                setCurrentPage('pageThree')
-                document.querySelector('.containerPageThreeHomeContent').scrollIntoView({
-                    behavior: 'smooth'
-                }, 500)
-            }
         })
         
+        pageHandling(index)
     })
-
     callPageChanger()
 
     return(
