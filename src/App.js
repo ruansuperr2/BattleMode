@@ -2,6 +2,7 @@
 import './App.css'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
+import NewHome from './components/NewHome'
 import Feed from './components/Feed'
 import Jogos from './components/Jogos'
 import Sobre from './components/Sobre'
@@ -21,6 +22,7 @@ function App() {
               <div>
                   <Routes>
 			            <Route path="/" element={<LandingPage />} />
+                        <Route path="/home" element={<NewHome />} />
                         <Route exact path="/login" element={<Login />} />
                         <Route exact path="/cadastro" element={<Cadastro />} />
                         <Route path="/now" element={<Home />} />
