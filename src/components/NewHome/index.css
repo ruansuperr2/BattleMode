@@ -51,6 +51,7 @@
     width: 6%;
     border-radius: 20px;
     background-color: #303030;
+    transition: 0.5s;
 
 }
 
@@ -64,21 +65,28 @@
 }
 
 .containerPageOneHomeContent{
+    width: 85%;
     padding-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .labelPageOneHome{
-    font-size: 40px;
+    margin-top: 3%;
+    width: 70%;
+    height: 100px;
+    background-size: cover;
+    background-image: url('./TITLEPAGEONE.png');
     font-weight: bolder;
-    margin-left: 5%;
     text-shadow: 3px 3px 3px #000000;
 }
 
 .tourneamentHighlightContainer{
-    margin-top: 5%;
-    margin-left: 15%;
+    margin-top: -1%;
     display: flex;
-    width: 60%;
+    width: 80%;
     gap: 2%;
     flex-wrap: wrap-reverse;
     justify-content: center;
@@ -186,7 +194,7 @@
     flex-direction: column;
     text-align: center;
     margin-top: 2%;
-    margin-left: -10%;
+
     z-index: 0;
 }
 
@@ -195,9 +203,10 @@
 }
 
 .currentPageHome{
+    transition: 0.5s;
     background-color: #fc6b03 !important ;
 }
 
 .containerDivider{
-    height: 200px;
+    height: 40vh;
 }

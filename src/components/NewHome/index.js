@@ -76,7 +76,7 @@ export default function NewHome () {
                     <div className="containerPageOneHome">
                         <div className="containerPageOneHomeContent">
                         
-                            <label className="labelPageOneHome">FIQUE DE OLHO NOS PRÓXIMOS TORNEIOS</label>
+                            <div className="labelPageOneHome"></div>
                             <div className='tourneamentHighlightContainer'>
                                 <div style={{backgroundImage: `url(https://am-a.akamaihd.net/image?resize=384:200&f=http%3A%2F%2Fstatic.lolesports.com%2Fdrops%2F1666107653920_JDG.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightOne'>
                                     <div className='tourneamentHighlitedDecoration'></div>
