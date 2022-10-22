@@ -166,25 +166,25 @@ export default function NewHome () {
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgThree'></div> */}
                                 </div>
-                                <div style={{backgroundImage: `url(https://sm.ign.com/ign_br/game/o/overwatch-/overwatch-2_x1j6.jpg)`}} className='gameHighlighted bigGameHiglightOne'>
+                                <div style={{backgroundImage: `url(https://images.pcgamingwiki.com/4/40/League_of_Legends_-_cover.jpg)`}} className='gameHighlighted bigGameHiglightOne'>
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
                                 </div>
-                                <div style={{backgroundImage: `url(https://www.fifplay.com/img/public/fifa-23-cover-star-kylian-mbappe.jpg)`}} className='gameHighlighted bigGameHiglightTwo'>
+                                <div style={{backgroundImage: `url(https://static-cdn.jtvnw.net/ttv-boxart/32399_IGDB-272x380.jpg)`}} className='gameHighlighted bigGameHiglightTwo'>
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgTwo'></div> */}
                                 </div>
-                                <div style={{backgroundImage: `url(https://cdn.givemesport.com/wp-content/uploads/2022/05/FR2AEX1XwAQx1Tz-727x1024.jpg)`}} className='gameHighlighted bigGameHiglightThree'>
+                                <div style={{backgroundImage: `url(https://i.pinimg.com/736x/d1/59/e9/d159e9ca272b73f56ef2b770a7c0b17b.jpg)`}} className='gameHighlighted bigGameHiglightThree'>
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgThree'></div> */}
                                 </div>
-                                <div style={{backgroundImage: `url(https://sm.ign.com/ign_br/game/o/overwatch-/overwatch-2_x1j6.jpg)`}} className='gameHighlighted bigGameHiglightOne'>
+                                <div style={{backgroundImage: `url(https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png)`}} className='gameHighlighted bigGameHiglightOne'>
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
                                 </div>
-                                <div style={{backgroundImage: `url(https://www.fifplay.com/img/public/fifa-23-cover-star-kylian-mbappe.jpg)`}} className='gameHighlighted bigGameHiglightTwo'>
+                                <div style={{backgroundImage: `url(https://files.meiobit.com/wp-content/uploads/2014/04/20140425hearthstone-000.jpg)`}} className='gameHighlighted bigGameHiglightTwo'>
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgTwo'></div> */}
                                 </div>
