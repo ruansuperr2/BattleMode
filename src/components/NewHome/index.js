@@ -144,7 +144,7 @@ export default function NewHome () {
                             </div>
                             <label className='labelAskingPageOneHome'>
                                 <label>Ficou interessado em um desses eventos? </label>
-                                <label>Faça um <a href='./login'>login agora</a> e dê uma olhada nos torneios de várias modalidades e jogos na plataforma!</label>
+                                <label>Faça <a href='./login'>login agora</a> e dê uma olhada nos torneios de várias modalidades e jogos na plataforma!</label>
                             </label>
                         </div>
                         <div className='containerDivider containerTwoDivider'/>
@@ -191,7 +191,7 @@ export default function NewHome () {
                             </div>
                             <label className='labelAskingPageOneHome'>
                                 <label>E essa lista só aumenta! </label>
-                                <label>Faça um <a href='./login'>login agora</a> e adicione o seu jogo favorito para o seu perfil!</label>
+                                <label>Faça <a href='./login'>login agora</a> e adicione o seu jogo favorito para o seu perfil!</label>
                             </label>
                         </div>
                         <div className='containerDivider containerThreeDivider'/>
