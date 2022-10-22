@@ -12,15 +12,13 @@
 .containerPageOneHomeContent{
     width: 85%;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
 }
 
 
 .containerPageTwoHomeContent{
     height: 100vh;
+    width: 85%;
 }
 
 .containerPageThreeHomeContent{
@@ -63,9 +61,12 @@
 
 }
 
+.miniDivider{
+    height: 7%;
+}
 
 .labelPageOneHome{
-    margin-top: 3%;
+    margin-left: 5%;
     width: 70%;
     height: 100px;
     background-size: cover;
@@ -77,7 +78,7 @@
 .tourneamentHighlightContainer{
     margin-top: -1%;
     display: flex;
-    width: 80%;
+    width: 100%;
     gap: 2%;
     flex-wrap: wrap-reverse;
     justify-content: center;
@@ -85,7 +86,7 @@
 }
 
 .tourneamentHighlighted{
-    width: 40%;
+    width: 37%;
     height: 13vw;
     position: relative;
     margin-top: 4%;
@@ -99,7 +100,7 @@
 
 .tourneamentHighlighted:hover{
     transition: 0.5s;
-    width: 41%;
+    width: 39%;
     height: 14vw;
     position: relative;
     margin-top: 4%;
@@ -124,15 +125,15 @@
 }
 
 .bigTourneamentHiglightThree{
-    width: 50%;
-    height: 14vw;
+    width: 45%;
+    height: 15vw;
     transition: 0.5s;
 }
 
 .bigTourneamentHiglightThree:hover{
     transition: 0.5s;
-    width: 54%;
-    height: 16vw;
+    width: 46%;
+    height: 17vw;
 }
 
 .tourneamentHighlitedImgOne{
@@ -201,4 +202,62 @@
 .containerDivider{
     width: 100%;
     height: 50vh;
+}
+
+.labelPageTwoHome{
+    margin-left: 5%;
+    width: 70%;
+    height: 100px;
+    background-size: cover;
+    background-image: url('./TITLEPAGETWO.png');
+    font-weight: bolder;
+    text-shadow: 3px 3px 3px #000000;
+}
+
+.gamesHighlightContainer{
+    margin-top: -1%;
+    margin-left: 15%;
+    display: flex;
+    width: 70%;
+    row-gap: 3%;
+    column-gap: 3%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameHighlighted{
+    width: 10vw;
+    height: 15vw;
+    position: relative;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 10px 10px 10px 0px #030303;
+    transition: 0.5s;
+}
+
+.gameHighlighted:hover{
+    transition: 0.5s;
+    width: 11vw;
+    height: 16vw;
+    position: relative;
+    margin-top: 2%;
+    box-shadow: 10px 10px 10px 0px #030303;
+    cursor: pointer;
+}
+
+.gameHighlitedDecoration{
+    width: 101%;
+    height: 101%;
+    margin-top: -1%;
+    margin-left: -2%;
+    background-image: url('./decoration.png');
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 30;
 }

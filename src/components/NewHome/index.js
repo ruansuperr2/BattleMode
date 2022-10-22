@@ -30,22 +30,24 @@ let index = 0
 const pageHandling = (funcProp) => {
     if(funcProp === 0){
         currentPage = 'pageOne'
+        callPageChanger()
         document.querySelector('.containerPageOneHomeContent').scrollIntoView({
             behavior: 'smooth'
         }, 500)
     }else if(funcProp === 8){
-        $('.labelPageTwoHome').text('CHUPA MINHA PIKA')
         currentPage ='pageTwo'
+        callPageChanger()
         document.querySelector('.containerPageTwoHomeContent').scrollIntoView({
             behavior: 'smooth'
         }, 500)
     }else if(funcProp === 16){
         currentPage ='pageThree'
+        callPageChanger()
         document.querySelector('.containerPageThreeHomeContent').scrollIntoView({
             behavior: 'smooth'
         }, 500)
     }
-    callPageChanger()
+    
 }
 
 $( window ).on('mousewheel', function(e){
@@ -120,7 +122,7 @@ export default function NewHome () {
                 <div>
                     <div className="containerPageOneHome">
                         <div className="containerPageOneHomeContent">
-                        
+                            <div className="miniDivider"></div>
                             <div className="labelPageOneHome"></div>
                             <div className='tourneamentHighlightContainer'>
                                 <div style={{backgroundImage: `url(https://am-a.akamaihd.net/image?resize=384:200&f=http%3A%2F%2Fstatic.lolesports.com%2Fdrops%2F1666107653920_JDG.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightOne'>
@@ -148,33 +150,55 @@ export default function NewHome () {
                         <div className='containerDivider containerTwoDivider'/>
                         <div className="containerPageTwoHomeContent" >
                             
-                        
-                            <label className="labelPageTwoHome">OLHA SÓ, FUNCIONOU</label>
-                            <div className='tourneamentHighlightContainer'>
-                                <div style={{backgroundImage: `url(https://am-a.akamaihd.net/image?resize=384:200&f=http%3A%2F%2Fstatic.lolesports.com%2Fdrops%2F1666107653920_JDG.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightOne'>
-                                    <div className='tourneamentHighlitedDecoration'></div>
+                            <div className="miniDivider"></div>
+                            <div className="labelPageTwoHome"></div>
+                            <div className='gamesHighlightContainer'>
+                                <div style={{backgroundImage: `url(https://sm.ign.com/ign_br/game/o/overwatch-/overwatch-2_x1j6.jpg)`}} className='gameHighlighted bigGameHiglightOne'>
+                                    <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
-                                    <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
                                 </div>
-                                <div style={{backgroundImage: `url(https://am-a.akamaihd.net/image?resize=384:200&f=http%3A%2F%2Fstatic.lolesports.com%2Fdrops%2F1666107653920_JDG.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightTwo'>
-                                    <div className='tourneamentHighlitedDecoration'></div>
+                                <div style={{backgroundImage: `url(https://www.fifplay.com/img/public/fifa-23-cover-star-kylian-mbappe.jpg)`}} className='gameHighlighted bigGameHiglightTwo'>
+                                    <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgTwo'></div> */}
-                                    <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
                                 </div>
-                                <div style={{backgroundImage: `url(https://am-a.akamaihd.net/image?resize=384:200&f=http%3A%2F%2Fstatic.lolesports.com%2Fdrops%2F1666107653920_JDG.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightThree'>
-                                    <div className='tourneamentHighlitedDecoration'></div>
+                                <div style={{backgroundImage: `url(https://cdn.givemesport.com/wp-content/uploads/2022/05/FR2AEX1XwAQx1Tz-727x1024.jpg)`}} className='gameHighlighted bigGameHiglightThree'>
+                                    <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgThree'></div> */}
-                                    <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
                                 </div>
+                                <div style={{backgroundImage: `url(https://sm.ign.com/ign_br/game/o/overwatch-/overwatch-2_x1j6.jpg)`}} className='gameHighlighted bigGameHiglightOne'>
+                                    <div className='gameHighlitedDecoration'></div>
+                                    {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
+                                </div>
+                                <div style={{backgroundImage: `url(https://www.fifplay.com/img/public/fifa-23-cover-star-kylian-mbappe.jpg)`}} className='gameHighlighted bigGameHiglightTwo'>
+                                    <div className='gameHighlitedDecoration'></div>
+                                    {/* <div className='tourneamentHighlitedImgTwo'></div> */}
+                                </div>
+                                <div style={{backgroundImage: `url(https://cdn.givemesport.com/wp-content/uploads/2022/05/FR2AEX1XwAQx1Tz-727x1024.jpg)`}} className='gameHighlighted bigGameHiglightThree'>
+                                    <div className='gameHighlitedDecoration'></div>
+                                    {/* <div className='tourneamentHighlitedImgThree'></div> */}
+                                </div>
+                                <div style={{backgroundImage: `url(https://sm.ign.com/ign_br/game/o/overwatch-/overwatch-2_x1j6.jpg)`}} className='gameHighlighted bigGameHiglightOne'>
+                                    <div className='gameHighlitedDecoration'></div>
+                                    {/* <div className='tourneamentHighlitedImgOne'></div> */}
+
+                                </div>
+                                <div style={{backgroundImage: `url(https://www.fifplay.com/img/public/fifa-23-cover-star-kylian-mbappe.jpg)`}} className='gameHighlighted bigGameHiglightTwo'>
+                                    <div className='gameHighlitedDecoration'></div>
+                                    {/* <div className='tourneamentHighlitedImgTwo'></div> */}
+                                </div>
                             </div>
+                            <label className='labelAskingPageOneHome'>
+                                <label>E essa lista só aumenta! </label>
+                                <label>Faça um <a href='./login'>login agora</a> e adicione o seu jogo favorito para o seu perfil!</label>
+                            </label>
                         </div>
                         <div className='containerDivider containerThreeDivider'/>
                         <div className="containerPageThreeHomeContent" >
                             
                         
-                            <label className="labelPageThreeHome">CARALHOU SÓ, FUNCIONOU</label>
+                            <div className="labelPageThreeHome">CARALHOU SÓ, FUNCIONOU</div>
                             <div className='tourneamentHighlightContainer'>
                                 <div style={{backgroundImage: `url(https://am-a.akamaihd.net/image?resize=384:200&f=http%3A%2F%2Fstatic.lolesports.com%2Fdrops%2F1666107653920_JDG.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightOne'>
                                     <div className='tourneamentHighlitedDecoration'></div>

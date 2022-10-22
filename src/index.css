@@ -4,6 +4,11 @@
 }
 
 @font-face {
+  font-family: SegoeUI;
+  src: url('./fonts/Segoe-UI-Variable-Static-Display.ttf');
+}
+
+@font-face {
   font-family: SegoeUI-Bold;
   src: url('./fonts/Segoe-UI-Variable-Static-Display-Bold.ttf');
 }
@@ -11,7 +16,7 @@
 
 body {
   margin: 0;
-  font-family: SegoeUI-VF;
+  font-family: SegoeUI;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
