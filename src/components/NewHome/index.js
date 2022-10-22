@@ -153,7 +153,7 @@ export default function NewHome () {
                             <div className="miniDivider"></div>
                             <div className="labelPageTwoHome"></div>
                             <div className='gamesHighlightContainer'>
-                                <div style={{backgroundImage: `url(https://sm.ign.com/ign_br/game/o/overwatch-/overwatch-2_x1j6.jpg)`}} className='gameHighlighted bigGameHiglightOne'>
+                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/80bf407312035ac647db895d9782ea26.jpg)`}} className='gameHighlighted bigGameHiglightOne'>
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
@@ -162,11 +162,11 @@ export default function NewHome () {
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgTwo'></div> */}
                                 </div>
-                                <div style={{backgroundImage: `url(https://cdn.givemesport.com/wp-content/uploads/2022/05/FR2AEX1XwAQx1Tz-727x1024.jpg)`}} className='gameHighlighted bigGameHiglightThree'>
+                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/fba05666aec048c550089d9bc5ac8f53.jpg)`}} className='gameHighlighted bigGameHiglightThree'>
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgThree'></div> */}
                                 </div>
-                                <div style={{backgroundImage: `url(https://images.pcgamingwiki.com/4/40/League_of_Legends_-_cover.jpg)`}} className='gameHighlighted bigGameHiglightOne'>
+                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/cf29ee336b07c0572c810f62f5543525.jpg)`}} className='gameHighlighted bigGameHiglightOne'>
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
@@ -179,7 +179,7 @@ export default function NewHome () {
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgThree'></div> */}
                                 </div>
-                                <div style={{backgroundImage: `url(https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png)`}} className='gameHighlighted bigGameHiglightOne'>
+                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/0ed5055450adbd836945761a6fa43ee0.jpg)`}} className='gameHighlighted bigGameHiglightOne'>
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
