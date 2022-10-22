@@ -136,7 +136,7 @@ export default function NewHome () {
                                     {/* <div className='tourneamentHighlitedImgTwo'></div> */}
                                     <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
                                 </div>
-                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/hero_thumb/3995a6e6c2f6c6ad38c489e252d0aded.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightThree'>
+                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/3031edd9d9431ac8a6598b5a47997a9c.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightThree'>
                                     <div className='tourneamentHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgThree'></div> */}
                                     <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>

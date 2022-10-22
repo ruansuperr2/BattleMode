@@ -5,7 +5,7 @@
     color: white;
     overflow: hidden;
     background: url('./background.png');
-    background-size: cover;
+    background-size: 100% 100%;
 
 }
 
@@ -86,8 +86,8 @@
 }
 
 .tourneamentHighlighted{
-    width: 37%;
-    height: 13vw;
+    width: 36%;
+    height: 12vw;
     position: relative;
     margin-top: 4%;
     display: flex;
@@ -101,8 +101,8 @@
 
 .tourneamentHighlighted:hover{
     transition: 0.5s;
-    width: 39%;
-    height: 14vw;
+    width: 37%;
+    height: 13vw;
     position: relative;
     margin-top: 4%;
     display: flex;
