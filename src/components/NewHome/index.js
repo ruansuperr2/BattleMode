@@ -34,13 +34,13 @@ const pageHandling = (funcProp) => {
         document.querySelector('.containerPageOneHomeContent').scrollIntoView({
             behavior: 'smooth'
         }, 500)
-    }else if(funcProp === 8){
+    }else if(funcProp === 4){
         currentPage ='pageTwo'
         callPageChanger()
         document.querySelector('.containerPageTwoHomeContent').scrollIntoView({
             behavior: 'smooth'
         }, 500)
-    }else if(funcProp === 16){
+    }else if(funcProp === 8){
         currentPage ='pageThree'
         callPageChanger()
         document.querySelector('.containerPageThreeHomeContent').scrollIntoView({
@@ -125,18 +125,18 @@ export default function NewHome () {
                             <div className="miniDivider"></div>
                             <div className="labelPageOneHome"></div>
                             <div className='tourneamentHighlightContainer'>
-                                <div style={{backgroundImage: `url(https://am-a.akamaihd.net/image?resize=384:200&f=http%3A%2F%2Fstatic.lolesports.com%2Fdrops%2F1666107653920_JDG.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightOne'>
+                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/hero_thumb/85422afb467e9456013a2a51d4dff702.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightOne'>
                                     <div className='tourneamentHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
                                     <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
                                 </div>
-                                <div style={{backgroundImage: `url(https://i.ytimg.com/vi/Zahi70uvvJg/sddefault_live.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightTwo'>
+                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/4800deb3f3be382f97782401f775184a.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightTwo'>
                                     <div className='tourneamentHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgTwo'></div> */}
                                     <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
                                 </div>
-                                <div style={{backgroundImage: `url(https://am-a.akamaihd.net/image?resize=384:200&f=http%3A%2F%2Fstatic.lolesports.com%2Fdrops%2F1666107653920_JDG.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightThree'>
+                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/hero_thumb/3995a6e6c2f6c6ad38c489e252d0aded.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightThree'>
                                     <div className='tourneamentHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgThree'></div> */}
                                     <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
@@ -240,7 +240,7 @@ export default function NewHome () {
                         }, 500)
                     }} className="pageSelector pageNumberOne currentPageHome"></div>
                 <div onClick={() => {
-                        index = 8   
+                        index = 4   
                         currentPage = 'pageTwo'
                         callPageChanger()
                         document.querySelector('.containerPageTwoHomeContent').scrollIntoView({
@@ -248,7 +248,7 @@ export default function NewHome () {
                         }, 500)
                     }} className="pageSelector pageNumberTwo"></div>
                 <div onClick={() => {
-                        index = 16
+                        index = 8
                         currentPage = 'pageThree'
                         callPageChanger()
                         document.querySelector('.containerPageThreeHomeContent').scrollIntoView({
