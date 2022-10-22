@@ -45,6 +45,7 @@ const pageHandling = (funcProp) => {
             behavior: 'smooth'
         }, 500)
     }
+    callPageChanger()
 }
 
 $( window ).on('mousewheel', function(e){
@@ -71,6 +72,23 @@ $( window ).on('mousewheel', function(e){
 export default function NewHome () {
 
     useEffect(() => {
+        switch(currentPage){
+            case 'pageOne':
+                document.querySelector('.pageNumberOne').classList.add('currentPageHome')
+                document.querySelector('.pageNumberTwo').classList.remove('currentPageHome')
+                document.querySelector('.pageNumberThree').classList.remove('currentPageHome')
+                break
+            case 'pageTwo':
+                document.querySelector('.pageNumberOne').classList.remove('currentPageHome')
+                document.querySelector('.pageNumberTwo').classList.add('currentPageHome')
+                document.querySelector('.pageNumberThree').classList.remove('currentPageHome')
+                break
+            case 'pageThree':
+                document.querySelector('.pageNumberOne').classList.remove('currentPageHome')
+                document.querySelector('.pageNumberTwo').classList.remove('currentPageHome')
+                document.querySelector('.pageNumberThree').classList.add('currentPageHome')
+                break
+        }
         // window.addEventListener("wheel", (event) => {
         //     console.log(document.querySelector('.containerPageTwoHomeContent').getBoundingClientRect())
         //     console.log(event)
