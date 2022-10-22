@@ -158,7 +158,7 @@ export default function NewHome () {
                                     {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
                                 </div>
-                                <div style={{backgroundImage: `url(https://www.fifplay.com/img/public/fifa-23-cover-star-kylian-mbappe.jpg)`}} className='gameHighlighted bigGameHiglightTwo'>
+                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/51e0f86b7cb74096e922bd52653bd235.png)`}} className='gameHighlighted bigGameHiglightTwo'>
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgTwo'></div> */}
                                 </div>
@@ -171,7 +171,7 @@ export default function NewHome () {
                                     {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
                                 </div>
-                                <div style={{backgroundImage: `url(https://static-cdn.jtvnw.net/ttv-boxart/32399_IGDB-272x380.jpg)`}} className='gameHighlighted bigGameHiglightTwo'>
+                                <div style={{backgroundImage: `url(https://images-ext-1.discordapp.net/external/gw0a3aqpIMCK8cfBE40cm5-9qg90ZV6Q2eIH1zvCtHc/https/cdn2.steamgriddb.com/file/sgdb-cdn/thumb/9231cf33ba4a94d91af5b5071a671346.jpg)`}} className='gameHighlighted bigGameHiglightTwo'>
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgTwo'></div> */}
                                 </div>
@@ -184,7 +184,7 @@ export default function NewHome () {
                                     {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
                                 </div>
-                                <div style={{backgroundImage: `url(https://files.meiobit.com/wp-content/uploads/2014/04/20140425hearthstone-000.jpg)`}} className='gameHighlighted bigGameHiglightTwo'>
+                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/12dc78e6688e6756f8e934e778b817fe.jpg)`}} className='gameHighlighted bigGameHiglightTwo'>
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgTwo'></div> */}
                                 </div>

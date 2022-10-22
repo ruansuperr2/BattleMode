@@ -251,13 +251,13 @@
 }
 
 .gameHighlitedDecoration{
-    width: 101%;
-    height: 101%;
-    margin-top: -1%;
-    margin-left: -2%;
-    background-image: url('./decoration.png');
+    width: 104%;
+    height: 102.5%;
+    margin-bottom: -2%;
+    margin-left: -1.5%;
+    background-image: url('./decorationVertical.png');
     position: absolute;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     z-index: 30;
 }
