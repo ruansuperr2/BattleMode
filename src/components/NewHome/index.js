@@ -4,70 +4,73 @@ import './index.css'
 
 import $ from 'jquery'
 
+let currentPage = 'pageOne'
+const callPageChanger = () => {
+    switch(currentPage){
+        case 'pageOne':
+            document.querySelector('.pageNumberOne').classList.add('currentPageHome')
+            document.querySelector('.pageNumberTwo').classList.remove('currentPageHome')
+            document.querySelector('.pageNumberThree').classList.remove('currentPageHome')
+            break
+        case 'pageTwo':
+            document.querySelector('.pageNumberOne').classList.remove('currentPageHome')
+            document.querySelector('.pageNumberTwo').classList.add('currentPageHome')
+            document.querySelector('.pageNumberThree').classList.remove('currentPageHome')
+            break
+        case 'pageThree':
+            document.querySelector('.pageNumberOne').classList.remove('currentPageHome')
+            document.querySelector('.pageNumberTwo').classList.remove('currentPageHome')
+            document.querySelector('.pageNumberThree').classList.add('currentPageHome')
+            break
+    }
+}
+
+
 let index = 0
+const pageHandling = (funcProp) => {
+    if(funcProp === 0){
+        currentPage = 'pageOne'
+        document.querySelector('.containerPageOneHomeContent').scrollIntoView({
+            behavior: 'smooth'
+        }, 500)
+    }else if(funcProp === 8){
+        $('.labelPageTwoHome').text('CHUPA MINHA PIKA')
+        currentPage ='pageTwo'
+        document.querySelector('.containerPageTwoHomeContent').scrollIntoView({
+            behavior: 'smooth'
+        }, 500)
+    }else if(funcProp === 16){
+        currentPage ='pageThree'
+        document.querySelector('.containerPageThreeHomeContent').scrollIntoView({
+            behavior: 'smooth'
+        }, 500)
+    }
+}
+
+$( window ).on('mousewheel', function(e){
+    if(e.originalEvent.wheelDelta /120 > 0) {
+        console.log('up')
+        if(index === 0){
+            index = 0
+        }else{
+            index--
+        }
+        pageHandling(index)
+    }
+    else{
+        console.log('down')
+        if(index === 16){
+            index = 16
+        }else{
+            index++
+        }
+        pageHandling(index)
+    }
+})
 
 export default function NewHome () {
-    const [currentPage, setCurrentPage] = useState('')
-    const callPageChanger = () => {
-        switch(currentPage){
-            case 'pageOne':
-                document.querySelector('.pageNumberOne').classList.add('currentPageHome')
-                document.querySelector('.pageNumberTwo').classList.remove('currentPageHome')
-                document.querySelector('.pageNumberThree').classList.remove('currentPageHome')
-                break
-            case 'pageTwo':
-                document.querySelector('.pageNumberOne').classList.remove('currentPageHome')
-                document.querySelector('.pageNumberTwo').classList.add('currentPageHome')
-                document.querySelector('.pageNumberThree').classList.remove('currentPageHome')
-                break
-            case 'pageThree':
-                document.querySelector('.pageNumberOne').classList.remove('currentPageHome')
-                document.querySelector('.pageNumberTwo').classList.remove('currentPageHome')
-                document.querySelector('.pageNumberThree').classList.add('currentPageHome')
-                break
-        }
-    }
-    const pageHandling = (funcProp) => {
-        if(funcProp === 0){
-            setCurrentPage('pageOne')
-            document.querySelector('.containerPageOneHomeContent').scrollIntoView({
-                behavior: 'smooth'
-            }, 500)
-        }else if(funcProp === 8){
-            $('.labelPageTwoHome').text('CHUPA MINHA PIKA')
-            setCurrentPage('pageTwo')
-            document.querySelector('.containerPageTwoHomeContent').scrollIntoView({
-                behavior: 'smooth'
-            }, 500)
-        }else if(funcProp === 16){
-            setCurrentPage('pageThree')
-            document.querySelector('.containerPageThreeHomeContent').scrollIntoView({
-                behavior: 'smooth'
-            }, 500)
-        }
-    }
 
     useEffect(() => {
-        $( window ).on('mousewheel', function(e){
-            if(e.originalEvent.wheelDelta /120 > 0) {
-                console.log('up')
-                if(index === 0){
-                    index = 0
-                }else{
-                    index--
-                }
-                pageHandling(index)
-            }
-            else{
-                console.log('down')
-                if(index === 16){
-                    index = 16
-                }else{
-                    index++
-                }
-                pageHandling(index)
-            }
-        })
         // window.addEventListener("wheel", (event) => {
         //     console.log(document.querySelector('.containerPageTwoHomeContent').getBoundingClientRect())
         //     console.log(event)
@@ -90,7 +93,7 @@ export default function NewHome () {
         // })
         
     })
-    callPageChanger()
+
 
     return(
         <div className="containerNewHome">
@@ -185,7 +188,7 @@ export default function NewHome () {
             <div className="containerPagesSelector">
                 <div onClick={() => {
                         index = 0
-                        setCurrentPage('pageOne')
+                        currentPage = 'pageOne'
                         callPageChanger()
                         // document.querySelector('.containerPageOneHomeContent').scrollIntoView({
                         //     behavior: 'smooth'
@@ -196,7 +199,7 @@ export default function NewHome () {
                     }} className="pageSelector pageNumberOne currentPageHome"></div>
                 <div onClick={() => {
                         index = 8   
-                        setCurrentPage('pageTwo')
+                        currentPage = 'pageTwo'
                         callPageChanger()
                         document.querySelector('.containerPageTwoHomeContent').scrollIntoView({
                             behavior: 'smooth'
@@ -204,7 +207,7 @@ export default function NewHome () {
                     }} className="pageSelector pageNumberTwo"></div>
                 <div onClick={() => {
                         index = 16
-                        setCurrentPage('pageThree')
+                        currentPage = 'pageThree'
                         callPageChanger()
                         document.querySelector('.containerPageThreeHomeContent').scrollIntoView({
                             behavior: 'smooth'
