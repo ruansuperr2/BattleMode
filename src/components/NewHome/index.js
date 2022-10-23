@@ -62,8 +62,8 @@ $( window ).on('mousewheel', function(e){
     }
     else{
         console.log('down')
-        if(index === 16){
-            index = 16
+        if(index === 8){
+            index = 8
         }else{
             index++
         }
