@@ -7,7 +7,7 @@ function TodosTorneios() {
         <div className="divPrediletosMainContainer">
             
             <div className='divPrediletosUmSubContainer'>
-                <h1 className='NameGamePrediletos'>League of Legends</h1>
+                {/* <h1 className='NameGamePrediletos'>League of Legends</h1> */}
                 <Torneio/>
             </div>
         </div>

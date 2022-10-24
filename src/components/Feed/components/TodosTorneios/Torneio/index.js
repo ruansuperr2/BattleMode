@@ -14,7 +14,7 @@ function TorneioUm() {
         setCooldown('disabled')
         e.preventDefault()
 
-        carousel.current.scrollLeft -= carousel.current.offsetWidth
+        carousel.current.scrollLeft -= carousel.current.offsetWidth -14
         setTimeout(() => {
             setCooldown('')
         }, 550);
@@ -24,7 +24,7 @@ function TorneioUm() {
         e.preventDefault()
         setCooldown('disabled')
 
-        carousel.current.scrollLeft += carousel.current.offsetWidth
+        carousel.current.scrollLeft += carousel.current.offsetWidth -14
         setTimeout(() => {
             setCooldown('')
         }, 550);
@@ -35,41 +35,139 @@ function TorneioUm() {
             <div className='torneioContainer' ref={carousel}>
 
                 <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
                     <h1 className='TorneioH1'>Gaia Cup</h1>
                 </a>
 
                 <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt2})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
                     <h1 className='TorneioH1'>Gaia Cup</h1>
                 </a>
 
                 <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
                     <h1 className='TorneioH1'>Gaia Cup</h1>
                 </a>
 
                 <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
                     <h1 className='TorneioH1'>Gaia Cup</h1>
                 </a>
 
                 <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
                     <h1 className='TorneioH1'>Gaia Cup</h1>
                 </a>
 
                 <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
                     <h1 className='TorneioH1'>Gaia Cup</h1>
                 </a>
 
                 <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
                     <h1 className='TorneioH1'>Gaia Cup</h1>
                 </a>
 
                 <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
                     <h1 className='TorneioH1'>Gaia Cup</h1>
                 </a>
 
                 <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
                     <h1 className='TorneioH1'>Gaia Cup</h1>
                 </a>
 
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
+
+                <a href='./participar' className='Torneio' style={{backgroundImage: `url(${placeholderArt3})`}}>
+                    <h1 className='NameGamePrediletos'>League of Legends</h1>
+                    <h1 className='TorneioH1'>Gaia Cup</h1>
+                </a>
             </div>
             <div className='containerTorneioSetas'>
                 <button className='buttonSeta' onClick={handleLeftClick} disabled={cooldown}><AiOutlineArrowLeft/></button>
