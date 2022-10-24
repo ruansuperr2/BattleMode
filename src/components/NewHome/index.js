@@ -197,24 +197,23 @@ export default function NewHome () {
                         <div className='containerDivider containerThreeDivider'/>
                         <div className="containerPageThreeHomeContent" >
                             
-                        
-                            <div className="labelPageThreeHome">CARALHOU SÓ, FUNCIONOU</div>
-                            <div className='tourneamentHighlightContainer'>
-                                <div style={{backgroundImage: `url(https://am-a.akamaihd.net/image?resize=384:200&f=http%3A%2F%2Fstatic.lolesports.com%2Fdrops%2F1666107653920_JDG.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightOne'>
-                                    <div className='tourneamentHighlitedDecoration'></div>
-                                    {/* <div className='tourneamentHighlitedImgOne'></div> */}
+                            <div className="miniDivider"></div>
+                            <div className="labelPageTwoHome"></div>
+                            <div className='customizationSliderHighlightContainer'>
+                                <div className='divContainerSliderNewHome'>
 
-                                    <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
-                                </div>
-                                <div style={{backgroundImage: `url(https://am-a.akamaihd.net/image?resize=384:200&f=http%3A%2F%2Fstatic.lolesports.com%2Fdrops%2F1666107653920_JDG.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightTwo'>
-                                    <div className='tourneamentHighlitedDecoration'></div>
-                                    {/* <div className='tourneamentHighlitedImgTwo'></div> */}
-                                    <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
-                                </div>
-                                <div style={{backgroundImage: `url(https://am-a.akamaihd.net/image?resize=384:200&f=http%3A%2F%2Fstatic.lolesports.com%2Fdrops%2F1666107653920_JDG.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightThree'>
-                                    <div className='tourneamentHighlitedDecoration'></div>
-                                    {/* <div className='tourneamentHighlitedImgThree'></div> */}
-                                    <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
+                                    <div style={{backgroundImage: `url(https://am-a.akamaihd.net/image?resize=384:200&f=http%3A%2F%2Fstatic.lolesports.com%2Fdrops%2F1666107653920_JDG.jpg)`}} className='customizationSliderImageSlide'>
+                                        {/* <div className='tourneamentHighlitedDecoration'></div> */}
+                                        {/* <div className='tourneamentHighlitedImgOne'></div> */}
+
+                                        {/* <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label> */}
+                                    </div>
+                                    <div className='customizationSliderTextSlide'>
+                                        {/* <div className='tourneamentHighlitedDecoration'></div> */}
+                                        {/* <div className='tourneamentHighlitedImgOne'></div> */}
+
+                                        {/* <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label> */}
+                                    </div>
                                 </div>
                             </div>
                         </div>

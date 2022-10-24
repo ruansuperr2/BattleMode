@@ -275,3 +275,49 @@
     background-repeat: no-repeat;
     z-index: 30;
 }
+
+
+.customizationSliderHighlightContainer{
+    margin-top: 4%;
+    margin-left: 8%;
+    display: flex;
+    width: 70%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.divContainerSliderNewHome{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    
+}
+
+.customizationSliderImageSlide{
+    width: 60%;
+    height: 100%;
+    position: relative;
+    margin-top: 4%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-size: cover;
+    background-position: 0% -40px;
+    box-shadow: 10px 10px 10px 0px #030303;
+}
+
+.customizationSliderTextSlide{
+    background-image: url('./pagethreebackground.png');
+    width: 40%;
+    height: 100%;
+    position: relative;
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-size: cover;
+    background-position: 0% -40px;
+    box-shadow: 10px 10px 10px 0px #030303;
+    background-size: cover;
+}
