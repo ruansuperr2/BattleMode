@@ -291,7 +291,7 @@
     width: 100%;
     height: 50vh;
     display: flex;
-    
+
 }
 
 .customizationSliderImageSlide{
@@ -303,8 +303,9 @@
     flex-direction: row;
     justify-content: flex-end;
     background-size: cover;
-    background-position: 0% -40px;
     box-shadow: 10px 10px 10px 0px #030303;
+    border: 1px solid #fc6b03;
+    border-radius: 2px;
 }
 
 .customizationSliderTextSlide{
@@ -316,8 +317,19 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    background-size: cover;
-    background-position: 0% -40px;
     box-shadow: 10px 10px 10px 0px #030303;
+    background-size: 100% 100%;
+    border: 1px solid #fc6b03;
+    border-left: none;
+    border-radius: 2px;
+}
+
+.labelPageThreeHome{
+    margin-left: 5%;
+    width: 70%;
+    height: 100px;
     background-size: cover;
+    background-image: url('./TITLEPAGETHREE.png');
+    font-weight: bolder;
+    text-shadow: 3px 3px 3px #000000;
 }

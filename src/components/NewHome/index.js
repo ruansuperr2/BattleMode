@@ -198,7 +198,7 @@ export default function NewHome () {
                         <div className="containerPageThreeHomeContent" >
                             
                             <div className="miniDivider"></div>
-                            <div className="labelPageTwoHome"></div>
+                            <div className="labelPageThreeHome"></div>
                             <div className='customizationSliderHighlightContainer'>
                                 <div className='divContainerSliderNewHome'>
 
