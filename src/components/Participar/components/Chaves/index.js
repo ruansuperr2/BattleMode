@@ -14,7 +14,9 @@ function Chaves(){
                         <h1>Gaia Cup</h1>
                         <Swiss/>
                     </div>
+                    
                 </div>
+            <Footer/>
         </div>
     )
 }
