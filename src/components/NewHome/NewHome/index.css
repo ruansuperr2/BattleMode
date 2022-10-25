@@ -1,0 +1,396 @@
+.containerNewHome{
+    background-color: #121212;
+    margin: 0%;
+    height: 100vh;
+    color: white;
+    overflow: hidden;
+    background: url('./background.png');
+    background-size: 100% 100%;
+
+}
+
+.containerPageOneHomeContent{
+    width: 85%;
+    height: 100vh;
+
+}
+
+
+.containerPageTwoHomeContent{
+    height: 100vh;
+    width: 85%;
+}
+
+.containerPageThreeHomeContent{
+    height: 100vh;
+}
+
+.containerPageOneHome{
+    margin: 0;
+    width: 100%;
+}
+
+.containerPagesSelector{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    position: absolute;
+    right: 2%;
+    top: 0%;
+    width: 10%;
+    height: 100%;
+}
+
+.pageSelector{
+    height: 100px;
+    width: 6%;
+    border-radius: 20px;
+    background-color: #303030;
+    transition: 0.5s;
+
+}
+
+.pageSelector:hover{
+    height: 100px;
+    width: 6%;
+    border-radius: 20px;
+    background-color: #868686;
+    cursor: pointer;
+
+}
+
+.miniDivider{
+    height: 7%;
+}
+
+.labelPageOneHome{
+    margin-left: 5%;
+    width: 70%;
+    height: 100px;
+    background-size: cover;
+    background-image: url('./TITLEPAGEONE.png');
+    font-weight: bolder;
+    text-shadow: 3px 3px 3px #000000;
+}
+
+.tourneamentHighlightContainer{
+    margin-top: -1%;
+    display: flex;
+    width: 100%;
+    gap: 2%;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.tourneamentHighlighted{
+    width: 36%;
+    height: 12vw;
+    position: relative;
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-size: cover;
+    background-position: 0% -40px;
+    box-shadow: 10px 10px 10px 0px #030303;
+    transition: 0.5s;
+}
+
+.tourneamentHighlighted:hover{
+    transition: 0.5s;
+    width: 37%;
+    height: 13vw;
+    position: relative;
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 10px 10px 10px 0px #030303;
+    cursor: pointer;
+}
+
+.tourneamentHighlitedDecoration{
+    width: 102%;
+    height: 102%;
+    margin-top: -1%;
+    margin-left: -1%;
+    background-image: url('./decoration.png');
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 30;
+}
+
+.bigTourneamentHiglightThree{
+    width: 42%;
+    height: 15vw;
+    transition: 0.5s;
+}
+
+.bigTourneamentHiglightThree:hover{
+    transition: 0.5s;
+    width: 43%;
+    height: 16vw;
+}
+
+.tourneamentHighlitedImgOne{
+    width: 100%;
+    height: 100%;
+    background: url('./F1_2022.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 20;
+}
+
+.tourneamentHighlitedImgTwo{
+    width: 100%;
+    height: 100%;
+    background: url('./F1_2022.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 20;
+}
+
+.tourneamentHighlitedImgThree{
+    width: 100%;
+    height: 100%;
+    background: url('./F1_2022.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 20;
+
+}
+
+.tourneamentHighlighted img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid #fc6b03;
+    margin: 5px;
+    margin-right: 20px;
+}
+
+.tourneamentHighlighted label{
+    display: flex;
+    align-items: center;
+    
+    background-color: #303030;
+    z-index: 20;
+}
+
+.labelAskingPageOneHome{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 2%;
+
+    z-index: 0;
+}
+
+.labelAskingPageOneHome a{
+    color: #fc6b03;
+}
+
+.currentPageHome{
+    transition: 0.5s;
+    background-color: #fc6b03 !important ;
+}
+
+.containerDivider{
+    width: 100%;
+    height: 50vh;
+}
+
+.labelPageTwoHome{
+    margin-left: 5%;
+    width: 70%;
+    height: 100px;
+    background-size: cover;
+    background-image: url('./TITLEPAGETWO.png');
+    font-weight: bolder;
+    text-shadow: 3px 3px 3px #000000;
+}
+
+.gamesHighlightContainer{
+    margin-top: -1%;
+    margin-left: 15%;
+    display: flex;
+    width: 70%;
+    row-gap: 3%;
+    column-gap: 3%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameHighlighted{
+    width: 10vw;
+    height: 15vw;
+    position: relative;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 10px 10px 10px 0px #030303;
+    transition: 0.3s;
+}
+
+.gameHighlighted:hover{
+    transition: 0.3s;
+    width: 11vw;
+    height: 16vw;
+    position: relative;
+    margin-top: 2%;
+    box-shadow: 10px 10px 10px 0px #030303;
+    cursor: pointer;
+}
+
+.gameHighlitedDecoration{
+    width: 104%;
+    height: 102.5%;
+    margin-bottom: -2%;
+    margin-left: -1.5%;
+    background-image: url('./decorationVertical.png');
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 30;
+    transition: 0.3s;
+}
+
+.gameHighlitedDecoration:hover{
+    transition: 0.3s;
+    width: 106%;
+    height: 104.5%;
+    margin-bottom: -4%;
+    margin-left: -1%;
+    background-image: url('./decorationVertical.png');
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 30;
+}
+
+
+.customizationSliderHighlightContainer{
+    margin-top: 4%;
+    margin-left: 8%;
+    display: flex;
+    width: 70%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.divContainerSliderNewHome{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+
+}
+
+.customizationSliderImageSlide{
+    width: 60%;
+    height: 100%;
+    position: relative;
+    margin-top: 4%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-size: cover;
+    box-shadow: 10px 10px 10px 0px #030303;
+    border: 1px solid #fc6b03;
+    border-radius: 2px;
+}
+
+.customizationSliderTextSlide{
+    background-image: url('./pagethreebackground.png');
+    width: 40%;
+    height: 100%;
+    position: relative;
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 10px 10px 10px 0px #030303;
+    background-size: 100% 100%;
+    border: 1px solid #fc6b03;
+    border-left: none;
+    border-radius: 2px;
+}
+
+.labelPageThreeHome{
+    margin-left: 5%;
+    width: 70%;
+    height: 100px;
+    background-size: cover;
+    background-image: url('./TITLEPAGETHREE.png');
+    font-weight: bolder;
+    text-shadow: 3px 3px 3px #000000;
+}
+
+.sliderDots{
+    position: absolute;
+    bottom: 15px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 30px;
+}
+
+.sliderDots div{
+    border-radius: 40px;
+    width: 16%;
+    height: 10px;
+    background-color: red;
+}
+
+.sliderArrows{
+    position: absolute;
+    top: 40%;
+    display: flex;
+    width: 100%;
+
+    justify-content: space-between;
+}
+
+.divContainerSliderPages{
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+}
+
+.divSliderPage{
+    transition: 0.5s;
+    height: 100%;
+    background-position: top;
+    background-size: cover;
+}
+
+.divSliderPageOne{
+    background-color: deepskyblue;
+    background-image: url('./firstSlide.png');
+    width: 0%;
+    image-rendering: crisp-edges;
+}
+
+.divSliderPageTwo{
+    background-color: darkkhaki;
+    background-image: url('./firstSlide.png');
+    width: 100%;
+}
+
+.divSliderPageThree{
+    width: 0%;
+    background-color: sienna;
+    background-image: url('./firstSlide.png');
+}
+
+.dotsFromSlide:hover{
+    cursor: pointer; 
+}
