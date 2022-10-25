@@ -4,6 +4,7 @@ import Navbar from "../Navbar";
 import ModalCustom from '../Modal';
 import { showModal, closeModal} from "../Modal";
 import TorneioHeader from "./components/TorneioHeader";
+import Chaves from "./components/Chaves";
 import './index.css';
 
 function Participar() {
@@ -50,11 +51,9 @@ function Participar() {
 
     return (
         <div className='divParticiparMainContainer'>
-            <Navbar page="Participar" />
+            <Navbar page={'usuario'} />
             <ModalCustom/>
-            <div className="divMainTorneio">
-                <h1 className="tituloTorneio">Gaia Cup</h1>
-            </div>
+            <div className="divMainTorneio" />
 
             <div>
                 <div className='perfilNavigation'>
@@ -69,7 +68,7 @@ function Participar() {
                         <TorneioHeader/>
                     </div>
                     <div className="divDesc">
-                        <p className="descricao">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac</p>
+                        <p className="descricao">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
                     </div>
                 </div>
                 <div className='divCampoEquipe campos' >
@@ -77,9 +76,10 @@ function Participar() {
                 </div>
                 <div className='divCampoParticipar campos' >
                     <h1 className="UserNameOnProfile"><div className='divImgFundoMainContainer'/>3</h1>
+                
                 </div>
-                <Footer/>
             </div>
+            <Footer/>
         </div>
     )
 }
