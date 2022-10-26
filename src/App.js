@@ -13,7 +13,7 @@ import PaginaNaoEncontrada from './components/PaginaNaoEncontrada'
 import LandingPage from './components/LandingPage'
 import Participar from './components/Participar'
 import Chaves from './components/Participar/components/Chaves'
-import NewHome from './components/newHome'
+import NewHome from './components/NewHome'
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 
 function App() {
