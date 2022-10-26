@@ -5,6 +5,7 @@ import './index.css'
 import $ from 'jquery'
 
 let currentPage = 'pageOne'
+let currentSlide = 'slideOne'
 const callPageChanger = () => {
     switch(currentPage){
         case 'pageOne':
@@ -25,8 +26,30 @@ const callPageChanger = () => {
     }
 }
 
+const callSlideChanger = () => {
+    switch(currentSlide){
+        case 'slideOne':
+            document.querySelector('.divSliderPageOne').style.width = '100%'
+            document.querySelector('.divSliderPageTwo').style.width = '0%'
+            document.querySelector('.divSliderPageThree').style.width = '0%'
+            break
+        case 'slideTwo':
+            document.querySelector('.divSliderPageOne').style.width = '0%'
+            document.querySelector('.divSliderPageTwo').style.width = '100%'
+            document.querySelector('.divSliderPageThree').style.width = '0%'
+            break
+        case 'slideThree':
+            document.querySelector('.divSliderPageOne').style.width = '0%'
+            document.querySelector('.divSliderPageTwo').style.width = '0%'
+            document.querySelector('.divSliderPageThree').style.width = '100%'
+            break
+
+    }
+}
+
 
 let index = 0
+
 const pageHandling = (funcProp) => {
     if(funcProp === 0){
         currentPage = 'pageOne'
@@ -91,29 +114,25 @@ export default function NewHome () {
                 document.querySelector('.pageNumberThree').classList.add('currentPageHome')
                 break
         }
-        // window.addEventListener("wheel", (event) => {
-        //     console.log(document.querySelector('.containerPageTwoHomeContent').getBoundingClientRect())
-        //     console.log(event)
-        //     if(event.deltaY === 100){
-        //         if(index === 16){
-        //             index = 16
-        //         }else{
-        //             index++
-        //         }
-        //     }else if(event.deltaY === -100){
-        //         if(index === 0){
-        //             index = 0
-        //         }else{
-        //             index--   
-        //         }
-        //     }
-        //     console.log(index)
-            
-        //     pageHandling(index)
-        // })
-        
-    })
 
+        switch (currentSlide) {
+            case 'slideOne':
+                document.querySelector('.divSliderPageOne').style.width = '100%'
+                document.querySelector('.divSliderPageTwo').style.width = '0%'
+                document.querySelector('.divSliderPageThree').style.width = '0%'
+                break
+            case 'slideTwo':
+                document.querySelector('.divSliderPageOne').style.width = '0%'
+                document.querySelector('.divSliderPageTwo').style.width = '100%'
+                document.querySelector('.divSliderPageThree').style.width = '0%'
+                break
+            case 'slideThree':
+                document.querySelector('.divSliderPageOne').style.width = '0%'
+                document.querySelector('.divSliderPageTwo').style.width = '0%'
+                document.querySelector('.divSliderPageThree').style.width = '100%'
+                break
+        }
+    })
 
     return(
         <div className="containerNewHome">
@@ -202,11 +221,37 @@ export default function NewHome () {
                             <div className='customizationSliderHighlightContainer'>
                                 <div className='divContainerSliderNewHome'>
 
-                                    <div style={{backgroundImage: `url(https://am-a.akamaihd.net/image?resize=384:200&f=http%3A%2F%2Fstatic.lolesports.com%2Fdrops%2F1666107653920_JDG.jpg)`}} className='customizationSliderImageSlide'>
+                                    <div className='customizationSliderImageSlide'>
                                         {/* <div className='tourneamentHighlitedDecoration'></div> */}
                                         {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
                                         {/* <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label> */}
+                                        <div className='divContainerSliderPages'>
+                                            <div className='divSliderPage divSliderPageOne'>
+                                                
+                                            </div>
+                                            <div className='divSliderPage divSliderPageTwo'>
+
+                                            </div>
+                                            <div className='divSliderPage divSliderPageThree'>
+
+                                            </div>
+                                        </div>
+                                        <div className='sliderDots'>
+                                            <div onClick={() => {
+                                                console.log('test')
+                                                currentSlide = 'slideOne'
+                                                callSlideChanger()
+                                            }} className='dotsFromSlide dotOneSlide'/>
+                                            <div onClick={() => {
+                                                currentSlide = 'slideTwo'
+                                                callSlideChanger()
+                                            }} className='dotsFromSlide dotTwoSlide'/>
+                                            <div onClick={() => {
+                                                currentSlide = 'slideThree'
+                                                callSlideChanger()
+                                            }} className='dotsFromSlide dotThreeSlide'/>
+                                        </div>
                                     </div>
                                     <div className='customizationSliderTextSlide'>
                                         {/* <div className='tourneamentHighlitedDecoration'></div> */}

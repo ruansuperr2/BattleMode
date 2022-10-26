@@ -333,3 +333,64 @@
     font-weight: bolder;
     text-shadow: 3px 3px 3px #000000;
 }
+
+.sliderDots{
+    position: absolute;
+    bottom: 15px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 30px;
+}
+
+.sliderDots div{
+    border-radius: 40px;
+    width: 16%;
+    height: 10px;
+    background-color: red;
+}
+
+.sliderArrows{
+    position: absolute;
+    top: 40%;
+    display: flex;
+    width: 100%;
+
+    justify-content: space-between;
+}
+
+.divContainerSliderPages{
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+}
+
+.divSliderPage{
+    transition: 0.5s;
+    height: 100%;
+    background-position: top;
+    background-size: cover;
+}
+
+.divSliderPageOne{
+    background-color: deepskyblue;
+    background-image: url('./firstSlide.png');
+    width: 0%;
+    image-rendering: crisp-edges;
+}
+
+.divSliderPageTwo{
+    background-color: darkkhaki;
+    background-image: url('./firstSlide.png');
+    width: 100%;
+}
+
+.divSliderPageThree{
+    width: 0%;
+    background-color: sienna;
+    background-image: url('./firstSlide.png');
+}
+
+.dotsFromSlide:hover{
+    cursor: pointer; 
+}
