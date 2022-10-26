@@ -29,19 +29,34 @@ const callPageChanger = () => {
 const callSlideChanger = () => {
     switch(currentSlide){
         case 'slideOne':
+            document.querySelector('.dotOneSlide').classList.add('currentPageHome')
+            document.querySelector('.dotTwoSlide').classList.remove('currentPageHome')
+            document.querySelector('.dotThreeSlide').classList.remove('currentPageHome')
             document.querySelector('.divSliderPageOne').style.width = '100%'
             document.querySelector('.divSliderPageTwo').style.width = '0%'
             document.querySelector('.divSliderPageThree').style.width = '0%'
+            document.querySelector('.sliderRightTitle').textContent = 'O perfil do seu jeito!'
+            document.querySelector('.sliderRightFirstText').textContent = `    Visual é tudo, e aqui você poderá fazer o perfil com a sua cara, podendo personalizar todos os aspectos para deixar a experiência de cada página diferente`
+            document.querySelector('.sliderRightSecondText').textContent = `   O potêncial de todos os jogadores pode ser liberado atravez de uma pequena mudança de cor, talvez o seu perfil chame a atenção de um Chefe de Equipe e te convide para a próxima temporada de BattleMode Racing?`
+
             break
         case 'slideTwo':
+            document.querySelector('.dotOneSlide').classList.remove('currentPageHome')
+            document.querySelector('.dotTwoSlide').classList.add('currentPageHome')
+            document.querySelector('.dotThreeSlide').classList.remove('currentPageHome')
             document.querySelector('.divSliderPageOne').style.width = '0%'
             document.querySelector('.divSliderPageTwo').style.width = '100%'
             document.querySelector('.divSliderPageThree').style.width = '0%'
+            document.querySelector('.sliderRightTitle').textContent = 'A equipe dos sonhos!'
             break
         case 'slideThree':
+            document.querySelector('.dotOneSlide').classList.remove('currentPageHome')
+            document.querySelector('.dotTwoSlide').classList.remove('currentPageHome')
+            document.querySelector('.dotThreeSlide').classList.add('currentPageHome')
             document.querySelector('.divSliderPageOne').style.width = '0%'
             document.querySelector('.divSliderPageTwo').style.width = '0%'
             document.querySelector('.divSliderPageThree').style.width = '100%'
+            document.querySelector('.sliderRightTitle').textContent = 'Modelo!'
             break
 
     }
@@ -117,25 +132,38 @@ export default function NewHome () {
 
         switch (currentSlide) {
             case 'slideOne':
+                document.querySelector('.dotOneSlide').classList.add('currentPageHome')
+                document.querySelector('.dotTwoSlide').classList.remove('currentPageHome')
+                document.querySelector('.dotThreeSlide').classList.remove('currentPageHome')
                 document.querySelector('.divSliderPageOne').style.width = '100%'
                 document.querySelector('.divSliderPageTwo').style.width = '0%'
                 document.querySelector('.divSliderPageThree').style.width = '0%'
+                document.querySelector('.sliderRightTitle').textContent = 'O perfil do seu jeito!'
                 break
             case 'slideTwo':
+                document.querySelector('.dotOneSlide').classList.remove('currentPageHome')
+                document.querySelector('.dotTwoSlide').classList.add('currentPageHome')
+                document.querySelector('.dotThreeSlide').classList.remove('currentPageHome')
                 document.querySelector('.divSliderPageOne').style.width = '0%'
                 document.querySelector('.divSliderPageTwo').style.width = '100%'
                 document.querySelector('.divSliderPageThree').style.width = '0%'
+                document.querySelector('.sliderRightTitle').textContent = 'A equipe dos sonhos!'
                 break
             case 'slideThree':
+                document.querySelector('.dotOneSlide').classList.remove('currentPageHome')
+                document.querySelector('.dotTwoSlide').classList.remove('currentPageHome')
+                document.querySelector('.dotThreeSlide').classList.add('currentPageHome')
                 document.querySelector('.divSliderPageOne').style.width = '0%'
                 document.querySelector('.divSliderPageTwo').style.width = '0%'
                 document.querySelector('.divSliderPageThree').style.width = '100%'
+                document.querySelector('.sliderRightTitle').textContent = 'Modelo!'
                 break
         }
     })
 
     return(
         <div className="containerNewHome">
+            <div className="containerImageBackground"/>
             <Navbar/>
             <div className="paddingLeft containerNewHome">
                 <div>
@@ -254,6 +282,13 @@ export default function NewHome () {
                                         </div>
                                     </div>
                                     <div className='customizationSliderTextSlide'>
+                                        <div>
+                                            <h2 className='sliderRightTitle'>Titulo</h2>
+                                        </div>
+                                        <div>
+                                            <p className='sliderRightFirstText'>Visual é tudo, e aqui você poderá fazer o perfil com a sua cara, podendo personalizar todos os aspectos para deixar a experiência de cada página diferente</p>
+                                            <p className='sliderRightSecondText'>O potêncial de todos os jogadores pode ser liberado atravez de uma pequena mudança de cor, talvez o seu perfil chame a atenção de um Chefe de Equipe e te convide para a próxima temporada de BattleMode Racing? </p>
+                                        </div>
                                         {/* <div className='tourneamentHighlitedDecoration'></div> */}
                                         {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
