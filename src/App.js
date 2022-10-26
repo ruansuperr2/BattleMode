@@ -22,7 +22,8 @@ function App() {
           <BrowserRouter>
               <div>
                   <Routes>
-			            <Route path="/" element={<LandingPage />} />
+	  		<Route path="/*" element={<PaginaNaoEncontrada/>}/>
+			<Route path="/" element={<LandingPage />} />
                         <Route exact path="/login" element={<Login />} />
                         <Route exact path="/cadastro" element={<Cadastro />} />
                         <Route path="/now" element={<NewHome />} />
