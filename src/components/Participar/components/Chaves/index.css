@@ -4,7 +4,7 @@
 }
 .divSubChaves{
     width: 100%;
-    height: 120vh;
+    height: 140vh;
     background-color: #212121;
     flex-direction: column;
     display: flex;
@@ -22,5 +22,48 @@
     border-radius: 20px;
     border: 2px solid #fc6b03;
     color: #fc6b03;
+    margin-top: 2%;
+}
+
+
+.divDescriçãoChaves{
+    width: 80%;
+    height: 40vh;
+    background-color: #121212;
+    margin-top: 2%;    
+    border-radius: 20px;
+    border: 2px solid #fc6b03;
+    color: #fc6b03;;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.JogoDescriçãoChaves{
+    width: 13%;
+    height: 30vh;
+    background-color: #212121;
+    border-radius: 10px;
+}
+
+
+.JogoDescriçãoChaves img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 2px solid #fc6b03;
+}
+
+.JogoDescriçãoChaves2{
+    width: 70%;
+    height: 30vh;
+    background-color: #212121;
+    border-radius: 10px;
+    padding-left: 2%;
+}
+
+.JogoDescriçãoChaves2 p{
+    color: #ffffff;
 }
 
