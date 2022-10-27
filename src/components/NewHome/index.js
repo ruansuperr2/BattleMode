@@ -7,22 +7,37 @@ import $ from 'jquery'
 let currentPage = 'pageOne'
 let currentSlide = 'slideOne'
 const callPageChanger = () => {
-    switch(currentPage){
-        case 'pageOne':
-            document.querySelector('.pageNumberOne').classList.add('currentPageHome')
-            document.querySelector('.pageNumberTwo').classList.remove('currentPageHome')
-            document.querySelector('.pageNumberThree').classList.remove('currentPageHome')
-            break
-        case 'pageTwo':
-            document.querySelector('.pageNumberOne').classList.remove('currentPageHome')
-            document.querySelector('.pageNumberTwo').classList.add('currentPageHome')
-            document.querySelector('.pageNumberThree').classList.remove('currentPageHome')
-            break
-        case 'pageThree':
-            document.querySelector('.pageNumberOne').classList.remove('currentPageHome')
-            document.querySelector('.pageNumberTwo').classList.remove('currentPageHome')
-            document.querySelector('.pageNumberThree').classList.add('currentPageHome')
-            break
+    try{
+        
+        switch(currentPage){
+            case 'pageOne':
+                document.querySelector('.pageNumberOne').classList.add('currentPageHome')
+                document.querySelector('.pageNumberTwo').classList.remove('currentPageHome')
+                document.querySelector('.pageNumberThree').classList.remove('currentPageHome')
+                document.querySelector('.containerPageOneHomeContent').scrollIntoView({
+                    behavior: 'smooth'
+                }, 500)
+                break
+            case 'pageTwo':
+                document.querySelector('.pageNumberOne').classList.remove('currentPageHome')
+                document.querySelector('.pageNumberTwo').classList.add('currentPageHome')
+                document.querySelector('.pageNumberThree').classList.remove('currentPageHome')
+                document.querySelector('.containerPageTwoHomeContent').scrollIntoView({
+                    behavior: 'smooth'
+                }, 500)
+                break
+            case 'pageThree':
+                
+                document.querySelector('.pageNumberOne').classList.remove('currentPageHome')
+                document.querySelector('.pageNumberTwo').classList.remove('currentPageHome')
+                document.querySelector('.pageNumberThree').classList.add('currentPageHome')
+                document.querySelector('.containerPageThreeHomeContent').scrollIntoView({
+                    behavior: 'smooth'
+                }, 500)
+                break
+        }
+    }catch{
+        
     }
 }
 
@@ -69,48 +84,39 @@ const pageHandling = (funcProp) => {
     if(funcProp === 0){
         currentPage = 'pageOne'
         callPageChanger()
-        document.querySelector('.containerPageOneHomeContent').scrollIntoView({
-            behavior: 'smooth'
-        }, 500)
+
     }else if(funcProp === 4){
         currentPage ='pageTwo'
         callPageChanger()
-        document.querySelector('.containerPageTwoHomeContent').scrollIntoView({
-            behavior: 'smooth'
-        }, 500)
+
     }else if(funcProp === 8){
         currentPage ='pageThree'
         callPageChanger()
-        document.querySelector('.containerPageThreeHomeContent').scrollIntoView({
-            behavior: 'smooth'
-        }, 500)
+
     }
     
 }
 
 $( window ).on('mousewheel', function(e){
-    if(e.originalEvent.wheelDelta /120 > 0) {
-        console.log('up')
-        if(index === 0){
-            index = 0
-        }else{
-            index--
+        if(e.originalEvent.wheelDelta /120 > 0) {
+            if(index === 0){
+                index = 0
+            }else{
+                index--
+            }
+            pageHandling(index)
         }
-        pageHandling(index)
-    }
-    else{
-        console.log('down')
-        if(index === 8){
-            index = 8
-        }else{
-            index++
+        else{
+            if(index === 8){
+                index = 8
+            }else{
+                index++
+            }
+            pageHandling(index)
         }
-        pageHandling(index)
-    }
 })
-
+let able = 0
 export default function NewHome () {
-
     useEffect(() => {
         switch(currentPage){
             case 'pageOne':
@@ -158,12 +164,19 @@ export default function NewHome () {
                 document.querySelector('.divSliderPageThree').style.width = '100%'
                 document.querySelector('.sliderRightTitle').textContent = 'Modelo!'
                 break
-        }
+            }
+            
     })
 
+    if(able === 1){
+        callPageChanger()
+    }
+
     return(
-        <div className="containerNewHome">
-            <div className="containerImageBackground"/>
+        <div className="containerNewHome" onLoad={() => {
+            callPageChanger()
+            able = 1
+        }}>
             <Navbar/>
             <div className="paddingLeft containerNewHome">
                 <div>
