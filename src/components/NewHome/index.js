@@ -41,7 +41,10 @@ const callPageChanger = () => {
     }
 }
 
+let getGamesTry = 0
 const callSlideChanger = () => {
+
+
     switch(currentSlide){
         case 'slideOne':
             document.querySelector('.dotOneSlide').classList.add('currentPageHome')
@@ -116,7 +119,26 @@ $( window ).on('mousewheel', function(e){
         }
 })
 let able = 0
+let ashe = 0
 export default function NewHome () {
+    const [torneio, setTorneio] = useState([])
+    
+    const callTorneio = async() => {
+        try{
+            const response = await fetch('http://localhost:3000/api/torneio')
+            const data = response.json()
+            data.then(
+                (val) => {setTorneio(val.data)})
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    if(getGamesTry < 10){
+        getGamesTry++
+        callTorneio()
+    }
+
     useEffect(() => {
         switch(currentPage){
             case 'pageOne':
@@ -185,27 +207,39 @@ export default function NewHome () {
                             <div className="miniDivider"></div>
                             <div className="labelPageOneHome"></div>
                             <div className='tourneamentHighlightContainer'>
-                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/hero_thumb/85422afb467e9456013a2a51d4dff702.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightOne'>
+                                { torneio.map( (findTorneio) => {
+                                    if(ashe < 3){
+                                        ashe++
+                                        console.log(ashe, findTorneio)
+                                        return  <div key={ashe} style={{backgroundImage: `url(${findTorneio.thumbnail})`}} className='tourneamentHighlighted bigTourneamentHiglightOne'>
+                                                    <div className='tourneamentHighlitedDecoration'></div>
+                
+
+                                                    <label><img src={findTorneio.logo} alt='img'/>{findTorneio.nome}</label>
+                                                </div>
+                                    }
+                                })}
+                                
+                               {/* <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/hero_thumb/85422afb467e9456013a2a51d4dff702.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightOne'>
                                     <div className='tourneamentHighlitedDecoration'></div>
-                                    {/* <div className='tourneamentHighlitedImgOne'></div> */}
+
 
                                     <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
                                 </div>
                                 <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/4800deb3f3be382f97782401f775184a.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightTwo'>
                                     <div className='tourneamentHighlitedDecoration'></div>
-                                    {/* <div className='tourneamentHighlitedImgTwo'></div> */}
                                     <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
                                 </div>
                                 <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/3031edd9d9431ac8a6598b5a47997a9c.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightThree'>
                                     <div className='tourneamentHighlitedDecoration'></div>
-                                    {/* <div className='tourneamentHighlitedImgThree'></div> */}
                                     <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
-                                </div>
-                            </div>
+                                </div> 
+                            </div> */}
                             <label className='labelAskingPageOneHome'>
                                 <label>Ficou interessado em um desses eventos? </label>
                                 <label>Faça <a href='./login'>login agora</a> e dê uma olhada nos torneios de várias modalidades e jogos na plataforma!</label>
                             </label>
+                            </div>
                         </div>
                         <div className='containerDivider containerTwoDivider'/>
                         <div className="containerPageTwoHomeContent" >
