@@ -3,7 +3,6 @@ import Navbar from '../../../Navbar'
 import Footer from '../../../Footer'
 import Eliminatoria from './Components/Eliminatoria'
 import Classificatoria from './Components/Classificatoria'
-import Grupo from './Components/Grupos'
 
 import './index.css'
 
@@ -14,9 +13,8 @@ function Chaves(){
                 <div className='divSubChaves'>
                     <div className='divSubChavesDois'>
                         <h1>Gaia Cup</h1>
-                            {/* <Eliminatoria/> */}
+                            <Eliminatoria/>
                             {/* <Classificatoria/> */}
-                            <Grupo/>
                     </div>
 
                     <div className='divDescriçãoChaves'>

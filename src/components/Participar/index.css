@@ -81,13 +81,6 @@
 	border: 1px transparent solid;
     color: white;
 }
-.imgEquipeGearEditing:hover {
-
-}
-.imgParticiparGearEditing:hover {
-
-}
-
 
 .divParticiparMainContainer {
     height: 100%;
@@ -110,21 +103,15 @@
     -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
     box-shadow: inset -11px -7px 36px 0px #000000; 
 }
-/* .divMainFundo {
-    height: 35vh;
-} */
-.divContentMainFundo {
-}
+
 .divTorneioImg {
-    background-image: url(assets/arteOnda2.png);
     border-radius: 1rem;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 20rem;
+    width: 8rem;
     height: 8rem;
-    margin-top: 2rem;
+    -webkit-box-shadow: 0px 0px 11px 10px #000000; 
+    box-shadow: 0px 0px 11px 10px #000000;
     /* right: 3%; */
-    border: 2px solid #fc6b03;
+    border: 1px solid #fc6b03;
 }
 .divTorneioDesc {
     display: flex;
