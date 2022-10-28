@@ -28,10 +28,11 @@ function App() {
                         <Route exact path="/cadastro" element={<Cadastro />} />
                         <Route path="/now" element={<NewHome />} />
                         <Route path="/feed" element={<Feed />} />
+                        <Route path="/feed/:id" element={<Feed />} />
                         <Route path="/games" element={<Jogos />} />
                         <Route path="/about" element={<Sobre />} />
                         <Route path="/u/:id" element={<Usuario/>} />
-                        <Route path="/participar" element={<Participar/>} />
+                        <Route path="/t/:id" element={<Participar/>} />
                         <Route path="/chaves" element={<Chaves/>} />
                   </Routes>
               </div>
