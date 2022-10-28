@@ -1,0 +1,180 @@
+.divUsuarioSubMainContainer{
+    height: 100vh;
+    width: 100%;
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+
+}
+.divFundoMainContainer{
+    width: 100%;
+    height: 35vh;
+    border-bottom: 2px solid #fc6b03;
+
+    background-image: url(assets/arteOnda2.png);
+    -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
+    box-shadow: inset -11px -7px 36px 0px #000000; 
+}
+.divContainerFundoMainContainer {
+    position: absolute;
+    left: 8%;
+    top: 20%;
+}
+.perfilNavigation {
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: #f2f2f2 1px solid;
+    transition: 0.5s;
+    /* padding-top: 0.5%; */
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,212,255,0) 100%);  
+}
+.campos {
+    padding-left: 5%;
+    overflow: hidden;
+} 
+.divCampoGeral {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-right: 5%;
+}
+
+.imgVisaoGearEditing {
+    background-image: url('./assets/gear.png');
+    background-size: cover;
+    height: 40px;
+	width: 40px;
+	transition: 0.5s ease-in-out;
+    margin-right: 10px;
+	border: 1px transparent solid;
+    color: white;
+}
+.imgEquipeGearEditing {
+    background-image: url('./assets/team1.png');
+    background-size: cover;
+    height: 40px;
+	width: 40px;
+	transition: 0.5s ease-in-out;
+    margin-right: 10px;
+	border: 1px transparent solid;
+    color: white;
+}
+.imgParticiparGearEditing {
+    background-image: url('./assets/trophy.png');
+    background-size: cover;
+    height: 40px;
+	width: 40px;
+	transition: 0.5s ease-in-out;
+    margin-right: 10px;
+	border: 1px transparent solid;
+    color: white;
+}
+.imgVisaoGearEditing:hover {
+    background-image: url('./assets/gear_hover.png');
+    background-size: cover;
+	height: 40px;
+	width: 40px;
+    cursor: pointer;
+	transition: 0.5s ease-in-out;
+	border: 1px transparent solid;
+    color: white;
+}
+
+.divParticiparMainContainer {
+    height: 100%;
+    background-color: #121212;
+}
+.divHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.divMainTorneio {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 35vh;
+    /* margin-bottom: 5.5%; */
+
+    background-image: url(assets/arteOnda2.png);
+    border-bottom: 2px solid #fc6b03;
+    -webkit-box-shadow: inset -11px -7px 36px 0px #000000; 
+    box-shadow: inset -11px -7px 36px 0px #000000; 
+}
+
+.divTorneioImg {
+    border-radius: 1rem;
+    width: 8rem;
+    height: 8rem;
+    -webkit-box-shadow: 0px 0px 11px 10px #000000; 
+    box-shadow: 0px 0px 11px 10px #000000;
+    /* right: 3%; */
+    border: 1px solid #fc6b03;
+}
+.divTorneioDesc {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    color: #fff;
+    /* width: 100%; */
+    margin-left: 8%;
+    margin-top: 2rem;
+    float: left;
+    word-break: break-all;
+}
+.divButtonParticipar {
+    /* float: right; */
+    /* margin-top: 3rem; */
+    /* min-width: 30%; */
+}
+.buttonParticipar {
+    /* position: absolute;
+    left: 14.5%;
+    top: 50%; */
+    width: 15rem;
+    padding: .5rem;
+	margin: 5px;
+    background-color: #272727;
+    border-radius: 20px;
+    border: 2px solid #fc6b03;
+    color: #fc6b03;
+    font-size: 16px;
+    transition: 0.5s;
+    /* z-index: 99; */
+}
+.divDesc {
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    width: 40%;
+    /* margin-inline: 10%; */
+    word-break: break-all;
+}
+.descricao {
+    display: flex;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+}
+.divTorneioEntrar {
+    margin: 0;
+    height: 30vh;
+    width: 30vw;
+    float: right;
+}
+
+@media only screen and (max-width: 768px) {
+    .divCampoGeral {
+        flex-direction: column;
+    }
+    .divDesc {
+        width: 80%;
+    }
+    .paddingLeft {
+        padding-left: 0;
+    }
+}
