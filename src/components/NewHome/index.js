@@ -119,9 +119,10 @@ $( window ).on('mousewheel', function(e){
         }
 })
 let able = 0
-let ashe = 0
+
 export default function NewHome () {
     const [torneio, setTorneio] = useState([])
+    const [game, setGame] = useState([])
     
     const callTorneio = async() => {
         try{
@@ -134,9 +135,21 @@ export default function NewHome () {
         }
     }
 
+    const callGames = async() => {
+        try{
+            const response = await fetch('http://localhost:3000/api/jogo')
+            const data = response.json()
+            data.then(
+                (val) => {setGame(val.data)})
+        }catch(error){
+            console.log(error)
+        }
+    }
+
     if(getGamesTry < 10){
         getGamesTry++
         callTorneio()
+        callGames()
     }
 
     useEffect(() => {
@@ -207,17 +220,15 @@ export default function NewHome () {
                             <div className="miniDivider"></div>
                             <div className="labelPageOneHome"></div>
                             <div className='tourneamentHighlightContainer'>
-                                { torneio.map( (findTorneio) => {
-                                    if(ashe < 3){
-                                        ashe++
-                                        console.log(ashe, findTorneio)
-                                        return  <div key={ashe} style={{backgroundImage: `url(${findTorneio.thumbnail})`}} className='tourneamentHighlighted bigTourneamentHiglightOne'>
-                                                    <div className='tourneamentHighlitedDecoration'></div>
-                
+                                { torneio.slice(-3).map( (findTorneio) => {
+                                    
+                                    return <div onClick={() => {window.location.href = `./t/${findTorneio.id}`}} key={findTorneio.id} style={{backgroundImage: `url(${findTorneio.thumbnail})`}} className='tourneamentHighlighted bigTourneamentHiglightOne'>
+                                        <div className='tourneamentHighlitedDecoration'></div>
+            
 
-                                                    <label><img src={findTorneio.logo} alt='img'/>{findTorneio.nome}</label>
-                                                </div>
-                                    }
+                                        <label><img src={findTorneio.logo} alt='img'/>{findTorneio.nome}</label>
+                                    </div>
+
                                 })}
                                 
                                {/* <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/hero_thumb/85422afb467e9456013a2a51d4dff702.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightOne'>
@@ -235,11 +246,11 @@ export default function NewHome () {
                                     <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
                                 </div> 
                             </div> */}
+                            </div>
                             <label className='labelAskingPageOneHome'>
                                 <label>Ficou interessado em um desses eventos? </label>
                                 <label>Faça <a href='./login'>login agora</a> e dê uma olhada nos torneios de várias modalidades e jogos na plataforma!</label>
                             </label>
-                            </div>
                         </div>
                         <div className='containerDivider containerTwoDivider'/>
                         <div className="containerPageTwoHomeContent" >
@@ -247,41 +258,14 @@ export default function NewHome () {
                             <div className="miniDivider"></div>
                             <div className="labelPageTwoHome"></div>
                             <div className='gamesHighlightContainer'>
-                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/80bf407312035ac647db895d9782ea26.jpg)`}} className='gameHighlighted bigGameHiglightOne'>
-                                    <div className='gameHighlitedDecoration'></div>
-                                    {/* <div className='tourneamentHighlitedImgOne'></div> */}
-
-                                </div>
-                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/51e0f86b7cb74096e922bd52653bd235.png)`}} className='gameHighlighted bigGameHiglightTwo'>
+                                { game.slice(-8).map( (findGame) => {
+                                    
+                                    return <div onClick={() => {window.location.href = `./feed/${findGame.id}`}} style={{backgroundImage: `url(${findGame.imgFundo})`}} className='gameHighlighted bigGameHiglightTwo'>
                                     <div className='gameHighlitedDecoration'></div>
                                     {/* <div className='tourneamentHighlitedImgTwo'></div> */}
                                 </div>
-                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/fba05666aec048c550089d9bc5ac8f53.jpg)`}} className='gameHighlighted bigGameHiglightThree'>
-                                    <div className='gameHighlitedDecoration'></div>
-                                    {/* <div className='tourneamentHighlitedImgThree'></div> */}
-                                </div>
-                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/cf29ee336b07c0572c810f62f5543525.jpg)`}} className='gameHighlighted bigGameHiglightOne'>
-                                    <div className='gameHighlitedDecoration'></div>
-                                    {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
-                                </div>
-                                <div style={{backgroundImage: `url(https://images-ext-1.discordapp.net/external/gw0a3aqpIMCK8cfBE40cm5-9qg90ZV6Q2eIH1zvCtHc/https/cdn2.steamgriddb.com/file/sgdb-cdn/thumb/9231cf33ba4a94d91af5b5071a671346.jpg)`}} className='gameHighlighted bigGameHiglightTwo'>
-                                    <div className='gameHighlitedDecoration'></div>
-                                    {/* <div className='tourneamentHighlitedImgTwo'></div> */}
-                                </div>
-                                <div style={{backgroundImage: `url(https://i.pinimg.com/736x/d1/59/e9/d159e9ca272b73f56ef2b770a7c0b17b.jpg)`}} className='gameHighlighted bigGameHiglightThree'>
-                                    <div className='gameHighlitedDecoration'></div>
-                                    {/* <div className='tourneamentHighlitedImgThree'></div> */}
-                                </div>
-                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/0ed5055450adbd836945761a6fa43ee0.jpg)`}} className='gameHighlighted bigGameHiglightOne'>
-                                    <div className='gameHighlitedDecoration'></div>
-                                    {/* <div className='tourneamentHighlitedImgOne'></div> */}
-
-                                </div>
-                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/12dc78e6688e6756f8e934e778b817fe.jpg)`}} className='gameHighlighted bigGameHiglightTwo'>
-                                    <div className='gameHighlitedDecoration'></div>
-                                    {/* <div className='tourneamentHighlitedImgTwo'></div> */}
-                                </div>
+                                })}
                             </div>
                             <label className='labelAskingPageOneHome'>
                                 <label>E essa lista só aumenta! </label>

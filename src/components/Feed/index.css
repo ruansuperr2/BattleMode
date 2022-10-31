@@ -17,8 +17,10 @@
     align-items: center ;
 }
 .TitlePrediletos{
-    padding-left: 15%;
+    padding-left: 12%;
     color: #ffffff;
+    display: flex;
+    align-items: center;
 }
 
 .NameGamePrediletos{
@@ -149,6 +151,114 @@
     background-color: #7e7e7e;
 }
 
+.TorneioSpecGame{
+
+}
+
+.tourneamentHighlightedFeed{
+    border: 1px solid #fc6b03;
+    border-radius: 5px;
+    width: 30%;
+    height: 12vw;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;  
+    background-size: cover;
+    background-position: 0% -40px;
+    box-shadow: 0px 0px 10px 0px #030303;
+    transition: 0.5s;
+}
+
+.tourneamentHighlightedFeed:hover{
+    transition: 0.5s;
+    width: 30.3%;
+    height: 12.3vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 0px 0px 10px 0px #030303;
+    cursor: pointer;
+}
+
+.tourneamentHighlightedFeed img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid #fc6b03;
+    margin: 5px;
+    margin-right: 20px;
+}
+
+.tourneamentHighlightedFeed label{
+    display: flex;
+    align-items: center;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #303030;
+    z-index: 20;
+}
+
+.specificTourneamentGame{
+    width: 20%;
+    height: 160px;
+}
+
+.containerSpecificGame{
+    padding-bottom: 5%;
+    width: 75%;
+    gap: 10px;
+    padding-top: 5%;
+    margin-left: 5%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid #fc6b03;
+    border-radius: 10px;
+}
+
+.organizeList{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TorneioSpecGameImg{
+    width: 100%;
+    height: 100%;
+}
+
+.containerThisGame{
+    padding-left: 12%;
+
+}
+
+.divContainerThisGame{
+    display: flex;
+}
+
+.gameDivLogo{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: optimizeQuality;
+}
+
+.logoImgFeedGlobal{
+    height: 60px;
+    margin-right: 2%;
+    background-size: auto;
+    background-position: center;
+}
+
+.divGamesonFeedContainer{
+    
+}
 
 /* Responsividade */
 

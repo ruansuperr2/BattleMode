@@ -5,11 +5,24 @@ import { useParams } from 'react-router-dom';
 import Navbar from '../Navbar'
 import Footer from '../Footer'
 import TodosTorneios from './components/TodosTorneios'
-
+let getGamesTry = 0
 function Feed() {
     const { id } = useParams();
+
+    const [torneio, setTorneio] = useState([])
+    const callTorneio = async() => {
+        try{
+            const response = await fetch('http://localhost:3000/api/torneio')
+            const data = response.json()
+            data.then(
+                (val) => {setTorneio(val.data)})
+        }catch(error){
+            console.log(error)
+        }
+    }
+
     
-    let getGamesTry = 0
+    
     const [jogo, setJogo] = useState([])
     const callGames = async() => {
         try{
@@ -25,6 +38,7 @@ function Feed() {
     if(getGamesTry < 10){
         getGamesTry++
         callGames()
+        callTorneio()
     }
 
     if(id === undefined){
@@ -36,8 +50,8 @@ function Feed() {
                     <Prediletos/>
 
                         { jogo.map( (jogo) => 
-                        <div>
-                            <h1 className='TitlePrediletos'>{jogo.nome}</h1>
+                        <div className='divGamesonFeedContainer'>
+                            <h1 className='TitlePrediletos'><img className='logoImgFeedGlobal' src={jogo.logo}/>  {jogo.nome}</h1>
                             <TodosTorneios id={jogo.id}/>
                         </div>
                         ) }
@@ -49,8 +63,34 @@ function Feed() {
         return (
             <div className="divMainContainer">
                 <Navbar page="feed"/>
-                    <div>
-                        
+                    <div className='containerThisGame paddingLeft'>
+                        {
+                            jogo.map( (findJogo) => {
+                                console.log(parseInt(findJogo.gameId), parseInt(id))
+                                if(parseInt(id) === parseInt(findJogo.id)){
+                                    return <div className='divContainerThisGame'><h1><div className='gameDivLogo' style={{backgroundImage: `url(${findJogo.logo})`}}/>{findJogo.nome}</h1></div>
+
+                                }      
+                            })
+                        } 
+                    </div>
+                    <div className='organizeList'>
+
+                        <div className='containerSpecificGame paddingLeft'>
+                            {
+                                torneio.map( (findTorneio) => {
+                                    console.log(parseInt(findTorneio.gameId), parseInt(id))
+                                    if(parseInt(id) === parseInt(findTorneio.gameId)){
+                                        return <div onClick={() => {window.location.href = `../t/${findTorneio.id}`}} key={findTorneio.id} style={{backgroundImage: `url(${findTorneio.thumbnail})`}} className='tourneamentHighlightedFeed bigTourneamentHiglightOne'>
+            
+
+                                        <label><img src={findTorneio.logo} alt='img'/>{findTorneio.nome}</label>
+                                    </div>
+
+                                    }      
+                                })
+                            }
+                        </div>
                     </div>
                 <Footer/>
             </div>
