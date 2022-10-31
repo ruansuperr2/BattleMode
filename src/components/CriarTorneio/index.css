@@ -1,0 +1,148 @@
+.DivCriarTorneio{
+    width: 100%;
+    height: 100%;
+    background-color: #212121;
+}
+
+.divMainCriarTorneio{
+    width: 95%;
+    height: 100%;
+    background-color: #212121;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.divSubCriarTorneio{
+    width: 80%;
+    height: 90vh;
+    background-color: #121212;
+    border-radius: 20px;
+    border: 1px solid #fc6b03;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.divImgThaumbCriarTorneio{
+    width: 30%;
+    height: 30%;
+    background-color: #212121;
+    border: solid 1px #fc6b03;
+    border-radius: 10px;
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+}
+.divImgLogoCriarTorneio{
+    width: 10%;
+    height: 18%;
+    background-color: #212121;
+    border: solid 1px #fc6b03;
+    border-radius: 50%;
+    margin: 5%;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    align-items: center;
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.divImgFundoCriarTorneio{
+    width: 30%;
+    height: 30%;
+    background-color: #212121;
+    border: solid 1px #fc6b03;
+    border-radius: 10px;
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.AddImgCriarTorneio{
+    width: 85%;
+    height: 50%;
+    margin-bottom: 300px;
+    background-color: #121212;
+    border: solid 1px #fc6b03;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.AddImgCriarTorneio button{
+    width: 30%;
+    height: 20%;
+    background-color: #212121;
+    border: solid 1px #fc6b03;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+
+.divInfoCriarTorneio{
+    width: 100%;
+    height: 65%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.NomeCriarTorneio{
+    width: 96%;
+    height: 20%;
+    background-color: #212121;
+    border: solid 1px #fc6b03;
+    border-radius: 5px;
+}
+
+.InfoCriarTorneio{
+    width: 96%;
+    height: 50%;
+    background-color: #212121;
+    border: solid 1px #fc6b03;
+    border-radius: 5px;
+    resize: none;
+    margin-top: 2%;
+}
+
+.divMoreinfoCriarTorneios{
+    width: 80%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #121212;
+    border: #fc6b03 solid 1px;
+    margin-top: 2%;
+    border-radius: 20px;
+
+}
+.totalJogadores{
+    width: 30%;
+    height: 50%;
+    background-color: #212121;
+    border: solid 1px #fc6b03;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.select{
+    width: 30%;
+}

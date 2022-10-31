@@ -5,40 +5,16 @@ import ModalCustom from '../Modal';
 import { showModal, closeModal} from "../Modal";
 import TorneioHeader from "./components/TorneioHeader";
 import Chaves from "./components/Chaves";
-import { useParams } from "react-router-dom";
 import './index.css';
 
-let getGamesTry = 0
 function Participar() {
     const [page, setPage] = useState('geral')
-
-    const {id} = useParams()
 
     const callModal = () => {
         showModal('spin', 'Deseja participar do Torneio?', 'Participar')
         // setTimeout(() => {
         //     closeModal('success', 'deu certo', 'Participar')
         // }, 2000);
-    }
-
-    const [torneio, setTorneio] = useState({})
-
-
-    const callTorneio = async() => {
-        try{
-            const response = await fetch('http://localhost:3000/api/torneio/' + id)
-            const data = response.json()
-            data.then(
-                (val) => {setTorneio(val.data)
-                console.log(torneio)})
-        }catch(error){
-            console.log(error)
-        }
-    }
-
-    if(getGamesTry < 10){
-        callTorneio()
-        getGamesTry++
     }
 
     useEffect(() => {
@@ -77,7 +53,7 @@ function Participar() {
         <div className='divParticiparMainContainer'>
             <Navbar page={'usuario'} />
             <ModalCustom/>
-            <img src={torneio.imgFundo} className="divMainTorneio" />
+            <div className="divMainTorneio" />
 
             <div>
                 <div className='perfilNavigation'>
@@ -88,10 +64,11 @@ function Participar() {
                 </div>
                 <div className='divCampoGeral campos' >
                     <div style={{display: 'flex', flexDirection: 'column'}}>
-                        <TorneioHeader logo={torneio.logo}/>
+                        <TorneioHeader/>
+                        <TorneioHeader/>
                     </div>
                     <div className="divDesc">
-                        <p className="descricao">{torneio.descricaoLonga}</p>
+                        <p className="descricao">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
                     </div>
                 </div>
                 <div className='divCampoEquipe campos' >

@@ -1,11 +1,11 @@
 import React from "react";
 import "../../index.css";
 
-function TorneioHeader(props) {
+function TorneioHeader() {
     return (
         <div className="divMainFundo">
             <div className="divContentMainFundo">
-                <img src={props.logo} className="divTorneioImg"/>
+                <div className="divTorneioImg"/>
             </div>
         </div>
     )
