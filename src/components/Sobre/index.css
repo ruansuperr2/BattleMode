@@ -23,12 +23,13 @@
 .divConteudo {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin-top: 10%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7%;
 }
 .divImagens {
-    width: 26vw;
-    height: 26vw;
+    width: 21rem;
+    height: 21rem;
     background-image: url('./assets/time.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -41,5 +42,15 @@
     align-items: center;
     text-align: center;
 }
+.sobreTitle {
+    margin-top: 0;
+}
 
-
+@media only screen and (max-width: 768px) {
+    .divTextoSobre {
+        width: 80%;
+    }
+    .divConteudo {
+        flex-direction: column;
+    }
+}

@@ -51,7 +51,7 @@ function Sobre() {
                     <div className='divImagens'>
                     </div>
                     <div className='divTextoSobre'>
-                        <h1>Sobre BattleMode™</h1>
+                        <h1 className='sobreTitle'>Sobre BattleMode™</h1>
                         <p>A BattleMode™ permite a você e seus amigos competirem em torneios criados 
                         pela comunidade. Nós, a Inexorabilis Team, temos como objetivo tornar esses 
                         eventos fáceis de criar, intuitivos e altamente customizáveis, tanto para 
