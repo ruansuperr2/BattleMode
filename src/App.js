@@ -14,6 +14,7 @@ import LandingPage from './components/LandingPage'
 import Participar from './components/Participar'
 import Chaves from './components/Participar/components/Chaves'
 import NewHome from './components/NewHome'
+import CriarTorneio from './components/CriarTorneio'
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 
 function App() {
@@ -28,12 +29,12 @@ function App() {
                         <Route exact path="/cadastro" element={<Cadastro />} />
                         <Route path="/now" element={<NewHome />} />
                         <Route path="/feed" element={<Feed />} />
-                        <Route path="/feed/:id" element={<Feed />} />
                         <Route path="/games" element={<Jogos />} />
                         <Route path="/about" element={<Sobre />} />
                         <Route path="/u/:id" element={<Usuario/>} />
-                        <Route path="/t/:id" element={<Participar/>} />
+                        <Route path="/participar" element={<Participar/>} />
                         <Route path="/chaves" element={<Chaves/>} />
+                        <Route path="/criartorneio" element={<CriarTorneio/>} />
                   </Routes>
               </div>
           </BrowserRouter>
