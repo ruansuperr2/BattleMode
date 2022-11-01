@@ -1,10 +1,28 @@
-import React from "react";
+import React, {useState} from "react";
 import './index.css'
 import NavBar from '../Navbar'
 import Footer from '../Footer'
 import Select from 'react-select'
 
+let getGamesTry = 0
 function CriarTorneio (){
+
+   
+    const [jogo, setJogo] = useState([])
+    const callGames = async() => {
+        try{
+            const response = await fetch('http://localhost:3000/api/jogo')
+            const data = response.json()
+            data.then(
+                (val) => {setJogo(val.data)})
+        }catch(error){
+            console.log(error)
+        }
+    }
+    if(getGamesTry < 10){
+        getGamesTry++
+        callGames()
+    }
 
     const chaves = [
         { value: 'classificatoria', label: 'Classificatoria' },
@@ -14,11 +32,19 @@ function CriarTorneio (){
       ]
     
     const jogos = [
-        { value: 'valorant', label: 'Valorant' },
-        { value: 'formula1', label: 'Formula 1' },
-        { value: 'leagueoflegends', label: 'League of Legends' },
-        { value: 'fifa22', label: 'Fifa 22' }
+        // { value: 'valorant', label: 'Valorant' },
+        // { value: 'formula1', label: 'Formula 1' },
+        // { value: 'leagueoflegends', label: 'League of Legends' },
+        // { value: 'fifa22', label: 'Fifa 22' }
       ]
+
+    for(let i = 0; i < jogo.length;i++){
+
+        jogos.push({
+            value: jogo[i].id,
+            label: jogo[i].nome
+        })
+    }
     
     
     return(
