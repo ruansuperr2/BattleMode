@@ -13,7 +13,6 @@
     flex-direction: column;
     align-items: center;
 }
-
 .divSubCriarTorneio{
     width: 80%;
     height: 90vh;
@@ -26,100 +25,87 @@
     flex-wrap: wrap;
 }
 
-.divImgThaumbCriarTorneio{
-    width: 30%;
-    height: 30%;
-    background-color: #212121;
-    border: solid 1px #fc6b03;
-    border-radius: 10px;
-    margin: 2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    font-weight: bold;
-    color: #ffffff;
-}
-.divImgLogoCriarTorneio{
-    width: 10%;
-    height: 18%;
-    background-color: #212121;
-    border: solid 1px #fc6b03;
-    border-radius: 50%;
-    margin: 5%;
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    align-items: center;
-    font-size: 25px;
-    color: #ffffff;
-}
-
-.divImgFundoCriarTorneio{
-    width: 30%;
-    height: 30%;
-    background-color: #212121;
-    border: solid 1px #fc6b03;
-    border-radius: 10px;
-    margin: 2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-.AddImgCriarTorneio{
-    width: 85%;
-    height: 50%;
-    margin-bottom: 300px;
-    background-color: #121212;
-    border: solid 1px #fc6b03;
-    border-radius: 10px;
+.divDivisorCriarTorneio{
+    width: 80%;
+    height: 35vh;
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: row;
 }
-.AddImgCriarTorneio button{
-    width: 30%;
+
+.divDivisorCriarTorneio button{
+    width: 100%;
     height: 20%;
     background-color: #212121;
     border: solid 1px #fc6b03;
     color: #ffffff;
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 5px;
+    margin-top: 4%;
+}
+
+.addthumb, .addlogo, .addfundo{
+    width: 40%;
+    height: 35vh;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 1%;
+    padding-top: 2%;
+}
+
+
+
+.imgthumb, .imgfundo{
+    width: 100%;
+    height: 25vh;
+    background-color: #212121;
+    border-radius: 10px;
+    border: solid 1px #fc6b03;
+}
+
+.imglogo{
+    width: 60%;
+    height: 25vh;
+    background-color: #212121;
+    border-radius: 50%;
+    border: solid 1px #fc6b03;
 }
 
 
 .divInfoCriarTorneio{
-    width: 100%;
-    height: 65%;
-    border-radius: 10px;
+    width: 78%;
+    height: 40%;
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
+    border: #fc6b03 solid 1px;
+    border-radius: 10px;
+    margin: 1%;
+    align-items: center;
 }
 
-.NomeCriarTorneio{
-    width: 96%;
-    height: 20%;
+.divInfoCriarTorneio input{
+    width: 80%;
+    height: 18%;
+    border: #fc6b03 1px solid;
     background-color: #212121;
-    border: solid 1px #fc6b03;
+    color: #fff;
     border-radius: 5px;
-}
-
-.InfoCriarTorneio{
-    width: 96%;
-    height: 50%;
-    background-color: #212121;
-    border: solid 1px #fc6b03;
-    border-radius: 5px;
+}  
+.divInfoCriarTorneio textarea{
     resize: none;
+    width: 80%;
+    height: 40%;
+    border: #fc6b03 1px solid;
+    background-color: #212121;
+    color: #fff;
+    border-radius: 5px;
     margin-top: 2%;
 }
+
 
 .divMoreinfoCriarTorneios{
     width: 80%;
@@ -145,4 +131,47 @@
 
 .select{
     width: 30%;
+}
+
+
+@media screen and (max-width: 768px){
+    .divSubCriarTorneio{
+        height: 140vh;
+    }
+    .divDivisorCriarTorneio{
+        width: 90%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 80%;
+    }
+    .addthumb, .addlogo, .addfundo{
+        width: 100%;
+    }
+    .divInfoCriarTorneio{
+        width: 90%;
+        height: 30%;
+        margin-top: 70%;
+    }
+    .divInfoCriarTorneio input{
+        width: 80%;
+        height: 12%;
+    }  
+    .divInfoCriarTorneio textarea{
+        resize: none;
+        height: 60%;
+    }
+
+    .divMoreinfoCriarTorneios{
+        flex-direction: column;
+        height: 25vh;
+    }
+    .totalJogadores{
+        width: 78%;
+        height: 15%;
+    }
+    
+    .select{
+        width: 80%;
+    }
 }
