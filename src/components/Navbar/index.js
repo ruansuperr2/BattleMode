@@ -54,23 +54,23 @@ export const Navbar = (props) => {
     }
     
 
-    const [navbar, setNavbar] = useState(false);
+    // const [navbar, setNavbar] = useState(false);
     
-    const changeNoneButtons = () =>{
-        if(window.scrollY >= 80){
-            setNavbar(true)
-        }else{
-            setNavbar(false)
-        }
-    }
-    useEffect(() =>{    
+    // const changeNoneButtons = () =>{
+    //     if(window.scrollY >= 80){
+    //         setNavbar(true)
+    //     }else{
+    //         setNavbar(false)
+    //     }
+    // }
+    // useEffect(() =>{    
         
         
-        window.addEventListener("scroll", changeNoneButtons)
-        return () => {
-            window.removeEventListener("scroll", changeNoneButtons)
-        }
-    }, [])
+    //     window.addEventListener("scroll", changeNoneButtons)
+    //     return () => {
+    //         window.removeEventListener("scroll", changeNoneButtons)
+    //     }
+    // }, [])
     
     const callShowHeader = () =>{
         
@@ -118,8 +118,6 @@ export const Navbar = (props) => {
     return (
         <div className="divDividerNavbar">
             <div className="divLeftNavbar">
-                <img src={require("./assets/logo.png")} />
-                <hr className="HR"/>
                 <Link to="/now" className="fontNavbar"><HomeIcon className='iconHome' sx={{color: defaultColorHome, fontSize: 35}}/>Home</Link>
                 <Link to="/feed" className="feedLinkDetector fontNavbar"><EmojiEventsIcon className='iconTorneios' sx={{color: defaultColorTorneios, fontSize: 35}}/>Torneios</Link>
                 <Link to="/games" className="fontNavbar"><SportsEsportsIcon className='iconJogos' sx={{color: defaultColorJogos, fontSize: 35}}/>Jogos</Link>
@@ -131,27 +129,27 @@ export const Navbar = (props) => {
 
             </div>
 
-            <div className={`divSideLoginRegister ${navbar && "navbarActive"}` }>
-                <div className='EntrarRegistroNavBar'>
-                    <button onClick={() => {window.location.href = './cadastro'}}>Cadastrar-se </button>
-                    <button onClick={() => {window.location.href = './login'}}>Entrar</button>
-                </div>
+            <div className={`divSideLoginRegister` }>
+                <img src={require("./assets/logo.png")} />
                 <div className='loggedUserNameNavBar'>
                     <img className='imgIconP'/>
                     <p className='userNameP'></p>
                     <div onClick={() => callShowHeader()} className='buttonShowMoreNavbar'/>
                 </div>
-                <div className="NavbarDropDown">
-                    <div className="contentNavbarDropDown">
-                        <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo'/> Perfil</label>
-                        <label onClick={() => {window.location.href = `/t/criar`}}><div className='imgNavbarTeamGo'/> Criar Equipe</label>
-                        <label onClick={() => {window.location.href = `/criarTorneio`}}><div className='imgNavbarTourneamentGo'/> Criar Torneio</label>
-                        <label onClick={() => {
-                            localStorage.clear('dasiBoard')
-                            window.location.reload(true)
-                        }}><div className='imgNavbarTourneamentGo'/> Desconectar</label>
-                    </div>
+
+
+                <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo'/> Perfil</label>
+                <label onClick={() => {window.location.href = `/t/criar`}}><div className='imgNavbarTeamGo'/> Criar Equipe</label>
+                <label onClick={() => {window.location.href = `/criarTorneio`}}><div className='imgNavbarTourneamentGo'/> Criar Torneio</label>
+                <label onClick={() => {
+                    localStorage.clear('dasiBoard')
+                    window.location.reload(true)
+                }}><div className='imgNavbarTourneamentGo'/> Desconectar</label>
+                <div className='EntrarRegistroNavBar'>
+                    <button onClick={() => {window.location.href = './cadastro'}}>Cadastrar-se </button>
+                    <button onClick={() => {window.location.href = './login'}}>Entrar</button>
                 </div>
+
             </div>
         </div>
     )
