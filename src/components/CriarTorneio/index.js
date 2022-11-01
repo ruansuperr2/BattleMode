@@ -39,7 +39,8 @@ function CriarTorneio (){
       ]
 
     for(let i = 0; i < jogo.length;i++){
-
+        // após chamar os jogos no banco de dados, ele puxa o jogo de lá, e da um loop, enviando todos os 
+        // dados dentro do array do banco de dados para o array que será renderizado.
         jogos.push({
             value: jogo[i].id,
             label: jogo[i].nome
