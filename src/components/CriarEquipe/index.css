@@ -1,0 +1,136 @@
+.mainContainerCriarEquipe {
+    width: 100%;
+    height: 100%;
+    background-color: #212121;
+}
+
+.divCriarEquipe {
+    width: 95%;
+    height: 100%;
+    background-color: #212121;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+}
+
+.subDivCriarEquipe {
+    width: 80%;
+    height: 80vh;
+    background-color: #121212;
+    border-radius: 20px;
+    border: 1px solid #fc6b03;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.divInfoCriarEquipe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid #fc6b03;
+    margin-top: 1.5rem;
+    height: 20%;
+    width: 80%;
+}
+
+.divDemoCriarEquipe {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: 35%;
+}
+.divFlex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    margin: 1rem;
+    height: 10rem;
+    border-radius: 5px;
+}
+.divFlexLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 8rem;
+    height: 10rem;
+    margin: 1rem;
+    border-radius: 50%;
+    border: none;
+}
+
+.labelImgCriarEquipe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 1px solid #fc6b03;
+    background-color: #212121;
+}
+.labelImgCriarEquipeLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8rem;
+    height: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 20px;
+    border: 1px solid #fc6b03;
+    border-radius: 50%;
+    margin-right: 0;
+    background-color: #212121;
+}
+
+.inputButtonFlex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.inputProcurarJogador {
+    width: 50%;
+    height: 3rem;
+    background-color: #212121;
+    border: solid 1px #fc6b03;
+    border-radius: 5px;
+}
+.inputProcurarJogador::placeholder {
+    font-size: 20px;
+    padding-left: .5rem;
+}
+.inputProcurarJogador:focus {
+    border: none;
+    color: #fff;
+    outline: 2px solid #fc6b03;
+}
+
+.addButtonCriarEquipe {
+    position: relative;
+    top: 2rem;
+    background-color: #414141;
+    border-radius: 5px;
+    color: #fff;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+}
+.addJogador {
+    margin-left: .5rem;
+    position: initial;
+}
+
+.divImgDemo {
+    color: #fff;
+    width: 100%;
+    height: 100%;
+}
