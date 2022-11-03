@@ -1,4 +1,4 @@
-
+import React, {useState} from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
@@ -18,24 +18,30 @@ import CriarTorneio from './components/CriarTorneio'
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 
 function App() {
+    const [showNav, setShowNav] = useState(true);
   return (
       <div className="divAppContainer">
           <BrowserRouter>
               <div>
-                  <Routes>
-	  		            <Route path="/*" element={<PaginaNaoEncontrada/>}/>
-			            <Route path="/" element={<LandingPage />} />
-                        <Route exact path="/login" element={<Login />} />
-                        <Route exact path="/cadastro" element={<Cadastro />} />
-                        <Route path="/now" element={<NewHome />} />
-                        <Route path="/feed" element={<Feed />} />
-                        <Route path="/games" element={<Jogos />} />
-                        <Route path="/about" element={<Sobre />} />
-                        <Route path="/u/:id" element={<Usuario/>} />
-                        <Route path="/participar" element={<Participar/>} />
-                        <Route path="/chaves" element={<Chaves/>} />
-                        <Route path="/criartorneio" element={<CriarTorneio/>} />
-                  </Routes>
+                {   showNav &&
+                        <nav>
+                            <Navbar />
+                        </nav>
+                } 
+                <Routes>
+                    <Route path="/*" element={<PaginaNaoEncontrada/>}/>
+                    <Route path="/" element={<LandingPage funcNav={setShowNav} />} />
+                    <Route exact path="/login" element={<Login funcNav={setShowNav} />} />
+                    <Route exact path="/cadastro" element={<Cadastro funcNav={setShowNav} />} />
+                    <Route path="/now" element={<NewHome />} />
+                    <Route path="/feed" element={<Feed />} />
+                    <Route path="/games" element={<Jogos />} />
+                    <Route path="/about" element={<Sobre />} />
+                    <Route path="/u/:id" element={<Usuario/>} />
+                    <Route path="/participar" element={<Participar/>} />
+                    <Route path="/chaves" element={<Chaves/>} />
+                    <Route path="/criartorneio" element={<CriarTorneio/>} />
+                </Routes>
               </div>
           </BrowserRouter>
       </div>
