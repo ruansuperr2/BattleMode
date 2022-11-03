@@ -18,10 +18,16 @@
 }
 
 .divSideLoginRegister img {
-	width: 5.5vw;
-	height: 5.5vw;
+	z-index: 500;
+	width: 5vw;
+	height: 5vw;
 	transition: 0.5s;
-	image-rendering: crisp-edges;
+}
+
+.divSideLoginRegister img:hover {
+	background-color: #3d3d3d;
+	padding: -10px;
+
 }
 
 .divRightNavbar .LanguageIcon {
@@ -44,7 +50,7 @@
 }
 
 .divDividerNavbar {
-	z-index: 50;
+	z-index: 0;
 	height: 100vh;
 	width: 5%;
 	position: fixed;
@@ -72,12 +78,21 @@
 
 .fontNavbar:hover {
 	transition: 0.5s;
+	background-color: #3d3d3d;
+	cursor: pointer;
+	box-shadow: 0px 2px 8px 2px #000000;
+}
+
+.fontNavbar{
+	width: 4.4vw !important;
+	border-radius: 10px !important;
 }
 
 .buttonPrimaryNavbar, .buttonSecundaryNavbar {
 	font-size: 14px;
 	transition: 0.5s;
 	color: white;
+
 }
 
 .buttonPrimaryNavbar {
@@ -96,11 +111,9 @@
 }
 
 .divSideLoginRegister{
-	position: fixed;
-	top: 0%;
-	right: 0%;
+	overflow: hidden;
 	background-color: #191919;
-	z-index: 200;
+	z-index: 400;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -114,6 +127,32 @@
 	transition-timing-function: ease-in;
 	transition: 0.5s;
 	
+}
+
+.loggedUserFunctions{
+	background-color: #191919;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 75px;
+
+	transition-timing-function: ease-in;
+	transition: 0.5s;
+	gap: 50px;
+}
+
+.loggedUserFunctions label{
+	padding: 6px;
+	display: flex;
+	align-items: center;
+	transition: 0.5s;
+	border-radius: 10px;
+}
+
+.loggedUserFunctions label:hover{
+	background-color: #3d3d3d;
+	cursor: pointer;
+	box-shadow: 0px 2px 8px 2px #000000;
 }
 
 .EntrarRegistroNavBar{
@@ -148,7 +187,7 @@
 
 .loggedUserNameNavBar{
 	display: flex;
-	width: 100%;
+	margin-right: 6%;
 	align-items: center;
 	justify-content: center;
 	flex-direction: row;

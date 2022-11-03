@@ -33,11 +33,13 @@ export const Navbar = (props) => {
                 console.log('Teste definitivo: ', loggedUser.username !== undefined && props.page != 'usuario')
                 if(loggedUser.username !== undefined && props.page != 'usuario'){
                     document.querySelector('.loggedUserNameNavBar').style.display = 'flex'
+                    document.querySelector('.loggedUserFunctions').style.display = 'flex'
                     document.querySelector('.EntrarRegistroNavBar').style.display = 'none'
                     document.querySelector('.userNameP').textContent = loggedUser.username 
                     document.querySelector('.imgIconP').setAttribute("src", loggedUser.icon)
                 }else{
                     document.querySelector('.loggedUserNameNavBar').style.display = 'none'
+                    document.querySelector('.loggedUserFunctions').style.display = 'none'
                     document.querySelector('.EntrarRegistroNavBar').style.display = 'flex'
                 }
             }else{
@@ -116,40 +118,43 @@ export const Navbar = (props) => {
     }
     
     return (
-        <div className="divDividerNavbar">
-            <div className="divLeftNavbar">
-                <Link to="/now" className="fontNavbar"><HomeIcon className='iconHome' sx={{color: defaultColorHome, fontSize: 35}}/>Home</Link>
-                <Link to="/feed" className="feedLinkDetector fontNavbar"><EmojiEventsIcon className='iconTorneios' sx={{color: defaultColorTorneios, fontSize: 35}}/>Torneios</Link>
-                <Link to="/games" className="fontNavbar"><SportsEsportsIcon className='iconJogos' sx={{color: defaultColorJogos, fontSize: 35}}/>Jogos</Link>
-                <Link to="/about" className="fontNavbar"><InfoIcon className='iconAbout' sx={{color: defaultColorAbout, fontSize: 35}}/>Sobre</Link>
-            </div>
-            <div className="divRightNavbar">
-                <p><LanguageIcon className="LanguageIcon" sx={{color: "#fff", fontSize: 35}}/> pt-br</p>
-                
+        <div className="">
+            <div className="divDividerNavbar">
 
+                <div className="divLeftNavbar">
+                    <Link to="/now" className="fontNavbar"><HomeIcon className='iconNavbar iconHome' sx={{color: defaultColorHome, fontSize: 35}}/>Home</Link>
+                    <Link to="/feed" className="feedLinkDetector fontNavbar"><EmojiEventsIcon className='iconNavbar iconTorneios' sx={{color: defaultColorTorneios, fontSize: 35}}/>Torneios</Link>
+                    <Link to="/games" className="fontNavbar"><SportsEsportsIcon className='iconNavbar iconJogos' sx={{color: defaultColorJogos, fontSize: 35}}/>Jogos</Link>
+                    <Link to="/about" className="fontNavbar"><InfoIcon className='iconNavbar iconAbout' sx={{color: defaultColorAbout, fontSize: 35}}/>Sobre</Link>
+                </div>
+                <div className="divRightNavbar">
+                    <p><LanguageIcon className="LanguageIcon" sx={{color: "#fff", fontSize: 35}}/> pt-br</p>
+                    
+
+                </div>
             </div>
 
             <div className={`divSideLoginRegister` }>
                 <img src={require("./assets/logo.png")} />
-                <div className='loggedUserNameNavBar'>
-                    <img className='imgIconP'/>
-                    <p className='userNameP'></p>
-                    <div onClick={() => callShowHeader()} className='buttonShowMoreNavbar'/>
+
+
+                <div className='loggedUserFunctions'>
+                    <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo'/> Perfil</label>
+                    <label onClick={() => {window.location.href = `/criarTime`}}><div className='imgNavbarTeamGo'/> Criar Equipe</label>
+                    <label onClick={() => {window.location.href = `/criarTorneio`}}><div className='imgNavbarTourneamentGo'/> Criar Torneio</label>
+                    <label onClick={() => {
+                        localStorage.clear('dasiBoard')
+                        window.location.reload(true)
+                    }}><div className='imgNavbarTourneamentGo'/> Desconectar</label>
                 </div>
-
-
-                <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo'/> Perfil</label>
-                <label onClick={() => {window.location.href = `/t/criar`}}><div className='imgNavbarTeamGo'/> Criar Equipe</label>
-                <label onClick={() => {window.location.href = `/criarTorneio`}}><div className='imgNavbarTourneamentGo'/> Criar Torneio</label>
-                <label onClick={() => {
-                    localStorage.clear('dasiBoard')
-                    window.location.reload(true)
-                }}><div className='imgNavbarTourneamentGo'/> Desconectar</label>
                 <div className='EntrarRegistroNavBar'>
                     <button onClick={() => {window.location.href = './cadastro'}}>Cadastrar-se </button>
                     <button onClick={() => {window.location.href = './login'}}>Entrar</button>
                 </div>
-
+                <div className='loggedUserNameNavBar'>
+                    <img className='imgIconP'/>
+                    <p className='userNameP'></p>
+                </div>
             </div>
         </div>
     )

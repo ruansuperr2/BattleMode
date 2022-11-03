@@ -35,6 +35,10 @@ const callPageChanger = () => {
                     behavior: 'smooth'
                 }, 500)
                 break
+            default:
+                document.querySelector('.divSideLoginRegister').scrollIntoView({
+                    behavior: 'smooth'
+                }, 500)
         }
     }catch{
         
@@ -85,9 +89,11 @@ let index = 0
 
 const pageHandling = (funcProp) => {
     if(funcProp === 0){
+        currentPage = 'null'
+        callPageChanger()
+    }else if(funcProp === 1){
         currentPage = 'pageOne'
         callPageChanger()
-
     }else if(funcProp === 4){
         currentPage ='pageTwo'
         callPageChanger()
@@ -213,7 +219,7 @@ export default function NewHome () {
             able = 1
         }}>
             <Navbar page='home'/>
-            <div className="paddingLeft containerNewHome">
+            <div className="paddingLeft paddingTop containerNewHome">
                 <div>
                     <div className="containerPageOneHome">
                         <div className="containerPageOneHomeContent">
@@ -257,7 +263,7 @@ export default function NewHome () {
                             
                             <div className="miniDivider"></div>
                             <div className="labelPageTwoHome"></div>
-                            <div className='gamesHighlightContainer'>
+                            <div className='gamesHighlightContainer paddingTop'>
                                 { game.slice(-8).map( (findGame) => {
                                     
                                     return <div onClick={() => {window.location.href = `./feed/${findGame.id}`}} style={{backgroundImage: `url(${findGame.imgFundo})`}} className='gameHighlighted bigGameHiglightTwo'>
