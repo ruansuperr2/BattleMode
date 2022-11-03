@@ -82,8 +82,8 @@ function Login(props) {
                         <input value={password} onChange={event => {setPassword(event.target.value)}} type='password' placeholder='Senha'></input>
                         <button onClick={() => Login()}>Entrar</button>
 
-                        <a><p>Esqueceu sua senha?</p></a>
-                        <a><p>Não possui conta?</p></a>
+                        <a href='/cadastro'><p>Esqueceu sua senha?</p></a>
+                        <a href='/cadastro'><p>Não possui conta?</p></a>
                     </div>
                 </div>
             </div>
