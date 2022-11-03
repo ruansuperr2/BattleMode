@@ -51,7 +51,7 @@ function Participar() {
 
     return (
         <div className='divParticiparMainContainer'>
-            <Navbar page={'usuario'} />
+            {/* <Navbar page={'usuario'} /> */}
             <ModalCustom/>
             <div className="divMainTorneio" />
 

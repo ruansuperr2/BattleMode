@@ -218,7 +218,7 @@ export default function NewHome () {
             callPageChanger()
             able = 1
         }}>
-            <Navbar page='home'/>
+            {/* <Navbar page='home'/> */}
             <div className="paddingLeft paddingTop containerNewHome">
                 <div>
                     <div className="containerPageOneHome">
