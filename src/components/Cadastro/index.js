@@ -16,7 +16,7 @@ function Cadastro (props) {
 
     const callAgentFinder = async() => {
         try{
-            const response = await fetch('http://localhost:3000/api/user')
+            const response = await fetch('http://https://battlemode-backend.herokuapp.com/api/user')
             const data = response.json()
             data.then(
                 (val) => {setUsers(val.data)
@@ -54,7 +54,7 @@ function Cadastro (props) {
                                 })
                                 
                         }
-                        await fetch('http://localhost:3000/api/user',  requestOptions)
+                        await fetch('https://battlemode-backend.herokuapp.com/api/user',  requestOptions)
                         setTimeout(() => {
                             window.location.href = './login '
                         }, 1000)
