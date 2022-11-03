@@ -60,7 +60,7 @@ function Times() {
 
     return(
         <div style={{background : '#121212'}}>
-            <Navbar></Navbar>
+            {/* <Navbar></Navbar> */}
             <div className='DivMainContainerTimes'>
                 <div className='DivSecondMainContainerTimes'>
                     <div className='DivInfoTimes'>

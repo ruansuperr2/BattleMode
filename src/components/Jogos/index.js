@@ -36,7 +36,7 @@ function Jogos() {
 
     return (
         <div>
-            <Navbar page="jogos"/>
+            {/* <Navbar page="jogos"/> */}
             <div className="paddingLeft divMainJogos">
                 <h3 className="titleGames">O maior show de competição! Adicione o seu jogo favorito ao seu perfil!</h3>
                 <div className="divJogosMainContainer">

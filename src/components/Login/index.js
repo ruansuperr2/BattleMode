@@ -7,8 +7,8 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import { SettingsRemoteTwoTone } from '@mui/icons-material';
 
 let getUsersTry = 0
-function Login() {
-
+function Login(props) {
+    props.funcNav(false);
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 

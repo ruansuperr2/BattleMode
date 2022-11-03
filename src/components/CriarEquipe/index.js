@@ -9,7 +9,7 @@ function CriarEquipe() {
     
     return (
         <div className='mainContainerCriarEquipe'>
-            <Navbar page='usuario'/>
+            {/* <Navbar page='usuario'/> */}
             <div className='divCriarEquipe paddingLeft'>
 
                 <div className='subDivCriarEquipe'>

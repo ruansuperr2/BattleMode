@@ -19,8 +19,8 @@ function Sobre() {
 
 
     return (
-        <div className="divMainContainer">
-            <Navbar page="Sobre"/>
+        <div className="divMainContainerD">
+            {/* <Navbar page="about"/> */}
             
             <div className='divMainContainerSobre paddingLeft'>
                 <img className='divFundoDropdown' src={require('./assets/fundo.png')}/>

@@ -43,8 +43,8 @@ function Feed() {
 
     if(id === undefined){
         return (
-            <div className="divMainContainer">
-                <Navbar page="torneio"/>
+            <div className="divMainContainerD">
+                {/* <Navbar page="torneio"/> */}
                 <div className='paddingLeft divMainFeedContainer'>
                     <h1 className='TitlePrediletos'>Seus Favoritos</h1>
                     <Prediletos/>
@@ -61,7 +61,7 @@ function Feed() {
         )
     }else{
         return (
-            <div className="divMainContainer">
+            <div className="divMainContainerD">
                 <Navbar page="feed"/>
                     <div className='containerThisGame paddingLeft'>
                         {

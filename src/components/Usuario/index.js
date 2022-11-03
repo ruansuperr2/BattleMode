@@ -130,7 +130,7 @@ function Usuario(){
     return(
         
         <div className="divUsuarioDMainContainer">
-            <Navbar page={'usuario'}/>
+            {/* <Navbar page={'usuario'}/> */}
             <div className='divFundoMainContainer'>
                 <div className='divContainerFundoMainContainer'/>
             </div>

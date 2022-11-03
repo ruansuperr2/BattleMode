@@ -6,7 +6,9 @@ import 'animate.css';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
-function LandingPage() {
+function LandingPage(props) {
+    props.funcNav(false);
+
     if(JSON.parse(localStorage.getItem('dasiBoard')) !== null){
         window.location.href = './now'
     }

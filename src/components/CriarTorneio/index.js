@@ -23,7 +23,7 @@ function CriarTorneio (){
     
     return(
         <div className="DivCriarTorneio">
-            <NavBar page = 'usuario'/>
+            {/* <NavBar page = 'usuario'/> */}
 
             <div className="divMainCriarTorneio paddingLeft">
                 <div className="divSubCriarTorneio">

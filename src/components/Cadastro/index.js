@@ -5,8 +5,8 @@ import ModalCustom ,{ showModal, closeModal } from '../Modal';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
-function Cadastro () {
-
+function Cadastro (props) {
+    props.funcNav(false);
     const [users, setUsers] = useState([])
     const icon = `https://raw.communitydragon.org/12.18/game/assets/ux/summonericons/profileicon${Math.floor(Math.random() * 5000)}.png`
     const [username, setUsername] = useState('')
