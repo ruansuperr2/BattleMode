@@ -1,15 +1,15 @@
 import react from 'react'
 import './index.css';
-import Integrante from './components/Integrante'
 import Navbar from '../Navbar'
 import Footer from '../Footer'
-import { AiOutlinePlus } from 'react-icons/ai'
+import Integrante from './components/Integrante';
+import { AiOutlineCheck, AiOutlinePlus } from 'react-icons/ai'
 
 function CriarEquipe() {
     
     return (
         <div className='mainContainerCriarEquipe'>
-            {/* <Navbar page='usuario'/> */}
+            <Navbar page='usuario'/>
             <div className='divCriarEquipe paddingLeft'>
 
                 <div className='subDivCriarEquipe'>
@@ -36,14 +36,18 @@ function CriarEquipe() {
                         </div>
                     </div>
 
-                    <div className='divInfoCriarEquipe'>
-                        <div className='inputButtonFlex'>
-                            <input className='inputProcurarJogador' placeholder='Adicionar jogador...'/>
-                            <button className='addJogador addButtonCriarEquipe'><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
+                    <div className='infoContainer'>
+                        <div className='divInfoCriarEquipe'>
+                            <Integrante/>
+                        </div>
+
+                        <div className='divDescCriarEquipe'>
+                            <input className='inputProcurarJogador' placeholder='Nome da equipe...'/>
+                            <textarea className='textareaEquipeDescricao' placeholder='Descrição da equipe...'/>
                         </div>
                     </div>
+                    <button className='buttonConfirmarCriarEquipe'>Confirmar <AiOutlineCheck style={{fontSize: '25px', marginLeft: '.5rem', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
                 </div>
-
             </div>
             <Footer/>
         </div>
