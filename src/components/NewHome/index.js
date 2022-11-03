@@ -84,46 +84,6 @@ const callSlideChanger = () => {
     }
 }
 
-
-let index = 0
-
-const pageHandling = (funcProp) => {
-    if(funcProp === 0){
-        currentPage = 'null'
-        callPageChanger()
-    }else if(funcProp === 1){
-        currentPage = 'pageOne'
-        callPageChanger()
-    }else if(funcProp === 4){
-        currentPage ='pageTwo'
-        callPageChanger()
-
-    }else if(funcProp === 8){
-        currentPage ='pageThree'
-        callPageChanger()
-
-    }
-    
-}
-
-$( window ).on('mousewheel', function(e){
-        if(e.originalEvent.wheelDelta /120 > 0) {
-            if(index === 0){
-                index = 0
-            }else{
-                index--
-            }
-            pageHandling(index)
-        }
-        else{
-            if(index === 8){
-                index = 8
-            }else{
-                index++
-            }
-            pageHandling(index)
-        }
-})
 let able = 0
 
 export default function NewHome () {
@@ -345,7 +305,6 @@ export default function NewHome () {
             </div>
             <div className="containerPagesSelector">
                 <div onClick={() => {
-                        index = 0
                         currentPage = 'pageOne'
                         callPageChanger()
                         // document.querySelector('.containerPageOneHomeContent').scrollIntoView({
@@ -355,8 +314,7 @@ export default function NewHome () {
                             behavior: 'smooth'
                         }, 500)
                     }} className="pageSelector pageNumberOne currentPageHome"></div>
-                <div onClick={() => {
-                        index = 4   
+                <div onClick={() => { 
                         currentPage = 'pageTwo'
                         callPageChanger()
                         document.querySelector('.containerPageTwoHomeContent').scrollIntoView({
@@ -364,7 +322,6 @@ export default function NewHome () {
                         }, 500)
                     }} className="pageSelector pageNumberTwo"></div>
                 <div onClick={() => {
-                        index = 8
                         currentPage = 'pageThree'
                         callPageChanger()
                         document.querySelector('.containerPageThreeHomeContent').scrollIntoView({
