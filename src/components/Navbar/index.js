@@ -46,6 +46,9 @@ export const Navbar = (props) => {
                 document.querySelector('.divSideLoginRegister').style.display = 'none'
             }
         }catch(e){
+            document.querySelector('.loggedUserNameNavBar').style.display = 'none'
+            document.querySelector('.loggedUserFunctions').style.display = 'none'
+            document.querySelector('.EntrarRegistroNavBar').style.display = 'flex'
         }
     }
         
@@ -53,44 +56,7 @@ export const Navbar = (props) => {
         getUsersTry++
         getUsers()
         console.log('Entrou?')
-    }
-    
-
-    // const [navbar, setNavbar] = useState(false);
-    
-    // const changeNoneButtons = () =>{
-    //     if(window.scrollY >= 80){
-    //         setNavbar(true)
-    //     }else{
-    //         setNavbar(false)
-    //     }
-    // }
-    // useEffect(() =>{    
-        
-        
-    //     window.addEventListener("scroll", changeNoneButtons)
-    //     return () => {
-    //         window.removeEventListener("scroll", changeNoneButtons)
-    //     }
-    // }, [])
-    
-    const callShowHeader = () =>{
-        
-        if(document.querySelector('.buttonShowMoreNavbar').classList.contains('buttonShowMoreNavbarActivated')){
-            document.querySelector('.buttonShowMoreNavbar').classList.remove('buttonShowMoreNavbarActivated')
-            document.querySelector('.NavbarDropDown').style.display = 'none'
-        }else{
-            document.querySelector('.buttonShowMoreNavbar').classList.add('buttonShowMoreNavbarActivated')
-            document.querySelector('.NavbarDropDown').style.display = 'flex'
-
-            
-        }
-        
-    }
-
-
-
-    
+    } 
 
     if(props.page === 'home'){
 
