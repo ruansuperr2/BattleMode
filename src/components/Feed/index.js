@@ -12,7 +12,7 @@ function Feed() {
     const [torneio, setTorneio] = useState([])
     const callTorneio = async() => {
         try{
-            const response = await fetch('http://localhost:3000/api/torneio')
+            const response = await fetch('https://battlemode-backend.herokuapp.com/api/torneio')
             const data = response.json()
             data.then(
                 (val) => {setTorneio(val.data)})
@@ -26,7 +26,7 @@ function Feed() {
     const [jogo, setJogo] = useState([])
     const callGames = async() => {
         try{
-            const response = await fetch('http://localhost:3000/api/jogo')
+            const response = await fetch('https://battlemode-backend.herokuapp.com/api/jogo')
             const data = response.json()
             data.then(
                 (val) => {setJogo(val.data)})

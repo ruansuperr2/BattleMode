@@ -92,7 +92,7 @@ export default function NewHome () {
     
     const callTorneio = async() => {
         try{
-            const response = await fetch('http://localhost:3000/api/torneio')
+            const response = await fetch('https://battlemode-backend.herokuapp.com/api/torneio')
             const data = response.json()
             data.then(
                 (val) => {setTorneio(val.data)})
@@ -103,7 +103,7 @@ export default function NewHome () {
 
     const callGames = async() => {
         try{
-            const response = await fetch('http://localhost:3000/api/jogo')
+            const response = await fetch('https://battlemode-backend.herokuapp.com/api/jogo')
             const data = response.json()
             data.then(
                 (val) => {setGame(val.data)})

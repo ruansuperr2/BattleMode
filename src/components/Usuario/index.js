@@ -17,10 +17,10 @@ function Usuario(){
     const [page, setPage] = useState('geral')
     const getUsers = async () => {
         try{
-            const responseUser = await fetch('http://localhost:3000/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
+            const responseUser = await fetch('https://battlemode-backend.herokuapp.com/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
             const dataUser = responseUser.json()
 
-            const responseUsers = await fetch('http://localhost:3000/api/user/')
+            const responseUsers = await fetch('https://battlemode-backend.herokuapp.com/api/user/')
             const dataUsers = responseUsers.json()
             dataUsers.then(
                 (val) => {

@@ -19,7 +19,7 @@ export const Navbar = (props) => {
         try{
             if(JSON.parse(localStorage.getItem('dasiBoard') !== null)){
 
-                const responseUser = await fetch('http://localhost:3000/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
+                const responseUser = await fetch('https://battlemode-backend.herokuapp.com/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
                 const dataUser = responseUser.json()
                 dataUser.then(
                     (val) => {
