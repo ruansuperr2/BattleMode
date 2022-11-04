@@ -16,10 +16,50 @@ function Usuario(){
     const [viewingUser, setViewingUser] = useState({})
 
     const [page, setPage] = useState('geral')
+    const [jogo, setJogo] = useState([])
+    const [torneio, setTorneio] = useState([])
+    const [time, setTime] = useState([])
+
+    const callTorneio = async() => {
+        try{
+            const response = await fetch('https://battlemode-backend.herokuapp.com/api/torneio')
+            const data = response.json()
+            data.then(
+                (val) => {setTorneio(val.data)})
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    const callGames = async() => {
+        try{
+            const response = await fetch('https://battlemode-backend.herokuapp.com/api/jogo')
+            const data = response.json()
+            data.then(
+                (val) => {setJogo(val.data)})
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    const callTime = async () => {
+        try{
+            const responseUser = await fetch('https://battlemode-backend.herokuapp.com/api/time/')
+            const dataTime = responseUser.json()
+
+            dataTime.then(
+                (val) => {
+                    setTime(val.data)
+                }
+            )   
+        }catch(error){
+            console.log(error)
+        }
+        console.log(time)
+    }
+
     const getUsers = async () => {
         try{
-
-
             const responseUser = await fetch('https://battlemode-backend.herokuapp.com/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
             const dataUser = responseUser.json()
 
@@ -35,23 +75,18 @@ function Usuario(){
                     setLoggedUser(val.data)
                     
                 }
-            )
-            
-            
-            
+            )   
         }catch(error){
             console.log(error)
         }
     }
-
-
-    
- 
     
     if(getUsersTry < 10){
         getUsersTry++
         getUsers()
-
+        callGames()
+        callTorneio()
+        callTime()
     }
     useEffect(() => {
         
@@ -119,8 +154,6 @@ function Usuario(){
         document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
         document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
         document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
-        console.log('ViewingUser: ',viewingUser, 'loggedUser: ', loggedUser,'username: ', loggedUser.username, 'id: ', id)
-        console.log('If Else:', loggedUser.username !== undefined, loggedUser.username === undefined )
         if(loggedUser.username === id){
             document.querySelector('.divmdEditor').style.display = 'none'
             document.querySelector('.enterMarkdown').style.display = 'flex'
@@ -136,7 +169,7 @@ function Usuario(){
         setTimeout(() => {
             
             makeEverythingWork()
-        }, 600);
+        }, 1600);
     }
     
     return(
@@ -194,16 +227,58 @@ function Usuario(){
                                     </div>
                                 </div>
                                 <div className='divConquistaEfavoritos'>
-                                    <div>
-                                        <h2>Teste</h2>
+                                    <div className='containerFavoriteListOfUser'>
+                                        <h2>Jogos Favoritados</h2>
+                                        <div className='favoriteListOfUser'>
+                                            { jogo.map( (jogo) => 
+                                                <div key={jogo.id} className='divJogosSubContainer' id={jogo.id}>
+                                                    <div className='divJogosContainer'>
+                                                        <img className='divJogosImg' src={jogo.imgFundo}/>
+                                                        <div>
+                                                            <h5>{jogo.nome}</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ) }
+                                        </div>
                                     </div>
 
-                                    <div>
-                                        <h2>Teste</h2>
+                                    <div className='containerFavoriteListOfUser'>
+                                        <h2>Conquistas</h2>
+                                        { torneio.map( (torneio) => 
+                                            <div key={torneio.id} className='divJogosSubContainer' id={torneio.id}>
+                                                <div className='divJogosContainer'>
+                                                    <img className='divJogosImg' src={torneio.thumbnail}/>
+                                                    <div>
+                                                        <h5>{torneio.nome}</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ) }
                                     </div>
                                 </div>
                             </div>
                             <div className='divEquipesSubMainContainerCompo' >
+                                <div className='divContainerTeamsOnUserTab'>
+                                    { time.map( (time) => {
+                                                    for(let i = 0; i < 5;i++){
+                                                        console.log(JSON.parse(time.equipeAtiva))
+                                                        if(JSON.parse(time.equipeAtiva)[i] === loggedUser.id){
+                                                            return  <div key={time.id} className='divTeamsOnUserSubContainer' id={time.id}>
+                                                                        <div className='divTeamsOnUserContainer'>
+                                                                            <img className='divJogosImg' src={time.logo}/>
+                                                                            <div>
+                                                                                <h5>{time.nome}</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+    
+                                                        }
+                                                    }
+                                                }
+                                    ) }
+
+                                </div>
                             </div>
                             <div className='divTorneiosSubMainContainerCompo' >
                             </div>
