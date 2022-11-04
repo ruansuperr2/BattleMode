@@ -6,21 +6,14 @@ import { useState } from 'react'
 
 function Integrante() {
     const [inputProcurar, setInputProcurar] = useState('')
-    const [jogadores, setJogadores] = useState([
-        {
-            id: 1,
-            username: 'robertin'
-        }
-    ])
+    const [jogadores, setJogadores] = useState([])
 
     const handleChange = e => {
         setInputProcurar(e.target.value)
     }
 
     const addJogador = nomeJogador => {
-        let copia = [...jogadores]
-        copia = [...copia, { id: jogadores.length + 1, username: nomeJogador }]
-        setJogadores(copia)
+        setJogadores([...jogadores, { id: jogadores.length + 1, username: nomeJogador }])
         setInputProcurar('')
     }
 

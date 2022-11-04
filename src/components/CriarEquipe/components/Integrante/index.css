@@ -33,3 +33,9 @@
 .buttonRemoveJogador:hover {
     cursor: pointer;
 }
+
+@media only screen and (max-width: 545px) {
+    .cardBody {
+        width: 10rem;
+    }
+}

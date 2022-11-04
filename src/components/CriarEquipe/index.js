@@ -9,7 +9,6 @@ function CriarEquipe() {
     
     return (
         <div className='mainContainerCriarEquipe'>
-            <Navbar page='usuario'/>
             <div className='divCriarEquipe paddingLeft'>
 
                 <div className='subDivCriarEquipe'>
@@ -37,16 +36,16 @@ function CriarEquipe() {
                     </div>
 
                     <div className='infoContainer'>
-                        <div className='divInfoCriarEquipe'>
-                            <Integrante/>
-                        </div>
-
                         <div className='divDescCriarEquipe'>
                             <input className='inputProcurarJogador' placeholder='Nome da equipe...'/>
                             <textarea className='textareaEquipeDescricao' placeholder='Descrição da equipe...'/>
+                            <button className='buttonConfirmarCriarEquipe'>Confirmar <AiOutlineCheck style={{fontSize: '25px', marginLeft: '.5rem', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
+                        </div>
+
+                        <div className='divInfoCriarEquipe'>
+                            <Integrante/>
                         </div>
                     </div>
-                    <button className='buttonConfirmarCriarEquipe'>Confirmar <AiOutlineCheck style={{fontSize: '25px', marginLeft: '.5rem', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
                 </div>
             </div>
             <Footer/>
