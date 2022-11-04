@@ -22,12 +22,17 @@ function App() {
   return (
       <div className="divAppContainer">
           <BrowserRouter>
-              <div>
+	    	<div>
+			{   showNav &&
+				<nav>
+				    <Navbar />
+				</nav>
+			} 
                   <Routes>
-	  		            <Route path="/*" element={<PaginaNaoEncontrada/>}/>
-			            <Route path="/" element={<LandingPage />} />
-                        <Route exact path="/login" element={<Login />} />
-                        <Route exact path="/cadastro" element={<Cadastro />} />
+                    	<Route path="/*" element={<PaginaNaoEncontrada/>}/>
+                    	<Route path="/" element={<LandingPage funcNav={setShowNav} />} />
+                    	<Route exact path="/login" element={<Login funcNav={setShowNav} />} />
+                    	<Route exact path="/cadastro" element={<Cadastro funcNav={setShowNav} />} />
                         <Route path="/now" element={<NewHome />} />
                         <Route path="/feed" element={<Feed />} />
                         <Route path="/games" element={<Jogos />} />
