@@ -1,4 +1,5 @@
 
+import React, {useState} from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
@@ -19,6 +20,7 @@ import CriarEquipe from './components/CriarEquipe'
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 
 function App() {
+  const [showNav, setShowNav] = useState(true);
   return (
       <div className="divAppContainer">
           <BrowserRouter>
