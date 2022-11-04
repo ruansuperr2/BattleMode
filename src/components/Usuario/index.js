@@ -7,6 +7,7 @@ import MDEditor from '@uiw/react-md-editor';
 
 let getUsersTry = 0
 
+let deadOrAlive = false
 function Usuario(){
     
     const { id } = useParams();
@@ -17,6 +18,8 @@ function Usuario(){
     const [page, setPage] = useState('geral')
     const getUsers = async () => {
         try{
+
+
             const responseUser = await fetch('https://battlemode-backend.herokuapp.com/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
             const dataUser = responseUser.json()
 
@@ -41,32 +44,17 @@ function Usuario(){
         }
     }
 
+
+    
+ 
+    
     if(getUsersTry < 10){
         getUsersTry++
         getUsers()
-    }
-    
-    const makeEverythingWork = () => {
-        document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
-        document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
-        document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
-        console.log('ViewingUser: ',viewingUser, 'loggedUser: ', loggedUser,'username: ', loggedUser.username, 'id: ', id)
-        console.log('If Else:', loggedUser.username !== undefined, loggedUser.username === undefined )
-        if(loggedUser.username === viewingUser.username){
-            document.querySelector('.divmdEditor').style.display = 'none'
-            document.querySelector('.editMarkdownButton').style.display = 'flex'
-        }else{
-            document.querySelector('.divmdEditor').style.display = 'none'
-            document.querySelector('.editMarkdownButton').style.display = 'none'
-        }
-        document.querySelector('.geral').classList.add('perfilActive')
-        console.log('loggeduser and viewinguser',loggedUser, viewingUser)
 
     }
-    setTimeout(() => {
-        makeEverythingWork()
-    }, 500)
     useEffect(() => {
+        
         switch(page){
             case 'geral':
                 document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'flex'
@@ -115,7 +103,7 @@ function Usuario(){
         }
     })
 
-    const [value, setValue] = React.useState("**Eu ainda não possuo uma biografia!**");
+    const [value, setValue] = useState("**Eu ainda não possuo uma biografia!**");
 
     const callEditMarkdownEditor = (type) =>{
         if(type === 'enter'){
@@ -126,6 +114,30 @@ function Usuario(){
             document.querySelector('.divmdViewer').style.display = 'block'
         }
     }
+
+    const makeEverythingWork = () => {
+        document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
+        document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
+        document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
+        console.log('ViewingUser: ',viewingUser, 'loggedUser: ', loggedUser,'username: ', loggedUser.username, 'id: ', id)
+        console.log('If Else:', loggedUser.username !== undefined, loggedUser.username === undefined )
+        if(loggedUser.username === id){
+            document.querySelector('.divmdEditor').style.display = 'none'
+            document.querySelector('.enterMarkdown').style.display = 'flex'
+        }else{
+            document.querySelector('.divmdEditor').style.display = 'none'
+            document.querySelector('.enterMarkdown').style.display = 'none'
+        }
+        document.querySelector('.geral').classList.add('perfilActive')
+        console.log('loggeduser and viewinguser',loggedUser, viewingUser)
+        deadOrAlive = true
+    }  
+    if(deadOrAlive === false){
+        setTimeout(() => {
+            
+            makeEverythingWork()
+        }, 600);
+    }
     
     return(
         
@@ -134,7 +146,7 @@ function Usuario(){
             <div className='divFundoMainContainer'>
                 <div className='divContainerFundoMainContainer'/>
             </div>
-            <div className='divUsuarioSubMainContainer paddingLeft '>
+            <div className='divUsuarioSubMainContainerD paddingLeft '>
                 <div className='divUsuarioComplexContainer'>
                     <div className='divRightMainComplexoContainerCompo'>
                         <div className='divRightUserInfoCompo'>
@@ -172,7 +184,7 @@ function Usuario(){
                                             value={value}
                                             onChange={setValue}
                                             preview={'edit'}
-
+                                            
                                         />
                                         <div className='editMarkdownButton exitMarkdown' onClick={() => callEditMarkdownEditor('exit')}><p>Editar</p></div>
                                     </div>
