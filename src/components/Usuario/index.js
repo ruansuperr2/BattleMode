@@ -160,6 +160,8 @@ function Usuario(){
         }else{
             document.querySelector('.divmdEditor').style.display = 'none'
             document.querySelector('.enterMarkdown').style.display = 'none'
+            document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
+            
         }
         document.querySelector('.geral').classList.add('perfilActive')
         console.log('loggeduser and viewinguser',loggedUser, viewingUser)
@@ -169,7 +171,7 @@ function Usuario(){
         setTimeout(() => {
             
             makeEverythingWork()
-        }, 1600);
+        }, 2300);
     }
     
     return(
@@ -266,7 +268,7 @@ function Usuario(){
                                                         if(JSON.parse(time.equipeAtiva)[i] === loggedUser.id){
                                                             return  <div key={time.id} className='divTeamsOnUserSubContainer' id={time.id}>
                                                                         <div className='divTeamsOnUserContainer'>
-                                                                            <img className='divJogosImg' src={time.logo}/>
+                                                                            <img className='divTeamsOnUserImg' src={time.logo}/>
                                                                             <div>
                                                                                 <h5>{time.nome}</h5>
                                                                             </div>
