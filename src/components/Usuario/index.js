@@ -5,8 +5,9 @@ import Footer from '../Footer'
 import { useParams } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
 
-let getUsersTry = 0
 
+let teoriaMaluca
+let getUsersTry = 0
 let deadOrAlive = false
 function Usuario(){
     
@@ -55,7 +56,6 @@ function Usuario(){
         }catch(error){
             console.log(error)
         }
-        console.log(time)
     }
 
     const getUsers = async () => {
@@ -73,7 +73,6 @@ function Usuario(){
             dataUser.then(
                 (val) => {
                     setLoggedUser(val.data)
-                    
                 }
             )   
         }catch(error){
@@ -81,7 +80,7 @@ function Usuario(){
         }
     }
     
-    if(getUsersTry < 10){
+    if(getUsersTry < 3){
         getUsersTry++
         getUsers()
         callGames()
@@ -164,21 +163,24 @@ function Usuario(){
             
         }
         document.querySelector('.geral').classList.add('perfilActive')
-        console.log('loggeduser and viewinguser',loggedUser, viewingUser)
+        document.querySelector('.UserPlan').textContent = 'Plano ' + viewingUser.status
+        setValue(viewingUser.biografia)
+        document.querySelector('.divContainerFundoMainContainer').style.backgroundImage = `url(${viewingUser.imgFundo})`
+        
         deadOrAlive = true
     }  
     if(deadOrAlive === false){
         setTimeout(() => {
             
             makeEverythingWork()
-        }, 2300);
+        }, 1400);
     }
     
     return(
         
         <div className="divUsuarioDMainContainer">
             {/* <Navbar page={'usuario'}/> */}
-            <div className='divFundoMainContainer'>
+            <div className='divFundoMainContainer' style={{backgroundImage: `url(${viewingUser.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
                 <div className='divContainerFundoMainContainer'/>
             </div>
             <div className='divUsuarioSubMainContainerD paddingLeft '>
@@ -187,17 +189,17 @@ function Usuario(){
                         <div className='divRightUserInfoCompo'>
                             <div className='imgUserprofileIcon' style={{backgroundImage: `url(${viewingUser.icon})`}}></div>
                             <h2>{viewingUser.username}</h2>
-                            <h4>Data de Criação: 15/10/2022</h4>
-                            <h1 className='UserPlan'>Plano Básico</h1>
+                            <h4>Data de Criação: {viewingUser.dataCriacao}</h4>
+                            <h1 className='UserPlan'></h1>
                         </div>
                         <div className='divRightSubMainContainerCompo'>
                             <h3>Contatos</h3>
-                            <div>
-                                <label>Twitter: <a href={`https://twitter.com/${'feef'}`}> @Teste</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
-                                <label>Instagram: <a href={`https://instagram.com/${'feef'}`}> @Teste</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
-                                <label>Discord: <a> Teste#5353</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
-                                <label>Twitch: <a href={`https://twitch.tv/${'feef'}`}> /Teste</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
-                            </div>
+                            {/* <div>
+                                <label>Twitter: <a href={`https://twitter.com/${JSON.parse(viewingUser.redes).twitter}`}> @{JSON.parse(viewingUser.redes).twitter}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
+                                <label>Instagram: <a href={`https://instagram.com/${JSON.parse(viewingUser.redes).instagram}`}> @{JSON.parse(viewingUser.redes).instagram}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
+                                <label>Discord: <a> {JSON.parse(viewingUser.redes).discord}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
+                                <label>Twitch: <a href={`https://twitch.tv/${JSON.parse(viewingUser.redes).twitch}`}> /{JSON.parse(viewingUser.redes).twitch}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
+                            </div> */}
                         </div>
                     </div>
                     <div className='divUsuarioSubMainContainerGeneral'>
@@ -232,16 +234,20 @@ function Usuario(){
                                     <div className='containerFavoriteListOfUser'>
                                         <h2>Jogos Favoritados</h2>
                                         <div className='favoriteListOfUser'>
-                                            { jogo.map( (jogo) => 
-                                                <div key={jogo.id} className='divJogosSubContainer' id={jogo.id}>
-                                                    <div className='divJogosContainer'>
-                                                        <img className='divJogosImg' src={jogo.imgFundo}/>
-                                                        <div>
-                                                            <h5>{jogo.nome}</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ) }
+                                            {/* { jogo.map( (jogo) => {
+                                                for(let i = 0; i < 5;i++){
+                                                    if(jogo.id === viewingUser.personalizacao[i+1]){
+                                                        return  <div key={jogo.id} className='divJogosSubContainer' id={jogo.id}>
+                                                                    <div className='divJogosContainer'>
+                                                                        <img className='divJogosImg' src={jogo.imgFundo}/>
+                                                                        <div>
+                                                                            <h5>{jogo.nome}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                    }
+                                                }
+                                            }) } */}
                                         </div>
                                     </div>
 
@@ -262,23 +268,28 @@ function Usuario(){
                             </div>
                             <div className='divEquipesSubMainContainerCompo' >
                                 <div className='divContainerTeamsOnUserTab'>
-                                    { time.map( (time) => {
-                                                    for(let i = 0; i < 5;i++){
-                                                        console.log(JSON.parse(time.equipeAtiva))
-                                                        if(JSON.parse(time.equipeAtiva)[i] === loggedUser.id){
-                                                            return  <div key={time.id} className='divTeamsOnUserSubContainer' id={time.id}>
-                                                                        <div className='divTeamsOnUserContainer'>
-                                                                            <img className='divTeamsOnUserImg' src={time.logo}/>
-                                                                            <div>
-                                                                                <h5>{time.nome}</h5>
-                                                                            </div>
+                                    { 
+                      
+                                            time.map( (time) => {
+                                            
+                                                for(let i = 0; i < 5;i++){
+
+                                                    if(JSON.parse(time.equipeAtiva)[i] === loggedUser.id){
+                                                        return  <div key={time.id} className='divTeamsOnUserSubContainer' id={time.id}>
+                                                                    <div className='divTeamsOnUserContainer'>
+                                                                        <img className='divTeamsOnUserImg' src={time.logo}/>
+                                                                        <div>
+                                                                            <h5>{time.nome}</h5>
                                                                         </div>
                                                                     </div>
-    
-                                                        }
+                                                                </div>
+
                                                     }
                                                 }
-                                    ) }
+                                            }
+                                            ) 
+                                    
+                                    }
 
                                 </div>
                             </div>
