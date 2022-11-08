@@ -6,16 +6,17 @@ import { useParams } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
 
 
-let teoriaMaluca
 let getUsersTry = 0
 let deadOrAlive = false
+let stopIt = 0
 function Usuario(){
     
     const { id } = useParams();
-    
-    const [loggedUser, setLoggedUser] = useState({})
-    const [viewingUser, setViewingUser] = useState({})
+    console.log(id)
+    const [carai, setCarai] = useState([])
 
+    const [loggedUser, setLoggedUser] = useState({})
+    const [viewingUser, setViewingUser] = useState([])
     const [page, setPage] = useState('geral')
     const [jogo, setJogo] = useState([])
     const [torneio, setTorneio] = useState([])
@@ -166,7 +167,14 @@ function Usuario(){
         document.querySelector('.UserPlan').textContent = 'Plano ' + viewingUser.status
         setValue(viewingUser.biografia)
         document.querySelector('.divContainerFundoMainContainer').style.backgroundImage = `url(${viewingUser.imgFundo})`
-        
+        if(stopIt === 0){
+            stopIt = 1
+            console.log(viewingUser)
+            setTimeout(() => {           
+                carai.push(viewingUser.personalizacao)
+                console.log(carai)
+            }, 4000);
+        }
         deadOrAlive = true
     }  
     if(deadOrAlive === false){
