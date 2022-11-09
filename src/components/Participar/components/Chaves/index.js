@@ -10,7 +10,6 @@ import './index.css'
 function Chaves(){
     return(
         <div className='divChaves'>
-            <Navbar/>
                 <div className='divSubChaves paddingLeft'>
                     <div className='divSubChavesDois'>
                         <h1>Gaia Cup</h1>
