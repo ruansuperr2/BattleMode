@@ -59,7 +59,6 @@ function Feed() {
     }else{
         return (
             <div className="divMainContainerD">
-                <Navbar page="feed"/>
                     <div className='containerThisGame paddingLeft'>
                         {
                             jogo.map( (findJogo) => {
