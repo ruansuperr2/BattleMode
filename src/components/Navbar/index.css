@@ -5,6 +5,7 @@
 	flex-direction: column;
 	gap: 20px;
 	z-index: 600 !important;
+	color: white !important;
 }
 
 .divRightNavbar {
@@ -134,7 +135,7 @@
 	flex-direction: row;
 	align-items: center;
 	height: 75px;
-
+	color: white;
 	transition-timing-function: ease-in;
 	transition: 0.5s;
 	gap: 50px;

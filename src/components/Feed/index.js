@@ -46,9 +46,6 @@ function Feed() {
             <div className="divMainContainerD">
                 {/* <Navbar page="torneio"/> */}
                 <div className='paddingLeft divMainFeedContainer'>
-                    <h1 className='TitlePrediletos'>Seus Favoritos</h1>
-                    <Prediletos/>
-
                         { jogo.map( (jogo) => 
                         <div className='divGamesonFeedContainer'>
                             <h1 className='TitlePrediletos'><img className='logoImgFeedGlobal' src={jogo.logo}/>  {jogo.nome}</h1>

@@ -12,6 +12,7 @@ let defaultColorTorneios = '#fff'
 let defaultColorJogos = '#fff'
 let defaultColorAbout = '#fff'
 
+let deadOrAlive = false
 let getUsersTry = 0
 export const Navbar = (props) => {
     const [loggedUser, setLoggedUser] = useState({})
@@ -28,23 +29,7 @@ export const Navbar = (props) => {
                     }
                 )
             }
-            if(props.page !== 'usuario'){
-                console.log('Não é igual ao usuário')
-                console.log('Teste definitivo: ', loggedUser.username !== undefined && props.page != 'usuario')
-                if(loggedUser.username !== undefined && props.page != 'usuario'){
-                    document.querySelector('.loggedUserNameNavBar').style.display = 'flex'
-                    document.querySelector('.loggedUserFunctions').style.display = 'flex'
-                    document.querySelector('.EntrarRegistroNavBar').style.display = 'none'
-                    document.querySelector('.userNameP').textContent = loggedUser.username 
-                    document.querySelector('.imgIconP').setAttribute("src", loggedUser.icon)
-                }else{
-                    document.querySelector('.loggedUserNameNavBar').style.display = 'none'
-                    document.querySelector('.loggedUserFunctions').style.display = 'none'
-                    document.querySelector('.EntrarRegistroNavBar').style.display = 'flex'
-                }
-            }else{
-                document.querySelector('.divSideLoginRegister').style.display = 'none'
-            }
+
         }catch(e){
             document.querySelector('.loggedUserNameNavBar').style.display = 'none'
             document.querySelector('.loggedUserFunctions').style.display = 'none'
@@ -57,6 +42,33 @@ export const Navbar = (props) => {
         getUsers()
         console.log('Entrou?')
     } 
+
+    const makeEverythingWork = () => {
+        if(props.page !== 'usuario'){
+            console.log('Não é igual ao usuário')
+            console.log('Teste definitivo: ', loggedUser.username !== undefined && props.page != 'usuario')
+            if(loggedUser.username !== undefined && props.page != 'usuario'){
+                document.querySelector('.loggedUserNameNavBar').style.display = 'flex'
+                document.querySelector('.loggedUserFunctions').style.display = 'flex'
+                document.querySelector('.EntrarRegistroNavBar').style.display = 'none'
+                document.querySelector('.userNameP').textContent = loggedUser.username 
+                document.querySelector('.imgIconP').setAttribute("src", loggedUser.icon)
+            }else{
+                document.querySelector('.loggedUserNameNavBar').style.display = 'none'
+                document.querySelector('.loggedUserFunctions').style.display = 'none'
+                document.querySelector('.EntrarRegistroNavBar').style.display = 'flex'
+            }
+        }else{
+            document.querySelector('.divSideLoginRegister').style.display = 'none'
+        }
+    }
+
+    if(deadOrAlive === false){
+        setTimeout(() => {
+            
+            makeEverythingWork()
+        }, 1400);
+    }
 
     if(props.page === 'home'){
 

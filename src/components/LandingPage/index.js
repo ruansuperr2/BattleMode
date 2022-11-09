@@ -20,7 +20,7 @@ function LandingPage(props) {
             </div>
             <div className='divDivisaoTelasLandingPage'>
                 <div className='divImgInfoLandingPage'>
-                    <img className='logo' src={require("./assets/logo.png")}></img>
+                    <img className='logoL' src={require("./assets/logo.png")}></img>
                     <h1 classNome = 'h1_Animate'>Sua escalada começa aqui</h1>
                     <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade. </p>
                     <button onClick={() => {window.location.href = "./now"}}>Começar</button>
@@ -32,9 +32,10 @@ function LandingPage(props) {
                     </div>
                 </div>
                 <div className='divVideoLandingPage'>
-                    <video loop autoPlay={true} muted src={require('./assets/video.webm')} type='video/webm'>
+                    <video loop autoPlay={true} muted src={require('./assets/video.mp4')} type='video/mp4'>
                     </video>
                 </div>
+                <img src={require('./assets/Capturar.PNG')} className='imgMundoSenai'/>
             </div>
         </div>
     )
