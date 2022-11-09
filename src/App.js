@@ -41,7 +41,7 @@ function App() {
                         <Route path="/games" element={<Jogos />} />
                         <Route path="/about" element={<Sobre />} />
                         <Route path="/u/:id" element={<Usuario/>} />
-                        <Route path="/participar" element={<Participar/>} />
+                        <Route path="/t/:id" element={<Participar/>} />
                         <Route path="/chaves" element={<Chaves/>} />
                         <Route path="/criartorneio" element={<CriarTorneio/>} />
                         <Route path="/criarequipe" element={<CriarEquipe/>} />
