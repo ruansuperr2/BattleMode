@@ -21,7 +21,7 @@ function LandingPage(props) {
             <div className='divDivisaoTelasLandingPage'>
                 <div className='divImgInfoLandingPage'>
                     <img className='logoL' src={require("./assets/logo.png")}></img>
-                    <h1 classNome = 'h1_Animate'>Sua escalada começa aqui</h1>
+                    <h1 className = 'h1_Animate'>Sua escalada começa aqui</h1>
                     <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade. </p>
                     <button onClick={() => {window.location.href = "./now"}}>Começar</button>
 
