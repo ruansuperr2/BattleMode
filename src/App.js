@@ -37,6 +37,7 @@ function App() {
                     	<Route exact path="/cadastro" element={<Cadastro funcNav={setShowNav} />} />
                         <Route path="/now" element={<NewHome />} />
                         <Route path="/feed" element={<Feed />} />
+			<Route path="/feed/:id" element={<Feed />} />
                         <Route path="/games" element={<Jogos />} />
                         <Route path="/about" element={<Sobre />} />
                         <Route path="/u/:id" element={<Usuario/>} />
