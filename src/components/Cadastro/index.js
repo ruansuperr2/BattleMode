@@ -8,7 +8,6 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 function Cadastro (props) {
     props.funcNav(false);
     const [users, setUsers] = useState([])
-    const icon = `https://raw.communitydragon.org/12.18/game/assets/ux/summonericons/profileicon${Math.floor(Math.random() * 5000)}.png`
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
@@ -48,9 +47,16 @@ function Cadastro (props) {
                                 headers: {'Content-type': 'application/json'},
                                 body: JSON.stringify({
                                     username: username,
-                                    icon: icon,
+                                    icon: `https://raw.communitydragon.org/12.18/game/assets/ux/summonericons/profileicon${Math.floor(Math.random() * 5000)}.png`,
                                     email: email,
-                                    password: password
+                                    password: password,
+                                    redes: `{twitter: null,instagram: null,discord: null,twitch: null}`,
+                                    biografia: `Olá, eu sou **novo por aqui**!`,
+                                    status: 'Básico',
+                                    personalizacao: `{corPrincipal: #fc6b03,corSecundária: #262626,jogoFavorito:[],conquistas:[]}`,
+                                    imgFundo: 'https://img.freepik.com/free-photo/cosmic-background-with-colorful-laser-lights-perfect-digital-wallpaper_181624-23742.jpg?w=1380&t=st=1667843115~exp=1667843715~hmac=ac8ceacc27578dda2b42433d247fa3bda733299c3ffa75183b6ae0e9e1ad5d1b',
+                                    imgFundoDois: 'null',
+                                    dataCriacao: new Date()
                                 })
                                 
                         }
@@ -72,6 +78,7 @@ function Cadastro (props) {
             closeModal('erro','Esse email já esta em uso ou não uma formatação correta','barLoading')
         }
     }
+
 
     return (
         <div className='divMainCadastroLindo'>
