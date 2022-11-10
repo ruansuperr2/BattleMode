@@ -155,9 +155,10 @@
 .UserPlan{
     position: absolute;
     transform: rotate(90deg);
-    left: -4%;
+    left: -6%;
     font-size: 20px;
     color: #ffffff;
+    letter-spacing: .2rem;
 }
 
 .divRightMainComplexoContainerCompo{

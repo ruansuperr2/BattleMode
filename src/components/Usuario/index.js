@@ -15,7 +15,7 @@ function Usuario(){
     const { id } = useParams();
     console.log(id)
 
-    
+    const [objecto, setObjecto] = useState([])
     const [loggedUser, setLoggedUser] = useState({})
     const [viewingUser, setViewingUser] = useState([])
     const [page, setPage] = useState('geral')
@@ -183,6 +183,7 @@ function Usuario(){
     }
 
     const makeEverythingWork = () => {
+
         document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
         document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
         document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
@@ -199,12 +200,14 @@ function Usuario(){
         document.querySelector('.UserPlan').textContent = 'Plano ' + viewingUser.status
         setValue(viewingUser.biografia)
         document.querySelector('.divContainerFundoMainContainer').style.backgroundImage = `url(${viewingUser.imgFundo})`
+        setTimeout(() => {
         if(stopIt === 0){
             stopIt = 1
             console.log(viewingUser)
-            setTimeout(() => {           
-            }, 4000);
-        }
+                setObjecto(viewingUser.redes)
+                console.log(objecto)          
+            }
+        }, 4000);
         deadOrAlive = true
     }  
     if(deadOrAlive === false){
@@ -233,12 +236,12 @@ function Usuario(){
                         </div>
                         <div className='divRightSubMainContainerCompo'>
                             <h3>Contatos</h3>
-                            {/* <div>
-                                <label>Twitter: <a href={`https://twitter.com/${JSON.parse(viewingUser.redes).twitter}`}> @{JSON.parse(viewingUser.redes).twitter}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
-                                <label>Instagram: <a href={`https://instagram.com/${JSON.parse(viewingUser.redes).instagram}`}> @{JSON.parse(viewingUser.redes).instagram}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
-                                <label>Discord: <a> {JSON.parse(viewingUser.redes).discord}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
-                                <label>Twitch: <a href={`https://twitch.tv/${JSON.parse(viewingUser.redes).twitch}`}> /{JSON.parse(viewingUser.redes).twitch}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
-                            </div> */}
+                            <div>
+                                <label>Twitter: <a href={`https://twitter.com/${viewingUser.twitter}`}> @{viewingUser.twitter}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
+                                <label>Instagram: <a href={`https://instagram.com/${viewingUser.instagram}`}> @{viewingUser.instagram}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
+                                <label>Discord: <a> {viewingUser.discord}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
+                                <label>Twitch: <a href={`https://twitch.tv/${viewingUser.twitch}`}> /{viewingUser.twitch}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
+                            </div>
                         </div>
                     </div>
                     <div className='divUsuarioSubMainContainerGeneral'>
