@@ -53,7 +53,10 @@ function Cadastro (props) {
                                     redes: `{twitter: null,instagram: null,discord: null,twitch: null}`,
                                     biografia: `Olá, eu sou **novo por aqui**!`,
                                     status: 'Básico',
-                                    personalizacao: `{corPrincipal: #fc6b03,corSecundária: #262626,jogoFavorito:[],conquistas:[]}`,
+                                    corP: `#fc6b03`,
+                                    corS: `#262626`,
+                                    favoritados: `[]`,
+                                    conquistas: `[]`,
                                     imgFundo: 'https://img.freepik.com/free-photo/cosmic-background-with-colorful-laser-lights-perfect-digital-wallpaper_181624-23742.jpg?w=1380&t=st=1667843115~exp=1667843715~hmac=ac8ceacc27578dda2b42433d247fa3bda733299c3ffa75183b6ae0e9e1ad5d1b',
                                     imgFundoDois: 'null',
                                     dataCriacao: new Date()

@@ -4,6 +4,7 @@ import Navbar from '../Navbar'
 import Footer from '../Footer'
 import { useParams } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
+import ModalCustom, { showModal, closeModal } from '../Modal'
 
 
 let getUsersTry = 0
@@ -13,8 +14,8 @@ function Usuario(){
     
     const { id } = useParams();
     console.log(id)
-    const [carai, setCarai] = useState([])
 
+    
     const [loggedUser, setLoggedUser] = useState({})
     const [viewingUser, setViewingUser] = useState([])
     const [page, setPage] = useState('geral')
@@ -138,15 +139,46 @@ function Usuario(){
         }
     })
 
-    const [value, setValue] = useState("**Eu ainda não possuo uma biografia!**");
+    const [value, setValue] = useState(loggedUser.biografia);
 
-    const callEditMarkdownEditor = (type) =>{
+    const callEditMarkdownEditor = async(type) =>{
         if(type === 'enter'){
             document.querySelector('.divmdEditor').style.display = 'block'
             document.querySelector('.divmdViewer').style.display = 'none'
+            console.log(value.length)
         }else{
             document.querySelector('.divmdEditor').style.display = 'none'
             document.querySelector('.divmdViewer').style.display = 'block'
+
+            showModal('loading','Atualizando o Banco','barLoading')
+                    
+            try{
+                const requestOptions = {
+                    method: 'PUT',
+                    headers: {'Content-type': 'application/json'},
+                    body: JSON.stringify({
+                        username: loggedUser.username,
+                        icon: loggedUser.icon,
+                        email: loggedUser.email,
+                        password: loggedUser.password,
+                        redes: loggedUser.redes,
+                        biografia: value,
+                        status: loggedUser.status,
+                        corP: loggedUser.corP,
+                        corS: loggedUser.corS,
+                        favoritados: loggedUser.favoritados,
+                        conquistas: loggedUser.conquistas,
+                        imgFundo: loggedUser.imgFundo,
+                        imgFundoDois: loggedUser.imgFundoDois,
+                        dataCriacao: loggedUser.dataCriacao
+                    })
+                    
+                }
+                closeModal('success', 'atualizado!',null)
+                await fetch('https://battlemode-backend.herokuapp.com/api/user/' + loggedUser.id,  requestOptions)
+                }catch(e){
+                    console.log(e)
+                }
         }
     }
 
@@ -171,8 +203,6 @@ function Usuario(){
             stopIt = 1
             console.log(viewingUser)
             setTimeout(() => {           
-                carai.push(viewingUser.personalizacao)
-                console.log(carai)
             }, 4000);
         }
         deadOrAlive = true
@@ -188,13 +218,14 @@ function Usuario(){
         
         <div className="divUsuarioDMainContainer">
             {/* <Navbar page={'usuario'}/> */}
+            <ModalCustom/>
             <div className='divFundoMainContainer' style={{backgroundImage: `url(${viewingUser.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
                 <div className='divContainerFundoMainContainer'/>
             </div>
             <div className='divUsuarioSubMainContainerD paddingLeft '>
                 <div className='divUsuarioComplexContainer'>
                     <div className='divRightMainComplexoContainerCompo'>
-                        <div className='divRightUserInfoCompo'>
+                        <div className='divRightUserInfoCompo' style={{backgroundImage: `url(${viewingUser.imgFundoDois}`, backgroundSize: 'cover'}}>
                             <div className='imgUserprofileIcon' style={{backgroundImage: `url(${viewingUser.icon})`}}></div>
                             <h2>{viewingUser.username}</h2>
                             <h4>Data de Criação: {viewingUser.dataCriacao}</h4>
@@ -242,9 +273,9 @@ function Usuario(){
                                     <div className='containerFavoriteListOfUser'>
                                         <h2>Jogos Favoritados</h2>
                                         <div className='favoriteListOfUser'>
-                                            {/* { jogo.map( (jogo) => {
-                                                for(let i = 0; i < 5;i++){
-                                                    if(jogo.id === viewingUser.personalizacao[i+1]){
+                                            { jogo.map( (jogo) => {
+                                                // for(let i = 0; i < 5;i++){
+                                                    // if(jogo.id === viewingUser.personalizacao[i+1]){
                                                         return  <div key={jogo.id} className='divJogosSubContainer' id={jogo.id}>
                                                                     <div className='divJogosContainer'>
                                                                         <img className='divJogosImg' src={jogo.imgFundo}/>
@@ -253,9 +284,9 @@ function Usuario(){
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                    }
-                                                }
-                                            }) } */}
+                                                    // }
+                                                // }
+                                            }) }
                                         </div>
                                     </div>
 
