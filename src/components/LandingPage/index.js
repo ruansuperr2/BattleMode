@@ -35,7 +35,7 @@ function LandingPage(props) {
                     <video loop autoPlay={true} muted src={require('./assets/video.mp4')} type='video/mp4'>
                     </video>
                 </div>
-                <img src={require('./assets/Capturar.PNG')} className='imgMundoSenai'/>
+                {/* <img src={require('./assets/Capturar.PNG')} className='imgMundoSenai'/> */}
             </div>
         </div>
     )

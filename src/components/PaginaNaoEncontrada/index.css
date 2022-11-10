@@ -1,0 +1,21 @@
+.divMainContainerPageNotFound{
+    width: 95%;
+    height: 100vh;
+    padding-left: 5%;
+    padding-top: 75px;
+    margin-bottom: -5%;
+    background-color: #121212;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+}
+
+.divMainContainerPageNotFound img{
+    width: 250px;
+}
+
+.homeBackhome{
+    color: #fc6b03;
+}
