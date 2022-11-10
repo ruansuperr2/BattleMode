@@ -11,6 +11,7 @@ function Participar() {
     const [page, setPage] = useState('geral')
 
     const callModal = () => {
+        setPage('torneio')
         showModal('spin', 'Deseja participar do Torneio?', 'Participar')
         // setTimeout(() => {
         //     closeModal('success', 'deu certo', 'Participar')
@@ -24,27 +25,22 @@ function Participar() {
                 document.querySelector('.divCampoEquipe').style.display = 'none'
                 document.querySelector('.divCampoParticipar').style.display = 'none'
 
-                document.querySelector('.geral').classList.add('perfilActive')
-                document.querySelector('.equipe').classList.remove('perfilActive')
-                document.querySelector('.torneio').classList.remove('perfilActive')
+                document.querySelector('.geral').classList.add('perfilAtivo')
+                document.querySelector('.equipe').classList.remove('perfilAtivo')
+                document.querySelector('.torneio').classList.remove('perfilAtivo')
                 break
             case 'equipe':
                 document.querySelector('.divCampoGeral').style.display = 'none'
                 document.querySelector('.divCampoEquipe').style.display = 'flex'
                 document.querySelector('.divCampoParticipar').style.display = 'none'
 
-                document.querySelector('.geral').classList.remove('perfilActive')
-                document.querySelector('.equipe').classList.add('perfilActive')
-                document.querySelector('.torneio').classList.remove('perfilActive')
+                document.querySelector('.geral').classList.remove('perfilAtivo')
+                document.querySelector('.equipe').classList.add('perfilAtivo')
+                document.querySelector('.torneio').classList.remove('perfilAtivo')
                 break
             case 'torneio':
-                document.querySelector('.divCampoGeral').style.display = 'none'
-                document.querySelector('.divCampoEquipe').style.display = 'none'
-                document.querySelector('.divCampoParticipar').style.display = 'flex'
-
-                document.querySelector('.geral').classList.remove('perfilActive')
-                document.querySelector('.equipe').classList.remove('perfilActive')
-                document.querySelector('.torneio').classList.add('perfilActive')
+                document.querySelector('.geral').classList.remove('perfilAtivo')
+                document.querySelector('.equipe').classList.remove('perfilAtivo')
                 break
         }
     })
@@ -56,10 +52,10 @@ function Participar() {
             <div className="divMainTorneio" />
 
             <div>
-                <div className='perfilNavigation'>
-                    <div onClick={() => setPage('geral')} className='perfilConfig geral'><div className='imgVisaoGearEditing'/>Visão Geral</div>
-                    <div onClick={() => setPage('equipe')} className='perfilConfig equipe'><div className='imgEquipeGearEditing'/>Equipes</div>
-                    <div onClick={() => callModal()} className='perfilConfig torneio'><div className='imgParticiparGearEditing'/>Participar</div>
+                <div className='perfilNavegacao'>
+                    <div onClick={() => setPage('geral')} className='perfilConfiguracao geral'><div className='imgVisaoGearEditing gearEditing'/>Visão Geral</div>
+                    <div onClick={() => setPage('equipe')} className='perfilConfiguracao equipe'><div className='imgEquipeGearEditing gearEditing'/>Equipes</div>
+                    <div onClick={() => callModal()} className='perfilConfiguracao torneio'><div className='imgParticiparGearEditing gearEditing'/>Participar</div>
                     {/* <div onClick={() => setPage('config')} className='perfilConfig config'><div className='imgUsuarioGearEditing'/>Configurar Perfil</div> */}
                 </div>
                 <div className='divCampoGeral campos' >
@@ -68,7 +64,7 @@ function Participar() {
                         <TorneioHeader/>
                     </div>
                     <div className="divDesc">
-                        <p className="descricao">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                        <p className="descricao">Esse texto é um ilustrativo da descrição de um torneio</p>
                     </div>
                 </div>
                 <div className='divCampoEquipe campos' >

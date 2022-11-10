@@ -20,7 +20,7 @@
     left: 8%;
     top: 20%;
 }
-.perfilNavigation {
+.perfilNavegacao {
     display: flex;
     color: white;
     align-items: center;
@@ -28,7 +28,8 @@
     border-bottom: #f2f2f2 1px solid;
     transition: 0.5s;
     /* padding-top: 0.5%; */
-    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,212,255,0) 100%);  
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,212,255,0) 100%);
+    border-left: 1px solid #fc6b03;
 }
 .campos {
     padding-left: 5%;
@@ -43,26 +44,16 @@
 
 .imgVisaoGearEditing {
     background-image: url('./assets/gear.png');
-    background-size: cover;
-    height: 40px;
-	width: 40px;
-	transition: 0.5s ease-in-out;
-    margin-right: 10px;
-	border: 1px transparent solid;
-    color: white;
 }
 .imgEquipeGearEditing {
     background-image: url('./assets/team1.png');
-    background-size: cover;
-    height: 40px;
-	width: 40px;
-	transition: 0.5s ease-in-out;
-    margin-right: 10px;
-	border: 1px transparent solid;
-    color: white;
 }
 .imgParticiparGearEditing {
     background-image: url('./assets/trophy.png');
+}
+.gearEditing {
+    display: flex;
+    align-items: center;
     background-size: cover;
     height: 40px;
 	width: 40px;
@@ -86,6 +77,41 @@
 }
 .imgParticiparGearEditing:hover {
 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+@keyframes fadeOut {
+    from {  }
+    to {  }
+}
+
+.perfilAtivo {
+    animation: fadeIn .5s;
+    background-image: radial-gradient(circle at 90% 80%, transparent, #6b6b6b82);
+    /* backface-visibility: hidden; */
+    animation-timing-function: ease-in-out;
+}
+
+.perfilConfiguracao{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-content: center;
+    transition: 0.5s;
+    font-size: 20px;
+    font-weight: 200;
+}
+.gearEditing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -120,7 +146,7 @@
     border-radius: 1rem;
     background-size: cover;
     background-repeat: no-repeat;
-    width: 20rem;
+    width: 17rem;
     height: 8rem;
     margin-top: 2rem;
     /* right: 3%; */
@@ -164,12 +190,16 @@
     align-items: center;
     height: 30vh;
     width: 40%;
+    word-wrap: break-word;
+    background-color: #212121;
+    border-radius: 20px;
+    padding: .5rem;
     /* margin-inline: 10%; */
-    word-break: break-all;
 }
 .descricao {
-    display: flex;
     text-align: center;
+    font-weight: 500;
+    font-size: 20px;
     color: #fff;
     width: 100%;
 }
@@ -186,8 +216,22 @@
     }
     .divDesc {
         width: 80%;
+        margin-top: 2rem;
     }
     .paddingLeft {
         padding-left: 0;
     }
+}
+
+@media only screen and (max-width: 470px) {
+    .perfilNavegacao {
+        flex-direction: column;
+    }
+    .perfilConfiguracao {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        transition: .5s;
+    }
+    
 }
