@@ -464,6 +464,10 @@
         box-shadow: 10px 10px 10px 0px #030303;
         transition: 0.5s;
     }
+    .tourneamentHighlighted:hover{
+        width: 80%;
+        height: 35vw;
+    }
     .labelAskingPageOneHome{
         display: flex;
         flex-direction: column;
@@ -475,5 +479,81 @@
         margin-right: 12%;
     }
     
+    .containerPagesSelector{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 30px;
+        position: absolute;
+        right: 0%;
+        top: 0%;
+        width: 20%;
+        height: 100%;
+    }
+    .pageSelector{
+        height: 100px;
+        width: 12%;
+        border-radius: 20px;
+        background-color: #303030;
+        transition: 0.5s;
+    
+    }
+    
+    .pageSelector:hover{
+        height: 100px;
+        width: 6%;
+        border-radius: 20px;
+        background-color: #868686;
+        cursor: pointer;
+    
+    }
+    
+    
+
+.divContainerSliderNewHome{
+    width: 100%;
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.customizationSliderImageSlide{
+    width: 100%;
+    height: 60%;
+    margin-top: 4%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-size: cover;
+    box-shadow: 10px 10px 10px 0px #030303;
+    border: 1px solid #fc6b03;
+    border-radius: 2px;
+}
+
+.customizationSliderTextSlide{
+    background-image: url('./pagethreebackground.png');
+    width: 96.5%;
+    height: auto;
+    position: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 10px 10px 10px 0px #030303;
+    background-size: 100% 100%;
+    border: 1px solid #fc6b03;
+    border-radius: 2px;
+}
+    .sliderTextConteiner{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+        
     
 }

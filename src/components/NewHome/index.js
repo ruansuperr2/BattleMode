@@ -266,7 +266,7 @@ export default function NewHome () {
                                         <div>
                                             <h2 className='sliderRightTitle'>Titulo</h2>
                                         </div>
-                                        <div>
+                                        <div className='sliderTextConteiner'>
                                             <p className='sliderRightFirstText'>Visual é tudo, e aqui você poderá fazer o perfil com a sua cara, podendo personalizar todos os aspectos para deixar a experiência de cada página diferente</p>
                                             <p className='sliderRightSecondText'>O potêncial de todos os jogadores pode ser liberado atravez de uma pequena mudança de cor, talvez o seu perfil chame a atenção de um Chefe de Equipe e te convide para a próxima temporada de BattleMode Racing? </p>
                                         </div>
