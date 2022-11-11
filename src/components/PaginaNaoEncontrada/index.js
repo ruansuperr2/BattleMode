@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import text from '../../version.json'
 import Footer from '../Footer'
 
-function Home() {
+function PaginaNaoEncontrada() {
     console.log(text)
     return (
         <div className='paddingLeft'>
@@ -21,4 +21,4 @@ function Home() {
         )
 }
 
-export default Home
+export default PaginaNaoEncontrada

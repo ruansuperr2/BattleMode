@@ -3,7 +3,7 @@ import Navbar from '../Navbar'
 import Footer from '../Footer'
 import Jogo from './components/Jogo'
 import './index.css'
-
+import Loading from '../Loading'
 import $ from 'jquery'
 
 
@@ -37,6 +37,7 @@ function Jogos() {
     return (
         <div>
             {/* <Navbar page="jogos"/> */}
+                <Loading></Loading>
             <div className="paddingLeft divMainJogos">
                 <h3 className="titleGames">O maior show de competição! Adicione o seu jogo favorito ao seu perfil!</h3>
                 <div className="divJogosMainContainer">

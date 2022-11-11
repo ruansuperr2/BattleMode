@@ -5,6 +5,7 @@ import Footer from '../Footer'
 import { useParams } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
 import ModalCustom, { showModal, closeModal } from '../Modal'
+import Loading from '../Loading'
 
 
 let getUsersTry = 0
@@ -139,7 +140,7 @@ function Usuario(){
         }
     })
 
-    const [value, setValue] = useState(loggedUser.biografia);
+    const [value, setValue] = useState(viewingUser.biografia);
 
     const callEditMarkdownEditor = async(type) =>{
         if(type === 'enter'){
@@ -222,6 +223,7 @@ function Usuario(){
         <div className="divUsuarioDMainContainer">
             {/* <Navbar page={'usuario'}/> */}
             <ModalCustom/>
+            <Loading timing={2000}></Loading>
             <div className='divFundoMainContainer' style={{backgroundImage: `url(${viewingUser.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
                 <div className='divContainerFundoMainContainer'/>
             </div>
