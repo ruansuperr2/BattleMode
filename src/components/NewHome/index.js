@@ -196,22 +196,6 @@ export default function NewHome () {
                                     </div>
 
                                 })}
-                                
-                               {/* <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/hero_thumb/85422afb467e9456013a2a51d4dff702.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightOne'>
-                                    <div className='tourneamentHighlitedDecoration'></div>
-
-
-                                    <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
-                                </div>
-                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/4800deb3f3be382f97782401f775184a.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightTwo'>
-                                    <div className='tourneamentHighlitedDecoration'></div>
-                                    <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
-                                </div>
-                                <div style={{backgroundImage: `url(https://cdn2.steamgriddb.com/file/sgdb-cdn/thumb/3031edd9d9431ac8a6598b5a47997a9c.jpg)`}} className='tourneamentHighlighted bigTourneamentHiglightThree'>
-                                    <div className='tourneamentHighlitedDecoration'></div>
-                                    <label><img src={require('./F1_2022.png')} alt='img'/>TESTE TESTE TESTE - VALORANT #01</label>
-                                </div> 
-                            </div> */}
                             </div>
                             <label className='labelAskingPageOneHome'>
                                 <label>Ficou interessado em um desses eventos? </label>
