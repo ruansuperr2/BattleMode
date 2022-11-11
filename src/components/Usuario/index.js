@@ -224,19 +224,19 @@ function Usuario(){
             {/* <Navbar page={'usuario'}/> */}
             <ModalCustom/>
             <Loading timing={2000}></Loading>
-            <div className='divFundoMainContainer' style={{backgroundImage: `url(${viewingUser.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+            <div className='divFundoMainContainer' style={{backgroundImage: `url(${viewingUser.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center', borderColor: viewingUser.corP}}>
                 <div className='divContainerFundoMainContainer'/>
             </div>
             <div className='divUsuarioSubMainContainerD paddingLeft '>
-                <div className='divUsuarioComplexContainer'>
-                    <div className='divRightMainComplexoContainerCompo'>
-                        <div className='divRightUserInfoCompo' style={{backgroundImage: `url(${viewingUser.imgFundoDois}`, backgroundSize: 'cover'}}>
+                <div className='divUsuarioComplexContainer' >
+                    <div className='divRightMainComplexoContainerCompo' style={{borderColor: viewingUser.corP}} >
+                        <div className='divRightUserInfoCompo'  style={{backgroundImage: `url(${viewingUser.imgFundoDois}`, backgroundSize: 'cover', borderColor: viewingUser.corP}}>
                             <div className='imgUserprofileIcon' style={{backgroundImage: `url(${viewingUser.icon})`}}></div>
                             <h2>{viewingUser.username}</h2>
                             <h4>Data de Criação: {viewingUser.dataCriacao}</h4>
                             <h1 className='UserPlan'></h1>
                         </div>
-                        <div className='divRightSubMainContainerCompo'>
+                        <div className='divRightSubMainContainerCompo' style={{borderColor: viewingUser.corP}} >
                             <h3>Contatos</h3>
                             <div>
                                 <label>Twitter: <a href={`https://twitter.com/${viewingUser.twitter}`}> @{viewingUser.twitter}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
@@ -246,19 +246,20 @@ function Usuario(){
                             </div>
                         </div>
                     </div>
-                    <div className='divUsuarioSubMainContainerGeneral'>
-                        <div className='perfilNavigation'>
+                    <div className='divUsuarioSubMainContainerGeneral'  style={{borderColor: viewingUser.corP}}>
+                        <div className='perfilNavigation' style={{borderColor: viewingUser.corP}}>
                             <div onClick={() => setPage('geral')} className='perfilConfig geral'><div className='imgUsuarioGearEditing'/>Visão Geral</div>
                             <div onClick={() => setPage('equipe')} className='perfilConfig equipe'><div className='imgUsuarioGearEditing'/>Equipes</div>
                             <div onClick={() => setPage('torneio')} className='perfilConfig torneio'><div className='imgUsuarioGearEditing'/>Torneios</div>
                             <div onClick={() => setPage('config')} className='perfilConfig config'><div className='imgUsuarioGearEditing'/>Configurar Perfil</div>
                         </div>
-                        <div className='divAllContainersUser'>
-                            <div className='divUsuarioSubMainContainerCompo' >
-                                <div className='divContainerUsuarioContent'>
+                        <div className='divAllContainersUser' style={{borderColor: viewingUser.corP}} >
+                            <div className='divUsuarioSubMainContainerCompo'  style={{borderColor: viewingUser.corP}} >
+                                <div className='divContainerUsuarioContent' style={{borderColor: viewingUser.corP}} >
                                     <div className='divmdEditor'>
                                         <MDEditor
                                             className='wrapper'
+                                            style={{borderColor: viewingUser.corP}} 
                                             visibleDragbar={false}
                                             height={'52.4vh'}
                                             fullscreen={false}
@@ -270,7 +271,7 @@ function Usuario(){
                                         <div className='editMarkdownButton exitMarkdown' onClick={() => callEditMarkdownEditor('exit')}><p>Editar</p></div>
                                     </div>
                                     <div className='divmdViewer'>
-                                        <MDEditor.Markdown className='markdownShower' source={value} style={{ whiteSpace: 'pre-wrap' }} />
+                                        <MDEditor.Markdown className='markdownShower'  source={value} style={{ whiteSpace: 'pre-wrap', borderColor: viewingUser.corP}} />
                                         <div className='editMarkdownButton enterMarkdown' onClick={() => callEditMarkdownEditor('enter')}><p>Editar</p></div>
                                     </div>
                                 </div>
