@@ -5,15 +5,14 @@ import text from '../../version.json'
 let isLoading = false
 let barValue = 0
 let textValue = 'Olá'
-let youCanContinue = false
 function Loading(prop) {
 
-    
+
     
 
 
     function func(){
-        
+        window.scrollTo(0,0)
         document.body.style.overflow = 'hidden';
         setTimeout(() => {
             barValue = 12
@@ -21,7 +20,7 @@ function Loading(prop) {
             setTimeout(() => {
                 barValue = 75
                 textValue = 'Fazendo a lógica'
-                youCanContinue = true
+                
                 setTimeout(() => {
                     barValue = 87
                     textValue = 'Pensando'
@@ -31,11 +30,11 @@ function Loading(prop) {
                         textValue = 'Até a próxima, amigo'
                     }, 200);
                     setTimeout(() => {
-                        document.body.style.overflow = 'scroll';
+                        document.body.style.overflow = 'visible';
                         
                         document.querySelector('.loadingMainDiv').classList.remove('desaparecer')
                         document.querySelector('.loadingMainDiv').style.display = 'none'
-                        youCanContinue = false
+                    
                     },700)
                 }, 1000)
             }, 600)
@@ -49,6 +48,9 @@ function Loading(prop) {
             isLoading = true
             func()
         }
+        if(barValue === 100){
+            document.querySelector('.loadingMainDiv').style.display = 'none'
+        }
     })
     return (
         <div className='paddingLeft loadingMainDiv'>
@@ -56,7 +58,7 @@ function Loading(prop) {
                 <img src={require('./logo.png')}></img>
                 <label>{textValue}</label>
                 <div className='barLoadingFull'>
-                    <div className='barInsideGenerating' style={{width: `${barValue}%`}}></div>
+                    <div className='barInsideGenerating' style={{backgroundColor: prop.cor, width: `${barValue}%`}}></div>
                 </div>
                 <label>{text.version}</label>
             </div>

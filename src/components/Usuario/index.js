@@ -7,7 +7,6 @@ import MDEditor from '@uiw/react-md-editor';
 import ModalCustom, { showModal, closeModal } from '../Modal'
 import Loading from '../Loading'
 
-
 let getUsersTry = 0
 let deadOrAlive = false
 let stopIt = 0
@@ -213,17 +212,15 @@ function Usuario(){
     }  
     if(deadOrAlive === false){
         setTimeout(() => {
-            
             makeEverythingWork()
         }, 1400);
     }
-    
     return(
         
-        <div className="divUsuarioDMainContainer">
+        <div className="divUsuarioDMainContainer" style={{borderColor: `${loggedUser.corP} !important`}}>
             {/* <Navbar page={'usuario'}/> */}
             <ModalCustom/>
-            <Loading timing={2000}></Loading>
+            <Loading cor={loggedUser.corP}></Loading>
             <div className='divFundoMainContainer' style={{backgroundImage: `url(${viewingUser.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center', borderColor: viewingUser.corP}}>
                 <div className='divContainerFundoMainContainer'/>
             </div>
@@ -231,7 +228,7 @@ function Usuario(){
                 <div className='divUsuarioComplexContainer' >
                     <div className='divRightMainComplexoContainerCompo' style={{borderColor: viewingUser.corP}} >
                         <div className='divRightUserInfoCompo'  style={{backgroundImage: `url(${viewingUser.imgFundoDois}`, backgroundSize: 'cover', borderColor: viewingUser.corP}}>
-                            <div className='imgUserprofileIcon' style={{backgroundImage: `url(${viewingUser.icon})`}}></div>
+                            <div className='imgUserprofileIcon' style={{backgroundImage: `url(${viewingUser.icon})`, borderColor: viewingUser.corP}}></div>
                             <h2>{viewingUser.username}</h2>
                             <h4>Data de Criação: {viewingUser.dataCriacao}</h4>
                             <h1 className='UserPlan'></h1>
@@ -239,10 +236,10 @@ function Usuario(){
                         <div className='divRightSubMainContainerCompo' style={{borderColor: viewingUser.corP}} >
                             <h3>Contatos</h3>
                             <div>
-                                <label>Twitter: <a href={`https://twitter.com/${viewingUser.twitter}`}> @{viewingUser.twitter}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
-                                <label>Instagram: <a href={`https://instagram.com/${viewingUser.instagram}`}> @{viewingUser.instagram}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
-                                <label>Discord: <a> {viewingUser.discord}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
-                                <label>Twitch: <a href={`https://twitch.tv/${viewingUser.twitch}`}> /{viewingUser.twitch}</a><img width={24} src={require('./components/assets/unknown.png')}/></label>
+                                <label>Twitter: <a href={`https://twitter.com/${viewingUser.twitter}`}> @{viewingUser.twitter}</a></label>
+                                <label>Instagram: <a href={`https://instagram.com/${viewingUser.instagram}`}> @{viewingUser.instagram}</a></label>
+                                <label>Discord: <a> {viewingUser.discord}</a></label>
+                                <label>Twitch: <a href={`https://twitch.tv/${viewingUser.twitch}`}> /{viewingUser.twitch}</a></label>
                             </div>
                         </div>
                     </div>
@@ -268,11 +265,11 @@ function Usuario(){
                                             preview={'edit'}
                                             
                                         />
-                                        <div className='editMarkdownButton exitMarkdown' onClick={() => callEditMarkdownEditor('exit')}><p>Editar</p></div>
+                                        <div className='editMarkdownButton exitMarkdown' onClick={() => callEditMarkdownEditor('exit')} style={{borderColor: `${loggedUser.corP}`}}><p>Editar</p></div>
                                     </div>
                                     <div className='divmdViewer'>
                                         <MDEditor.Markdown className='markdownShower'  source={value} style={{ whiteSpace: 'pre-wrap', borderColor: viewingUser.corP}} />
-                                        <div className='editMarkdownButton enterMarkdown' onClick={() => callEditMarkdownEditor('enter')}><p>Editar</p></div>
+                                        <div className='editMarkdownButton enterMarkdown' onClick={() => callEditMarkdownEditor('enter')} style={{borderColor: `${loggedUser.corP}`}} ><p>Editar</p></div>
                                     </div>
                                 </div>
                                 <div className='divConquistaEfavoritos'>
@@ -283,7 +280,7 @@ function Usuario(){
                                                 // for(let i = 0; i < 5;i++){
                                                     // if(jogo.id === viewingUser.personalizacao[i+1]){
                                                         return  <div key={jogo.id} className='divJogosSubContainer' id={jogo.id}>
-                                                                    <div className='divJogosContainer'>
+                                                                    <div className='divJogosContainer'style={{borderColor: viewingUser.corP}}>
                                                                         <img className='divJogosImg' src={jogo.imgFundo}/>
                                                                         <div>
                                                                             <h5>{jogo.nome}</h5>
@@ -300,7 +297,7 @@ function Usuario(){
                                         <h2>Conquistas</h2>
                                         { torneio.map( (torneio) => 
                                             <div key={torneio.id} className='divJogosSubContainer' id={torneio.id}>
-                                                <div className='divJogosContainer'>
+                                                <div className='divJogosContainer' style={{borderColor: viewingUser.corP}}>
                                                     <img className='divJogosImg' src={torneio.thumbnail}/>
                                                     <div>
                                                         <h5>{torneio.nome}</h5>
@@ -312,7 +309,7 @@ function Usuario(){
                                 </div>
                             </div>
                             <div className='divEquipesSubMainContainerCompo' >
-                                <div className='divContainerTeamsOnUserTab'>
+                                <div className='divContainerTeamsOnUserTab' style={{borderColor: viewingUser.corP}}>
                                     { 
                       
                                             time.map( (time) => {
@@ -320,7 +317,7 @@ function Usuario(){
                                                 for(let i = 0; i < 5;i++){
 
                                                     if(JSON.parse(time.equipeAtiva)[i] === loggedUser.id){
-                                                        return  <div key={time.id} className='divTeamsOnUserSubContainer' id={time.id}>
+                                                        return  <div key={time.id} className='divTeamsOnUserSubContainer' style={{borderColor: viewingUser.corP}} id={time.id}>
                                                                     <div className='divTeamsOnUserContainer'>
                                                                         <img className='divTeamsOnUserImg' src={time.logo}/>
                                                                         <div>
@@ -338,9 +335,9 @@ function Usuario(){
 
                                 </div>
                             </div>
-                            <div className='divTorneiosSubMainContainerCompo' >
+                            <div className='divTorneiosSubMainContainerCompo' style={{borderColor: viewingUser.corP}}>
                             </div>
-                            <div className='divConfigSubMainContainerCompo' >                    
+                            <div className='divConfigSubMainContainerCompo' style={{borderColor: viewingUser.corP}}>                    
                             </div>
                         </div>
                     </div>

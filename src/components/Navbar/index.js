@@ -15,6 +15,7 @@ let defaultColorAbout = '#fff'
 let deadOrAlive = false
 let getUsersTry = 0
 export const Navbar = (props) => {
+    
     const [loggedUser, setLoggedUser] = useState({})
     const getUsers = async () => {
         try{
@@ -97,26 +98,26 @@ export const Navbar = (props) => {
     
     return (
         <div className="">
-            <div className="divDividerNavbar">
+            <div className="divDividerNavbar" style={{borderColor: `${loggedUser.corP}`}}>
 
-                <div className="divLeftNavbar">
+                <div className="divLeftNavbar" style={{borderColor: `${loggedUser.corP}`}}>
                     <Link to="/now" className="fontNavbar"><HomeIcon className='iconNavbar iconHome' sx={{color: defaultColorHome, fontSize: 35}}/>Home</Link>
                     <Link to="/feed" className="feedLinkDetector fontNavbar"><EmojiEventsIcon className='iconNavbar iconTorneios' sx={{color: defaultColorTorneios, fontSize: 35}}/>Torneios</Link>
                     <Link to="/games" className="fontNavbar"><SportsEsportsIcon className='iconNavbar iconJogos' sx={{color: defaultColorJogos, fontSize: 35}}/>Jogos</Link>
                     <Link to="/about" className="fontNavbar"><InfoIcon className='iconNavbar iconAbout' sx={{color: defaultColorAbout, fontSize: 35}}/>Sobre</Link>
                 </div>
-                <div className="divRightNavbar">
+                <div className="divRightNavbar" style={{borderColor: `${loggedUser.corP}`}}>
                     <p><LanguageIcon className="LanguageIcon" sx={{color: "#fff", fontSize: 35}}/> pt-br</p>
                     
 
                 </div>
             </div>
 
-            <div className={`divSideLoginRegister` }>
+            <div className={`divSideLoginRegister` } style={{borderBottomColor: `${loggedUser.corP}`}}>
                 <img src={require("./assets/logo.png")} />
 
 
-                <div className='loggedUserFunctions'>
+                <div className='loggedUserFunctions' style={{borderColor: `${loggedUser.corP}`}}>
                     <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo'/> Perfil</label>
                     <label onClick={() => {window.location.href = `/criarTime`}}><div className='imgNavbarTeamGo'/> Criar Equipe</label>
                     <label onClick={() => {window.location.href = `/criarTorneio`}}><div className='imgNavbarTourneamentGo'/> Criar Torneio</label>
@@ -130,7 +131,7 @@ export const Navbar = (props) => {
                     <button onClick={() => {window.location.href = './login'}}>Entrar</button>
                 </div>
                 <div className='loggedUserNameNavBar'>
-                    <img className='imgIconP'/>
+                    <img className='imgIconP' style={{borderColor: `${loggedUser.corP}`}}/>
                     <p className='userNameP'></p>
                 </div>
             </div>
