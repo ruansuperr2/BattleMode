@@ -3,6 +3,7 @@ import './index.css'
 import NavBar from '../Navbar'
 import Footer from '../Footer'
 import Select from 'react-select'
+import { AiOutlineCheck, AiOutlinePlus } from 'react-icons/ai'
 
 function CriarTorneio (){
 
@@ -31,31 +32,32 @@ function CriarTorneio (){
 
                         <div className="addthumb">
                             <div className="imgthumb">
-
+                                <label>Thumb</label>
                             </div>
 
-                            <button className="funçaoThumb">Adicionar thumb</button>
+                            <button className="funçaoThumb"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
                         </div>
 
                         <div className="addlogo">
                             <div className="imglogo">
-
+                                <label>Logo</label>
                             </div>
 
-                            <button className="funçaoLogo">Adicionar thumb</button>
+                            <button className="funçaoLogo"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
                         </div>
 
                         <div className="addfundo">
                             <div className="imgfundo">
-
+                                <label>Fundo</label>
                             </div>
 
-                            <button className="funçaologo">Adicionar thumb</button>
+                            <button className="funçaologo"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
                         </div>
 
                     </div>
 
                     <div className="divInfoCriarTorneio">
+                        <h1>Adicione aqui as informações do seu torneio</h1>
                         <input placeholder="Digite o nome do seu torneio aqui..."></input>
                         <textarea placeholder="Digite as informações do seu torneio aqui..."></textarea>
                     </div>
