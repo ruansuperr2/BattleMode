@@ -97,11 +97,11 @@
     cursor: pointer;
 }
 .divVideoLandingPage video{
-    width: 107vw;
-    height: 107vh;
     background-size: cover;
+    height: 102vh;
     margin-left: 20%;
-    margin-top: -1.62%;
+    margin-top: -0.62%;
+    width: 91vw;
 }
 .divVideoLandingPage{
     width: 100vw;
