@@ -15,7 +15,6 @@ function Usuario(){
     const { id } = useParams();
     console.log(id)
 
-    const [objecto, setObjecto] = useState([])
     const [loggedUser, setLoggedUser] = useState({})
     const [viewingUser, setViewingUser] = useState([])
     const [page, setPage] = useState('geral')
@@ -190,10 +189,12 @@ function Usuario(){
         if(loggedUser.username === id){
             document.querySelector('.divmdEditor').style.display = 'none'
             document.querySelector('.enterMarkdown').style.display = 'flex'
+            document.querySelector('.config').style.display = 'flex'
         }else{
             document.querySelector('.divmdEditor').style.display = 'none'
             document.querySelector('.enterMarkdown').style.display = 'none'
             document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
+            document.querySelector('.config').style.display = 'none'
             
         }
         document.querySelector('.geral').classList.add('perfilActive')
@@ -204,8 +205,7 @@ function Usuario(){
         if(stopIt === 0){
             stopIt = 1
             console.log(viewingUser)
-                setObjecto(viewingUser.redes)
-                console.log(objecto)          
+ 
             }
         }, 4000);
         deadOrAlive = true
@@ -213,7 +213,7 @@ function Usuario(){
     if(deadOrAlive === false){
         setTimeout(() => {
             makeEverythingWork()
-        }, 1400);
+        }, 1600);
     }
     return(
         
@@ -337,7 +337,55 @@ function Usuario(){
                             </div>
                             <div className='divTorneiosSubMainContainerCompo' style={{borderColor: viewingUser.corP}}>
                             </div>
-                            <div className='divConfigSubMainContainerCompo' style={{borderColor: viewingUser.corP}}>                    
+                            <div className='divConfigSubMainContainerCompo' style={{borderColor: viewingUser.corP}}>        
+                                <div className='divConfigSubMainContainer'>
+                                    <div className='divConfigConfigsContainer' style={{borderColor: viewingUser.corP}}>
+                                        <div>
+                                            <h1>Configurar Perfil</h1>
+
+                                            <h2>Informações Gerais</h2>
+                                            <label>Icone: <img src={loggedUser.icon}></img></label>
+                                            <label>Usuário: <input placeholder={loggedUser.username}/></label>
+                                        </div>
+
+                                        <div>
+                                            <button style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Informações Gerais</button>
+                                        </div>
+
+                                        <div>
+                                            <h3>Segurança da Conta</h3>
+                                            <label>Email: <input value={loggedUser.email}/></label>
+                                            <label>Novo Email: <input placeholder={loggedUser.email}/></label>
+                                            <h4>Trocar Senha</h4>
+                                            <label>Senha Atual: <input/></label>
+                                            <label>Nova Senha: <input/></label>
+                                        </div>
+                                        <div>
+                                            <button style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Segurança da Conta</button>
+                                        </div>
+                                        <div>
+                                            <h3>Redes Sociais</h3>
+                                            <label>Twitter: <input placeholder={loggedUser.twitter}/></label>
+                                            <label>Instagram: <input placeholder={loggedUser.instagram}/></label>
+                                            <label>Discord: <input placeholder={loggedUser.discord}/></label>
+                                            <label>Twitch: <input placeholder={loggedUser.twitch}/></label>
+                                        </div>
+                                        <div>
+                                            <button style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Redes Sociais</button>
+                                        </div>
+                                        <div>
+                                        <h3>Personalização - Premium</h3>
+                                            <label>Cor Principal do perfil e site: <input placeholder={loggedUser.twitter}/></label>
+                                            <label>Cor Secundário do perfil: <input placeholder={loggedUser.instagram}/></label>
+                                            <label>Imagem atrás do nome - perfil: <input placeholder={loggedUser.discord}/></label>
+                                            <label>Imagem atrás da página - perfil: <input placeholder={loggedUser.twitch}/></label>
+                                        </div>
+                                        <div>
+                                            <button style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Personalização</button>
+                                        </div>
+                                    </div>
+
+                                </div>            
                             </div>
                         </div>
                     </div>

@@ -361,3 +361,45 @@
     height: 60px;
     margin-top: -15%;
 }
+
+.divConfigSubMainContainer{
+    overflow: hidden;
+    width: 100%;
+}
+
+.divConfigConfigsContainer{
+    border: 1px solid;
+    border-right: none;
+    border-top: none;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.divConfigConfigsContainer div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.divConfigConfigsContainer div button{
+    width: 40%;
+    height: 50%;
+    margin: 20px;
+    padding: 1%;
+    background-color: #272727;
+    border-radius: 20px;
+    border: 2px solid #fc6b03;
+    color: #fff;
+    font-size: 16px;
+    transition: 0.5s;
+    z-index: 99;
+}
+
+.divConfigConfigsContainer div button:hover{
+    border: 2px solid rgb(224, 219, 219);
+    transition: 0.5s;
+    color: rgb(224, 219, 219);
+    cursor: pointer;
+}
