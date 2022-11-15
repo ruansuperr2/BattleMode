@@ -15,6 +15,25 @@ function Usuario(){
     const { id } = useParams();
     console.log(id)
 
+    const [username, setUsername] = useState('')
+    const [icon, setIcon] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [twitter, setTwitter] = useState('')
+    const [instagram, setInstagram] = useState('')
+    const [discord, setDiscord] = useState('')
+    const [twitch, setTwitch] = useState('')
+    const [status, setStatus] = useState('')
+    const [corP, setCorP] = useState('')
+    const [corS, setCorS] = useState('')
+    const [favoritados, setFavoritados] = useState('')
+    const [conquistas, setConquistas] = useState('')
+    const [imgFundo, setimgFundo] = useState('')
+    const [imgFundoDois, setimgFundoDois] = useState('')
+    const [dataCriacao, setdataCriação] = useState('')
+    const [newEmail, setnewEmail] = useState('')
+    const [newPassword, setnewPassword] = useState('')
+
     const [loggedUser, setLoggedUser] = useState({})
     const [viewingUser, setViewingUser] = useState([])
     const [page, setPage] = useState('geral')
@@ -160,7 +179,10 @@ function Usuario(){
                         icon: loggedUser.icon,
                         email: loggedUser.email,
                         password: loggedUser.password,
-                        redes: loggedUser.redes,
+                        twitter: loggedUser.twitter,
+                        instagram: loggedUser.instagram,
+                        discord: loggedUser.discord,
+                        twitch: loggedUser.twitch,
                         biografia: value,
                         status: loggedUser.status,
                         corP: loggedUser.corP,
@@ -215,6 +237,118 @@ function Usuario(){
             makeEverythingWork()
         }, 1600);
     }
+
+    const callMudançasPerfil = async(status) => {
+        switch(status){
+            case 'IG':
+                showModal('loading','Atualizando o Banco','barLoading')
+                    
+                try{
+                    const requestOptions = {
+                        method: 'PUT',
+                        headers: {'Content-type': 'application/json'},
+                        body: JSON.stringify({
+                            username: username,
+                            icon: loggedUser.icon,
+                            email: loggedUser.email,
+                            password: loggedUser.password,
+                            twitter: loggedUser.twitter,
+                            instagram: loggedUser.instagram,
+                            discord: loggedUser.discord,
+                            twitch: loggedUser.twitch,
+                            biografia: loggedUser.biografia,
+                            status: loggedUser.status,
+                            corP: loggedUser.corP,
+                            corS: loggedUser.corS,
+                            favoritados: loggedUser.favoritados,
+                            conquistas: loggedUser.conquistas,
+                            imgFundo: loggedUser.imgFundo,
+                            imgFundoDois: loggedUser.imgFundoDois,
+                            dataCriacao: loggedUser.dataCriacao
+                        })
+                        
+                    }
+                    closeModal('success', 'atualizado!',null)
+                    await fetch('https://battlemode-backend.herokuapp.com/api/user/' + loggedUser.id,  requestOptions)
+                    window.location.href = '/u/' + username
+                    }catch(e){
+                        console.log(e)
+                    }
+                break
+                case 'SC':
+                    showModal('loading','Atualizando o Banco','barLoading')
+                        
+                    try{
+                        const requestOptions = {
+                            method: 'PUT',
+                            headers: {'Content-type': 'application/json'},
+                            body: JSON.stringify({
+                                username: loggedUser.username,
+                                icon: loggedUser.icon,
+                                email: newEmail,
+                                password: newPassword,
+                                twitter: loggedUser.twitter,
+                                instagram: loggedUser.instagram,
+                                discord: loggedUser.discord,
+                                twitch: loggedUser.twitch,
+                                biografia: loggedUser.biografia,
+                                status: loggedUser.status,
+                                corP: loggedUser.corP,
+                                corS: loggedUser.corS,
+                                favoritados: loggedUser.favoritados,
+                                conquistas: loggedUser.conquistas,
+                                imgFundo: loggedUser.imgFundo,
+                                imgFundoDois: loggedUser.imgFundoDois,
+                                dataCriacao: loggedUser.dataCriacao
+                            })
+                            
+                        }
+                        closeModal('success', 'atualizado!',null)
+                        await fetch('https://battlemode-backend.herokuapp.com/api/user/' + loggedUser.id,  requestOptions)
+                        window.location.href = '/u/' + viewingUser.username
+                        }catch(e){
+                            console.log(e)
+                        }
+                    break
+                    case 'SC':
+                        showModal('loading','Atualizando o Banco','barLoading')
+                            
+                        try{
+                            const requestOptions = {
+                                method: 'PUT',
+                                headers: {'Content-type': 'application/json'},
+                                body: JSON.stringify({
+                                    username: loggedUser.username,
+                                    icon: loggedUser.icon,
+                                    email: loggedUser.email,
+                                    password: loggedUser.password,
+                                    twitter: twitter,
+                                    instagram: instagram,
+                                    discord: discord,
+                                    twitch: twitch,
+                                    biografia: loggedUser.biografia,
+                                    status: loggedUser.status,
+                                    corP: loggedUser.corP,
+                                    corS: loggedUser.corS,
+                                    favoritados: loggedUser.favoritados,
+                                    conquistas: loggedUser.conquistas,
+                                    imgFundo: loggedUser.imgFundo,
+                                    imgFundoDois: loggedUser.imgFundoDois,
+                                    dataCriacao: loggedUser.dataCriacao
+                                })
+                                
+                            }
+                            closeModal('success', 'atualizado!',null)
+                            await fetch('https://battlemode-backend.herokuapp.com/api/user/' + loggedUser.id,  requestOptions)
+                            window.location.href = '/u/' + viewingUser.username
+                            }catch(e){
+                                console.log(e)
+                            }
+                        break
+        }
+    }
+
+
     return(
         
         <div className="divUsuarioDMainContainer" style={{borderColor: `${loggedUser.corP} !important`}}>
@@ -253,10 +387,10 @@ function Usuario(){
                         <div className='divAllContainersUser' style={{borderColor: viewingUser.corP}} >
                             <div className='divUsuarioSubMainContainerCompo'  style={{borderColor: viewingUser.corP}} >
                                 <div className='divContainerUsuarioContent' style={{borderColor: viewingUser.corP}} >
-                                    <div className='divmdEditor'>
+                                    <div className='divmdEditor' style={{borderColor: viewingUser.corP}}>
                                         <MDEditor
                                             className='wrapper'
-                                            style={{borderColor: viewingUser.corP}} 
+                                            style={{borderColor: viewingUser.corP + ' !important', boxShadow: '0px 1px 0px 0px ' + viewingUser.corP}} 
                                             visibleDragbar={false}
                                             height={'52.4vh'}
                                             fullscreen={false}
@@ -267,7 +401,7 @@ function Usuario(){
                                         />
                                         <div className='editMarkdownButton exitMarkdown' onClick={() => callEditMarkdownEditor('exit')} style={{borderColor: `${loggedUser.corP}`}}><p>Editar</p></div>
                                     </div>
-                                    <div className='divmdViewer'>
+                                    <div className='divmdViewer' style={{borderColor: viewingUser.corP}}>
                                         <MDEditor.Markdown className='markdownShower'  source={value} style={{ whiteSpace: 'pre-wrap', borderColor: viewingUser.corP}} />
                                         <div className='editMarkdownButton enterMarkdown' onClick={() => callEditMarkdownEditor('enter')} style={{borderColor: `${loggedUser.corP}`}} ><p>Editar</p></div>
                                     </div>
@@ -344,34 +478,34 @@ function Usuario(){
                                             <h1>Configurar Perfil</h1>
 
                                             <h2>Informações Gerais</h2>
-                                            <label>Icone: <img src={loggedUser.icon}></img></label>
-                                            <label>Usuário: <input placeholder={loggedUser.username}/></label>
+                                            <label>Icone: <img src={icon}></img></label>
+                                            <label>Usuário: <input value={username} onChange={(event) => setUsername(event.target.value)} placeholder={loggedUser.username}/></label>
                                         </div>
 
                                         <div>
-                                            <button style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Informações Gerais</button>
+                                            <button onClick={() => callMudançasPerfil('IG')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount1' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Informações Gerais</button>
                                         </div>
 
                                         <div>
                                             <h3>Segurança da Conta</h3>
                                             <label>Email: <input value={loggedUser.email}/></label>
-                                            <label>Novo Email: <input placeholder={loggedUser.email}/></label>
+                                            <label>Novo Email: <input value={newEmail} onChange={(event) => setnewEmail(event.target.value)} placeholder={loggedUser.email}/></label>
                                             <h4>Trocar Senha</h4>
-                                            <label>Senha Atual: <input/></label>
-                                            <label>Nova Senha: <input/></label>
+                                            <label>Senha Atual: <input type='password' value={password} onChange={(event) => setPassword(event.target.value)}/></label>
+                                            <label>Nova Senha: <input type='password' value={newPassword} onChange={(event) => setnewPassword(event.target.value)}/></label>
                                         </div>
                                         <div>
-                                            <button style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Segurança da Conta</button>
+                                            <button onClick={() => callMudançasPerfil('SC')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount2' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Segurança da Conta</button>
                                         </div>
                                         <div>
                                             <h3>Redes Sociais</h3>
-                                            <label>Twitter: <input placeholder={loggedUser.twitter}/></label>
+                                            <label>Twitter: <input value={twitter} onChange={(event) => setTwitter(event.target.value)} placeholder={loggedUser.twitter}/></label>
                                             <label>Instagram: <input placeholder={loggedUser.instagram}/></label>
                                             <label>Discord: <input placeholder={loggedUser.discord}/></label>
                                             <label>Twitch: <input placeholder={loggedUser.twitch}/></label>
                                         </div>
                                         <div>
-                                            <button style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Redes Sociais</button>
+                                            <button onClick={() => callMudançasPerfil('RS')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount3' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Redes Sociais</button>
                                         </div>
                                         <div>
                                         <h3>Personalização - Premium</h3>
@@ -381,7 +515,7 @@ function Usuario(){
                                             <label>Imagem atrás da página - perfil: <input placeholder={loggedUser.twitch}/></label>
                                         </div>
                                         <div>
-                                            <button style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Personalização</button>
+                                            <button onClick={() => callMudançasPerfil('PP')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount4' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Personalização</button>
                                         </div>
                                     </div>
 

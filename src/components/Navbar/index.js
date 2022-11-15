@@ -15,7 +15,8 @@ let defaultColorAbout = '#fff'
 let deadOrAlive = false
 let getUsersTry = 0
 export const Navbar = (props) => {
-    
+    let root = document.querySelector(':root')
+
     const [loggedUser, setLoggedUser] = useState({})
     const getUsers = async () => {
         try{
@@ -35,6 +36,7 @@ export const Navbar = (props) => {
             document.querySelector('.loggedUserNameNavBar').style.display = 'none'
             document.querySelector('.loggedUserFunctions').style.display = 'none'
             document.querySelector('.EntrarRegistroNavBar').style.display = 'flex'
+            
         }
     }
         
@@ -54,10 +56,13 @@ export const Navbar = (props) => {
                 document.querySelector('.EntrarRegistroNavBar').style.display = 'none'
                 document.querySelector('.userNameP').textContent = loggedUser.username 
                 document.querySelector('.imgIconP').setAttribute("src", loggedUser.icon)
+                root.style.setProperty("--scrollbar-color", loggedUser.corS) 
+
             }else{
                 document.querySelector('.loggedUserNameNavBar').style.display = 'none'
                 document.querySelector('.loggedUserFunctions').style.display = 'none'
                 document.querySelector('.EntrarRegistroNavBar').style.display = 'flex'
+                root.style.setProperty("--scrollbar-color", '#fc6b03') 
             }
         }else{
             document.querySelector('.divSideLoginRegister').style.display = 'none'
