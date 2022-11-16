@@ -112,8 +112,29 @@ export default function NewHome () {
         }
     }
 
+    const [loggedUser, setLoggedUser] = useState({})
+    const getUsers = async () => {
+        try{
+            if(JSON.parse(localStorage.getItem('dasiBoard') !== null)){
+
+                const responseUser = await fetch('https://battlemode-backend.herokuapp.com/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
+                const dataUser = responseUser.json()
+                dataUser.then(
+                    (val) => {
+                        setLoggedUser(val.data)
+                        
+                    }
+                )
+            }
+
+        }catch(e){
+
+        }
+    }
+    
     if(getGamesTry < 10){
         getGamesTry++
+        getUsers()
         callTorneio()
         callGames()
     }
@@ -199,7 +220,7 @@ export default function NewHome () {
                             </div>
                             <label className='labelAskingPageOneHome'>
                                 <label>Ficou interessado em um desses eventos? </label>
-                                <label>Faça <a href='./login'>login agora</a> e dê uma olhada nos torneios de várias modalidades e jogos na plataforma!</label>
+                                <label>Faça <a href='./login' style={{color: loggedUser.corS}}>login agora</a> e dê uma olhada nos torneios de várias modalidades e jogos na plataforma!</label>
                             </label>
                         </div>
                         <div className='containerDivider containerTwoDivider'/>
@@ -297,21 +318,21 @@ export default function NewHome () {
                         document.querySelector('.containerPageOneHomeContent').scrollIntoView({
                             behavior: 'smooth'
                         }, 500)
-                    }} className="pageSelector pageNumberOne currentPageHome"></div>
+                    }} className="pageSelector pageNumberOne currentPageHome" style={{backgroundColor: loggedUser.corS}}></div>
                 <div onClick={() => { 
                         currentPage = 'pageTwo'
                         callPageChanger()
                         document.querySelector('.containerPageTwoHomeContent').scrollIntoView({
                             behavior: 'smooth'
                         }, 500)
-                    }} className="pageSelector pageNumberTwo"></div>
+                    }} className="pageSelector pageNumberTwo" style={{backgroundColor: loggedUser.corS}}></div>
                 <div onClick={() => {
                         currentPage = 'pageThree'
                         callPageChanger()
                         document.querySelector('.containerPageThreeHomeContent').scrollIntoView({
                             behavior: 'smooth'
                         }, 500)
-                    }} className="pageSelector pageNumberThree"></div>
+                    }} className="pageSelector pageNumberThree" style={{backgroundColor: loggedUser.corS}}></div>
             </div>
         </div>
     )
