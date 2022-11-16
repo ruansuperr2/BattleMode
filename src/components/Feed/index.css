@@ -18,6 +18,7 @@
     align-items: center ;
 }
 .TitlePrediletos{
+    /* margin-top: 2rem; */
     padding-left: 12%;
     color: #ffffff;
     display: flex;
@@ -246,12 +247,14 @@
     height: 50px;
     object-fit: cover;
     background-size: contain;
+    overflow: hidden;
     background-repeat: no-repeat;
     image-rendering: optimizeQuality;
 }
 
 .logoImgFeedGlobal{
     height: 60px;
+    overflow: hidden;
     margin-right: 2%;
     background-size: auto;
     background-position: center;
@@ -283,7 +286,9 @@
     }
     .TitlePrediletos {
         padding: 0;
+        margin-top: 4.5rem;
         display: flex;
+        text-align: center;
         justify-content: center;
     }
 }
@@ -294,11 +299,13 @@
     }
     .divPrediletosUmSubContainer {
         width: 20rem;
+        padding: 0;
         height: 500px;
     }
     .TitlePrediletos {
         padding: 0;
         display: flex;
+        flex-direction: column;
         justify-content: center;
     }
 }

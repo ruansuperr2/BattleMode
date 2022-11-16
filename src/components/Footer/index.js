@@ -17,17 +17,17 @@ export default function Footer() {
                 <div className="divLeftFooter">
                     <a href="https://github.com/MonoDryad/BattleMode">
                         <div className="divLeftSocialContainers">
-                            <GitHubIcon color="white" sx={{ fontSize: 50 }} />
+                            <GitHubIcon color="white" sx={{ fontSize: 40 }} />
                         </div>
                     </a>
                     <a href="https://twitter.com/gaiacup">
                         <div className="divLeftSocialContainers">
-                            <TwitterIcon color="white" sx={{ fontSize: 50 }} />
+                            <TwitterIcon color="white" sx={{ fontSize: 40 }} />
                          </div>
                     </a>
                     <a href="https://github.com/MonoDryad/BattleMode">
                         <div className="divLeftSocialContainers">
-                            <img src={require("./assets/discord.png")} />
+                            <img src={require("./assets/discord.png")} style={{ fontSize: 40}}/>
                         </div>
                     </a>
                 </div>

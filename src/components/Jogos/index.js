@@ -39,13 +39,14 @@ function Jogos() {
             {/* <Navbar page="jogos"/> */}
                 <Loading></Loading>
             <div className="paddingLeft divMainJogos">
-                <h3 className="titleGames">O maior show de competição! Adicione o seu jogo favorito ao seu perfil!</h3>
+                <h3 className="titleGames">O maior show de competição!</h3> 
+                <h3 className='titleGames2'>Adicione o seu jogo favorito ao seu perfil!</h3>
                 <div className="divJogosMainContainer">
                     { jogo.map( (jogo) => 
                         <div key={jogo.id} className='divJogosSubContainer' id={jogo.id}>
                             <div className='divJogosContainer'>
                                 <img className='divJogosImg' src={jogo.imgFundo}/>
-                                <div>
+                                <div className='nomeDescricao'>
                                     <div className="addButton"/>
                                     <h5>{jogo.nome}</h5>
                                     <p>{jogo.descricaoLonga}</p>

@@ -119,17 +119,17 @@ export const Navbar = (props) => {
             </div>
 
             <div className={`divSideLoginRegister` } style={{borderBottomColor: `${loggedUser.corP}`}}>
-                <img src={require("./assets/logo.png")} />
+                <img className='logoNavbar' src={require("./assets/logo.png")} style={{marginRight: '1rem'}} />
 
 
                 <div className='loggedUserFunctions' style={{borderColor: `${loggedUser.corP}`}}>
-                    <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo'/> Perfil</label>
-                    <label onClick={() => {window.location.href = `/criarTime`}}><div className='imgNavbarTeamGo'/> Criar Equipe</label>
-                    <label onClick={() => {window.location.href = `/criarTorneio`}}><div className='imgNavbarTourneamentGo'/> Criar Torneio</label>
+                    <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo navbarGo'/> Perfil</label>
+                    <label onClick={() => {window.location.href = `/criarEquipe`}}><div className='imgNavbarTeamGo navbarGo'/> Criar Equipe</label>
+                    <label onClick={() => {window.location.href = `/criarTorneio`}}><div className='imgNavbarTourneamentGo navbarGo'/> Criar Torneio</label>
                     <label onClick={() => {
                         localStorage.clear('dasiBoard')
                         window.location.reload(true)
-                    }}><div className='imgNavbarTourneamentGo'/> Desconectar</label>
+                    }}><div className='imgNavbarTourneamentGo navbarGo'/> Sair</label>
                 </div>
                 <div className='EntrarRegistroNavBar'>
                     <button onClick={() => {window.location.href = './cadastro'}}>Cadastrar-se </button>

@@ -20,14 +20,15 @@
 
 .divSideLoginRegister img {
 	z-index: 500;
-	width: 5vw;
-	height: 5vw;
+	width: 4rem;
+	height: 4rem;
 	transition: 0.5s;
 }
 
 .divSideLoginRegister img:hover {
 	background-color: #3d3d3d;
 	padding: -10px;
+	width: 4rem;
 
 }
 
@@ -156,7 +157,7 @@
 }
 
 .EntrarRegistroNavBar{
-	width: 30%;
+	width: 23rem;
 	display: flex;
 	justify-content: center;
 }
@@ -348,11 +349,9 @@
 		z-index: 2;
 		height: 10vh;
 		width: 100%;
-		position: fixed;
 		top: unset;
 		bottom: 0;
 		display: flex;
-		flex-direction: row;
 		justify-content: center;
 		align-items: center;
 		background-color: #121212;
@@ -410,11 +409,11 @@
 		right: -1%;
 		background-color: #191919;
 		padding: 3%;
-		padding-top: 5%;
 		padding-right: 2%;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
 		display: flex;
-		flex-direction: row;
-		justify-content: center;
+		justify-content: space-around;
 		align-items: center;
 		border-radius: 10px;
 		width: 98.5%;
@@ -427,9 +426,20 @@
 		transition: 0.5s;
 		
 	}
+	.logoNavbar {
+		display: none;
+	}
+	.loggedUserFunctions label {
+		flex-direction: column;
+		text-align: center;
+	}
+	.loggedUserNameNavBar {
+		height: 3rem;
+		margin: 0;
+	}
 	
 	.divSideLoginRegister button{
-		width: 90%;
+		width: 10rem;
 		height: 100%;
 		margin: 5px;
 		background-color: #272727;
@@ -451,6 +461,33 @@
 	.navbarActive{
 		top: -300px;
 	}
+
+	.fontNavbar {
+		width: 2.2rem !important;
+	}
 }
 
+@media only screen and (max-width: 660px) {
+	.divSideLoginRegister{
+		justify-content: center;
+	}
+	.imgIconP {
+		display: none;
+	}
+	.userNameP {
+		display: none;
+	}
+	.loggedUserNameNavBar {
+		display: none;
+	}
+}
 
+@media only screen and (max-width: 450px) {
+	.EntrarRegistroNavBar {
+		flex-direction: column;
+		width: 12rem;
+	}
+	.divSideLoginRegister {
+		height: 8%;
+	}
+}
