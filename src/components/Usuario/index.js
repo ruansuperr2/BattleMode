@@ -310,7 +310,7 @@ function Usuario(){
                             console.log(e)
                         }
                     break
-                    case 'SC':
+                    case 'RS':
                         showModal('loading','Atualizando o Banco','barLoading')
                             
                         try{
@@ -345,6 +345,41 @@ function Usuario(){
                                 console.log(e)
                             }
                         break
+                        case 'PP':
+                            showModal('loading','Atualizando o Banco','barLoading')
+                                
+                            try{
+                                const requestOptions = {
+                                    method: 'PUT',
+                                    headers: {'Content-type': 'application/json'},
+                                    body: JSON.stringify({
+                                        username: loggedUser.username,
+                                        icon: loggedUser.icon,
+                                        email: loggedUser.email,
+                                        password: loggedUser.password,
+                                        twitter: loggedUser.twitter,
+                                        instagram: loggedUser.instagram,
+                                        discord: loggedUser.discord,
+                                        twitch: loggedUser.twitch,
+                                        biografia: loggedUser.biografia,
+                                        status: loggedUser.status,
+                                        corP: corP,
+                                        corS: corS,
+                                        favoritados: loggedUser.favoritados,
+                                        conquistas: loggedUser.conquistas,
+                                        imgFundo: loggedUser.imgFundo,
+                                        imgFundoDois: loggedUser.imgFundoDois,
+                                        dataCriacao: loggedUser.dataCriacao
+                                    })
+                                    
+                                }
+                                closeModal('success', 'atualizado!',null)
+                                await fetch('https://battlemode-backend.herokuapp.com/api/user/' + loggedUser.id,  requestOptions)
+                                window.location.href = '/u/' + viewingUser.username
+                                }catch(e){
+                                    console.log(e)
+                                }
+                            break
         }
     }
 
@@ -500,17 +535,17 @@ function Usuario(){
                                         <div>
                                             <h3>Redes Sociais</h3>
                                             <label>Twitter: <input value={twitter} onChange={(event) => setTwitter(event.target.value)} placeholder={loggedUser.twitter}/></label>
-                                            <label>Instagram: <input placeholder={loggedUser.instagram}/></label>
-                                            <label>Discord: <input placeholder={loggedUser.discord}/></label>
-                                            <label>Twitch: <input placeholder={loggedUser.twitch}/></label>
+                                            <label>Instagram: <input value={instagram} onChange={(event) => setInstagram(event.target.value)} placeholder={loggedUser.instagram}/></label>
+                                            <label>Discord: <input value={discord} onChange={(event) => setDiscord(event.target.value)} placeholder={loggedUser.discord}/></label>
+                                            <label>Twitch: <input value={twitch} onChange={(event) => setTwitch(event.target.value)} placeholder={loggedUser.twitch}/></label>
                                         </div>
                                         <div>
                                             <button onClick={() => callMudançasPerfil('RS')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount3' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Redes Sociais</button>
                                         </div>
                                         <div>
                                         <h3>Personalização - Premium</h3>
-                                            <label>Cor Principal do perfil e site: <input placeholder={loggedUser.twitter}/></label>
-                                            <label>Cor Secundário do perfil: <input placeholder={loggedUser.instagram}/></label>
+                                            <label>Cor Principal do perfil e site: <input value={corP} onChange={(event) => setCorP(event.target.value)} placeholder={loggedUser.corP}/></label>
+                                            <label>Cor Secundário do perfil: <input value={corS} onChange={(event) => setCorS(event.target.value)} placeholder={loggedUser.corS}/></label>
                                             <label>Imagem atrás do nome - perfil: <input placeholder={loggedUser.discord}/></label>
                                             <label>Imagem atrás da página - perfil: <input placeholder={loggedUser.twitch}/></label>
                                         </div>
