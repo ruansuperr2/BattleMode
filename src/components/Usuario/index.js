@@ -509,45 +509,103 @@ function Usuario(){
                             <div className='divConfigSubMainContainerCompo' style={{borderColor: viewingUser.corP}}>        
                                 <div className='divConfigSubMainContainer'>
                                     <div className='divConfigConfigsContainer' style={{borderColor: viewingUser.corP}}>
-                                        <div>
+                                        <div className='divConfigConfigsSubContainer'>
                                             <h1>Configurar Perfil</h1>
-
                                             <h2>Informações Gerais</h2>
-                                            <label>Icone: <img src={icon}></img></label>
-                                            <label>Usuário: <input value={username} onChange={(event) => setUsername(event.target.value)} placeholder={loggedUser.username}/></label>
-                                        </div>
+
+                                            <div className='divOmgConfigs'>
+                                                <div className='divContainerConfigSub2'>
+                                                    <label>Icone:</label>
+                                                    <label>Usuário:</label>
+                                                </div>
+
+                                                <div className='divContainerConfigSub'>
+                                                    <input value={username} onChange={(event) => setUsername(event.target.value)} placeholder={loggedUser.username}/>
+                                                    <input value={username} onChange={(event) => setUsername(event.target.value)} placeholder={loggedUser.username}/>
+                                                </div>
+                                            </div>
+                            
 
                                         <div>
                                             <button onClick={() => callMudançasPerfil('IG')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount1' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Informações Gerais</button>
                                         </div>
 
-                                        <div>
+                                        <div className='divConfigConfigsSubContainer'>
                                             <h3>Segurança da Conta</h3>
-                                            <label>Email: <input value={loggedUser.email}/></label>
-                                            <label>Novo Email: <input value={newEmail} onChange={(event) => setnewEmail(event.target.value)} placeholder={loggedUser.email}/></label>
+
+                                            <div className='divOmgConfigs'>                                                
+                                                <div className='divContainerConfigSub2'>
+                                                    <label>Email: </label>
+                                                    <label>Novo Email: </label>
+                                                </div>
+
+                                                <div className='divContainerConfigSub'>
+                                                    <input value={loggedUser.email}/>
+                                                    <input value={newEmail} onChange={(event) => setnewEmail(event.target.value)} placeholder={loggedUser.email}/>
+                                                </div>
+                                            </div>
+
                                             <h4>Trocar Senha</h4>
-                                            <label>Senha Atual: <input type='password' value={password} onChange={(event) => setPassword(event.target.value)}/></label>
-                                            <label>Nova Senha: <input type='password' value={newPassword} onChange={(event) => setnewPassword(event.target.value)}/></label>
+                                              <div className='divOmgConfigs'>  
+                                                <div className='divContainerConfigSub2'>
+                                                    <label>Senha Atual </label>
+                                                    <label>Nova Senha</label>
+                                                </div>
+
+                                                <div className='divContainerConfigSub'>
+                                                    <input type='password' value={password} onChange={(event) => setPassword(event.target.value)}/>
+                                                    <input type='password' value={newPassword} onChange={(event) => setnewPassword(event.target.value)}/>
+                                                </div>
+                                             </div>
+                                         
+                                         
+                                
                                         </div>
                                         <div>
                                             <button onClick={() => callMudançasPerfil('SC')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount2' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Segurança da Conta</button>
                                         </div>
-                                        <div>
+
+                                        <div className='divConfigConfigsSubContainer'>
                                             <h3>Redes Sociais</h3>
-                                            <label>Twitter: <input value={twitter} onChange={(event) => setTwitter(event.target.value)} placeholder={loggedUser.twitter}/></label>
-                                            <label>Instagram: <input value={instagram} onChange={(event) => setInstagram(event.target.value)} placeholder={loggedUser.instagram}/></label>
-                                            <label>Discord: <input value={discord} onChange={(event) => setDiscord(event.target.value)} placeholder={loggedUser.discord}/></label>
-                                            <label>Twitch: <input value={twitch} onChange={(event) => setTwitch(event.target.value)} placeholder={loggedUser.twitch}/></label>
+                                            <div className='divOmgConfigs'>  
+                                                    <div className='divContainerConfigSub2'>
+                                                        <label>Twitter:</label>
+                                                        <label>Instagram:</label>
+                                                        <label>Discord:</label>
+                                                        <label>Twitch:</label>
+                                                    </div>
+
+                                                    <div className='divContainerConfigSub'>
+                                                        <input value={twitter} onChange={(event) => setTwitter(event.target.value)} placeholder={loggedUser.twitter}/>
+                                                        <input value={instagram} onChange={(event) => setInstagram(event.target.value)} placeholder={loggedUser.instagram}/>
+                                                        <input value={discord} onChange={(event) => setDiscord(event.target.value)} placeholder={loggedUser.discord}/>
+                                                        <input value={twitch} onChange={(event) => setTwitch(event.target.value)} placeholder={loggedUser.twitch}/>
+                                                    </div>
+                                            </div>
+                                            
+                
                                         </div>
                                         <div>
                                             <button onClick={() => callMudançasPerfil('RS')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount3' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Redes Sociais</button>
                                         </div>
-                                        <div>
-                                        <h3>Personalização - Premium</h3>
-                                            <label>Cor Principal do perfil e site: <input value={corP} onChange={(event) => setCorP(event.target.value)} placeholder={loggedUser.corP}/></label>
-                                            <label>Cor Secundário do perfil: <input value={corS} onChange={(event) => setCorS(event.target.value)} placeholder={loggedUser.corS}/></label>
-                                            <label>Imagem atrás do nome - perfil: <input placeholder={loggedUser.discord}/></label>
-                                            <label>Imagem atrás da página - perfil: <input placeholder={loggedUser.twitch}/></label>
+                                        <div className='divConfigConfigsSubContainer'>
+                                            <h3>Personalização - Premium</h3>
+                                                <div className='divOmgConfigs'>  
+                                                        <div className='divContainerConfigSub2'>
+                                                            <label>Cor Principal do perfil e site: </label>
+                                                            <label>Cor Secundário do perfil: </label>
+                                                            <label>Imagem atrás do nome - perfil: </label>
+                                                            <label>Imagem atrás da página - perfil: </label>
+                                                        </div>
+
+                                                        <div className='divContainerConfigSub'>
+                                                            <input value={corP} onChange={(event) => setCorP(event.target.value)} placeholder={loggedUser.corP}/>
+                                                            <input value={corS} onChange={(event) => setCorS(event.target.value)} placeholder={loggedUser.corS}/>
+                                                            <input placeholder={loggedUser.discord}/>
+                                                            <input placeholder={loggedUser.twitch}/>
+                                                        </div>
+                                                </div>
+                                            
                                         </div>
                                         <div>
                                             <button onClick={() => callMudançasPerfil('PP')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount4' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Personalização</button>
@@ -559,6 +617,7 @@ function Usuario(){
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
 
             <Footer/>

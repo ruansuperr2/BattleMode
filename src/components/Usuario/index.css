@@ -376,12 +376,6 @@
     width: 100%;
 }
 
-.divConfigConfigsContainer div{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
 .divConfigConfigsContainer div button{
     width: 40%;
     height: 50%;
@@ -402,3 +396,49 @@
     color: rgb(224, 219, 219);
     cursor: pointer;
 }
+
+
+
+
+.divConfigConfigsSubContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.divOmgConfigs{
+    display: flex;
+    width: 100%;
+}
+
+.divContainerConfigSub2{
+    display: flex;
+    flex-direction: column;
+}
+
+.divContainerConfigSub{
+    padding-left: 1%;
+    display: flex;
+    flex-direction: column;
+}
+
+.divOmgConfigs input{
+    width: 100%;
+    height: 50%;
+    margin: 20px;
+    padding: 1%;
+    background-color: #272727;
+    border-radius: 10px;
+    border: 2px solid #fc6b03;
+    color: #fff;
+    font-size: 16px;
+    transition: 0.5s;
+    z-index: 99;
+}
+.divOmgConfigs label{
+    width: 100%;
+    height: 50%;
+    margin: 20px;
+}
+
+
+
