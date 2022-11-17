@@ -440,5 +440,13 @@
     margin: 20px;
 }
 
+.inputTypeFile{
+    height: 25px !important;
+}
 
-
+.imgUploaded{
+    width: 150px;
+    border-radius: 200px;
+    border: transparent 1px solid;
+    object-fit: cover;
+}

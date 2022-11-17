@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 import './index.css'
 import Navbar from '../Navbar'
 import Footer from '../Footer'
-import { useParams } from 'react-router-dom';
-import MDEditor from '@uiw/react-md-editor';
+import { useParams } from 'react-router-dom'
+import { storage } from '../FireBase';
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+
+import MDEditor from '@uiw/react-md-editor'
 import ModalCustom, { showModal, closeModal } from '../Modal'
 import Loading from '../Loading'
 
@@ -40,6 +43,84 @@ function Usuario(){
     const [jogo, setJogo] = useState([])
     const [torneio, setTorneio] = useState([])
     const [time, setTime] = useState([])
+
+    const [imgUrl, setImgUrl] = useState(null);
+    const [imgUrl2, setImgUrl2] = useState(null);
+    const [imgUrl3, setImgUrl3] = useState(null);
+    const [progresspercent, setProgresspercent] = useState(0);
+    const [progresspercent2, setProgresspercent2] = useState(0);
+    const [progresspercent3, setProgresspercent3] = useState(0);
+
+    const handleSubmit = (e) => {
+      const file = e.target[0]?.files[0]
+      if (!file) return;
+      const storageRef = ref(storage, `files/${file.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+  
+      uploadTask.on("state_changed",
+        (snapshot) => {
+          const progress =
+            Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+          setProgresspercent(progress);
+        },
+        (error) => {
+          alert(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setImgUrl(downloadURL)
+          })
+        }
+      )
+    }
+    
+    const handleSubmitImgFundo = (e) => {
+        e.preventDefault()
+        const file = e.target[0]?.files[0]
+        if (!file) return;
+        const storageRef = ref(storage, `files/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+    
+        uploadTask.on("state_changed",
+          (snapshot) => {
+            const progress =
+              Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            setProgresspercent2(progress);
+          },
+          (error) => {
+            alert(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              setImgUrl2(downloadURL)
+            })
+          }
+        )
+      }
+
+      const handleSubmitImgFundoDois = (e) => {
+        e.preventDefault()
+        const file = e.target[0]?.files[0]
+        if (!file) return;
+        const storageRef = ref(storage, `files/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+    
+        uploadTask.on("state_changed",
+          (snapshot) => {
+            const progress =
+              Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            setProgresspercent3(progress);
+          },
+          (error) => {
+            alert(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              setImgUrl3(downloadURL)
+            })
+          }
+        )
+      }
 
     const callTorneio = async() => {
         try{
@@ -212,6 +293,7 @@ function Usuario(){
             document.querySelector('.divmdEditor').style.display = 'none'
             document.querySelector('.enterMarkdown').style.display = 'flex'
             document.querySelector('.config').style.display = 'flex'
+            setImgUrl(loggedUser.icon)
         }else{
             document.querySelector('.divmdEditor').style.display = 'none'
             document.querySelector('.enterMarkdown').style.display = 'none'
@@ -249,7 +331,7 @@ function Usuario(){
                         headers: {'Content-type': 'application/json'},
                         body: JSON.stringify({
                             username: username,
-                            icon: loggedUser.icon,
+                            icon: imgUrl,
                             email: loggedUser.email,
                             password: loggedUser.password,
                             twitter: loggedUser.twitter,
@@ -520,8 +602,25 @@ function Usuario(){
                                                 </div>
 
                                                 <div className='divContainerConfigSub'>
-                                                    <input value={username} onChange={(event) => setUsername(event.target.value)} placeholder={loggedUser.username}/>
-                                                    <input value={username} onChange={(event) => setUsername(event.target.value)} placeholder={loggedUser.username}/>
+                                                    <div>
+
+                                                        {
+                                                            !imgUrl &&
+                                                            <div className='outerbar'>
+                                                            <div className='innerbar' style={{ width: `${progresspercent}%` }}>{progresspercent}%</div>
+                                                            </div>
+                                                        }
+                                                        {
+                                                            imgUrl &&
+                                                            <img src={imgUrl} alt='uploaded file' className='imgUploaded' style={{borderColor: viewingUser.corP}} />
+                                                        }
+                                                        <form className='form'>
+                                                            <input onChange={(e) => {handleSubmit(e);
+                                                                console.log('lao', e)}} className='inputTypeFile' type='file' /> 
+                                                        </form>
+                                                    </div>
+
+                                                    <input style={{borderColor: viewingUser.corP}} value={username} onChange={(event) => setUsername(event.target.value)} placeholder={loggedUser.username}/>
                                                 </div>
                                             </div>
                             
@@ -540,8 +639,8 @@ function Usuario(){
                                                 </div>
 
                                                 <div className='divContainerConfigSub'>
-                                                    <input value={loggedUser.email}/>
-                                                    <input value={newEmail} onChange={(event) => setnewEmail(event.target.value)} placeholder={loggedUser.email}/>
+                                                    <input style={{borderColor: viewingUser.corP}} value={loggedUser.email}/>
+                                                    <input style={{borderColor: viewingUser.corP}} value={newEmail} onChange={(event) => setnewEmail(event.target.value)} placeholder={loggedUser.email}/>
                                                 </div>
                                             </div>
 
@@ -553,8 +652,8 @@ function Usuario(){
                                                 </div>
 
                                                 <div className='divContainerConfigSub'>
-                                                    <input type='password' value={password} onChange={(event) => setPassword(event.target.value)}/>
-                                                    <input type='password' value={newPassword} onChange={(event) => setnewPassword(event.target.value)}/>
+                                                    <input style={{borderColor: viewingUser.corP}} type='password' value={password} onChange={(event) => setPassword(event.target.value)}/>
+                                                    <input style={{borderColor: viewingUser.corP}} type='password' value={newPassword} onChange={(event) => setnewPassword(event.target.value)}/>
                                                 </div>
                                              </div>
                                          
@@ -576,10 +675,10 @@ function Usuario(){
                                                     </div>
 
                                                     <div className='divContainerConfigSub'>
-                                                        <input value={twitter} onChange={(event) => setTwitter(event.target.value)} placeholder={loggedUser.twitter}/>
-                                                        <input value={instagram} onChange={(event) => setInstagram(event.target.value)} placeholder={loggedUser.instagram}/>
-                                                        <input value={discord} onChange={(event) => setDiscord(event.target.value)} placeholder={loggedUser.discord}/>
-                                                        <input value={twitch} onChange={(event) => setTwitch(event.target.value)} placeholder={loggedUser.twitch}/>
+                                                        <input style={{borderColor: viewingUser.corP}} value={twitter} onChange={(event) => setTwitter(event.target.value)} placeholder={loggedUser.twitter}/>
+                                                        <input style={{borderColor: viewingUser.corP}} value={instagram} onChange={(event) => setInstagram(event.target.value)} placeholder={loggedUser.instagram}/>
+                                                        <input style={{borderColor: viewingUser.corP}} value={discord} onChange={(event) => setDiscord(event.target.value)} placeholder={loggedUser.discord}/>
+                                                        <input style={{borderColor: viewingUser.corP}} value={twitch} onChange={(event) => setTwitch(event.target.value)} placeholder={loggedUser.twitch}/>
                                                     </div>
                                             </div>
                                             
@@ -599,8 +698,8 @@ function Usuario(){
                                                         </div>
 
                                                         <div className='divContainerConfigSub'>
-                                                            <input value={corP} onChange={(event) => setCorP(event.target.value)} placeholder={loggedUser.corP}/>
-                                                            <input value={corS} onChange={(event) => setCorS(event.target.value)} placeholder={loggedUser.corS}/>
+                                                            <input style={{borderColor: viewingUser.corP}} value={corP} onChange={(event) => setCorP(event.target.value)} placeholder={loggedUser.corP}/>
+                                                            <input style={{borderColor: viewingUser.corP}} value={corS} onChange={(event) => setCorS(event.target.value)} placeholder={loggedUser.corS}/>
                                                             <input placeholder={loggedUser.discord}/>
                                                             <input placeholder={loggedUser.twitch}/>
                                                         </div>
