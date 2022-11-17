@@ -319,6 +319,7 @@
 
 .activePage{
 	color: #fc6b03 !important;
+	
 }
 
 
@@ -469,7 +470,13 @@
 
 @media only screen and (max-width: 660px) {
 	.divSideLoginRegister{
+		padding-top: 1rem;
 		justify-content: center;
+		height: var(--responsiveHeight, 4%);
+	}
+	.loggedUserFunctions {
+		flex-direction: column;
+		height: 100%;
 	}
 	.imgIconP {
 		display: none;
@@ -486,8 +493,5 @@
 	.EntrarRegistroNavBar {
 		flex-direction: column;
 		width: 12rem;
-	}
-	.divSideLoginRegister {
-		height: 8%;
 	}
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './index.css'
+import { FaBars, FaTimes } from 'react-icons/fa'
 import HomeIcon from '@mui/icons-material/Home';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
@@ -16,6 +17,9 @@ let deadOrAlive = false
 let getUsersTry = 0
 export const Navbar = (props) => {
     let root = document.querySelector(':root')
+    const [icon, setIcon] = useState(<FaBars style={{ fontSize: '30px', color: '#fc6b03' }}/>)
+    const  [navAberta, setNavAberta] = useState(false)
+    getComputedStyle(document.documentElement).getPropertyValue('--responsiveHeight')
 
     const [loggedUser, setLoggedUser] = useState({})
     const getUsers = async () => {
@@ -100,6 +104,16 @@ export const Navbar = (props) => {
         defaultColorHome = '#fff'
         defaultColorAbout = '#fc6b03'
     }
+
+    const handleNavRes = () => {
+        setNavAberta(!navAberta)
+        if (navAberta) {
+            setIcon(<FaTimes style={{ fontSize: '30px', color: '#fc6b03' }}/>)
+            return document.documentElement.style.setProperty('--responsiveHeight', '75%')
+        }
+        setIcon(<FaBars style={{ fontSize: '30px', color: '#fc6b03' }}/>)
+        document.documentElement.style.setProperty('--responsiveHeight', '4%')
+    }
     
     return (
         <div className="">
@@ -123,6 +137,7 @@ export const Navbar = (props) => {
 
 
                 <div className='loggedUserFunctions' style={{borderColor: `${loggedUser.corP}`}}>
+                    <label onClick={handleNavRes} id='hamburguer' style={{ height: 'auto' }}>{icon}</label>
                     <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo navbarGo'/> Perfil</label>
                     <label onClick={() => {window.location.href = `/criarEquipe`}}><div className='imgNavbarTeamGo navbarGo'/> Criar Equipe</label>
                     <label onClick={() => {window.location.href = `/criarTorneio`}}><div className='imgNavbarTourneamentGo navbarGo'/> Criar Torneio</label>
