@@ -240,7 +240,7 @@ export default function NewHome () {
                             </div>
                             <label className='labelAskingPageOneHome'>
                                 <label>E essa lista só aumenta! </label>
-                                <label>Faça <a href='./login'>login agora</a> e adicione o seu jogo favorito para o seu perfil!</label>
+                                <label>Faça <a href='./login' style={{color: loggedUser.corS}}>login agora</a> e adicione o seu jogo favorito para o seu perfil!</label>
                             </label>
                         </div>
                         <div className='containerDivider containerThreeDivider'/>
@@ -248,10 +248,10 @@ export default function NewHome () {
                             
                             <div className="miniDivider"></div>
                             <div className="labelPageThreeHome"></div>
-                            <div className='customizationSliderHighlightContainer'>
-                                <div className='divContainerSliderNewHome'>
+                            <div className='customizationSliderHighlightContainer'  style={{borderColor: loggedUser.corP}}>
+                                <div className='divContainerSliderNewHome' style={{borderColor: loggedUser.corP}}>
 
-                                    <div className='customizationSliderImageSlide'>
+                                    <div className='customizationSliderImageSlide' style={{borderColor: loggedUser.corP}}>
                                         {/* <div className='tourneamentHighlitedDecoration'></div> */}
                                         {/* <div className='tourneamentHighlitedImgOne'></div> */}
 
@@ -283,7 +283,7 @@ export default function NewHome () {
                                             }} className='dotsFromSlide dotThreeSlide'/>
                                         </div>
                                     </div>
-                                    <div className='customizationSliderTextSlide'>
+                                    <div className='customizationSliderTextSlide' style={{borderColor: loggedUser.corP}}>
                                         <div>
                                             <h2 className='sliderRightTitle'>Titulo</h2>
                                         </div>

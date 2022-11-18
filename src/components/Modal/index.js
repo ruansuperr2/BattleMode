@@ -1,4 +1,5 @@
 import './index.css'
+import React, {useState} from 'react';
 import { IoIosClose } from 'react-icons/io';
 import { display, fontSize } from '@mui/system';
 import { alignProperty } from '@mui/material/styles/cssUtils';
@@ -58,7 +59,11 @@ const fecharImm = () => {
         },460)
 }
 
+let getUsersTry = 0
+
 export const showModal = (titulo, corpo, funcao) => {
+
+
     // Adição dos Textos inseridos pelos props.
     document.querySelector('.modalTitulo').textContent = titulo
     document.querySelector('.modalCorpo').textContent = corpo
@@ -116,14 +121,13 @@ export const showModal = (titulo, corpo, funcao) => {
 
 function ModalCustom(props){
 
-
     return(
-        <div className="divModalContainer">
-            <div className="divModalContent">
-                <div className='divCloseButton'>
-                    <button className='closeButton' onClick={fecharImm}>
+        <div className="divModalContainer" style={{borderColor: props.cor}}>
+            <div className="divModalContent" style={{borderColor: props.cor}}>
+                <div className='divCloseButton' style={{borderColor: props.cor + ' !important'}}>
+                    <button className='closeButton' onClick={fecharImm} style={{borderColor: props.cor}}>
                         <IoIosClose style={{
-                            color: '#fc6b03', 
+                            color: props.cor, 
                             fontSize: '50px', 
                             display: 'flex',
                             alignSelf: 'flex-end',
@@ -131,13 +135,13 @@ function ModalCustom(props){
                             }}/>
                     </button>
                 </div>
-                <label className='modalTitulo'/>
-                <h5 className='modalCorpo'></h5>
-                <div>
+                <label className='modalTitulo' style={{borderColor: props.cor }}/>
+                <h5 className='modalCorpo' style={{borderColor: props.cor }}></h5>
+                <div style={{borderColor: props.cor}}>
                     <button className='modalButton' onClick={() => closeModal('success', 'Você está participando do torneio', null)}></button>
                 </div>
                 <div className='barProgressionClosing'>
-                    <div className='barProgressionClosingI'/>
+                    <div className='barProgressionClosingI' style={{backgroundColor: props.cor }}/>
                 </div>
             </div>
         </div>

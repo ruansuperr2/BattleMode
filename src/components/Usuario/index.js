@@ -5,6 +5,9 @@ import Footer from '../Footer'
 import { useParams } from 'react-router-dom'
 import { storage } from '../FireBase';
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { SketchPicker } from 'react-color';
+import { ChromePicker  } from "react-color";
+
 
 import MDEditor from '@uiw/react-md-editor'
 import ModalCustom, { showModal, closeModal } from '../Modal'
@@ -52,9 +55,9 @@ function Usuario(){
     const [progresspercent3, setProgresspercent3] = useState(0);
 
     const handleSubmit = (e) => {
-      const file = e.target[0]?.files[0]
+      const file = e.target.files[0]
       if (!file) return;
-      const storageRef = ref(storage, `files/${file.name}`);
+      const storageRef = ref(storage, `PefilIcon/${file.name}`);
       const uploadTask = uploadBytesResumable(storageRef, file);
   
       uploadTask.on("state_changed",
@@ -75,10 +78,9 @@ function Usuario(){
     }
     
     const handleSubmitImgFundo = (e) => {
-        e.preventDefault()
-        const file = e.target[0]?.files[0]
+        const file = e.target.files[0]
         if (!file) return;
-        const storageRef = ref(storage, `files/${file.name}`);
+        const storageRef = ref(storage, `ImgFundo/${file.name}`);
         const uploadTask = uploadBytesResumable(storageRef, file);
     
         uploadTask.on("state_changed",
@@ -99,10 +101,9 @@ function Usuario(){
       }
 
       const handleSubmitImgFundoDois = (e) => {
-        e.preventDefault()
-        const file = e.target[0]?.files[0]
+        const file = e.target.files[0]
         if (!file) return;
-        const storageRef = ref(storage, `files/${file.name}`);
+        const storageRef = ref(storage, `ImgFundoDois/${file.name}`);
         const uploadTask = uploadBytesResumable(storageRef, file);
     
         uploadTask.on("state_changed",
@@ -294,6 +295,10 @@ function Usuario(){
             document.querySelector('.enterMarkdown').style.display = 'flex'
             document.querySelector('.config').style.display = 'flex'
             setImgUrl(loggedUser.icon)
+            setImgUrl2(loggedUser.imgFundo)
+            setImgUrl3(loggedUser.imgFundoDois)
+            setCorS(loggedUser.corS)
+            setCorP(loggedUser.corS)
         }else{
             document.querySelector('.divmdEditor').style.display = 'none'
             document.querySelector('.enterMarkdown').style.display = 'none'
@@ -449,8 +454,8 @@ function Usuario(){
                                         corS: corS,
                                         favoritados: loggedUser.favoritados,
                                         conquistas: loggedUser.conquistas,
-                                        imgFundo: loggedUser.imgFundo,
-                                        imgFundoDois: loggedUser.imgFundoDois,
+                                        imgFundo: imgUrl2,
+                                        imgFundoDois: imgUrl3,
                                         dataCriacao: loggedUser.dataCriacao
                                     })
                                     
@@ -470,7 +475,7 @@ function Usuario(){
         
         <div className="divUsuarioDMainContainer" style={{borderColor: `${loggedUser.corP} !important`}}>
             {/* <Navbar page={'usuario'}/> */}
-            <ModalCustom/>
+            <ModalCustom cor={loggedUser.corS}/>
             <Loading cor={loggedUser.corP}></Loading>
             <div className='divFundoMainContainer' style={{backgroundImage: `url(${viewingUser.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center', borderColor: viewingUser.corP}}>
                 <div className='divContainerFundoMainContainer'/>
@@ -596,13 +601,13 @@ function Usuario(){
                                             <h2>Informações Gerais</h2>
 
                                             <div className='divOmgConfigs'>
-                                                <div className='divContainerConfigSub2'>
+                                                <div className='divContainerConfigSub4'>
                                                     <label>Icone:</label>
                                                     <label>Usuário:</label>
                                                 </div>
 
-                                                <div className='divContainerConfigSub'>
-                                                    <div>
+                                                <div className='divContainerConfigSub' style={{borderColor: viewingUser.corP}}>
+                                                    <div className='divContainerNewImage' style={{borderColor: viewingUser.corP}}>
 
                                                         {
                                                             !imgUrl &&
@@ -614,9 +619,9 @@ function Usuario(){
                                                             imgUrl &&
                                                             <img src={imgUrl} alt='uploaded file' className='imgUploaded' style={{borderColor: viewingUser.corP}} />
                                                         }
-                                                        <form className='form'>
-                                                            <input onChange={(e) => {handleSubmit(e);
-                                                                console.log('lao', e)}} className='inputTypeFile' type='file' /> 
+                                                        <form className='form' style={{borderColor: viewingUser.corP}}>
+                                                            <input style={{borderColor: viewingUser.corP}} onChange={(event) => {handleSubmit(event); 
+                                                                console.log('lao', event)}} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
                                                         </form>
                                                     </div>
 
@@ -691,17 +696,75 @@ function Usuario(){
                                             <h3>Personalização - Premium</h3>
                                                 <div className='divOmgConfigs'>  
                                                         <div className='divContainerConfigSub2'>
-                                                            <label>Cor Principal do perfil e site: </label>
-                                                            <label>Cor Secundário do perfil: </label>
-                                                            <label>Imagem atrás do nome - perfil: </label>
-                                                            <label>Imagem atrás da página - perfil: </label>
+                                                            <label>Cor Principal do perfil e site: 
+                                                                <ChromePicker 
+                                                                    color={corP}
+                                                                    onChange={(color) => {
+                                                                        setCorP(color.hex);
+                                                                    }}
+                                                                    />
+                                                            </label>
+                                                            <label>Cor Secundário do perfil: 
+                                                            <div className="blockpicker">
+                                                                    {/* Div to display the color  */}
+
+                                                                    {/* Block Picker from react-color and handling color on onChange event */}
+                                                                    <ChromePicker 
+                                                                    className=''
+                                                                    color={corS}
+                                                                    onChange={(color) => {
+                                                                        setCorS(color.hex);
+                                                                    }}
+                                                                    />
+                                                            </div>
+                                                                
+                                                            </label>
+                                                            <label>Imagem atrás do nome - perfil: 
+                                                                <div className='divContainerNewImage' style={{borderColor: viewingUser.corP}}>
+
+                                                                    {
+                                                                        !imgUrl3 &&
+                                                                        <div className='outerbar'>
+                                                                        <div className='innerbar' style={{ width: `${progresspercent3}%` }}>{progresspercent3}%</div>
+                                                                        </div>
+                                                                    }
+                                                                    {
+                                                                        imgUrl3 &&
+                                                                        <img src={imgUrl3} alt='uploaded file' className='imgUploaded' style={{borderColor: viewingUser.corP}} />
+                                                                    }
+                                                                    <form className='form' style={{borderColor: viewingUser.corP}}>
+                                                                        <input style={{borderColor: viewingUser.corP}} onChange={(event) => {handleSubmitImgFundoDois(event); 
+                                                                            console.log('lao', event)}} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                                                    </form>
+                                                                </div>
+                                                            </label>
+                                                            <label>Imagem atrás da página - perfil: 
+                                                                                                                            
+                                                                <div className='divContainerNewImage' style={{borderColor: viewingUser.corP}}>
+
+                                                                    {
+                                                                        !imgUrl2 &&
+                                                                        <div className='outerbar'>
+                                                                        <div className='innerbar' style={{ width: `${progresspercent2}%` }}>{progresspercent2}%</div>
+                                                                        </div>
+                                                                    }
+                                                                    {
+                                                                        imgUrl2 &&
+                                                                        <img src={imgUrl2} alt='uploaded file' className='imgUploaded' style={{borderColor: viewingUser.corP}} />
+                                                                    }
+                                                                    <form className='form' style={{borderColor: viewingUser.corP}}>
+                                                                        <input style={{borderColor: viewingUser.corP}} onChange={(event) => {handleSubmitImgFundo(event); 
+                                                                            console.log('lao', event)}} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                                                    </form>
+                                                                </div>
+                                                            </label>
                                                         </div>
 
                                                         <div className='divContainerConfigSub'>
-                                                            <input style={{borderColor: viewingUser.corP}} value={corP} onChange={(event) => setCorP(event.target.value)} placeholder={loggedUser.corP}/>
-                                                            <input style={{borderColor: viewingUser.corP}} value={corS} onChange={(event) => setCorS(event.target.value)} placeholder={loggedUser.corS}/>
-                                                            <input placeholder={loggedUser.discord}/>
-                                                            <input placeholder={loggedUser.twitch}/>
+                                                            {/* <input style={{borderColor: viewingUser.corP}} value={corP} onChange={(event) => setCorP(event.target.value)} placeholder={loggedUser.corP}/>
+                                                            <input style={{borderColor: viewingUser.corP}} value={corS} onChange={(event) => setCorS(event.target.value)} placeholder={loggedUser.corS}/> */}
+
+
                                                         </div>
                                                 </div>
                                             

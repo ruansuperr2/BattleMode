@@ -410,10 +410,12 @@
     width: 100%;
 }
 
-.divContainerConfigSub2{
+.divContainerConfigSub2, .divContainerConfigSub4{
     display: flex;
     flex-direction: column;
 }
+
+
 
 .divContainerConfigSub{
     padding-left: 1%;
@@ -438,6 +440,7 @@
     width: 100%;
     height: 50%;
     margin: 20px;
+    
 }
 
 .inputTypeFile{
@@ -449,4 +452,21 @@
     border-radius: 200px;
     border: transparent 1px solid;
     object-fit: cover;
+}
+
+.divContainerNewImage{
+    display: flex;
+    align-items: flex-end;
+}
+
+.divContainerConfigSub4 label{
+    margin-top: 65px;
+}
+
+.chrome-picker input, .chrome-picker svg, .chrome-picker label{
+    display: none !important;
+    background: none !important;
+    height: auto !important;
+    width: auto !important;
+    color: black;
 }
