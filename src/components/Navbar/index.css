@@ -322,6 +322,10 @@
 	
 }
 
+#hamburguer {
+	display: none;
+}
+
 
 @keyframes showBlock{
 	0%{
@@ -416,7 +420,6 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		border-radius: 10px;
 		width: 98.5%;
 		height: 4%;
 		border-bottom: 1px solid #fc6b03;
@@ -469,8 +472,10 @@
 }
 
 @media only screen and (max-width: 660px) {
+	#hamburguer {
+		display: flex;
+	}
 	.divSideLoginRegister{
-		padding-top: 1rem;
 		justify-content: center;
 		height: var(--responsiveHeight, 4%);
 	}
@@ -491,6 +496,7 @@
 
 @media only screen and (max-width: 450px) {
 	.EntrarRegistroNavBar {
+		align-items: center;
 		flex-direction: column;
 		width: 12rem;
 	}

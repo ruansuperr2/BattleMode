@@ -15,7 +15,7 @@
   color: white;
   background-color: #121212;
   margin: 0;
-  padding-top: 7%;
+  padding-top: 3%;
   font-size: 25px;
   text-align: center;
 }
@@ -88,6 +88,11 @@
   border-radius: 10px ;
 }
 
+@media only screen and (max-width: 1230px) {
+  .titleGames {
+    padding-top: 6%;
+  }
+}
 
 @media only screen and (max-width: 768px) {
   .divJogosContainer {
@@ -112,6 +117,9 @@
 }
 
 @media only screen and (max-width: 475px) {
+  .titleGames {
+    padding-top: 11%;
+  }
   .divJogosContainer {
     flex-direction: column;
   }
