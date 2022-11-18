@@ -12,6 +12,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    margin: auto;
 }
 .divSubCriarTorneio{
     width: 80%;
@@ -27,26 +28,39 @@
 
 .divDivisorCriarTorneio{
     width: 80%;
-    height: 35vh;
+    /* height: 35vh; */
     display: flex;
     justify-content: space-around;
     flex-direction: row;
 }
 
-.divDivisorCriarTorneio button{
-    width: 100%;
-    height: 20%;
-    background-color: #212121;
-    border: solid 1px #fc6b03;
-    color: #ffffff;
-    cursor: pointer;
+.addButtonTorneio{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    top: .75rem;
+    background-color: #414141;
     border-radius: 5px;
-    margin-top: 4%;
+    color: #fff;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    transition: ease-in-out 75ms;
+}
+.addButtonTorneio:hover {
+    cursor: pointer;
+    background-color: #313131;
+}
+.addButtonTorneio:active {
+    font-size: .9rem;
+    background-color: #212121;  
 }
 
 .addthumb, .addlogo, .addfundo{
     width: 40%;
-    height: 35vh;
+    height: 26vh;
     background-color: #121212;
     display: flex;
     justify-content: center;
@@ -100,7 +114,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    border: #fc6b03 solid 1px;
+    background-color: #292929;
     border-radius: 10px;
     margin: 1%;
     align-items: center;
@@ -155,25 +169,56 @@
     width: 30%;
 }
 
+.torneioInput {
+    color: #fff;
+    width: 70%;
+    height: 3rem;
+    background-color: #212121;
+    border: solid 1px #fc6b03;
+    border-radius: 5px;
+    font-size: 19px;
+    padding-left: .5rem;
+}
+.torneioInput2 {
+    color: #fff;
+    width: 30%;
+    height: 3rem;
+    background-color: #212121;
+    border: solid 1px #fc6b03;
+    border-radius: 5px;
+    font-size: 19px;
+    padding-left: .5rem;
+}
+.textAreaTorneio {
+    margin-top: 1rem;
+    color: #fff;
+    width: 70%;
+    height: 8rem;
+    background-color: #212121;
+    border: solid 1px #fc6b03;
+    border-radius: 5px;
+    font-size: 19px;
+    padding-left: .5rem;
+    resize: none;
+}
+
 
 @media screen and (max-width: 768px){
     .divSubCriarTorneio{
-        height: 140vh;
+        height: 100%;
     }
     .divDivisorCriarTorneio{
         width: 90%;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 80%;
     }
     .addthumb, .addlogo, .addfundo{
         width: 100%;
     }
     .divInfoCriarTorneio{
         width: 90%;
-        height: 30%;
-        margin-top: 70%;
+        height: 20rem;
     }
     .divInfoCriarTorneio input{
         width: 80%;
@@ -182,6 +227,9 @@
     .divInfoCriarTorneio textarea{
         resize: none;
         height: 60%;
+    }
+    .torneioInput2 {
+        width: 80%;
     }
 
     .divMoreinfoCriarTorneios{

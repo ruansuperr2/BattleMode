@@ -6,25 +6,23 @@ import Select from 'react-select'
 import { AiOutlineCheck, AiOutlinePlus } from 'react-icons/ai'
 
 function CriarTorneio (){
-
     const chaves = [
         { value: 'classificatoria', label: 'Classificatoria' },
         { value: 'eliminatoria', label: 'Eliminatoria' },
         { value: 'grupo', label: 'Grupo' },
         { value: 'swiss', label: 'Swiss' }
-      ]
+    ]
     
     const jogos = [
         { value: 'valorant', label: 'Valorant' },
         { value: 'formula1', label: 'Formula 1' },
         { value: 'leagueoflegends', label: 'League of Legends' },
         { value: 'fifa22', label: 'Fifa 22' }
-      ]
+    ]
     
     
     return(
         <div className="DivCriarTorneio">
-            {/* <NavBar page = 'usuario'/> */}
 
             <div className="divMainCriarTorneio paddingLeft">
                 <div className="divSubCriarTorneio">
@@ -32,10 +30,10 @@ function CriarTorneio (){
 
                         <div className="addthumb">
                             <div className="imgthumb">
-                                <label>Thumb</label>
+                                <label>Capa</label>
                             </div>
 
-                            <button className="funçaoThumb"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
+                            <button className="funçaoThumb addButtonTorneio"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
                         </div>
 
                         <div className="addlogo">
@@ -43,7 +41,7 @@ function CriarTorneio (){
                                 <label>Logo</label>
                             </div>
 
-                            <button className="funçaoLogo"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
+                            <button className="funçaoLogo addButtonTorneio"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
                         </div>
 
                         <div className="addfundo">
@@ -51,22 +49,21 @@ function CriarTorneio (){
                                 <label>Fundo</label>
                             </div>
 
-                            <button className="funçaologo"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
+                            <button className="funçaologo addButtonTorneio"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
                         </div>
 
                     </div>
 
                     <div className="divInfoCriarTorneio">
-                        <h1>Adicione aqui as informações do seu torneio</h1>
-                        <input placeholder="Digite o nome do seu torneio aqui..."></input>
-                        <textarea placeholder="Digite as informações do seu torneio aqui..."></textarea>
+                        <input className="torneioInput" placeholder="Nome seu do torneio..."></input>
+                        <textarea className="textAreaTorneio" placeholder="Informações do seu torneio..."></textarea>
                     </div>
                 </div>
 
                 <div className="divMoreinfoCriarTorneios">
                     <Select options={chaves} className="select" placeholder='Chaves' />
                     <Select options={jogos} className="select"  placeholder='Jogos'/>
-                    <input className="totalJogadores" placeholder="Quantos jogadores vão jogar?"></input>
+                    <input className="torneioInput2" type='number' placeholder="Quantidade de jogadores..."></input>
                 </div>
             </div>
             <Footer/>

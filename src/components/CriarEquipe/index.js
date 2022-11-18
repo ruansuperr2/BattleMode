@@ -15,7 +15,7 @@ function CriarEquipe() {
                     <div className='divDemoCriarEquipe'>
                         <div className='divFlex'>
                             <div className='divImgThumb divImgDemo'>
-                                <label className='labelImgCriarEquipe'>Thumb</label>
+                                <label className='labelImgCriarEquipe'>Capa</label>
                             </div>
                             <button className='addThumb addButtonCriarEquipe'><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
                         </div>

@@ -188,9 +188,9 @@
 }
 .addButtonCriarEquipe:active {
     font-size: .9rem;
-    background-color: #212121;
-    
+    background-color: #212121;  
 }
+
 .addJogador {
     margin-left: .5rem;
     position: initial;
