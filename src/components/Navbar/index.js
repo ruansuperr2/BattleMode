@@ -109,7 +109,7 @@ export const Navbar = (props) => {
         if (!navAberta) {
             setNavAberta(true)
             setIcon(<FaTimes style={{ fontSize: '30px', color: '#fc6b03' }}/>)
-            return document.documentElement.style.setProperty('--responsiveHeight', '75%')
+            return document.documentElement.style.setProperty('--responsiveHeight', '26rem')
         }
         setNavAberta(false)
         setIcon(<FaBars style={{ fontSize: '30px', color: '#fc6b03' }}/>)
