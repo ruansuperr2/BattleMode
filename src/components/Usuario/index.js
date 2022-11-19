@@ -602,30 +602,34 @@ function Usuario(){
 
                                             <div className='divOmgConfigs'>
                                                 <div className='divContainerConfigSub4'>
-                                                    <label>Icone:</label>
-                                                    <label>Usuário:</label>
+                                                    <label>Icone:
+                                                        <div className='divContainerNewImage' style={{borderColor: viewingUser.corP}}>
+                                                            <img className='gearSelectImage' src={require('./components/assets/selecionar100x100.png')}/>
+                                                            {
+                                                                !imgUrl &&
+                                                                <div className='outerbar'>
+                                                                <div className='innerbar' style={{ width: `${progresspercent}%` }}>{progresspercent}%</div>
+                                                                </div>
+                                                            }
+                                                            {
+                                                                imgUrl &&
+                                                                
+                                                                <img src={imgUrl} alt='uploaded file' className='imgUploaded' style={{borderColor: viewingUser.corP}} />
+                                                            }
+                                                            
+                                                            <form className='form' style={{borderColor: viewingUser.corP}}>
+                                                                <input style={{borderColor: viewingUser.corP, display: 'none'}} onChange={(event) => {handleSubmit(event); 
+                                                                    console.log('lao', event)}} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                                            </form>
+                                                        </div>
+                                                    </label>
+                                                    <label>Usuário: <input style={{borderColor: viewingUser.corP}} value={username} onChange={(event) => setUsername(event.target.value)} placeholder={loggedUser.username}/></label>
                                                 </div>
 
                                                 <div className='divContainerConfigSub' style={{borderColor: viewingUser.corP}}>
-                                                    <div className='divContainerNewImage' style={{borderColor: viewingUser.corP}}>
 
-                                                        {
-                                                            !imgUrl &&
-                                                            <div className='outerbar'>
-                                                            <div className='innerbar' style={{ width: `${progresspercent}%` }}>{progresspercent}%</div>
-                                                            </div>
-                                                        }
-                                                        {
-                                                            imgUrl &&
-                                                            <img src={imgUrl} alt='uploaded file' className='imgUploaded' style={{borderColor: viewingUser.corP}} />
-                                                        }
-                                                        <form className='form' style={{borderColor: viewingUser.corP}}>
-                                                            <input style={{borderColor: viewingUser.corP}} onChange={(event) => {handleSubmit(event); 
-                                                                console.log('lao', event)}} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
-                                                        </form>
-                                                    </div>
 
-                                                    <input style={{borderColor: viewingUser.corP}} value={username} onChange={(event) => setUsername(event.target.value)} placeholder={loggedUser.username}/>
+                                                    
                                                 </div>
                                             </div>
                             
@@ -721,6 +725,7 @@ function Usuario(){
                                                             </label>
                                                             <label>Imagem atrás do nome - perfil: 
                                                                 <div className='divContainerNewImage' style={{borderColor: viewingUser.corP}}>
+                                                                    <img className='gearSelectImage2' src={require('./components/assets/selecionar450x250.png')}/>
 
                                                                     {
                                                                         !imgUrl3 &&
@@ -730,10 +735,10 @@ function Usuario(){
                                                                     }
                                                                     {
                                                                         imgUrl3 &&
-                                                                        <img src={imgUrl3} alt='uploaded file' className='imgUploaded' style={{borderColor: viewingUser.corP}} />
+                                                                        <img src={imgUrl3} alt='uploaded file' className='imgUploaded2' style={{borderColor: viewingUser.corP}} />
                                                                     }
                                                                     <form className='form' style={{borderColor: viewingUser.corP}}>
-                                                                        <input style={{borderColor: viewingUser.corP}} onChange={(event) => {handleSubmitImgFundoDois(event); 
+                                                                        <input style={{borderColor: viewingUser.corP, display: 'none'}} onChange={(event) => {handleSubmitImgFundoDois(event); 
                                                                             console.log('lao', event)}} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
                                                                     </form>
                                                                 </div>
@@ -741,7 +746,7 @@ function Usuario(){
                                                             <label>Imagem atrás da página - perfil: 
                                                                                                                             
                                                                 <div className='divContainerNewImage' style={{borderColor: viewingUser.corP}}>
-
+                                                                    <img className='gearSelectImage3' src={require('./components/assets/selecionar1600x250.png')}/>
                                                                     {
                                                                         !imgUrl2 &&
                                                                         <div className='outerbar'>
@@ -750,11 +755,11 @@ function Usuario(){
                                                                     }
                                                                     {
                                                                         imgUrl2 &&
-                                                                        <img src={imgUrl2} alt='uploaded file' className='imgUploaded' style={{borderColor: viewingUser.corP}} />
+                                                                        <img src={imgUrl2} alt='uploaded file' className='imgUploaded3' style={{borderColor: viewingUser.corP}} />
                                                                     }
                                                                     <form className='form' style={{borderColor: viewingUser.corP}}>
-                                                                        <input style={{borderColor: viewingUser.corP}} onChange={(event) => {handleSubmitImgFundo(event); 
-                                                                            console.log('lao', event)}} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                                                        <input style={{borderColor: viewingUser.corP, display: 'none'}} onChange={(event) => {handleSubmitImgFundo(event); 
+                                                                            console.log('lao', event)}} className='inputTypeFile' type='file' accept=".png,.jpeg, .jpg"/> 
                                                                     </form>
                                                                 </div>
                                                             </label>
