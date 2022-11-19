@@ -15,13 +15,16 @@ function Loading(prop) {
         window.scrollTo(0,0)
         document.body.style.overflow = 'hidden';
         setTimeout(() => {
+            window.scrollTo(0,0)
             barValue = 12
             textValue = 'Pensando'
             setTimeout(() => {
+                window.scrollTo(0,0)
                 barValue = 75
                 textValue = 'Fazendo a lógica'
                 
                 setTimeout(() => {
+                    window.scrollTo(0,0)
                     barValue = 87
                     textValue = 'Pensando'
                     setTimeout(() => {
@@ -30,24 +33,25 @@ function Loading(prop) {
                         textValue = 'Até a próxima, amigo'
                     }, 200);
                     setTimeout(() => {
+                        window.scrollTo(0,0)
                         document.body.style.overflow = 'visible';
                         
                         document.querySelector('.loadingMainDiv').classList.remove('desaparecer')
                         document.querySelector('.loadingMainDiv').style.display = 'none'
                     
-                    },700)
-                }, 1000)
+                    },720)
+                }, 1200)
             }, 600)
-        }, 400)
+        }, 600)
     }
 
     
+    if(isLoading === false){
+        isLoading = true
+        func()
+    }
     useEffect(() => {
         console.log(barValue)
-        if(isLoading === false){
-            isLoading = true
-            func()
-        }
         if(barValue === 100){
             document.querySelector('.loadingMainDiv').style.display = 'none'
         }

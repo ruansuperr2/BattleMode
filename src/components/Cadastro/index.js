@@ -58,17 +58,17 @@ function Cadastro (props) {
                                     status: 'Básico',
                                     corP: `#fc6b03`,
                                     corS: `#262626`,
-                                    favoritados: `[]`,
-                                    conquistas: `[]`,
+                                    favoritados: JSON.stringify([]),
+                                    conquistas: JSON.stringify([]),
                                     imgFundo: 'https://img.freepik.com/free-photo/cosmic-background-with-colorful-laser-lights-perfect-digital-wallpaper_181624-23742.jpg?w=1380&t=st=1667843115~exp=1667843715~hmac=ac8ceacc27578dda2b42433d247fa3bda733299c3ffa75183b6ae0e9e1ad5d1b',
                                     imgFundoDois: 'null',
-                                    dataCriacao: new Date()
+                                    dataCriacao: new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear()
                                 })
                                 
                         }
                         await fetch('https://battlemode-backend.herokuapp.com/api/user',  requestOptions)
                         setTimeout(() => {
-                            window.location.href = './login '
+                            window.location.href = '/login '
                         }, 1000)
                     }catch(error){
                             console.log(error)

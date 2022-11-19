@@ -21,6 +21,7 @@ function Usuario(){
     const { id } = useParams();
     console.log(id)
 
+    const [favoritadoz, setFavoritadoz] = useState([])
     const [username, setUsername] = useState('')
     const [icon, setIcon] = useState('')
     const [email, setEmail] = useState('')
@@ -299,30 +300,37 @@ function Usuario(){
             setImgUrl3(loggedUser.imgFundoDois)
             setCorS(loggedUser.corS)
             setCorP(loggedUser.corS)
+            document.querySelector('.UserPlan').textContent = 'Plano ' + viewingUser.status
+            if(loggedUser.status !== 'Premium'){
+                document.querySelector('.premiumConfigs2').style.display = 'none'
+                document.querySelector('.premiumConfigs').style.display = 'none'
+                document.querySelector('#premiumConfigs2').style.display = 'none'
+            }
         }else{
             document.querySelector('.divmdEditor').style.display = 'none'
             document.querySelector('.enterMarkdown').style.display = 'none'
             document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
             document.querySelector('.config').style.display = 'none'
-            
+            document.querySelector('.UserPlan').textContent = 'Plano ' + viewingUser.status
         }
         document.querySelector('.geral').classList.add('perfilActive')
-        document.querySelector('.UserPlan').textContent = 'Plano ' + viewingUser.status
         setValue(viewingUser.biografia)
         document.querySelector('.divContainerFundoMainContainer').style.backgroundImage = `url(${viewingUser.imgFundo})`
+        setFavoritadoz(JSON.parse(viewingUser.favoritados))
         setTimeout(() => {
-        if(stopIt === 0){
-            stopIt = 1
-            console.log(viewingUser)
- 
+            if(stopIt === 0){
+                stopIt = 1
+                console.log(viewingUser)
+                console.log(favoritadoz)
+                
             }
-        }, 4000);
+        }, 2000);
         deadOrAlive = true
     }  
     if(deadOrAlive === false){
         setTimeout(() => {
             makeEverythingWork()
-        }, 1600);
+        }, 1820);
     }
 
     const callMudançasPerfil = async(status) => {
@@ -533,8 +541,8 @@ function Usuario(){
                                         <h2>Jogos Favoritados</h2>
                                         <div className='favoriteListOfUser'>
                                             { jogo.map( (jogo) => {
-                                                // for(let i = 0; i < 5;i++){
-                                                    // if(jogo.id === viewingUser.personalizacao[i+1]){
+                                                for(let i = 0; i < 5;i++){
+                                                    if(jogo.id === favoritados[i+1]){
                                                         return  <div key={jogo.id} className='divJogosSubContainer' id={jogo.id}>
                                                                     <div className='divJogosContainer'style={{borderColor: viewingUser.corP}}>
                                                                         <img className='divJogosImg' src={jogo.imgFundo}/>
@@ -543,8 +551,8 @@ function Usuario(){
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                    // }
-                                                // }
+                                                    }
+                                                }
                                             }) }
                                         </div>
                                     </div>
@@ -602,7 +610,7 @@ function Usuario(){
 
                                             <div className='divOmgConfigs'>
                                                 <div className='divContainerConfigSub4'>
-                                                    <label>Icone:
+                                                    <label className='premiumConfigs'>Icone:
                                                         <div className='divContainerNewImage' style={{borderColor: viewingUser.corP}}>
                                                             <img className='gearSelectImage' src={require('./components/assets/selecionar100x100.png')}/>
                                                             {
@@ -696,7 +704,7 @@ function Usuario(){
                                         <div>
                                             <button onClick={() => callMudançasPerfil('RS')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount3' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Redes Sociais</button>
                                         </div>
-                                        <div className='divConfigConfigsSubContainer'>
+                                        <div className='divConfigConfigsSubContainer premiumConfigs2'>
                                             <h3>Personalização - Premium</h3>
                                                 <div className='divOmgConfigs'>  
                                                         <div className='divContainerConfigSub2'>
@@ -775,7 +783,7 @@ function Usuario(){
                                             
                                         </div>
                                         <div>
-                                            <button onClick={() => callMudançasPerfil('PP')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount4' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Personalização</button>
+                                            <button onClick={() => callMudançasPerfil('PP')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount4 premiumConfigs2' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Personalização</button>
                                         </div>
                                     </div>
 
