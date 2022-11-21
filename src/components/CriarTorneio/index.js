@@ -57,6 +57,7 @@ function CriarTorneio (){
                     <div className="divInfoCriarTorneio">
                         <input className="torneioInput" placeholder="Nome seu do torneio..."></input>
                         <textarea className="textAreaTorneio" placeholder="Informações do seu torneio..."></textarea>
+                        <button className='buttonConfirmarCriarTorneio'>Confirmar <AiOutlineCheck style={{fontSize: '25px', marginLeft: '.5rem', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
                     </div>
                 </div>
 

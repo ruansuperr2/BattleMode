@@ -131,7 +131,7 @@
 }
 
 .loggedUserFunctions{
-	background-color: #191919;
+	background-color: transparent;
 	display: flex;
 	flex-direction: row;
 	align-items: center;

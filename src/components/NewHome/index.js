@@ -3,6 +3,7 @@ import Navbar from "../Navbar"
 import './index.css'
 
 import $ from 'jquery'
+import { height } from '@mui/system'
 
 let currentPage = 'pageOne'
 let currentSlide = 'slideOne'
@@ -205,7 +206,7 @@ export default function NewHome () {
                     <div className="containerPageOneHome">
                         <div className="containerPageOneHomeContent">
                             <div className="miniDivider"></div>
-                            <div className="labelPageOneHome"></div>
+                            <label className='labelTorneios'><img className='logoLabel' src={require("./logo.png")} style={{marginRight: '1rem', height: '6rem', width: '6rem'}} />PRÓXIMOS EVENTOS</label>
                             <div className='tourneamentHighlightContainer'>
                                 { torneio.slice(-3).map( (findTorneio) => {
                                     
@@ -219,17 +220,19 @@ export default function NewHome () {
                                 })}
                             </div>
                             <label className='labelAskingPageOneHome'>
-                                <label>Ficou interessado em um desses eventos? </label>
-                                <label>Faça <a href='./login' style={{color: loggedUser.corS}}>login agora</a> e dê uma olhada nos torneios de várias modalidades e jogos na plataforma!</label>
+                                <label>Ficou interessado em algum evento? </label>
+                                <label>Faça <a href='./login' style={{color: loggedUser.corS}}>login agora</a> e veja torneios de vários jogos e modalidades!</label>
                             </label>
                         </div>
                         <div className='containerDivider containerTwoDivider'/>
                         <div className="containerPageTwoHomeContent" >
                             
                             <div className="miniDivider"></div>
-                            <div className="labelPageTwoHome"></div>
+                            {/* <div className="labelPageTwoHome"></div> */}
+                            
+                            <label className='labelTorneios'><img className='logoLabel' src={require("./logo.png")} style={{marginRight: '1rem', height: '6rem', width: '6rem'}} />TORNEIOS DE FAVORITOS</label>
                             <div className='gamesHighlightContainer paddingTop'>
-                                { game.slice(-8).map( (findGame) => {
+                                { game.slice(-4).map( (findGame) => {
                                     
                                     return <div onClick={() => {window.location.href = `./feed/${findGame.id}`}} style={{backgroundImage: `url(${findGame.imgFundo})`}} className='gameHighlighted bigGameHiglightTwo'>
                                     <div className='gameHighlitedDecoration'></div>
@@ -247,7 +250,7 @@ export default function NewHome () {
                         <div className="containerPageThreeHomeContent" >
                             
                             <div className="miniDivider"></div>
-                            <div className="labelPageThreeHome"></div>
+                            <label className='labelTorneios'><img className='logoLabel' src={require("./logo.png")} style={{marginRight: '1rem', height: '6rem', width: '6rem'}} />PERSONALIZE COM SUA IDENTIDADE</label>
                             <div className='customizationSliderHighlightContainer'  style={{borderColor: loggedUser.corP}}>
                                 <div className='divContainerSliderNewHome' style={{borderColor: loggedUser.corP}}>
 
@@ -284,7 +287,7 @@ export default function NewHome () {
                                         </div>
                                     </div>
                                     <div className='customizationSliderTextSlide' style={{borderColor: loggedUser.corP}}>
-                                        <div>
+                                        <div className='sliderTextConteiner'>
                                             <h2 className='sliderRightTitle'>Titulo</h2>
                                         </div>
                                         <div className='sliderTextConteiner'>

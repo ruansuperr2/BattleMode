@@ -148,8 +148,8 @@ export const Navbar = (props) => {
                     }}><div className='imgNavbarTourneamentGo navbarGo'/> Sair</label>
                 </div>
                 <div className='EntrarRegistroNavBar'>
-                    <button onClick={() => {window.location.href = '/cadastro'}}>Cadastrar-se </button>
-                    <button onClick={() => {window.location.href = '/login'}}>Entrar</button>
+                    <button onClick={() => {window.location.href = './cadastro'}}>Cadastrar-se </button>
+                    <button onClick={() => {window.location.href = './login'}}>Entrar</button>
                 </div>
                 <div className='loggedUserNameNavBar'>
                     <img className='imgIconP' style={{borderColor: `${loggedUser.corP}`}}/>
