@@ -47,7 +47,7 @@ function App() {
                         <Route path="/chaves" element={<Chaves/>} />
                         <Route path="/criartorneio" element={<CriarTorneio/>} />
                         <Route path="/criarequipe" element={<CriarEquipe/>} />
-                        <Route path="/find" element={<FindAll />} />
+                        <Route path="/find/:id" element={<FindAll />} />
                   </Routes>
               </div>
           </BrowserRouter>

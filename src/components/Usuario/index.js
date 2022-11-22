@@ -580,7 +580,7 @@ function Usuario(){
                                             
                                                 for(let i = 0; i < 5;i++){
 
-                                                    if(JSON.parse(time.equipeAtiva)[i] === loggedUser.id){
+                                                    if(JSON.parse(time.equipeAtiva)[i] === viewingUser.id){
                                                         return  <div key={time.id} className='divTeamsOnUserSubContainer' style={{borderColor: viewingUser.corP}} id={time.id}>
                                                                     <div className='divTeamsOnUserContainer'>
                                                                         <img className='divTeamsOnUserImg' src={time.logo} style={{borderColor: viewingUser.corP, boxShadow: `0px 0px 11px 0px ${viewingUser.corP}`}}/>
