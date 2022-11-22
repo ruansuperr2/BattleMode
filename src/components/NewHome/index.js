@@ -93,7 +93,7 @@ export default function NewHome () {
     
     const callTorneio = async() => {
         try{
-            const response = await fetch('https://battlemode-backend.herokuapp.com/api/torneio')
+            const response = await fetch('https://web-production-8ce4.up.railway.app/api/torneio')
             const data = response.json()
             data.then(
                 (val) => {setTorneio(val.data)})
@@ -104,7 +104,7 @@ export default function NewHome () {
 
     const callGames = async() => {
         try{
-            const response = await fetch('https://battlemode-backend.herokuapp.com/api/jogo')
+            const response = await fetch('https://web-production-8ce4.up.railway.app/api/jogo')
             const data = response.json()
             data.then(
                 (val) => {setGame(val.data)})
@@ -118,7 +118,7 @@ export default function NewHome () {
         try{
             if(JSON.parse(localStorage.getItem('dasiBoard') !== null)){
 
-                const responseUser = await fetch('https://battlemode-backend.herokuapp.com/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
+                const responseUser = await fetch('https://web-production-8ce4.up.railway.app/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
                 const dataUser = responseUser.json()
                 dataUser.then(
                     (val) => {
@@ -221,7 +221,7 @@ export default function NewHome () {
                             </div>
                             <label className='labelAskingPageOneHome'>
                                 <label>Ficou interessado em algum evento? </label>
-                                <label>Faça <a href='./login' style={{color: loggedUser.corP}}>login agora</a> e veja torneios de vários jogos e modalidades!</label>
+                                <label>Faça <a href='./login' style={{color: loggedUser.corS}}>login agora</a> e veja torneios de vários jogos e modalidades!</label>
                             </label>
                         </div>
                         <div className='containerDivider containerTwoDivider'/>
