@@ -11,7 +11,7 @@ function Jogos() {
         try{
             if(JSON.parse(localStorage.getItem('dasiBoard') !== null)){
 
-                const responseUser = await fetch('https://battlemode-backend.herokuapp.com/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
+                const responseUser = await fetch('https://web-production-8ce4.up.railway.app/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
                 const dataUser = responseUser.json()
                 dataUser.then(
                     (val) => {
@@ -30,7 +30,7 @@ function Jogos() {
     const [jogo, setJogo] = useState([])
     const callGames = async() => {
         try{
-            const response = await fetch('https://battlemode-backend.herokuapp.com/api/jogo')
+            const response = await fetch('https://web-production-8ce4.up.railway.app/api/jogo')
             const data = response.json()
             data.then(
                 (val) => {setJogo(val.data)})
@@ -88,7 +88,7 @@ function Jogos() {
                 
             }
             closeModal('success', 'atualizado!',null)
-            await fetch('https://battlemode-backend.herokuapp.com/api/user/' + loggedUser.id,  requestOptions)
+            await fetch('https://web-production-8ce4.up.railway.app/api/user/' + loggedUser.id,  requestOptions)
             }catch(e){
                 console.log(e)
             }

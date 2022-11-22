@@ -26,7 +26,7 @@ export const Navbar = (props) => {
         try{
             if(JSON.parse(localStorage.getItem('dasiBoard') !== null)){
 
-                const responseUser = await fetch('https://battlemode-backend.herokuapp.com/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
+                const responseUser = await fetch('https://web-production-8ce4.up.railway.app/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
                 const dataUser = responseUser.json()
                 dataUser.then(
                     (val) => {

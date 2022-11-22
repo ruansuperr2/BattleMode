@@ -126,7 +126,7 @@ function Usuario(){
 
     const callTorneio = async() => {
         try{
-            const response = await fetch('https://battlemode-backend.herokuapp.com/api/torneio')
+            const response = await fetch('https://web-production-8ce4.up.railway.app/api/torneio')
             const data = response.json()
             data.then(
                 (val) => {setTorneio(val.data)})
@@ -137,7 +137,7 @@ function Usuario(){
 
     const callGames = async() => {
         try{
-            const response = await fetch('https://battlemode-backend.herokuapp.com/api/jogo')
+            const response = await fetch('https://web-production-8ce4.up.railway.app/api/jogo')
             const data = response.json()
             data.then(
                 (val) => {setJogo(val.data)})
@@ -148,7 +148,7 @@ function Usuario(){
 
     const callTime = async () => {
         try{
-            const responseUser = await fetch('https://battlemode-backend.herokuapp.com/api/time/')
+            const responseUser = await fetch('https://web-production-8ce4.up.railway.app/api/time/')
             const dataTime = responseUser.json()
 
             dataTime.then(
@@ -163,10 +163,10 @@ function Usuario(){
 
     const getUsers = async () => {
         try{
-            const responseUser = await fetch('https://battlemode-backend.herokuapp.com/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
+            const responseUser = await fetch('https://web-production-8ce4.up.railway.app/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
             const dataUser = responseUser.json()
 
-            const responseUsers = await fetch('https://battlemode-backend.herokuapp.com/api/user/')
+            const responseUsers = await fetch('https://web-production-8ce4.up.railway.app/api/user/')
             const dataUsers = responseUsers.json()
             dataUsers.then(
                 (val) => {
@@ -279,7 +279,7 @@ function Usuario(){
                     
                 }
                 closeModal('success', 'atualizado!',null)
-                await fetch('https://battlemode-backend.herokuapp.com/api/user/' + loggedUser.id,  requestOptions)
+                await fetch('https://web-production-8ce4.up.railway.app/api/api/user/' + loggedUser.id,  requestOptions)
                 }catch(e){
                     console.log(e)
                 }
@@ -364,7 +364,7 @@ function Usuario(){
                         
                     }
                     closeModal('success', 'atualizado!',null)
-                    await fetch('https://battlemode-backend.herokuapp.com/api/user/' + loggedUser.id,  requestOptions)
+                    await fetch('https://web-production-8ce4.up.railway.app/api/user/' + loggedUser.id,  requestOptions)
                     window.location.href = '/u/' + username
                     }catch(e){
                         console.log(e)
@@ -399,7 +399,7 @@ function Usuario(){
                             
                         }
                         closeModal('success', 'atualizado!',null)
-                        await fetch('https://battlemode-backend.herokuapp.com/api/user/' + loggedUser.id,  requestOptions)
+                        await fetch('https://web-production-8ce4.up.railway.app/api/user/' + loggedUser.id,  requestOptions)
                         window.location.href = '/u/' + viewingUser.username
                         }catch(e){
                             console.log(e)
@@ -434,7 +434,7 @@ function Usuario(){
                                 
                             }
                             closeModal('success', 'atualizado!',null)
-                            await fetch('https://battlemode-backend.herokuapp.com/api/user/' + loggedUser.id,  requestOptions)
+                            await fetch('https://web-production-8ce4.up.railway.app/api/user/' + loggedUser.id,  requestOptions)
                             window.location.href = '/u/' + viewingUser.username
                             }catch(e){
                                 console.log(e)
@@ -469,7 +469,7 @@ function Usuario(){
                                     
                                 }
                                 closeModal('success', 'atualizado!',null)
-                                await fetch('https://battlemode-backend.herokuapp.com/api/user/' + loggedUser.id,  requestOptions)
+                                await fetch('https://web-production-8ce4.up.railway.app/api/user/' + loggedUser.id,  requestOptions)
                                 window.location.href = '/u/' + viewingUser.username
                                 }catch(e){
                                     console.log(e)
