@@ -221,7 +221,7 @@ export default function NewHome () {
                             </div>
                             <label className='labelAskingPageOneHome'>
                                 <label>Ficou interessado em algum evento? </label>
-                                <label>Faça <a href='./login' style={{color: loggedUser.corS}}>login agora</a> e veja torneios de vários jogos e modalidades!</label>
+                                <label>Faça <a href='./login' style={{color: loggedUser.corP}}>login agora</a> e veja torneios de vários jogos e modalidades!</label>
                             </label>
                         </div>
                         <div className='containerDivider containerTwoDivider'/>

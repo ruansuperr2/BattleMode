@@ -28,15 +28,15 @@ export default function FindAll() {
         getUsers()
     }
 
-    
+
     return (
         <div className="divContainerFindAll">
             <div className='organizeList'>
                 <div className='containerSpecificUser paddingLeft'>
                     {
                         users.map( (users) => {
-                                return <div onClick={() => {window.location.href = `/u/${users.username}`}} key={users.id} style={{backgroundImage: `url(${users.imgFundo})`}} className='userHighlightedFeed bigTourneamentHiglightOne'>
-                                <label><img src={users.icon} alt='img'/>{users.username}</label>
+                                return <div onClick={() => {window.location.href = `/u/${users.username}`}} key={users.id} style={{backgroundImage: `url(${users.imgFundo})`, borderColor: users.corP}} className='userHighlightedFeed bigTourneamentHiglightOne'>
+                                <label><img src={users.icon} alt='img' style={{borderColor: users.corP}}/>{users.username}</label>
                             </div>
                         })
                     }
