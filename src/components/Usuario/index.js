@@ -536,7 +536,7 @@ function Usuario(){
                                         <div className='editMarkdownButton enterMarkdown' onClick={() => callEditMarkdownEditor('enter')} style={{borderColor: `${loggedUser.corP}`}} ><p>Editar</p></div>
                                     </div>
                                 </div>
-                                <div className='divConquistaEfavoritos'>
+                                {/* <div className='divConquistaEfavoritos'>
                                     <div className='containerFavoriteListOfUser'>
                                         <h2>Jogos Favoritados</h2>
                                         <div className='favoriteListOfUser'>
@@ -570,7 +570,7 @@ function Usuario(){
                                             </div>
                                         ) }
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             <div className='divEquipesSubMainContainerCompo' >
                                 <div className='divContainerTeamsOnUserTab' style={{borderColor: viewingUser.corP}}>
@@ -583,7 +583,7 @@ function Usuario(){
                                                     if(JSON.parse(time.equipeAtiva)[i] === loggedUser.id){
                                                         return  <div key={time.id} className='divTeamsOnUserSubContainer' style={{borderColor: viewingUser.corP}} id={time.id}>
                                                                     <div className='divTeamsOnUserContainer'>
-                                                                        <img className='divTeamsOnUserImg' src={time.logo}/>
+                                                                        <img className='divTeamsOnUserImg' src={time.logo} style={{borderColor: viewingUser.corP, boxShadow: `0px 0px 11px 0px ${viewingUser.corP}`}}/>
                                                                         <div>
                                                                             <h5>{time.nome}</h5>
                                                                         </div>
@@ -782,8 +782,8 @@ function Usuario(){
                                                 </div>
                                             
                                         </div>
-                                        <div>
-                                            <button onClick={() => callMudançasPerfil('PP')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount4 premiumConfigs2' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Personalização</button>
+                                        <div id="premiumConfigs2">
+                                            <button onClick={() => callMudançasPerfil('PP')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount4 ' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Personalização</button>
                                         </div>
                                     </div>
 
