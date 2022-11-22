@@ -2,6 +2,7 @@
 import React, {useState} from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
+import FindAll from './components/FindAll'
 import Home from './components/Home'
 import Feed from './components/Feed'
 import Jogos from './components/Jogos'
@@ -36,6 +37,7 @@ function App() {
                     	<Route exact path="/login" element={<Login funcNav={setShowNav} />} />
                     	<Route exact path="/cadastro" element={<Cadastro funcNav={setShowNav} />} />
                         <Route path="/now" element={<NewHome />} />
+                        <Route path="/demo" element={<Home />} />
                         <Route path="/feed" element={<Feed />} />
 			            <Route path="/feed/:id" element={<Feed />} />
                         <Route path="/games" element={<Jogos />} />
@@ -45,6 +47,7 @@ function App() {
                         <Route path="/chaves" element={<Chaves/>} />
                         <Route path="/criartorneio" element={<CriarTorneio/>} />
                         <Route path="/criarequipe" element={<CriarEquipe/>} />
+                        <Route path="/find" element={<FindAll />} />
                   </Routes>
               </div>
           </BrowserRouter>
