@@ -1,0 +1,83 @@
+.divContainerFindAll{
+    background-color: #121212;
+}
+
+.containerSpecificUser{
+    padding-bottom: 5%;
+    width: 75%;
+    gap: 10px;
+    padding-top: 9%;
+    margin-left: 5%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 10px;
+}
+
+.userHighlightedFeed{
+    border: 1px solid #fc6b03;
+    border-radius: 5px;
+    width: 30%;
+    height: 9vw;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;  
+    background-size: cover;
+    background-position: 0% 90%;
+    box-shadow: 0px 0px 10px 0px #030303;
+    transition: 0.5s;
+}
+
+.userHighlightedFeed:hover{
+    transition: 0.5s;
+    width: 30%;
+    height: 9vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 0px 0px 10px 0px #030303;
+    cursor: pointer;
+}
+
+.userHighlightedFeed img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid #fc6b03;
+    margin: 5px;
+    margin-right: 20px;
+}
+
+.userHighlightedFeed label{
+    display: flex;
+    align-items: center;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #303030;
+    color: white;
+    cursor: pointer;
+}
+
+.userHighlightedFeed img:hover{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid #fc6b03;
+    margin: 5px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.userHighlightedFeed label:hover{
+    display: flex;
+    align-items: center;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #303030;
+    color: white;
+    cursor: pointer;
+}
