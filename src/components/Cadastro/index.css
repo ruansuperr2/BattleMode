@@ -24,32 +24,33 @@
 
 .divCadastroLeftContainer {
     width: 40%;
-    height: 80%;
+    height: 95%;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
 }
 
 .divCadastroLeftContainer img{
-    width: 30vh;
-    height: 30vh;
+    width: 56.16px;
+    height: 56.16px;
     z-index: 99;
-    padding-left: 3.4%;
+    /* padding-left: 3.4%; */
 }
 
 .divCadastroLeftContainer h1{
     color:#fc6b03;
     font-size: 7vh;
-    padding-left: 7%;
-    padding-right: 10%;
-    margin-top: -5%;
+    padding-inline: 5%;
+    text-align: center;
+    margin: 0;
     
 }
 .divCadastroLeftContainer p{
     color: #fff;
     font-size: 3.5vh;
-    padding-left: 7%;
-    padding-right: 20%;
+    padding-inline: 10%;
     margin-top: 0;
+    text-align: center;
 }
 
 .divCadastroRightContainer {
@@ -69,7 +70,7 @@
     background-color: #121212;
     justify-content: center;
     height: 90%;
-    border-radius: 10%;
+    border-radius: 20px;
     align-items: center;
 }
 
@@ -81,26 +82,27 @@
 .p{
     color:#fff;
     font-size: 3vh;
+    padding-inline: 1rem;
     margin-top: -10px;
     text-align: center;
 }
 
 .divCadastrarRightSubContaner input{
     width: 70%;
-    height: 7%;
+    height: 2.5rem;
     margin: 10px;
     padding-left: 20px;
-    border-radius: 20px;
+    border-radius: 30px;
     border: 2px solid #fc6b03;
     font-size: 16px;
 }
 
 .divCadastrarRightSubContaner button{
     width: 75%;
-    height: 7%;
+    height: 2.5rem;
     margin: 10px;
     background-color: #272727;
-    border-radius: 20px;
+    border-radius: 30px;
     border: 2px solid #fc6b03;
     color: #fff;
     font-size: 16px;
@@ -125,9 +127,10 @@
 .links{
     width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
     gap: 30px;
-    padding-left: 7%;
 }
 
 

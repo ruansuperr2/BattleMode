@@ -24,32 +24,32 @@
 
 .divLoginLeftContainer {
     width: 40%;
-    height: 80%;
+    height: 95%;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
 }
 
 .divLoginLeftContainer img{
-    width: 30vh;
-    height: 30vh;
+    width: 56.16px;
+    height: 56.16px;
     z-index: 99;
-    padding-left: 3.4%;
 }
 
 .divLoginLeftContainer h1{
     color:#fc6b03;
     font-size: 7vh;
-    padding-left: 7%;
-    padding-right: 10%;
-    margin-top: -5%;
+    padding-inline: 5%;
+    text-align: center;
+    margin: 0;
     
 }
 .divLoginLeftContainer p{
     color: #fff;
     font-size: 3.5vh;
-    padding-left: 7%;
-    padding-right: 20%;
+    padding-inline: 10%;
     margin-top: 0;
+    text-align: center;
 }
 
 .divLoginRightContainer {
@@ -82,26 +82,27 @@
 .p{
     color:#fff;
     font-size: 3vh;
-    margin-top: -10px;
+    padding-inline: 1rem;
+    /* margin-top: -10px; */
     text-align: center;
 }
 
 .divLoginRightSubContaner input{
     width: 70%;
-    height: 8%;
+    height: 2.5rem;
     margin: 10px;
     padding-left: 20px;
-    border-radius: 20px;
+    border-radius: 30px;
     border: 2px solid #fc6b03;
     font-size: 16px;
 }
 
 .divLoginRightSubContaner button{
     width: 75%;
-    height: 8%;
+    height: 3rem;
     margin: 10px;
     background-color: #272727;
-    border-radius: 20px;
+    border-radius: 30px;
     border: 2px solid #fc6b03;
     color: #fff;
     font-size: 16px;
@@ -124,7 +125,14 @@
     font-size: 3vh;
 }
 
-
+.links{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 30px;
+}
 
 
 
@@ -138,7 +146,7 @@
     }
     .divLoginRightSubContaner{
         width: 90%;
-        border-radius: 10%;
+        border-radius: 20px;
 
     }
     .divMainLoginLinda{

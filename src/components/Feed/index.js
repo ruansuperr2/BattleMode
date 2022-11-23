@@ -59,6 +59,7 @@ function Feed() {
     }else{
         return (
             <div className="divMainContainerD">
+                <div className='pagewrap'>
                     <div className='containerThisGame paddingLeft'>
                         {
                             jogo.map( (findJogo) => {
@@ -88,6 +89,7 @@ function Feed() {
                             }
                         </div>
                     </div>
+                </div>
                 <Footer/>
             </div>
         )

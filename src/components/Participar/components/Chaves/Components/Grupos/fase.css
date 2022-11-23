@@ -13,7 +13,7 @@
      justify-content: start;
      flex-direction: row;
      text-align: center;
-     width: 45%;
+     width: 15.6rem;
      height: 170px;
      border: 1px solid #fc6b03;
 }
@@ -45,4 +45,10 @@
      width: 5%;
      background-color: #fc6b03;
      
+}
+
+@media screen and (max-width: 445px) {
+     .FaseContainer {
+          width: 100%;
+     }
 }

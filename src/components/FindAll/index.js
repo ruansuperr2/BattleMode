@@ -62,7 +62,7 @@ export default function FindAll() {
                 <div className='organizeList2'>
                 <div className='stylizeLabel'>
 
-                    <a href='/find/u'><label className='' style={{color: loggedUser.corP}}>USUÁRIOS</label></a><label> / </label><a href='/find/t'><label className='' style={{color: loggedUser.corP}}>TIMES</label></a>
+                    <a href='/find/u'><label className='usuariosTitle' style={{color: loggedUser.corP}}>USUÁRIOS</label></a><label style={{marginInline: '.5rem'}}> & </label><a href='/find/t'><label className='' style={{color: loggedUser.corP}}>TIMES</label></a>
                 </div>
                     <div className='containerSpecificUser paddingLeft'>
                         {
@@ -83,7 +83,7 @@ export default function FindAll() {
                 <div className='organizeList2'>
                     <div className='stylizeLabel'>
 
-                        <a href='/find/u'><label className='' style={{color: loggedUser.corP}}>USUÁRIOS</label></a><label> / </label><a href='/find/t'><label className='' style={{color: loggedUser.corP}}>TIMES</label></a>
+                        <a href='/find/u'><label className='usuariosTitle' style={{color: loggedUser.corP}}>USUÁRIOS</label></a><label> / </label><a href='/find/t'><label className='' style={{color: loggedUser.corP}}>TIMES</label></a>
                     </div>
                     <div className='containerSpecificUser paddingLeft'>
                         {

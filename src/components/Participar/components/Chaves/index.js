@@ -24,8 +24,8 @@ function Chaves(){
                         </div>
 
                         <div className='JogoDescriçãoChaves2'>
-                            <h1>Gaia Cup</h1>
-                            <p>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor. expõe brevemente um tema, fato ou circunstância ao leitor.
+                            <h1 className='chaveDescTitulo'>Gaia Cup</h1>
+                            <p className='chaveDescBody'>O texto informativo é um texto em que o escritor expõe brevemente um tema, fato ou circunstância ao leitor. expõe brevemente um tema, fato ou circunstância ao leitor.
                             expõe brevemente um tema, fato ou circunstância ao leitor.
                             expõe brevemente um tema, fato ou circunstância ao leitor.
                             </p>

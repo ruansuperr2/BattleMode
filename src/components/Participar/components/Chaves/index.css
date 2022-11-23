@@ -1,11 +1,11 @@
 .divChaves{
     width: 100%;
-    background-color: #212121;
+    background-color: #121212;
 }
 .divSubChaves{
     width: 95%;
     height: 100%;
-    background-color: #212121;
+    background-color: #121212;
     flex-direction: column;
     display: flex;
     justify-content: center;
@@ -14,13 +14,13 @@
 .divSubChavesDois{
     width: 80%;
     height: 100%;
-    background-color: #121212;
+    background-color: #222222;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    border: 2px solid #fc6b03;
+    border: 1px solid #fc6b03;
     color: #fc6b03;
     margin-top: 2%;
 }
@@ -28,11 +28,15 @@
 
 .divDescriçãoChaves{
     width: 80%;
-    height: 40vh;
+    height: auto;
+    padding-block: 2rem;
     background-color: #121212;
     margin-top: 2%;    
     border-radius: 20px;
-    border: 2px solid #fc6b03;
+    margin-top: 2rem;
+    border-style: solid;
+    border-color: #fc6b03;
+    border-width: 1px 0px 1px 0px;
     color: #fc6b03;;
     display: flex;
     flex-direction: row;
@@ -41,8 +45,8 @@
 }
 
 .JogoDescriçãoChaves{
-    width: 13%;
-    height: 30vh;
+    width: 10rem;
+    height: 14rem;
     background-color: #212121;
     border-radius: 10px;
 }
@@ -57,13 +61,49 @@
 
 .JogoDescriçãoChaves2{
     width: 70%;
-    height: 30vh;
+    padding: .5rem;
+    height: auto;
     background-color: #212121;
     border-radius: 10px;
     padding-left: 2%;
+}
+
+.chaveDescTitulo {
+    text-align: center;
+}
+.chaveDescBody {
+    text-align: center;
 }
 
 .JogoDescriçãoChaves2 p{
     color: #ffffff;
 }
 
+@media screen and (max-width: 1230px) {
+    .divSubChaves {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 836px) {
+    .divDescriçãoChaves {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .chaveDescTitulo {
+        text-align: center;
+    }
+    .JogoDescriçãoChaves2 {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 445px) {
+    .divSubChavesDois {
+        width: 100%;
+        border: none;
+    }
+    .divDescriçãoChaves {
+        
+    }
+}

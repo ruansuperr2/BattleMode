@@ -47,7 +47,7 @@ function Cadastro (props) {
                                 headers: {'Content-type': 'application/json'},
                                 body: JSON.stringify({
                                     username: username,
-                                    icon: `https://raw.githubusercontent.com/MonoDryad/BattleMode/main/Source/userDefault.png`,
+                                    icon: `https://raw.communitydragon.org/12.18/game/assets/ux/summonericons/profileicon${Math.floor(Math.random() * 5000)}.png`,
                                     email: email,
                                     password: password,
                                     twitter: 'não possui',
@@ -58,9 +58,9 @@ function Cadastro (props) {
                                     status: 'Básico',
                                     corP: `#fc6b03`,
                                     corS: `#fc6b03`,
-                                    favoritados: JSON.stringify([1]),
-                                    conquistas: JSON.stringify([]),
-                                    imgFundo: 'https://raw.githubusercontent.com/MonoDryad/BattleMode/main/Source/userDefaultBackground.png',
+                                    favoritados: '',
+                                    conquistas: '',
+                                    imgFundo: 'https://img.freepik.com/free-photo/cosmic-background-with-colorful-laser-lights-perfect-digital-wallpaper_181624-23742.jpg?w=1380&t=st=1667843115~exp=1667843715~hmac=ac8ceacc27578dda2b42433d247fa3bda733299c3ffa75183b6ae0e9e1ad5d1b',
                                     imgFundoDois: 'null',
                                     dataCriacao: new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear()
                                 })
@@ -93,15 +93,28 @@ function Cadastro (props) {
                 <div className="divCadastroLeftContainer">
                     <div>
                         <img src={require("./assets/logo.png")} />
-                        <h1>Sua escalada começa aqui</h1>
-                        <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade. </p>
+                    </div>
 
-                            <div className='links'>
-                                <GitHubIcon sx={{fontSize: "8vh", color: "#fc6b03"}}></GitHubIcon>
-                                <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
-                                <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
-                                {/* <img className="discord" src={require("./assets/discord.png")}></img> */}
-                            </div>
+                    <div>
+                        <h1>Sua escalada começa aqui!</h1>
+                    </div>
+
+                    <div>
+                        <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade</p>
+                    </div>
+
+                    <div className='links'>
+                        <a href="https://github.com/MonoDryad/BattleMode">
+                            <GitHubIcon sx={{fontSize: "8vh", color: "#fc6b03"}}></GitHubIcon>
+                        </a>
+
+                        <a href="https://twitter.com/gaiacup">
+                            <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
+                        </a>
+
+                        <a href="">
+                            <img className="discord" src={require("./assets/discord.png")}></img>
+                        </a>
                     </div>
                 </div>
                 <div className="divCadastroRightContainer">

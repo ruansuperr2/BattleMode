@@ -62,15 +62,30 @@ function Login(props) {
             <div className="divLoginMainContainer">
                 <ModalCustom/>
                 <div className="divLoginLeftContainer">
-                    <img src={require("./assets/logo.png")} />
-                    <h1>Sua escalada começa aqui</h1>
-                    <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade. </p>
+                    <div>
+                        <img src={require("./assets/logo.png")} />
+                    </div>
+
+                    <div>
+                        <h1>Sua escalada começa aqui!</h1>
+                    </div>
+
+                    <div>
+                        <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade</p>
+                    </div>
 
                     <div className='links'>
-                        <GitHubIcon sx={{fontSize: "8vh", color: "#fc6b03"}}></GitHubIcon>
-                        <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
-                        <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
-                        {/* <img className="discord" src={require("./assets/discord.png")}></img> */}
+                        <a href="https://github.com/MonoDryad/BattleMode">
+                            <GitHubIcon sx={{fontSize: "8vh", color: "#fc6b03"}}></GitHubIcon>
+                        </a>
+
+                        <a href="https://twitter.com/gaiacup">
+                            <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
+                        </a>
+
+                        <a href="">
+                            <img className="discord" src={require("./assets/discord.png")}></img>
+                        </a>
                     </div>
                 </div>
                 <div className="divLoginRightContainer">

@@ -25,7 +25,7 @@ export default function Footer() {
                             <TwitterIcon color="white" sx={{ fontSize: 40 }} />
                          </div>
                     </a>
-                    <a href="https://github.com/MonoDryad/BattleMode">
+                    <a href="">
                         <div className="divLeftSocialContainers">
                             <img src={require("./assets/discord.png")} style={{ fontSize: 40}}/>
                         </div>
