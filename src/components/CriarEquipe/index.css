@@ -107,13 +107,33 @@
     border-radius: 10px;
     border: 1px solid #fc6b03;
     background-color: #212121;
+    cursor: pointer;
 }
+
+.labelImgCriarEquipe img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    
+}
+
+.outerBar {
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-left: 5% !important;
+
+}
+
 .labelImgCriarEquipeLogo {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 8rem;
-    height: 100%;
+    height: 8rem;
     font-size: 30px;
     font-weight: bold;
     border-radius: 20px;
@@ -121,6 +141,13 @@
     border-radius: 50%;
     /* margin-right: 0; */
     background-color: #212121;
+}
+
+.labelImgCriarEquipeLogo  img{
+    width: 100%;
+    height: 100%;
+    border-radius: 300px;
+    
 }
 
 .inputButtonFlex {
