@@ -1,4 +1,3 @@
-
 import React, {useState} from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
@@ -50,6 +49,7 @@ function App() {
                         <Route path="/criartorneio" element={<CriarTorneio/>} />
                         <Route path="/criarequipe" element={<CriarEquipe/>} />
                         <Route path="/find/:id" element={<FindAll />} />
+                        <Route path={`/admin/${process.env.myKey}`} element={<FindAll />}/>
                   </Routes>
               </div>
           </BrowserRouter>
