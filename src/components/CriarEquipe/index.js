@@ -192,7 +192,17 @@ function CriarEquipe() {
     }
 
     const addJogador = nomeJogador => {
-        setJogadores([...jogadores, users.find(usuario => {return usuario.username === nomeJogador} )])
+        let backup = jogadores
+        try{
+            console.log('1',jogadores)
+            setJogadores([...jogadores, users.find(usuario => {return usuario.username === nomeJogador} )])
+            console.log('2',jogadores)
+        }catch(e){
+            console.log('3',jogadores)
+            showModal('erro', 'Não foi possível encontrar esse usuário.', 'barLoading')
+            console.log(e)
+            setJogadores(jogadores)
+        }
         
         setInputProcurar('')
     }
@@ -204,30 +214,43 @@ function CriarEquipe() {
 
     const sendEverything = async() => {
         showModal('spin', 'Enviando informações...', 'barLoading')
-        try{
-            const requestOptions = {
-                    method: 'POST',
-                    headers: {'Content-type': 'application/json'},
-                    body: JSON.stringify({
-                        nome: name,
-                        tag: tag,
-                        logo: imgUrl,
-                        imgFundo: imgUrl2,
-                        equipeAtiva: JSON.stringify(jogadores.map((item) => {return item['id']})),
-                        reserva: JSON.stringify([]),
-                        comissaoTecnica: JSON.stringify([]),
-                        jogoPrincipal: 0,
-                        conquistas: JSON.stringify([])
-                    })
-                    
+        if(name.length > 3){
+            if(tag.length > 1){
+                if(jogadores.length > 0){
+
+                    try{
+                        const requestOptions = {
+                                method: 'POST',
+                                headers: {'Content-type': 'application/json'},
+                                body: JSON.stringify({
+                                    nome: name,
+                                    tag: tag,
+                                    logo: imgUrl,
+                                    imgFundo: imgUrl2,
+                                    equipeAtiva: JSON.stringify(jogadores.map((item) => {return item['id']})),
+                                    reserva: JSON.stringify([]),
+                                    comissaoTecnica: JSON.stringify([]),
+                                    jogoPrincipal: 0,
+                                    conquistas: JSON.stringify([])
+                                })
+                                
+                        }
+                        await fetch('https://web-production-8ce4.up.railway.app/api/time/', requestOptions)
+                        closeModal('success', 'Redirecionando...', false)
+                        setTimeout(() => {
+                            window.location.href = '/e/' + name
+                        }, 1000)
+                    }catch(error){
+                            
+                    }
+                }else{
+                    closeModal('erro', 'Quantia insuficiente de jogadores...', false)
+                }
+            }else{
+                closeModal('erro', 'Tag inválida...', false)
             }
-            await fetch('https://web-production-8ce4.up.railway.app/api/time/', requestOptions)
-            setTimeout(() => {
-                closeModal('success', 'Redirecionando...', false)
-                window.location.href = '/t/' + name
-            }, 1000)
-        }catch(error){
-                
+        }else{
+            closeModal('erro', 'Nome inválido...', false)
         }
         
     }
@@ -244,13 +267,13 @@ function CriarEquipe() {
                                 {/* <img className='gearSelectImage' src={require('./components/assets/selecionar100x100.png')}/> */}
                                 <label className='labelImgCriarEquipe'>
                                 {
-                                    !imgUrl &&
+                                    !imgUrl2 &&
                                     <div className='outerbar'>
                                     <div className='innerbar' style={{ width: `100%` }}>Capa {progresspercent2}%</div>
                                     </div>
                                 }
                                 {
-                                    imgUrl &&
+                                    imgUrl2 &&
                                     
                                     <img src={imgUrl2} alt='uploaded file' className='imgUploadedTeam' style={{borderColor: loggedUser.corP}} />
                                 }
@@ -269,22 +292,22 @@ function CriarEquipe() {
                         <div className='divFlexLogo'>
                             <div className='divImgLogo divImgDemo'>
                                 <label className='labelImgCriarEquipeLogo'>
-                                {
-                                    !imgUrl &&
-                                    <div className='outerbar'>
-                                    <div className='innerbar' style={{ width: `100%` }}>Logo {progresspercent}%</div>
-                                    </div>
-                                }
-                                {
-                                    imgUrl &&
+                                    {
+                                        !imgUrl &&
+                                        <div className='outerbar'>
+                                        <div className='innerbar' style={{ width: `100%` }}>Logo {progresspercent}%</div>
+                                        </div>
+                                    }
+                                    {
+                                        imgUrl &&
+                                        
+                                        <img src={imgUrl} alt='uploaded file' className='imgUploadedLogo' style={{borderColor: loggedUser.corP}} />
+                                    }
                                     
-                                    <img src={imgUrl} alt='uploaded file' className='imgUploadedLogo' style={{borderColor: loggedUser.corP}} />
-                                }
-                                
-                                <form className='form' style={{borderColor: loggedUser.corP}}>
-                                    <input style={{borderColor: loggedUser.corP, display: 'none'}} onChange={(event) => {handleSubmit(event); 
-                                        }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
-                                </form>
+                                    <form className='form' style={{borderColor: loggedUser.corP}}>
+                                        <input style={{borderColor: loggedUser.corP, display: 'none'}} onChange={(event) => {handleSubmit(event); 
+                                            }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
+                                    </form>
 
                                 </label>
                             </div>
@@ -295,13 +318,13 @@ function CriarEquipe() {
                             <div className='divImgFundo divImgDemo'>
                                 <label className='labelImgCriarEquipe'>
                                     {
-                                        !imgUrl &&
+                                        !imgUrl3 &&
                                         <div className='outerbar'>
                                         <div className='innerbar' style={{ width: `100%` }}>Fundo {progresspercent3}%</div>
                                         </div>
                                     }
                                     {
-                                        imgUrl &&
+                                        imgUrl3 &&
                                         
                                         <img src={imgUrl3} alt='uploaded file' className='imgUploadedLogo' style={{borderColor: loggedUser.corP}} />
                                     }

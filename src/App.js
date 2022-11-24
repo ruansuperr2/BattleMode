@@ -9,6 +9,7 @@ import Jogos from './components/Jogos'
 import Sobre from './components/Sobre'
 import Cadastro from './components/Cadastro'
 import Footer from './components/Footer'
+import Times from './components/Times'
 import Login from './components/Login'
 import Usuario from './components/Usuario'
 import PaginaNaoEncontrada from './components/PaginaNaoEncontrada'
@@ -44,6 +45,7 @@ function App() {
                         <Route path="/about" element={<Sobre />} />
                         <Route path="/u/:id" element={<Usuario/>} />
                         <Route path="/t/:id" element={<Participar/>} />
+                        <Route patch="/e/:id" element={<Times/>} />
                         <Route path="/chaves" element={<Chaves/>} />
                         <Route path="/criartorneio" element={<CriarTorneio/>} />
                         <Route path="/criarequipe" element={<CriarEquipe/>} />

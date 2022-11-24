@@ -86,7 +86,7 @@ export default function FindAll() {
                     <div className='containerSpecificUser paddingLeft'>
                         {
                             time.map( (time) => {
-                                    return <div onClick={() => {window.location.href = `/t/${time.nome}`}} key={time.id} style={{backgroundImage: `url(${time.imgFundo})`}} className='userHighlightedFeed bigTourneamentHiglightOne'>
+                                    return <div onClick={() => {window.location.href = `/e/${time.nome}`}} key={time.id} style={{backgroundImage: `url(${time.imgFundo})`}} className='userHighlightedFeed bigTourneamentHiglightOne'>
                                     <label><img src={time.logo} alt='img'/>{time.nome}</label>
                                 </div>
                             })

@@ -13,9 +13,10 @@
 
 .divModalContainer{
     z-index: 3250;
-    margin-top: -75px;
-    width: 115%;
-    margin-left: -6.8%;
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
 }
 
 .divModalContent{

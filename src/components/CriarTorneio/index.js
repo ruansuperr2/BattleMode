@@ -1,11 +1,251 @@
-import React from "react";
+import React, { useEffect, useState } from 'react'
 import './index.css'
 import NavBar from '../Navbar'
 import Footer from '../Footer'
 import Select from 'react-select'
 import { AiOutlineCheck, AiOutlinePlus } from 'react-icons/ai'
+import ModalCustom, {showModal, closeModal} from '../Modal'
+import { storage } from '../FireBase';
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+
+let getUsersTry = 0
 
 function CriarTorneio (){
+    
+    const [loggedUser, setLoggedUser] = useState({})
+    const [users, setUsers] = useState([])
+    const [jogo, setJogo] = useState([])
+    const [torneio, setTorneio] = useState([])
+    const [time, setTime] = useState([])
+    const [name, setName] = useState('')
+    const [tag, setTag] = useState('')
+    const [desc, setDesc] = useState('')
+    const [teamUser, setTeamUser] = useState([])
+
+
+    const [imgUrl, setImgUrl] = useState(null);
+    const [imgUrl2, setImgUrl2] = useState(null);
+    const [imgUrl3, setImgUrl3] = useState(null);
+    const [progresspercent, setProgresspercent] = useState(0);
+    const [progresspercent2, setProgresspercent2] = useState(0);
+    const [progresspercent3, setProgresspercent3] = useState(0);
+
+    const handleSubmit = (e) => {
+        showModal('spin', `Carregando sua Imagem, aguarde`,false)
+        const file = e.target.files[0]
+        if (!file) return;
+        const storageRef = ref(storage, `logo/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+    
+        uploadTask.on("state_changed",
+            (snapshot) => {
+            const progress =
+                Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            setProgresspercent(progress);
+            },
+            (error) => {
+            alert(error);
+            },
+            () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                setImgUrl(downloadURL)
+                closeModal('success', 'Imagem foi enviada com sucesso!', 'barLoading')
+            })
+            }
+        )
+    }
+    
+    const handleSubmitImgFundo = (e) => {
+        showModal('spin', `Carregando sua Imagem, aguarde`,false)
+        const file = e.target.files[0]
+        if (!file) return;
+        const storageRef = ref(storage, `ImgFundo/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+    
+        uploadTask.on("state_changed",
+          (snapshot) => {
+            const progress =
+              Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            setProgresspercent2(progress);
+          },
+          (error) => {
+            alert(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              setImgUrl2(downloadURL)
+              closeModal('success', 'Imagem foi enviada com sucesso!', 'barLoading')
+            })
+          }
+        )
+      }
+
+      const handleSubmitImgFundoDois = (e) => {
+        showModal('spin', `Carregando sua Imagem, aguarde`,false)
+        const file = e.target.files[0]
+        if (!file) return;
+        const storageRef = ref(storage, `ImgFundoDois/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+    
+        uploadTask.on("state_changed",
+          (snapshot) => {
+            const progress =
+              Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            setProgresspercent3(progress);
+          },
+          (error) => {
+            alert(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              setImgUrl3(downloadURL)
+              closeModal('success', 'Imagem foi enviada com sucesso!', 'barLoading')
+            })
+          }
+        )
+      }
+
+    const callTorneio = async() => {
+        try{
+            const response = await fetch('https://web-production-8ce4.up.railway.app/api/torneio')
+            const data = response.json()
+            data.then(
+                (val) => {setTorneio(val.data)})
+        }catch(error){
+            
+        }
+    }
+
+    const callGames = async() => {
+        try{
+            const response = await fetch('https://web-production-8ce4.up.railway.app/api/jogo')
+            const data = response.json()
+            data.then(
+                (val) => {setJogo(val.data)})
+        }catch(error){
+            
+        }
+    }
+
+    const callTime = async () => {
+        try{
+            const responseUser = await fetch('https://web-production-8ce4.up.railway.app/api/time/')
+            const dataTime = responseUser.json()
+
+            dataTime.then(
+                (val) => {
+                    setTime(val.data)
+                }
+            )   
+        }catch(error){
+            
+        }
+    }
+
+    const getUsers = async () => {
+        try{
+            const responseUser = await fetch('https://web-production-8ce4.up.railway.app/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
+            const dataUser = responseUser.json()
+
+            const responseUsers = await fetch('https://web-production-8ce4.up.railway.app/api/user/')
+            const dataUsers = responseUsers.json()
+            dataUsers.then(
+                (val) => {
+                    setUsers(val.data)
+                }
+            )
+            dataUser.then(
+                (val) => {
+                    setLoggedUser(val.data)
+                }
+            )   
+        }catch(error){
+            
+        }
+    }
+    
+    if(getUsersTry < 3){
+        getUsersTry++
+        getUsers()
+        callGames()
+        callTorneio()
+        callTime()
+    }
+
+    const [inputProcurar, setInputProcurar] = useState('')
+    const [jogadores, setJogadores] = useState([])
+
+    const handleChange = e => {
+        setInputProcurar(e.target.value)
+    }
+
+    const addJogador = nomeJogador => {
+        let backup = jogadores
+        try{
+            console.log('1',jogadores)
+            setJogadores([...jogadores, users.find(usuario => {return usuario.username === nomeJogador} )])
+            console.log('2',jogadores)
+        }catch(e){
+            console.log('3',jogadores)
+            showModal('erro', 'Não foi possível encontrar esse usuário.', 'barLoading')
+            console.log(e)
+            setJogadores(jogadores)
+        }
+        
+        setInputProcurar('')
+    }
+
+    const handleRemove = id => {
+        const novaListaJogadores = jogadores.filter((item) => item.id !== id)
+        setJogadores(novaListaJogadores)
+    }
+
+    const sendEverything = async() => {
+        showModal('spin', 'Enviando informações...', 'barLoading')
+        if(name.length > 3){
+            if(tag.length > 1){
+                if(jogadores.length > 0){
+
+                    try{
+                        const requestOptions = {
+                                method: 'POST',
+                                headers: {'Content-type': 'application/json'},
+                                body: JSON.stringify({
+                                    nome: name,
+                                    tag: tag,
+                                    logo: imgUrl,
+                                    imgFundo: imgUrl2,
+                                    equipeAtiva: JSON.stringify(jogadores.map((item) => {return item['id']})),
+                                    reserva: JSON.stringify([]),
+                                    comissaoTecnica: JSON.stringify([]),
+                                    jogoPrincipal: 0,
+                                    conquistas: JSON.stringify([])
+                                })
+                                
+                        }
+                        await fetch('https://web-production-8ce4.up.railway.app/api/torneio/', requestOptions)
+                        closeModal('success', 'Redirecionando...', false)
+                        setTimeout(() => {
+                            window.location.href = '/t/' + name + ''
+                        }, 1000)
+                    }catch(error){
+                            
+                    }
+                }else{
+                    closeModal('erro', 'Quantia insuficiente de jogadores...', false)
+                }
+            }else{
+                closeModal('erro', 'Tag inválida...', false)
+            }
+        }else{
+            closeModal('erro', 'Nome inválido...', false)
+        }
+        
+    }
+    
+
+
+
     const chaves = [
         { value: 'classificatoria', label: 'Classificatoria' },
         { value: 'eliminatoria', label: 'Eliminatoria' },
@@ -13,43 +253,119 @@ function CriarTorneio (){
         { value: 'swiss', label: 'Swiss' }
     ]
     
-    const jogos = [
-        { value: 'valorant', label: 'Valorant' },
-        { value: 'formula1', label: 'Formula 1' },
-        { value: 'leagueoflegends', label: 'League of Legends' },
-        { value: 'fifa22', label: 'Fifa 22' }
+    const jogos = jogo.map((jogo) => {
+            return {value: jogo.id, label: jogo.nome}
+        })
+
+
+    const quantia = [
+        { value: 2, label: '2' },
+        { value: 4, label: '4' },
+        { value: 6, label: '6' },
+        { value: 8, label: '8' },
+        { value: 10, label: '10' },
+        { value: 12, label: '12' },
+        { value: 14, label: '14' },
+        { value: 16, label: '16' },
+        { value: 18, label: '18' },
+        { value: 20, label: '20' },
+        { value: 22, label: '22' },
+        { value: 24, label: '24' },
+        { value: 26, label: '26' },
+        { value: 28, label: '28' },
+        { value: 30, label: '30' },
+        { value: 32, label: '32' },
+        { value: 34, label: '34' },
+        { value: 36, label: '36' },
+        { value: 64, label: '64' },
+        { value: 128, label: '128' },
+        { value: 256, label: '256' },
+        { value: 512, label: '512' },
+        { value: 1024, label: '1024' },
+        { value: 2048, label: '! 2048' },
+        { value: 4096, label: '! 4096' },
     ]
-    
-    
+        
     return(
         <div className="DivCriarTorneio">
-
             <div className="divMainCriarTorneio paddingLeft">
+                <ModalCustom/>
                 <div className="divSubCriarTorneio">
                     <div className="divDivisorCriarTorneio">
 
                         <div className="addthumb">
                             <div className="imgthumb">
-                                <label>Capa</label>
+                                <label>
+                                {
+                                        !imgUrl2 &&
+                                        <div className='outerbar'>
+                                        <div className='innerbar' style={{ width: `100%` }}>Capa {progresspercent3}%</div>
+                                        </div>
+                                    }
+                                    {
+                                        imgUrl2 &&
+                                        
+                                        <img src={imgUrl2} alt='uploaded file' className='imgUploadedLogo' style={{borderColor: loggedUser.corP}} />
+                                    }
+                                    
+                                    <form className='form' style={{borderColor: loggedUser.corP}}>
+                                        <input style={{borderColor: loggedUser.corP, display: 'none'}} onChange={(event) => {handleSubmitImgFundo(event); 
+                                            }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
+                                    </form>
+                                </label>
                             </div>
 
-                            <button className="funçaoThumb addButtonTorneio"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
+                            {/* <button className="funçaoThumb addButtonTorneio"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button> */}
                         </div>
 
                         <div className="addlogo">
                             <div className="imglogo">
-                                <label>Logo</label>
+                                <label>
+                                    {
+                                        !imgUrl &&
+                                        <div className='outerbar'>
+                                        <div className='innerbar' style={{ width: `100%` }}>Logo {progresspercent3}%</div>
+                                        </div>
+                                    }
+                                    {
+                                        imgUrl &&
+                                        
+                                        <img src={imgUrl} alt='uploaded file' className='imgUploadedLogo' style={{borderColor: loggedUser.corP}} />
+                                    }
+                                    
+                                    <form className='form' style={{borderColor: loggedUser.corP}}>
+                                        <input style={{borderColor: loggedUser.corP, display: 'none'}} onChange={(event) => {handleSubmit(event); 
+                                            }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
+                                    </form>
+                                </label>
                             </div>
 
-                            <button className="funçaoLogo addButtonTorneio"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
+                            {/* <button className="funçaoLogo addButtonTorneio"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button> */}
                         </div>
 
                         <div className="addfundo">
                             <div className="imgfundo">
-                                <label>Fundo</label>
+                                <label>
+                                    {
+                                        !imgUrl3 &&
+                                        <div className='outerbar'>
+                                        <div className='innerbar' style={{ width: `100%` }}>Fundo {progresspercent3}%</div>
+                                        </div>
+                                    }
+                                    {
+                                        imgUrl3 &&
+                                        
+                                        <img src={imgUrl3} alt='uploaded file' className='imgUploadedLogo' style={{borderColor: loggedUser.corP}} />
+                                    }
+                                    
+                                    <form className='form' style={{borderColor: loggedUser.corP}}>
+                                        <input style={{borderColor: loggedUser.corP, display: 'none'}} onChange={(event) => {handleSubmitImgFundoDois(event); 
+                                            }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
+                                    </form>
+                                </label>
                             </div>
 
-                            <button className="funçaologo addButtonTorneio"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
+                            {/* <button className="funçaologo addButtonTorneio"><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button> */}
                         </div>
 
                     </div>
@@ -64,7 +380,7 @@ function CriarTorneio (){
                 <div className="divMoreinfoCriarTorneios">
                     <Select options={chaves} className="select" placeholder='Chaves' />
                     <Select options={jogos} className="select"  placeholder='Jogos'/>
-                    <input className="torneioInput2" type='number' placeholder="Quantidade de jogadores..."></input>
+                    <Select options={quantia} className="select"  placeholder='Quantia de Jogadores'/>
                 </div>
             </div>
             <Footer/>
