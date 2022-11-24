@@ -20,6 +20,10 @@ import CriarTorneio from './components/CriarTorneio'
 import CriarEquipe from './components/CriarEquipe'
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 
+console.log(process.env.REACT_APP_MYKEY)
+
+
+
 function App() {
   const [showNav, setShowNav] = useState(true);
   return (
@@ -49,7 +53,7 @@ function App() {
                         <Route path="/criartorneio" element={<CriarTorneio/>} />
                         <Route path="/criarequipe" element={<CriarEquipe/>} />
                         <Route path="/find/:id" element={<FindAll />} />
-                        <Route path={`/admin/${process.env.myKey}`} element={<FindAll />}/>
+                        <Route path={`/admin/${process.env.REACT_APP_MYKEY}/:id`} element={<Chaves />}/>
                   </Routes>
               </div>
           </BrowserRouter>

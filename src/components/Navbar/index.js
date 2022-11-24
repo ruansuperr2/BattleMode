@@ -48,7 +48,7 @@ export const Navbar = (props) => {
         getUsersTry++
         getUsers()
     } 
-    console.clear()
+    // console.clear()
     const makeEverythingWork = () => {
         if(props.page !== 'usuario'){
             if(loggedUser.username !== undefined && props.page != 'usuario'){
