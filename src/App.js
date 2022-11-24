@@ -18,6 +18,8 @@ import Chaves from './components/Participar/components/Chaves'
 import NewHome from './components/NewHome'
 import CriarTorneio from './components/CriarTorneio'
 import CriarEquipe from './components/CriarEquipe'
+import Admin from './components/Admin'
+
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 
 console.log(process.env.REACT_APP_MYKEY)
@@ -53,7 +55,7 @@ function App() {
                         <Route path="/criartorneio" element={<CriarTorneio/>} />
                         <Route path="/criarequipe" element={<CriarEquipe/>} />
                         <Route path="/find/:id" element={<FindAll />} />
-                        <Route path={`/admin/${process.env.REACT_APP_MYKEY}/:id`} element={<Chaves />}/>
+                        <Route path={`/admin/${process.env.REACT_APP_MYKEY}/:id`} element={<Admin />}/>
                   </Routes>
               </div>
           </BrowserRouter>
