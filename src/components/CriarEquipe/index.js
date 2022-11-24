@@ -7,6 +7,7 @@ import Footer from '../Footer'
 import Integrante from './components/Integrante';
 import { AiOutlineCheck, AiOutlinePlus } from 'react-icons/ai'
 import { HiX } from 'react-icons/hi'
+import ModalCustom, {showModal, closeModal} from '../Modal'
 
 let getUsersTry = 0
 let timeObject = {
@@ -42,29 +43,32 @@ function CriarEquipe() {
     const [progresspercent3, setProgresspercent3] = useState(0);
 
     const handleSubmit = (e) => {
-      const file = e.target.files[0]
-      if (!file) return;
-      const storageRef = ref(storage, `logo/${file.name}`);
-      const uploadTask = uploadBytesResumable(storageRef, file);
-  
-      uploadTask.on("state_changed",
-        (snapshot) => {
-          const progress =
-            Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-          setProgresspercent(progress);
-        },
-        (error) => {
-          alert(error);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setImgUrl(downloadURL)
-          })
-        }
-      )
+        showModal('spin', `Carregando sua Imagem, aguarde`,false)
+        const file = e.target.files[0]
+        if (!file) return;
+        const storageRef = ref(storage, `logo/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+    
+        uploadTask.on("state_changed",
+            (snapshot) => {
+            const progress =
+                Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            setProgresspercent(progress);
+            },
+            (error) => {
+            alert(error);
+            },
+            () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                setImgUrl(downloadURL)
+                closeModal('success', 'Imagem foi enviada com sucesso!', 'barLoading')
+            })
+            }
+        )
     }
     
     const handleSubmitImgFundo = (e) => {
+        showModal('spin', `Carregando sua Imagem, aguarde`,false)
         const file = e.target.files[0]
         if (!file) return;
         const storageRef = ref(storage, `ImgFundo/${file.name}`);
@@ -82,12 +86,14 @@ function CriarEquipe() {
           () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
               setImgUrl2(downloadURL)
+              closeModal('success', 'Imagem foi enviada com sucesso!', 'barLoading')
             })
           }
         )
       }
 
       const handleSubmitImgFundoDois = (e) => {
+        showModal('spin', `Carregando sua Imagem, aguarde`,false)
         const file = e.target.files[0]
         if (!file) return;
         const storageRef = ref(storage, `ImgFundoDois/${file.name}`);
@@ -105,6 +111,7 @@ function CriarEquipe() {
           () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
               setImgUrl3(downloadURL)
+              closeModal('success', 'Imagem foi enviada com sucesso!', 'barLoading')
             })
           }
         )
@@ -196,6 +203,7 @@ function CriarEquipe() {
     }
 
     const sendEverything = async() => {
+        showModal('spin', 'Enviando informações...', 'barLoading')
         try{
             const requestOptions = {
                     method: 'POST',
@@ -215,7 +223,8 @@ function CriarEquipe() {
             }
             await fetch('https://web-production-8ce4.up.railway.app/api/time/', requestOptions)
             setTimeout(() => {
-                // window.location.href = ' '
+                closeModal('success', 'Redirecionando...', false)
+                window.location.href = '/t/' + name
             }, 1000)
         }catch(error){
                 
@@ -226,6 +235,7 @@ function CriarEquipe() {
     return (
         <div className='mainContainerCriarEquipe'>
             <div className='divCriarEquipe paddingLeft'>
+                <ModalCustom></ModalCustom>
 
                 <div className='subDivCriarEquipe'>
                     <div className='divDemoCriarEquipe'>
@@ -247,7 +257,7 @@ function CriarEquipe() {
                                 
                                 <form className='form' style={{borderColor: loggedUser.corP}}>
                                     <input style={{borderColor: loggedUser.corP, display: 'none'}} onChange={(event) => {handleSubmitImgFundo(event); 
-                                        }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                        }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
                                 </form>
 
                                 </label>
@@ -273,7 +283,7 @@ function CriarEquipe() {
                                 
                                 <form className='form' style={{borderColor: loggedUser.corP}}>
                                     <input style={{borderColor: loggedUser.corP, display: 'none'}} onChange={(event) => {handleSubmit(event); 
-                                        }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                        }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
                                 </form>
 
                                 </label>
@@ -298,7 +308,7 @@ function CriarEquipe() {
                                     
                                     <form className='form' style={{borderColor: loggedUser.corP}}>
                                         <input style={{borderColor: loggedUser.corP, display: 'none'}} onChange={(event) => {handleSubmitImgFundoDois(event); 
-                                            }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                            }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
                                     </form>
                                 </label>
                             </div>
@@ -316,27 +326,27 @@ function CriarEquipe() {
 
                         <div className='divInfoCriarEquipe'>
             
-                        <div className='inputButtonFlex'>
-                            <input 
-                                className='inputProcurarJogador' 
-                                placeholder='Adicionar jogador...'
-                                onChange={handleChange}
-                                value={inputProcurar}/>
-                            <button 
-                                className='addJogador addButtonCriarEquipe'
-                                onClick={() => addJogador(inputProcurar)}><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
-                        </div>
-                        <div className='divMostrarJogadores'>
-                                {jogadores.map((item) => (
-                                    <div className='cardBody' key={item.id}>
-                                        <div className='userIcon' style={{backgroundPosition: 'center', backgroundSize: 'cover',backgroundImage: `url(${item.icon})`}}/>
-                                        <span className='userName'><a href='#'>{item.username}</a></span>
-                                        <button 
-                                            className='buttonRemoveJogador'
-                                            onClick={() => handleRemove(item.id)}><HiX style={{fontSize: '20px', color: '#fc6b03'}}/></button>
-                                    </div>
-                                ))}
-                        </div>
+                            <div className='inputButtonFlex'>
+                                <input 
+                                    className='inputProcurarJogador' 
+                                    placeholder='Adicionar jogador...'
+                                    onChange={handleChange}
+                                    value={inputProcurar}/>
+                                <button 
+                                    className='addJogador addButtonCriarEquipe'
+                                    onClick={() => addJogador(inputProcurar)}><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
+                            </div>
+                            <div className='divMostrarJogadores'>
+                                    {jogadores.map((item) => (
+                                        <div className='cardBody' key={item.id}>
+                                            <div className='userIcon' style={{backgroundPosition: 'center', backgroundSize: 'cover',backgroundImage: `url(${item.icon})`}}/>
+                                            <span className='userName'><a href='#'>{item.username}</a></span>
+                                            <button 
+                                                className='buttonRemoveJogador'
+                                                onClick={() => handleRemove(item.id)}><HiX style={{fontSize: '20px', color: '#fc6b03'}}/></button>
+                                        </div>
+                                    ))}
+                            </div>
                         </div>
                     </div>
                 </div>
