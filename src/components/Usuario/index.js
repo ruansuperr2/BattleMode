@@ -316,12 +316,11 @@ function Usuario(){
         document.querySelector('.geral').classList.add('perfilActive')
         setValue(viewingUser.biografia)
         document.querySelector('.divContainerFundoMainContainer').style.backgroundImage = `url(${viewingUser.imgFundo})`
-        setFavoritadoz(JSON.parse(viewingUser.favoritados))
+        
         setTimeout(() => {
             if(stopIt === 0){
                 stopIt = 1
                 console.log(viewingUser)
-                console.log(favoritadoz)
                 
             }
         }, 2000);

@@ -47,7 +47,7 @@ function Cadastro (props) {
                                 headers: {'Content-type': 'application/json'},
                                 body: JSON.stringify({
                                     username: username,
-                                    icon: `https://raw.communitydragon.org/12.18/game/assets/ux/summonericons/profileicon${Math.floor(Math.random() * 5000)}.png`,
+                                    icon: `https://raw.githubusercontent.com/MonoDryad/BattleMode/main/Source/userDefault.png`,
                                     email: email,
                                     password: password,
                                     twitter: 'não possui',
@@ -60,7 +60,7 @@ function Cadastro (props) {
                                     corS: `#fc6b03`,
                                     favoritados: '',
                                     conquistas: '',
-                                    imgFundo: 'https://img.freepik.com/free-photo/cosmic-background-with-colorful-laser-lights-perfect-digital-wallpaper_181624-23742.jpg?w=1380&t=st=1667843115~exp=1667843715~hmac=ac8ceacc27578dda2b42433d247fa3bda733299c3ffa75183b6ae0e9e1ad5d1b',
+                                    imgFundo: 'https://raw.githubusercontent.com/MonoDryad/BattleMode/main/Source/userDefaultBackground.png',
                                     imgFundoDois: 'null',
                                     dataCriacao: new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear()
                                 })

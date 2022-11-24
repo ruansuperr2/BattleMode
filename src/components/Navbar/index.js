@@ -142,6 +142,8 @@ export const Navbar = (props) => {
                     <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo navbarGo'/> Perfil</label>
                     <label onClick={() => {window.location.href = `/criarEquipe`}}><div className='imgNavbarTeamGo navbarGo'/> Criar Equipe</label>
                     <label onClick={() => {window.location.href = `/criarTorneio`}}><div className='imgNavbarTourneamentGo navbarGo'/> Criar Torneio</label>
+                    <label onClick={() => {window.location.href = `/find/u`}}><div className='imgNavbarTeamGo navbarGo'/> Procurar</label>
+
                     <label onClick={() => {
                         localStorage.clear('dasiBoard')
                         window.location.reload(true)
