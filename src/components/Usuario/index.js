@@ -19,7 +19,6 @@ let stopIt = 0
 function Usuario(){
     
     const { id } = useParams();
-    console.log(id)
 
     const [favoritadoz, setFavoritadoz] = useState([])
     const [username, setUsername] = useState('')
@@ -131,7 +130,6 @@ function Usuario(){
             data.then(
                 (val) => {setTorneio(val.data)})
         }catch(error){
-            console.log(error)
         }
     }
 
@@ -142,7 +140,6 @@ function Usuario(){
             data.then(
                 (val) => {setJogo(val.data)})
         }catch(error){
-            console.log(error)
         }
     }
 
@@ -157,7 +154,6 @@ function Usuario(){
                 }
             )   
         }catch(error){
-            console.log(error)
         }
     }
 
@@ -179,7 +175,6 @@ function Usuario(){
                 }
             )   
         }catch(error){
-            console.log(error)
         }
     }
     
@@ -246,7 +241,6 @@ function Usuario(){
         if(type === 'enter'){
             document.querySelector('.divmdEditor').style.display = 'block'
             document.querySelector('.divmdViewer').style.display = 'none'
-            console.log(value.length)
         }else{
             document.querySelector('.divmdEditor').style.display = 'none'
             document.querySelector('.divmdViewer').style.display = 'block'
@@ -281,7 +275,6 @@ function Usuario(){
                 closeModal('success', 'atualizado!',null)
                 await fetch('https://web-production-8ce4.up.railway.app/api/api/user/' + loggedUser.id,  requestOptions)
                 }catch(e){
-                    console.log(e)
                 }
         }
     }
@@ -320,7 +313,6 @@ function Usuario(){
         setTimeout(() => {
             if(stopIt === 0){
                 stopIt = 1
-                console.log(viewingUser)
                 
             }
         }, 2000);
@@ -366,7 +358,6 @@ function Usuario(){
                     await fetch('https://web-production-8ce4.up.railway.app/api/user/' + loggedUser.id,  requestOptions)
                     window.location.href = '/u/' + username
                     }catch(e){
-                        console.log(e)
                     }
                 break
                 case 'SC':
@@ -401,7 +392,7 @@ function Usuario(){
                         await fetch('https://web-production-8ce4.up.railway.app/api/user/' + loggedUser.id,  requestOptions)
                         window.location.href = '/u/' + viewingUser.username
                         }catch(e){
-                            console.log(e)
+                            
                         }
                     break
                     case 'RS':
@@ -436,7 +427,7 @@ function Usuario(){
                             await fetch('https://web-production-8ce4.up.railway.app/api/user/' + loggedUser.id,  requestOptions)
                             window.location.href = '/u/' + viewingUser.username
                             }catch(e){
-                                console.log(e)
+                                
                             }
                         break
                         case 'PP':
@@ -471,7 +462,7 @@ function Usuario(){
                                 await fetch('https://web-production-8ce4.up.railway.app/api/user/' + loggedUser.id,  requestOptions)
                                 window.location.href = '/u/' + viewingUser.username
                                 }catch(e){
-                                    console.log(e)
+                                    
                                 }
                             break
         }
@@ -626,7 +617,7 @@ function Usuario(){
                                                             
                                                             <form className='form' style={{borderColor: viewingUser.corP}}>
                                                                 <input style={{borderColor: viewingUser.corP, display: 'none'}} onChange={(event) => {handleSubmit(event); 
-                                                                    console.log('lao', event)}} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                                                    }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
                                                             </form>
                                                         </div>
                                                     </label>
@@ -746,7 +737,7 @@ function Usuario(){
                                                                     }
                                                                     <form className='form' style={{borderColor: viewingUser.corP}}>
                                                                         <input style={{borderColor: viewingUser.corP, display: 'none'}} onChange={(event) => {handleSubmitImgFundoDois(event); 
-                                                                            console.log('lao', event)}} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                                                        }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
                                                                     </form>
                                                                 </div>
                                                             </label>
@@ -766,7 +757,7 @@ function Usuario(){
                                                                     }
                                                                     <form className='form' style={{borderColor: viewingUser.corP}}>
                                                                         <input style={{borderColor: viewingUser.corP, display: 'none'}} onChange={(event) => {handleSubmitImgFundo(event); 
-                                                                            console.log('lao', event)}} className='inputTypeFile' type='file' accept=".png,.jpeg, .jpg"/> 
+                                                                            }} className='inputTypeFile' type='file' accept=".png,.jpeg, .jpg"/> 
                                                                     </form>
                                                                 </div>
                                                             </label>

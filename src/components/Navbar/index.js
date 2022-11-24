@@ -44,16 +44,13 @@ export const Navbar = (props) => {
         }
     }
         
-    if(getUsersTry < 10){
+    if(getUsersTry < 5){
         getUsersTry++
         getUsers()
-        console.log('Entrou?')
     } 
-
+    console.clear()
     const makeEverythingWork = () => {
         if(props.page !== 'usuario'){
-            console.log('Não é igual ao usuário')
-            console.log('Teste definitivo: ', loggedUser.username !== undefined && props.page != 'usuario')
             if(loggedUser.username !== undefined && props.page != 'usuario'){
                 document.querySelector('.loggedUserNameNavBar').style.display = 'flex'
                 document.querySelector('.loggedUserFunctions').style.display = 'flex'
