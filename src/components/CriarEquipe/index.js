@@ -117,7 +117,7 @@ function CriarEquipe() {
             data.then(
                 (val) => {setTorneio(val.data)})
         }catch(error){
-            console.log(error)
+            
         }
     }
 
@@ -128,7 +128,7 @@ function CriarEquipe() {
             data.then(
                 (val) => {setJogo(val.data)})
         }catch(error){
-            console.log(error)
+            
         }
     }
 
@@ -143,7 +143,7 @@ function CriarEquipe() {
                 }
             )   
         }catch(error){
-            console.log(error)
+            
         }
     }
 
@@ -165,7 +165,7 @@ function CriarEquipe() {
                 }
             )   
         }catch(error){
-            console.log(error)
+            
         }
     }
     
@@ -218,11 +218,11 @@ function CriarEquipe() {
                 // window.location.href = ' '
             }, 1000)
         }catch(error){
-                console.log(error)
+                
         }
-        console.log(timeObject)
+        
     }
-    console.log(imgUrl2, imgUrl)
+    
     return (
         <div className='mainContainerCriarEquipe'>
             <div className='divCriarEquipe paddingLeft'>
@@ -247,7 +247,7 @@ function CriarEquipe() {
                                 
                                 <form className='form' style={{borderColor: loggedUser.corP}}>
                                     <input style={{borderColor: loggedUser.corP, display: 'none'}} onChange={(event) => {handleSubmitImgFundo(event); 
-                                        console.log('lao', event)}} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                        }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
                                 </form>
 
                                 </label>
@@ -273,7 +273,7 @@ function CriarEquipe() {
                                 
                                 <form className='form' style={{borderColor: loggedUser.corP}}>
                                     <input style={{borderColor: loggedUser.corP, display: 'none'}} onChange={(event) => {handleSubmit(event); 
-                                        console.log('lao', event)}} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                        }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
                                 </form>
 
                                 </label>
@@ -298,7 +298,7 @@ function CriarEquipe() {
                                     
                                     <form className='form' style={{borderColor: loggedUser.corP}}>
                                         <input style={{borderColor: loggedUser.corP, display: 'none'}} onChange={(event) => {handleSubmitImgFundoDois(event); 
-                                            console.log('lao', event)}} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                            }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
                                     </form>
                                 </label>
                             </div>

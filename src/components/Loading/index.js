@@ -51,7 +51,6 @@ function Loading(prop) {
         func()
     }
     useEffect(() => {
-        console.log(barValue)
         if(barValue === 100){
             document.querySelector('.loadingMainDiv').style.display = 'none'
         }

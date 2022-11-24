@@ -98,7 +98,6 @@ export default function NewHome () {
             data.then(
                 (val) => {setTorneio(val.data)})
         }catch(error){
-            console.log(error)
         }
     }
 
@@ -109,7 +108,6 @@ export default function NewHome () {
             data.then(
                 (val) => {setGame(val.data)})
         }catch(error){
-            console.log(error)
         }
     }
 
@@ -272,7 +270,6 @@ export default function NewHome () {
                                         </div>
                                         <div className='sliderDots'>
                                             <div onClick={() => {
-                                                console.log('test')
                                                 currentSlide = 'slideOne'
                                                 callSlideChanger()
                                             }} className='dotsFromSlide dotOneSlide'/>

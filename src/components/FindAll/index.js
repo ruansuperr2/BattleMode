@@ -32,7 +32,6 @@ export default function FindAll() {
                 }
             )  
         }catch(error){
-            console.log(error)
         }
     }
 
@@ -46,7 +45,6 @@ export default function FindAll() {
                 }
             )   
         }catch(error){
-            console.log(error)
         }
     }
     

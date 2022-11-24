@@ -17,7 +17,6 @@ function Feed() {
             data.then(
                 (val) => {setTorneio(val.data)})
         }catch(error){
-            console.log(error)
         }
     }
 
@@ -31,7 +30,6 @@ function Feed() {
             data.then(
                 (val) => {setJogo(val.data)})
         }catch(error){
-            console.log(error)
         }
     }
 
@@ -63,7 +61,6 @@ function Feed() {
                     <div className='containerThisGame paddingLeft'>
                         {
                             jogo.map( (findJogo) => {
-                                console.log(parseInt(findJogo.gameId), parseInt(id))
                                 if(parseInt(id) === parseInt(findJogo.id)){
                                     return <div className='divContainerThisGame'><h1><div className='gameDivLogo' style={{backgroundImage: `url(${findJogo.logo})`}}/>{findJogo.nome}</h1></div>
 
@@ -76,7 +73,6 @@ function Feed() {
                         <div className='containerSpecificGame paddingLeft'>
                             {
                                 torneio.map( (findTorneio) => {
-                                    console.log(parseInt(findTorneio.gameId), parseInt(id))
                                     if(parseInt(id) === parseInt(findTorneio.gameId)){
                                         return <div onClick={() => {window.location.href = `../t/${findTorneio.id}`}} key={findTorneio.id} style={{backgroundImage: `url(${findTorneio.thumbnail})`}} className='tourneamentHighlightedFeed bigTourneamentHiglightOne'>
             

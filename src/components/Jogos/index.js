@@ -35,12 +35,10 @@ function Jogos() {
             data.then(
                 (val) => {setJogo(val.data)})
         }catch(error){
-            console.log(error)
         }
     }
 
     const callHtmlGames = () => {
-        console.log(jogo)
     }
 
     if(getGamesTry < 10){
@@ -55,11 +53,8 @@ function Jogos() {
     }
 
     const callAddNewGame = async(e) => {
-        console.log(e)
-        console.log(gamesAdded)
         gamesAdded.push(e)
         document.querySelector(`#add${e}`).style.display = 'none'
-        console.log(gamesAdded)
         showModal('loading','Atualizando o Banco','barLoading')
                     
         try{
@@ -90,7 +85,6 @@ function Jogos() {
             closeModal('success', 'atualizado!',null)
             await fetch('https://web-production-8ce4.up.railway.app/api/user/' + loggedUser.id,  requestOptions)
             }catch(e){
-                console.log(e)
             }
     }
 
