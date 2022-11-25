@@ -7,6 +7,7 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import InfoIcon from '@mui/icons-material/Info';
 import LanguageIcon from '@mui/icons-material/Language';
+import { FaSearch, FaDoorOpen } from 'react-icons/fa'
 
 let defaultColorHome = '#fff'
 let defaultColorTorneios = '#fff'
@@ -106,7 +107,7 @@ export const Navbar = (props) => {
         if (!navAberta) {
             setNavAberta(true)
             setIcon(<FaTimes style={{ fontSize: '30px', color: '#fc6b03' }}/>)
-            return document.documentElement.style.setProperty('--responsiveHeight', '26rem')
+            return document.documentElement.style.setProperty('--responsiveHeight', '30rem')
         }
         setNavAberta(false)
         setIcon(<FaBars style={{ fontSize: '30px', color: '#fc6b03' }}/>)
@@ -139,12 +140,12 @@ export const Navbar = (props) => {
                     <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo navbarGo'/> Perfil</label>
                     <label onClick={() => {window.location.href = `/criarEquipe`}}><div className='imgNavbarTeamGo navbarGo'/> Criar Equipe</label>
                     <label onClick={() => {window.location.href = `/criarTorneio`}}><div className='imgNavbarTourneamentGo navbarGo'/> Criar Torneio</label>
-                    <label onClick={() => {window.location.href = `/find/u`}}><div className='imgNavbarTeamGo navbarGo'/> Procurar</label>
+                    <label onClick={() => {window.location.href = `/find/u`}}><FaSearch style={{fontSize: '25px', color: '#fc6b03', paddingRight: '5px'}}/> Procurar</label>
 
                     <label onClick={() => {
                         localStorage.clear('dasiBoard')
                         window.location.reload(true)
-                    }}><div className='imgNavbarTourneamentGo navbarGo'/> Sair</label>
+                    }}><FaDoorOpen style={{fontSize: '25px', color: '#fc6b03', paddingRight: '5px'}}/> Sair</label>
                 </div>
                 <div className='EntrarRegistroNavBar'>
                     <button onClick={() => {window.location.href = '/cadastro'}}>Cadastrar-se </button>
