@@ -43,7 +43,7 @@
 }
 
 .pageSelector{
-    height: 100px;
+    height: 60px;
     width: 6%;
     border-radius: 20px;
     background-color: #303030;
@@ -52,7 +52,6 @@
 }
 
 .pageSelector:hover{
-    height: 100px;
     width: 6%;
     border-radius: 20px;
     background-color: #868686;
@@ -516,7 +515,7 @@ sliderRightTitle {
         height: 100%;
     }
     .pageSelector{
-        height: 100px;
+        height: 60px;
         width: 12%;
         border-radius: 20px;
         background-color: #303030;
@@ -524,7 +523,6 @@ sliderRightTitle {
     }
     
     .pageSelector:hover{
-        height: 100px;
         width: 6%;
         border-radius: 20px;
         background-color: #868686;
