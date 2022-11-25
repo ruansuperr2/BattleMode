@@ -83,6 +83,26 @@ function Admin () {
         )
       }
 
+    const addGameOnBackend = async() => {
+        try{
+            const requestOptions = {
+                    method: 'POST',
+                    headers: {'Content-type': 'application/json'},
+                    body: JSON.stringify({
+                        nome: nome,
+                        logo: imgUrl,
+                        descricaoLonga: descricaoLonga,
+                        descricaoBreve: descricao,
+                        imgFundo: imgUrl2
+                    })
+                    
+            }
+            await fetch('https://web-production-8ce4.up.railway.app/api/jogo',  requestOptions)
+        }catch(error){
+            console.log(error)
+        }
+    }
+
 
     return (
         <div className='divMainAdminContainer'>
@@ -90,10 +110,10 @@ function Admin () {
                 <ModalCustom/>
                 {
                     access &&
-                    <div style={{color: 'white'}}>
+                    <div style={{color: 'white'}} className='fullDivAdmin'>
                         <h1>Adicionar novo jogo</h1>
                         <div className='AdicionarAdminGame'>
-                            <div>
+                            <div className='AdicionarImagemJogo'>
                                 <h4>Imagem do Jogo</h4>
                                 <label>
                                     {
@@ -149,18 +169,19 @@ function Admin () {
                                     <h4>Descrição longa do Jogo</h4>
                                     <input value={descricaoLonga} onChange={event => {setDescricaoLonga(event.target.value)}}/>
                                 </div>
+                                <button onClick={() => {addGameOnBackend()}}>Adicionar Jogo</button>
                             </div>
                         </div>
                     </div>
                 }
                 {
                     !access &&
-                    <div className="divAdminSubContainer">
-                        <div className='divAdminContentContainer'>
+                    <div className="divAdminSubContainerD">
+                        <div className='divAdminContentContainerD'>
                             <h1>Acesso Administrador</h1>
 
-                            <input value={username} onChange={event => {setUsername(event.target.value)}} placeholder='Usuário'></input>
-                            <input value={password} onChange={event => {setPassword(event.target.value)}} placeholder='Senha'></input>
+                            <input type='password' value={username} onChange={event => {setUsername(event.target.value)}} placeholder='Usuário'></input>
+                            <input type='password' value={password} onChange={event => {setPassword(event.target.value)}} placeholder='Senha'></input>
                             <button onClick={() => entrar()}>Entrar</button>
 
 
