@@ -45,7 +45,11 @@
 
 .divImgInfoLandingPage{
     height: 100%;
-    width: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1rem;
     background-image: url("./assets/kkk.png");
     z-index: 98;
     position: absolute;
@@ -54,10 +58,11 @@
 .divImgInfoLandingPage h1{
     font-style: SegoeUI-Bold;
     color:#fc6b03;
-    font-size: 7vh;
+    width: 35%;
+    margin: 0;
+    margin-top: 2rem;
     padding-left: 5%;
-    padding-right: 50%;
-    padding-top: 15%;
+    font-size: 55px;
 
     animation: slideInLeft;
     animation-duration: 1s;
@@ -66,22 +71,23 @@
 
 .divImgInfoLandingPage p{
     color: #fff;
-    font-size: 3.5vh;
+    font-size: 35px;
+    margin: 0;
+    width: 40%;
     padding-left: 5%;
-    padding-right: 50%;
 
     animation: slideInLeft;
     animation-duration: 1s;
 }
 .divImgInfoLandingPage button{
     font-size: 20px;
-    height: 6%;
-    width: 20%;
+    height: 3rem;
+    width: 14.5rem;
     border: 2px solid #fc6b03;
-    border-radius: 20px;
+    border-radius: 30px;
     margin-left: 5%;
     color: #fff;
-    background: transparent;
+    background-color: #212121;
     transition: 0.2s;
 
     animation: slideInLeft;
@@ -98,6 +104,8 @@
 }
 .divVideoLandingPage video{
     background-size: cover;
+    display: flex;
+    align-items: stretch;
     height: 102vh;
     margin-left: 22%;
     margin-top: -0.62%;
@@ -110,29 +118,31 @@
 }
 
 .logoL{
-    width: 30vh;
-    height: 30vh;
+    width: 5rem;
+    height: 5rem;
     z-index: 99;
     padding-left: 5%;
     position: absolute;
+    top: 0;
 
     animation: slideInLeft;
     animation-duration: 1s;
 }
 
 .divIconsRedesLandingPage{
-    width: 100%;
+    width: 14.5rem;
     display: flex;
-    margin: 5%;
-    gap: 30px;
+    padding-left: 5%;
+    margin: 0;
+    gap: 1.8rem;
     animation: slideInLeft;
     animation-duration: 1s;
 }
 
 
 .discord{
-    width: 8vh;
-    height: 8vh;
+    width: 56.16px;
+    height: 56.16px;
     animation: slideInLeft;
     animation-duration: 1s;
 }
@@ -146,34 +156,53 @@
     z-index: 150;
 }
 
-@media screen and (max-width: 768px){
-    .imgMundoSenai{
+@media screen and (max-width: 1010px) {
+    .divImgInfoLandingPage {
+        width: 100%;
+    }
+
+    .divImgInfoLandingPage h1 {
+        width: 45%;
+        padding-left: 7%;
+    }
+
+    .divImgInfoLandingPage p {
+        width: 50%;
+        padding-left: 7%;
+    }
+
+    .divImgInfoLandingPage button {
+        margin-left: 7%;
+    }
+
+    .divIconsRedesLandingPage {
+        padding-left: 7%;
+    }
+
+    .logoL {
+        padding-left: 7%;
+    }
+
+    .divVideoLandingPage video {
         display: none;
     }
-    .divVideoLandingPage{
+    
+    .divVideoLandingPage {
+        background-image: url("./assets/img_background.png");
+        background-size: cover;
+    }
+}
+
+@media screen and (max-width: 754px){
+    .imgMundoSenai{
         display: none;
     }
     .divMainLandingPageNavbar{
         justify-content: center;
     }
-    .divImgInfoLandingPage{
-        width: 100%;
-        z-index: 98;
-        background-size: cover;
-        justify-content: center;
-        position: 0;
-    }
-
-    .divImgInfoLandingPage button{
-        font-size: 22px;
-        height: 6vh;
-        width: 90%;
-        border: 2px solid #fc6b03;
-        border-radius: 30px;
-    }
 
     .buttonNavbar{
-        width: 40%;
+        min-width: 10rem;
         height: 70%;
         background: transparent;
         border-radius: 30px;
@@ -182,7 +211,6 @@
         font-size: 22px;
         transition: 0.5s;
         z-index: 99;
-        left: 40px;
     }
 
     .divDivisaoTelasLandingPage{
@@ -191,32 +219,36 @@
         display: flex;
         flex-direction: row;
     }
-    
-    .logoL{
-        width: 30vh;
-        height: 30vh;
-        z-index: 99;
-        padding-left: 20%;
-        padding-top: 56%;
-        position: absolute;
 
+    .divImgInfoLandingPage {
+        align-items: center;
+        width: 100%;
     }
-    
-    .divImgInfoLandingPage h1{
-        color:#fc6b03;
-        font-size: 7vh;
+
+    .logoL {
+        height: 10rem;
+        width: 10rem;
+        top: 29%;
+    }
+
+    .divImgInfoLandingPage h1 {
+        margin-top: 4rem;
+        font-size: 45px;
         padding-left: 0;
-        padding-right:0;
         text-align: center;
+        width: 70%;
     }
 
     .divImgInfoLandingPage p{
         color: #fff;
-        font-size: 3.5vh;
+        
+        width: 90%;
+        margin-top: 8rem;
+        font-size: 25px;
+        text-align: center;
         padding-left: 0;
         padding-right: 0;
         text-align: center;
-        margin-top: 55%;
     }
     .divIconsRedesLandingPage{
         justify-content: center;
@@ -224,3 +256,24 @@
     }
 }
 
+@media screen and (max-width: 380px) {
+    .divImgInfoLandingPage h1 {
+        width: 100%;
+    }
+    .divImgInfoLandingPage p {
+        width: 100%;
+    }
+
+    .buttonNavbar {
+        margin: 0;
+    }
+    #loginButton {
+        margin-block: 1rem;
+    }
+    .divMainLandingPageNavbar {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        
+    }
+}

@@ -15,20 +15,28 @@ function LandingPage(props) {
     return (
         <div className='divMainLanding'>
             <div className='divMainLandingPageNavbar'>
-                <button onClick={() => {window.location.href = "./login"}} className="buttonNavbar">Entrar</button>
-                <button onClick={() => {window.location.href = "./cadastro"}} className="buttonNavbar">Cadastrar-se</button>
+                <button id='loginButton' onClick={() => {window.location.href = "./login"}} className="buttonNavbar">Entrar</button>
+                <button id='cadastroButton' onClick={() => {window.location.href = "./cadastro"}} className="buttonNavbar">Cadastrar-se</button>
             </div>
             <div className='divDivisaoTelasLandingPage'>
                 <div className='divImgInfoLandingPage'>
                     <img className='logoL' src={require("./assets/logo.png")}></img>
-                    <h1 className = 'h1_Animate'>Sua escalada começa aqui</h1>
-                    <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade. </p>
+                    <h1 className = 'h1_Animate'>Sua escalada começa aqui!</h1>
+                    <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade!</p>
                     <button onClick={() => {window.location.href = "./now"}}>Começar</button>
 
                     <div className='divIconsRedesLandingPage'>
-                        <GitHubIcon sx={{fontSize: "8vh", color: "#fc6b03"}}></GitHubIcon>
-                        <TwitterIcon  sx={{fontSize: "8vh", color: "#fc6b03"}} ></TwitterIcon>
-                        <img className='discord' src={require("./assets/discord.png")}></img>
+                        <a href="https://github.com/MonoDryad/BattleMode">
+                            <GitHubIcon sx={{height: "56.16px", width: "56.16px", color: "#fc6b03"}}></GitHubIcon>
+                        </a>
+
+                        <a href="https://twitter.com/gaiacup">
+                            <TwitterIcon  sx={{height: "56.16px", width: "56.16px", color: "#fc6b03"}} ></TwitterIcon>
+                        </a>
+
+                        <a href="">
+                            <img className="discord" src={require("./assets/discord.png")}></img>
+                        </a>
                     </div>
                 </div>
                 <div className='divVideoLandingPage'>
