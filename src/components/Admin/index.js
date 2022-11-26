@@ -114,25 +114,30 @@ function Admin () {
                         <h1>Adicionar novo jogo</h1>
                         <div className='AdicionarAdminGame'>
                             <div className='AdicionarImagemJogo'>
-                                <h4>Imagem do Jogo</h4>
-                                <label>
-                                    {
-                                        !imgUrl2 &&
-                                        <div className='outerbar'>
-                                        <div className='innerbar' style={{ width: `100%` }}>Logo {progresspercent2}%</div>
-                                        </div>
-                                    }
-                                    {
-                                        imgUrl2 &&
+                                <div className='d'>
+                                    <h4>Imagem do Jogo</h4>
+                                    <label>
+                                        {
+                                            !imgUrl2 &&
+                                            <div className='outerbar'>
+                                            <div className='innerbar' style={{ width: `100%` }}>Logo {progresspercent2}%</div>
+                                            </div>
+                                        }
+                                        {
+                                            imgUrl2 &&
+                                            
+                                            <img src={imgUrl2} alt='uploaded file' className='imgUploadedFundoAdmin' />
+                                        }
                                         
-                                        <img src={imgUrl2} alt='uploaded file' className='imgUploadedFundoAdmin' />
-                                    }
-                                    
-                                    <form className='form' style={{}}>
-                                        <input style={{display: 'none'}} onChange={(event) => {handleSubmitImgFundo(event); 
-                                            }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
-                                    </form>
-                                </label>
+                                        <form className='form' style={{}}>
+                                            <input style={{display: 'none'}} onChange={(event) => {handleSubmitImgFundo(event); 
+                                                }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
+                                        </form>
+                                    </label>
+
+                                </div>
+                                
+                                
                             </div>
                             <div className='AdicionarAdminGame2'>
                                 <div>

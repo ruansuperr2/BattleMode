@@ -103,6 +103,8 @@
     flex-wrap: wrap;
     background-color: #424242;
     width: 60%;
+    border-radius: 10px;
+    border: 1px solid #fc6b03;
 }
 
 .AdicionarAdminGame div{
@@ -128,13 +130,67 @@
     align-content: stretch;
     justify-content: flex-start;
     align-items: center;
+
 }
 
 .AdicionarImagemJogo{
-    width: 15%;
+
+    
 }
 
-.divAdminSubContainerD{
+.AdicionarAdminGame .d{
+    background-color: #272727;
+    padding: 2%;
+    height: 63%;
     display: flex;
-    justify-content: center;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    border-radius: 10px;
+    border: 1px solid #fc6b03;
+}
+
+.AdicionarAdminGame h1{
+    color:#fc6b03;
+    font-size: 7vh;
+    margin-bottom: 13% !important;
+    text-align: center;
+    margin: 0;
+    
+}
+.AdicionarAdminGame p{
+    color: #fff;
+    font-size: 3.5vh;
+    padding-inline: 10%;
+    margin-top: 0;
+    text-align: center;
+}
+.AdicionarAdminGame input{
+    width: 200%;
+    height: 2.5rem;
+    border-radius: 10px;
+    border: 2px solid #fc6b03;
+    font-size: 16px;
+}
+
+.AdicionarAdminGame button{
+    width: 75%;
+    height: 2.5rem;
+    margin: 10px;
+    background-color: #272727;
+    border-radius: 30px;
+    border: 2px solid #fc6b03;
+    color: #fff;
+    font-size: 16px;
+    transition: 0.5s;
+    z-index: 99;
+}
+
+
+.AdicionarAdminGame button:hover{
+    border: 2px solid rgb(224, 219, 219);
+    transition: 0.5s;
+    color: rgb(224, 219, 219);
+    cursor: pointer;
 }
