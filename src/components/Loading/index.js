@@ -64,6 +64,7 @@ function Loading(prop) {
                     <div className='barInsideGenerating' style={{backgroundColor: prop.cor, width: `${barValue}%`}}></div>
                 </div>
                 <label>{text.version}</label>
+                <p>Erros podem & irão ocorrer</p>
             </div>
         </div>
         )

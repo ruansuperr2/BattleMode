@@ -3,6 +3,7 @@ import './index.css'
 import ModalCustom ,{ showModal, closeModal } from '../Modal';
 import { storage } from '../FireBase';
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { saveAs } from 'file-saver'
 
 function Admin () {
     const [access, setAccess] = useState(null)
@@ -11,6 +12,17 @@ function Admin () {
     const [nome, setNome] = useState('')
     const [descricao, setDescricao] = useState('')
     const [descricaoLonga, setDescricaoLonga] = useState('')
+    const [jogo, setJogo] = useState([])
+    const callGames = async() => {
+        try{
+            const response = await fetch('https://web-production-8ce4.up.railway.app/api/jogo')
+            const data = response.json()
+            data.then(
+                (val) => {setJogo(val.data)})
+        }catch(error){
+        }
+    }
+    callGames()
 
 
     const entrar = async() => {
@@ -111,71 +123,86 @@ function Admin () {
                 {
                     access &&
                     <div style={{color: 'white'}} className='fullDivAdmin'>
-                        <h1>Adicionar novo jogo</h1>
-                        <div className='AdicionarAdminGame'>
-                            <div className='AdicionarImagemJogo'>
-                                <div className='d'>
-                                    <h4>Imagem do Jogo</h4>
-                                    <label>
-                                        {
-                                            !imgUrl2 &&
-                                            <div className='outerbar'>
-                                            <div className='innerbar' style={{ width: `100%` }}>Logo {progresspercent2}%</div>
-                                            </div>
-                                        }
-                                        {
-                                            imgUrl2 &&
-                                            
-                                            <img src={imgUrl2} alt='uploaded file' className='imgUploadedFundoAdmin' />
-                                        }
-                                        
-                                        <form className='form' style={{}}>
-                                            <input style={{display: 'none'}} onChange={(event) => {handleSubmitImgFundo(event); 
-                                                }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
-                                        </form>
-                                    </label>
+                        <div className='fullDivAdmin'>
 
-                                </div>
-                                
-                                
-                            </div>
-                            <div className='AdicionarAdminGame2'>
-                                <div>
-                                    <h4>Logo do Jogo</h4>
-                                    <label>
-                                        {
-                                            !imgUrl &&
-                                            <div className='outerbar'>
-                                            <div className='innerbar' style={{ width: `100%` }}>Logo {progresspercent}%</div>
-                                            </div>
-                                        }
-                                        {
-                                            imgUrl &&
+                        
+                        <h3>Adicionar novo jogo</h3>
+                            <div className='AdicionarAdminGame'>
+                                <div className='AdicionarImagemJogo'>
+                                    <div className='d'>
+                                        <h4>Imagem do Jogo</h4>
+                                        <label>
+                                            {
+                                                !imgUrl2 &&
+                                                <div className='outerbar'>
+                                                <div className='innerbar' style={{ width: `100%` }}>Logo {progresspercent2}%</div>
+                                                </div>
+                                            }
+                                            {
+                                                imgUrl2 &&
+                                                
+                                                <img src={imgUrl2} alt='uploaded file' className='imgUploadedFundoAdmin' />
+                                            }
                                             
-                                            <img src={imgUrl} alt='uploaded file' className='imgUploadedLogoAdmin' />
-                                        }
-                                        
-                                        <form className='form' style={{}}>
-                                            <input style={{display: 'none'}} onChange={(event) => {handleSubmit(event); 
-                                                }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
-                                        </form>
-                                    </label>
-                                </div>
+                                            <form className='form' style={{}}>
+                                                <input style={{display: 'none'}} onChange={(event) => {handleSubmitImgFundo(event); 
+                                                    }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
+                                            </form>
+                                        </label>
 
-                                <div>
-                                    <h4>Nome do Jogo</h4>
-                                    <input value={nome} onChange={event => {setNome(event.target.value)}}/>
+                                    </div>
+                                    
+                                    
                                 </div>
-                                <div>
-                                    <h4>Descrição curta do Jogo</h4>
-                                    <input value={descricao} onChange={event => {setDescricao(event.target.value)}}/>
+                                <div className='AdicionarAdminGame2'>
+                                    <div className='f'>
+                                        <h4>Logo do Jogo</h4>
+                                        <label>
+                                            {
+                                                !imgUrl &&
+                                                <div className='outerbar'>
+                                                <div className='innerbar' style={{ width: `100%` }}>Logo {progresspercent}%</div>
+                                                </div>
+                                            }
+                                            {
+                                                imgUrl &&
+                                                
+                                                <img src={imgUrl} alt='uploaded file' className='imgUploadedLogoAdmin' />
+                                            }
+                                            
+                                            <form className='form' style={{}}>
+                                                <input style={{display: 'none'}} onChange={(event) => {handleSubmit(event); 
+                                                    }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
+                                            </form>
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <h4>Nome do Jogo</h4>
+                                        <input value={nome} onChange={event => {setNome(event.target.value)}}/>
+                                    </div>
+                                    <div>
+                                        <h4>Descrição curta do Jogo</h4>
+                                        <input value={descricao} onChange={event => {setDescricao(event.target.value)}}/>
+                                    </div>
+                                    <div>
+                                        <h4>Descrição longa do Jogo</h4>
+                                        <input value={descricaoLonga} onChange={event => {setDescricaoLonga(event.target.value)}}/>
+                                    </div>
+                                    <button onClick={() => {addGameOnBackend()}}>Adicionar Jogo</button>
                                 </div>
-                                <div>
-                                    <h4>Descrição longa do Jogo</h4>
-                                    <input value={descricaoLonga} onChange={event => {setDescricaoLonga(event.target.value)}}/>
-                                </div>
-                                <button onClick={() => {addGameOnBackend()}}>Adicionar Jogo</button>
                             </div>
+                        </div>
+                        <div>
+                            <h3>Baixar Dados <button onClick={() => saveAs(window.URL.createObjectURL(new Blob([
+                                JSON.stringify(jogo.map((jogo) => {
+                                    return {
+                                        nome: jogo.nome,
+                                        descricaoLonga: jogo.descricaoLonga
+                                    }
+                                }))
+                            ], {type: 'text/md'})), 'RELATORIO.md')}>Baixar relatório</button></h3>
+                            
                         </div>
                     </div>
                 }

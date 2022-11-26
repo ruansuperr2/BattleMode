@@ -102,7 +102,7 @@
     display: flex;
     flex-wrap: wrap;
     background-color: #424242;
-    width: 60%;
+    width: 45%;
     border-radius: 10px;
     border: 1px solid #fc6b03;
 }
@@ -130,7 +130,7 @@
     align-content: stretch;
     justify-content: flex-start;
     align-items: center;
-
+    width: 100%;
 }
 
 .AdicionarImagemJogo{
@@ -141,7 +141,23 @@
 .AdicionarAdminGame .d{
     background-color: #272727;
     padding: 2%;
-    height: 63%;
+    height: 50%;
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    border-radius: 10px;
+    border: 1px solid #fc6b03;
+}
+
+.AdicionarAdminGame2 h4{
+    width: 100%;
+}
+
+.AdicionarAdminGame2 .f{
+    background-color: #272727;
+    padding: 1%;
     display: flex;
     align-content: center;
     justify-content: flex-start;
@@ -193,4 +209,10 @@
     transition: 0.5s;
     color: rgb(224, 219, 219);
     cursor: pointer;
+}
+
+.divAdminSubContainerD{
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
