@@ -50,7 +50,7 @@ function App() {
                         <Route path="/about" element={<Sobre />} />
                         <Route path="/u/:id" element={<Usuario/>} />
                         <Route path="/t/:id" element={<Participar/>} />
-                        <Route patch="/e/:id" element={<Times/>} />
+                        <Route path="/e/:id" element={<Times/>} />
                         <Route path="/chaves" element={<Chaves/>} />
                         <Route path="/criartorneio" element={<CriarTorneio/>} />
                         <Route path="/criarequipe" element={<CriarEquipe/>} />

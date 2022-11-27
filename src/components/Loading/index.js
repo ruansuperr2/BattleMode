@@ -18,31 +18,41 @@ function Loading(prop) {
             window.scrollTo(0,0)
             barValue = 12
             textValue = 'Pensando'
-            setTimeout(() => {
-                window.scrollTo(0,0)
-                barValue = 75
-                textValue = 'Fazendo a lógica'
-                
-                setTimeout(() => {
-                    window.scrollTo(0,0)
-                    barValue = 87
-                    textValue = 'Pensando'
-                    setTimeout(() => {
-                        document.querySelector('.loadingMainDiv').classList.add('desaparecer')
-                        barValue = 100
-                        textValue = 'Até a próxima, amigo'
-                    }, 200);
-                    setTimeout(() => {
-                        window.scrollTo(0,0)
-                        document.body.style.overflow = 'visible';
-                        
-                        document.querySelector('.loadingMainDiv').classList.remove('desaparecer')
-                        document.querySelector('.loadingMainDiv').style.display = 'none'
-                    
-                    },720)
-                }, 1200)
-            }, 600)
-        }, 600)
+        }, 400)
+        setTimeout(() => {
+            window.scrollTo(0,0)
+            barValue = 35
+            textValue = 'Fazendo a lógica'
+            
+        }, 1500)
+        setTimeout(() => {
+            window.scrollTo(0,0)
+            barValue = 66
+            textValue = 'Esperando resposta do servidor'
+        }, 2600)
+        setTimeout(() => {
+            barValue = 100
+            textValue = 'Resposta recebida, finalizando'
+        }, 4000);
+        setTimeout(() => {
+            
+            document.querySelector('.loadingMainDiv').classList.add('desaparecer')
+            window.scrollTo(0,0)
+            // document.body.style.overflow = 'visible';
+            
+            // document.querySelector('.loadingMainDiv').classList.remove('desaparecer')
+            // document.querySelector('.loadingMainDiv').style.display = 'none'
+        
+        },4800)
+        setTimeout(() => {
+            barValue = 101
+            window.scrollTo(0,0)
+            document.body.style.overflow = 'visible';
+            
+            document.querySelector('.loadingMainDiv').classList.remove('desaparecer')
+            document.querySelector('.loadingMainDiv').style.display = 'none'
+        
+        },5000)
     }
 
     
@@ -51,7 +61,7 @@ function Loading(prop) {
         func()
     }
     useEffect(() => {
-        if(barValue === 100){
+        if(barValue === 101){
             document.querySelector('.loadingMainDiv').style.display = 'none'
         }
     })

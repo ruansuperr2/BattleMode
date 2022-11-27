@@ -309,19 +309,12 @@ function Usuario(){
         document.querySelector('.geral').classList.add('perfilActive')
         setValue(viewingUser.biografia)
         document.querySelector('.divContainerFundoMainContainer').style.backgroundImage = `url(${viewingUser.imgFundo})`
-        
-        setTimeout(() => {
-            if(stopIt === 0){
-                stopIt = 1
-                
-            }
-        }, 2000);
         deadOrAlive = true
     }  
     if(deadOrAlive === false){
         setTimeout(() => {
             makeEverythingWork()
-        }, 1820);
+        }, 2000);
     }
 
     const callMudançasPerfil = async(status) => {

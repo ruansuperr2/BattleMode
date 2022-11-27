@@ -231,7 +231,9 @@ function CriarEquipe() {
                                     reserva: JSON.stringify([]),
                                     comissaoTecnica: JSON.stringify([]),
                                     jogoPrincipal: 0,
-                                    conquistas: JSON.stringify([])
+                                    conquistas: JSON.stringify([]),
+                                    descricao: desc,
+                                    imgFundo2: imgUrl3
                                 })
                                 
                         }

@@ -38,7 +38,7 @@
 }
 
 .desaparecer {
-    animation: desaparecer 0.5s;
+    animation: desaparecer 0.2s;
 }
 
 @keyframes desaparecer {
