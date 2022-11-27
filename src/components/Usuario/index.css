@@ -38,7 +38,7 @@
 }
 
 .imgUsuarioGearEditing:hover{
-    background-image: url('./components/assets/gear_hover.png');
+    background-image: url('./components/assets/gear.png');
     background-size: cover;
 	height: 30px;
 	width: 30px;
@@ -47,6 +47,30 @@
 	border: 1px transparent solid;
     color: white;
 
+}
+
+.visaoImg{
+    background-image: url('./components/assets/withdraw-wait.png');
+}
+
+.visaoImg:hover{
+    background-image: url('./components/assets/withdraw-wait.png');
+}
+
+.equipesImg{
+    background-image: url('./components/assets/team1.png');
+}
+
+.equipesImg:hover{
+    background-image: url('./components/assets/team1.png');
+}
+
+.torneiosImg{
+    background-image: url('./components/assets/trophy.png');
+}
+
+.torneiosImg:hover{
+    background-image: url('./components/assets/trophy.png');
 }
 
 .perfilNavigation{
