@@ -243,7 +243,10 @@ function CriarEquipe() {
                                     jogoPrincipal: jogoEscolhido,
                                     conquistas: JSON.stringify([]),
                                     descricao: desc,
-                                    imgFundo2: imgUrl3
+                                    imgFundo2: imgUrl3,
+                                    dataCriacao: new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear(),
+                                    donoCriacao: loggedUser.username,
+                                    capitao: ''
                                 })
                                 
                         }

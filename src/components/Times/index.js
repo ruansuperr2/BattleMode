@@ -14,8 +14,10 @@ function Times() {
     const [page, setPage] = useState('geral')
     const [jogadores, setJogadores] = useState([])
     const [loggedUser, setLoggedUser] = useState({})
+    const [users, setUsers] = useState([])
     const [time, setTime] = useState({})
     const [value, setValue] = useState(time.descricao)
+    const [jogo, setJogo] = useState([])
     const callModal = () => {
         setPage('torneio')
         showModal('spin', 'Deseja participar do Torneio?', 'Participar')
@@ -48,7 +50,27 @@ function Times() {
                     setLoggedUser(val.data)
                 }
             )   
+
+            const responseUser2 = await fetch('https://web-production-8ce4.up.railway.app/api/user/')
+            const dataUser2 = responseUser2.json()
+
+            dataUser2.then(
+                (val) => {
+                    setUsers(val.data)
+                }
+            )   
         }catch(error){
+        }
+    }
+
+    const callGames = async() => {
+        try{
+            const response = await fetch('https://web-production-8ce4.up.railway.app/api/jogo')
+            const data = response.json()
+            data.then(
+                (val) => {setJogo(val.data)})
+        }catch(error){
+            
         }
     }
 
@@ -56,6 +78,7 @@ function Times() {
         callTeamFunction++
         callTime()
         getUsers()
+        callGames()
     }
 
     console.log(time)
@@ -64,8 +87,8 @@ function Times() {
     
         switch(page){
             case 'geral':
-                // document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'flex'
-                // document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
+                document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'flex'
+                document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
                 // document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
                 // document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
 
@@ -74,8 +97,8 @@ function Times() {
                 document.querySelector('.config').classList.remove('perfilActive')
                 break
             case 'equipe':
-                // document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'none'
-                // document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'flex'
+                document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'none'
+                document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'flex'
                 // document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
                 // document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
 
@@ -135,6 +158,43 @@ function Times() {
                             <h4>{time.tag}</h4>
                             
                         </div>
+                        <div>
+                            <div className='divRightSubMainContainerCompo' >
+                                <h2>Jogo Principal</h2>
+                                {
+                                    jogo.map((jogo) => {
+                                        if(jogo.id === parseInt(time.jogoPrincipal)){
+                                            return <label style={{textAlign: 'center', display: 'flex', alignItems: 'center'}}><img style={{marginRight: '10px'}} width={50} height={50} src={jogo.logo}/>{jogo.nome}</label>
+
+                                        }
+                                    })
+                                }
+                                
+                                
+                            </div>
+                            <div className='divRightSubMainContainerCompo' >
+                                <h3>Criado por:</h3>
+                                {
+                                    users.map((user) => {
+                                        if(user.username === time.donoCriacao){
+                                            return <div>
+                                                        <label onClick={() => window.location.href = '/u/' + user.username} style={{textAlign: 'center', display: 'flex', alignItems: 'center', flexWrap: 'wrap-reverse'}}>
+                                                            <label>{user.username}</label>
+                                                            <img style={{marginRight: '10px', borderRadius: 50, border: '1px solid' + user.corP}} width={50} height={50} src={user.icon}/>
+                                                        </label>
+                                                        <label>
+                                                            <label>Data de Criação: </label>
+                                                            {time.dataCriacao}
+                                                        </label>
+                                                    </div>
+
+                                        }
+                                    })
+                                }
+                                
+                                
+                            </div>
+                        </div>
                     </div>
                     <div className='divUsuarioSubMainContainerGeneral'  style={{}}>
                         <div className='perfilNavigation' style={{}}>
@@ -142,6 +202,7 @@ function Times() {
                             <div onClick={() => setPage('equipe')} className='perfilConfig equipe'><div className='imgUsuarioGearEditing equipesImg'/>Jogadores</div>
                             <div onClick={() => setPage('config')} className='perfilConfig config'><div className='imgUsuarioGearEditing'/>Configurar Equipe</div>
                         </div>
+
                         <div className='divAllContainersUser' style={{}} >
                             <div className='divUsuarioSubMainContainerCompo'  style={{}} >
                                 <div className='divContainerUsuarioContent' style={{}} >
@@ -199,6 +260,36 @@ function Times() {
                                         ) }
                                     </div>
                                 </div> */}
+                            </div>
+                            <div className='divEquipesSubMainContainerCompo' >
+                                <div className='divContainerTeamsOnUserTab' style={{width: '95%'}}>
+                                    <div style={{width: '100%'}}>
+                                        <h3>Equipe Ativa:</h3>
+
+                                        { 
+                      
+                                            users.map( (user) => {
+                                                                    
+                                                for(let i = 0; i < 5;i++){
+
+                                                    if(JSON.parse(time.equipeAtiva)[i] === user.id){
+                                                        return  <div key={user.id} className='divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={user.id}>
+                                                                    <div className='divUserOnTeamContainer'>
+                                                                        <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
+                                                                        <div>
+                                                                            <h4>{user.username}</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                    }
+                                                }
+                                            }
+                                            ) 
+                                        }
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>

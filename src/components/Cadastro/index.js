@@ -94,7 +94,7 @@ function Cadastro (props) {
                     </div>
 
                     <div>
-                        <h1>Seu estilo, sua vitória!</h1>
+                        <h1>Seu estilo, sua vitória</h1>
                     </div>
 
                     <div>
