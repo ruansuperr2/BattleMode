@@ -11,9 +11,15 @@ import DoDisturbIcon from '@mui/icons-material/DoDisturb';
 
 import { storage } from '../FireBase';
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-
+let teamActivePlayers
 let callTeamFunction = 0
 let deadOrAlive = false
+
+let respira
+let detectPositionActive = -1
+let detectPositionReserve = 0
+let detectPositionCT = 0
+
 function Times() {
     const { id } = useParams();
     const [page, setPage] = useState('geral')
@@ -122,7 +128,7 @@ function Times() {
                     setTime(val.data.find((time) => {return time.nome === id}))
                 }
                 )   
-
+                
             }catch(error){
         }
     }
@@ -290,7 +296,7 @@ function Times() {
         setImgUrl2(time.imgFundo)
         setImgUrl3(time.imgFundo2)
         console.log(loggedUser.username)
-
+        teamActivePlayers = JSON.parse(time.equipeAtiva)
         if(loggedUser.username === time.donoCriacao || loggedUser.username === time.capitao){
             document.querySelector('.config').style.display = 'flex'
 
@@ -320,21 +326,46 @@ function Times() {
 
     const deleteActiveUser = async(user) => {
         showModal('loading','Atualizando o Banco','barLoading')
-        let teamActivePlayers = JSON.parse(time.equipeAtiva)              
+        console.log('log', user)
         let teamReservePlayers = time.reserva       
         let teamTCPlayers = time.comissaoTecnica    
         console.log(teamActivePlayers)
 
-        let indexOf = JSON.parse(time.equipeAtiva).indexOf(user)
+        let indexOf = JSON.parse(time.equipeAtiva).map((val, idx) => {
+            console.log(`Index of ${val} is ${idx}`);
+            if(user === val){
+                console.log(user, idx)
+                respira = idx
+                return idx;
+            }
+        })
+        console.log(respira)
+        console.log(indexOf)
+       
+        document.querySelectorAll('#selectById')[respira].style.display = 'none'
+        // teamActivePlayers.splice(indexOf, 1)
 
-        teamActivePlayers.splice(indexOf, 1)
+        // time.equipeAtiva = teamActivePlayers
 
-        time.equipeAtiva = teamActivePlayers
+        // let list = document.querySelectorAll(`.doDisturbIcon`)
 
-        let list = document.querySelectorAll(`.doDisturbIcon`)
-
-        list[indexOf].style.display = 'none'
-
+        // document.querySelectorAll(`.${list[user].parentNode.className}`)[user].style.display = 'none'
+        // console.log(JSON.stringify({
+        //     nome: time.nome,
+        //     tag: time.tag,
+        //     logo: time.logo,
+        //     imgFundo: time.imgFundo,
+        //     equipeAtiva: time.equipeAtiva,
+        //     reserva: time.reserva,
+        //     comissaoTecnica: time.comissaoTecnica,
+        //     jogoPrincipal: time.jogoPrincipal,
+        //     conquistas: time.conquistas,
+        //     descricao: time.descricao,
+        //     imgFundo2: time.imgFundo2,
+        //     dataCriacao: time.dataCriacao,
+        //     donoCriacao: time.donoCriacao,
+        //     capitao: time.capitao
+        // }))
         // try{
         //     const requestOptions = {
         //         method: 'PUT',
@@ -343,14 +374,14 @@ function Times() {
         //             nome: time.nome,
         //             tag: time.tag,
         //             logo: time.logo,
-        //             imgFundo: imgUrl2,
-        //             equipeAtiva: time.equipeAtiva,
+        //             imgFundo: time.imgFundo,
+        //             equipeAtiva: JSON.stringify(time.equipeAtiva.sort()),
         //             reserva: time.reserva,
         //             comissaoTecnica: time.comissaoTecnica,
         //             jogoPrincipal: time.jogoPrincipal,
         //             conquistas: time.conquistas,
         //             descricao: time.descricao,
-        //             imgFundo2: imgUrl3,
+        //             imgFundo2: time.imgFundo2,
         //             dataCriacao: time.dataCriacao,
         //             donoCriacao: time.donoCriacao,
         //             capitao: time.capitao
@@ -358,7 +389,7 @@ function Times() {
                 
         //     }
         //     closeModal('success', 'atualizado!',null)
-        //     await fetch('https://web-production-8ce4.up.railway.app/api/time/' + time.id,  requestOptions)
+        //     await fetch(`https://web-production-8ce4.up.railway.app/api/time/${time.id}`,  requestOptions)
         //     // window.location.href = '/e/' + time.nome
         //     }catch(e){
                 
@@ -399,6 +430,7 @@ function Times() {
                                 <h3>Criado por:</h3>
                                 {
                                     users.map((user) => {
+                                        
                                         if(user.username === time.donoCriacao){
                                             return <div>
                                                         <label onClick={() => window.location.href = '/u/' + user.username} style={{textAlign: 'center', display: 'flex', alignItems: 'center', flexWrap: 'wrap-reverse'}}>
@@ -412,6 +444,7 @@ function Times() {
                                                     </div>
 
                                         }
+                                        
                                     })
                                 }
                                 
@@ -456,22 +489,20 @@ function Times() {
                                         { 
                       
                                             users.map( (user) => {
-                                                                    
-                                                for(let i = 0; i < 5;i++){
-
-                                                    if(JSON.parse(time.equipeAtiva)[i] === user.id){
-                                                        return  <div key={user.id} className='divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={user.id}>
+                                                    if(JSON.parse(time.equipeAtiva).find((ac) => {return ac === user.id})){
+                                                        return  <div key={user.id} className='usersOnActive divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={'selectById'}>
                                                                     <div  className='divUserOnTeamContainer'>
                                                                         <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
-                                                                        <div onClick={() => {window.location.href = '/u/' + user.username}}>
+                                                                        <div style={{cursor: 'pointer'}} onClick={() => {window.location.href = '/u/' + user.username}}>
                                                                             <h4>{user.username}</h4>
                                                                         </div>
-                                                                        <DoDisturbIcon onClick={() => {deleteActiveUser(user.id)}} className='doDisturbIcon' sx={{fontSize: "4vh", color: "#fc6b03"}}/>
+                                                                        <DoDisturbIcon onClick={() => {deleteActiveUser(user.id)}} className='doDisturbIcon' id={user.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/>
                                                                     </div>
                                                                 </div>
 
                                                     }
-                                                }
+                                                
+                                                
                                             }
                                             ) 
                                         }

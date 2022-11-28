@@ -237,7 +237,7 @@ function CriarEquipe() {
                                     tag: tag,
                                     logo: imgUrl,
                                     imgFundo: imgUrl2,
-                                    equipeAtiva: JSON.stringify(jogadores.map((item) => {return item['id']})),
+                                    equipeAtiva: JSON.stringify(jogadores.map((item) => {return item['id']}).sort()),
                                     reserva: JSON.stringify([]),
                                     comissaoTecnica: JSON.stringify([]),
                                     jogoPrincipal: jogoEscolhido,
