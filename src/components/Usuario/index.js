@@ -47,7 +47,6 @@ function Usuario(){
     const [torneio, setTorneio] = useState([])
     const [time, setTime] = useState([])
 
-
     const [imgUrl, setImgUrl] = useState(null);
     const [imgUrl2, setImgUrl2] = useState(null);
     const [imgUrl3, setImgUrl3] = useState(null);
@@ -480,16 +479,19 @@ function Usuario(){
                         <div className='divRightUserInfoCompo'  style={{backgroundImage: `url(${viewingUser.imgFundoDois}`, backgroundSize: 'cover', borderColor: viewingUser.corP}}>
                             <div className='imgUserprofileIcon' style={{backgroundImage: `url(${viewingUser.icon})`, borderColor: viewingUser.corP}}></div>
                             <h2>{viewingUser.username}</h2>
-                            <h4>Data de Criação: {viewingUser.dataCriacao}</h4>
+                            <div className='dataFlex'>
+                                <h4>Data de Criação:</h4>
+                                <h4>{viewingUser.dataCriacao}</h4>
+                            </div>
                             <h1 className='UserPlan'></h1>
                         </div>
                         <div className='divRightSubMainContainerCompo' style={{borderColor: viewingUser.corP}} >
                             <h3>Contatos</h3>
                             <div>
-                                <label>Twitter: <a href={`https://twitter.com/${viewingUser.twitter}`}> @{viewingUser.twitter}</a></label>
-                                <label>Instagram: <a href={`https://instagram.com/${viewingUser.instagram}`}> @{viewingUser.instagram}</a></label>
-                                <label>Discord: <a> {viewingUser.discord}</a></label>
-                                <label>Twitch: <a href={`https://twitch.tv/${viewingUser.twitch}`}> /{viewingUser.twitch}</a></label>
+                                <label className='divUserLinks'>Twitter: <a href={`https://twitter.com/${viewingUser.twitter}`}> @{viewingUser.twitter}</a></label>
+                                <label className='divUserLinks'>Instagram: <a href={`https://instagram.com/${viewingUser.instagram}`}> @{viewingUser.instagram}</a></label>
+                                <label className='divUserLinks'>Discord: <a> {viewingUser.discord}</a></label>
+                                <label className='divUserLinks'>Twitch: <a href={`https://twitch.tv/${viewingUser.twitch}`}> /{viewingUser.twitch}</a></label>
                             </div>
                         </div>
                     </div>
@@ -558,17 +560,44 @@ function Usuario(){
                                     </div>
                                 </div> */}
                             </div>
+
                             <div className='divEquipesSubMainContainerCompo' >
-                            <div className='divContainerTeamsOnUserTab' style={{borderColor: viewingUser.corP}}>
-                                <div>
-                                    <h2>Atuando na(s) Equipe(s)</h2>
+                                <div className='divContainerTeamsOnUserTab' style={{borderColor: viewingUser.corP}}>
+                                    <div>
+                                        <h2>Atuando na(s) Equipe(s)</h2>
+                                            { 
+                            
+                                                    time.map( (time) => {
+                                                    
+                                                        for(let i = 0; i < 5;i++){
+
+                                                            if(JSON.parse(time.equipeAtiva)[i] === viewingUser.id){
+                                                                return  <div key={time.id} className='divTeamsOnUserSubContainer' style={{borderColor: viewingUser.corP}} id={time.id}>
+                                                                            <div className='divTeamsOnUserContainer'>
+                                                                                <img className='divTeamsOnUserImg' src={time.logo} style={{borderColor: viewingUser.corP, boxShadow: `0px 0px 11px 0px ${viewingUser.corP}`}}/>
+                                                                                <div>
+                                                                                    <h5>{time.nome}</h5>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                            }
+                                                        }
+                                                    }
+                                                    ) 
+                                            
+                                            }
+                                    </div>
+                                        
+                                    <div>
+                                        <h2>Reseva na(s) Equipe(s)</h2>
                                         { 
                         
                                                 time.map( (time) => {
                                                 
                                                     for(let i = 0; i < 5;i++){
 
-                                                        if(JSON.parse(time.equipeAtiva)[i] === viewingUser.id){
+                                                        if(JSON.parse(time.reserva)[i] === viewingUser.id){
                                                             return  <div key={time.id} className='divTeamsOnUserSubContainer' style={{borderColor: viewingUser.corP}} id={time.id}>
                                                                         <div className='divTeamsOnUserContainer'>
                                                                             <img className='divTeamsOnUserImg' src={time.logo} style={{borderColor: viewingUser.corP, boxShadow: `0px 0px 11px 0px ${viewingUser.corP}`}}/>
@@ -584,61 +613,35 @@ function Usuario(){
                                                 ) 
                                         
                                         }
-                                </div>
-                                    
-                                <div>
-                                    <h2>Reseva na(s) Equipe(s)</h2>
-                                    { 
-                      
-                                            time.map( (time) => {
-                                            
-                                                for(let i = 0; i < 5;i++){
+                                    </div>
+                                    <div>
+                                        <h2>Técnico na(s) Equipe(s)</h2>
+                                        { 
+                        
+                                                time.map( (time) => {
+                                                
+                                                    for(let i = 0; i < 5;i++){
 
-                                                    if(JSON.parse(time.reserva)[i] === viewingUser.id){
-                                                        return  <div key={time.id} className='divTeamsOnUserSubContainer' style={{borderColor: viewingUser.corP}} id={time.id}>
-                                                                    <div className='divTeamsOnUserContainer'>
-                                                                        <img className='divTeamsOnUserImg' src={time.logo} style={{borderColor: viewingUser.corP, boxShadow: `0px 0px 11px 0px ${viewingUser.corP}`}}/>
-                                                                        <div>
-                                                                            <h5>{time.nome}</h5>
+                                                        if(JSON.parse(time.comissaoTecnica)[i] === viewingUser.id){
+                                                            return  <div key={time.id} className='divTeamsOnUserSubContainer' style={{borderColor: viewingUser.corP}} id={time.id}>
+                                                                        <div className='divTeamsOnUserContainer'>
+                                                                            <img className='divTeamsOnUserImg' src={time.logo} style={{borderColor: viewingUser.corP, boxShadow: `0px 0px 11px 0px ${viewingUser.corP}`}}/>
+                                                                            <div>
+                                                                                <h5>{time.nome}</h5>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
 
+                                                        }
                                                     }
                                                 }
-                                            }
-                                            ) 
-                                    
-                                    }
+                                                ) 
+                                        
+                                        }
+                                    </div>   
                                 </div>
-                                <div>
-                                    <h2>Técnico na(s) Equipe(s)</h2>
-                                    { 
-                      
-                                            time.map( (time) => {
-                                            
-                                                for(let i = 0; i < 5;i++){
-
-                                                    if(JSON.parse(time.comissaoTecnica)[i] === viewingUser.id){
-                                                        return  <div key={time.id} className='divTeamsOnUserSubContainer' style={{borderColor: viewingUser.corP}} id={time.id}>
-                                                                    <div className='divTeamsOnUserContainer'>
-                                                                        <img className='divTeamsOnUserImg' src={time.logo} style={{borderColor: viewingUser.corP, boxShadow: `0px 0px 11px 0px ${viewingUser.corP}`}}/>
-                                                                        <div>
-                                                                            <h5>{time.nome}</h5>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                    }
-                                                }
-                                            }
-                                            ) 
-                                    
-                                    }
-                                </div>   
                             </div>
 
-                            </div>
                             <div className='divTorneiosSubMainContainerCompo' style={{borderColor: viewingUser.corP}}>
                             </div>
                             <div className='divConfigSubMainContainerCompo' style={{borderColor: viewingUser.corP}}>        
@@ -646,6 +649,7 @@ function Usuario(){
                                     <div className='divConfigConfigsContainer' style={{borderColor: viewingUser.corP}}>
                                         <div className='divConfigConfigsSubContainer'>
                                             <h1>Configurar Perfil</h1>
+
                                             <h2>Informações Gerais</h2>
 
                                             <div className='divOmgConfigs'>
@@ -683,11 +687,13 @@ function Usuario(){
                             
 
                                         <div>
-                                            <button onClick={() => callMudançasPerfil('IG')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount1' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Informações Gerais</button>
+                                            <button onClick={() => callMudançasPerfil('IG')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount1' style={{borderColor: viewingUser.corP}}><p style={{margin: '0'}}>Confirmar Mudanças -</p><p style={{margin: '0'}}>Informações Gerais</p></button>
                                         </div>
 
+                                        <div className='senhaEmailDivider'/>
+
                                         <div className='divConfigConfigsSubContainer'>
-                                            <h3>Segurança da Conta</h3>
+                                            <h2>Segurança da Conta</h2>
 
                                             <div className='divOmgConfigs'>                                                
                                                 <div className='divContainerConfigSub2'>
@@ -701,11 +707,10 @@ function Usuario(){
                                                 </div>
                                             </div>
 
-                                            <h4>Trocar Senha</h4>
                                               <div className='divOmgConfigs'>  
                                                 <div className='divContainerConfigSub2'>
-                                                    <label>Senha Atual </label>
-                                                    <label>Nova Senha</label>
+                                                    <label>Senha Atual:</label>
+                                                    <label>Nova Senha:</label>
                                                 </div>
 
                                                 <div className='divContainerConfigSub'>
@@ -721,8 +726,10 @@ function Usuario(){
                                             <button onClick={() => callMudançasPerfil('SC')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount2' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Segurança da Conta</button>
                                         </div>
 
+                                        <div className='senhaEmailDivider'/>
+
                                         <div className='divConfigConfigsSubContainer'>
-                                            <h3>Redes Sociais</h3>
+                                            <h2>Redes Sociais</h2>
                                             <div className='divOmgConfigs'>  
                                                     <div className='divContainerConfigSub2'>
                                                         <label>Twitter:</label>
@@ -744,8 +751,11 @@ function Usuario(){
                                         <div>
                                             <button onClick={() => callMudançasPerfil('RS')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount3' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Redes Sociais</button>
                                         </div>
+
+                                        <div className='senhaEmailDivider'/>
+
                                         <div className='divConfigConfigsSubContainer premiumConfigs2'>
-                                            <h3>Personalização - Premium</h3>
+                                            <h2>Personalização - Premium</h2>
                                                 <div className='divOmgConfigs'>  
                                                         <div className='divContainerConfigSub2'>
                                                             <label>Cor Principal do perfil e site: 

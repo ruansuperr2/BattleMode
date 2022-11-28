@@ -137,6 +137,16 @@
     box-shadow: #121212 0px 0px 5px 5px;
 }
 
+.dataFlex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dataFlex h4 {
+    margin: .5rem;
+}
+
 .divRightSubMainContainerCompo{
     position: relative;
     /* background-color: red; */
@@ -165,16 +175,25 @@
     align-items: center;
     position: relative;
     gap: 5px;
+    flex-direction: column;
 }
 
 .divRightSubMainContainerCompo div label img{
     position: absolute;
     right: 0;
-    background-color: #111111;
 }
 
 .divRightSubMainContainerCompo div label img:hover{
     cursor: pointer;
+}
+
+.divUserLinks a {
+    text-align: center;
+}
+
+.divEquipesSubMainContainerCompo {
+    margin-left: 5%;
+    border: none;
 }
 
 .UserPlan{
@@ -198,7 +217,6 @@
 }
 
 .imgUserprofileIcon{
-    background-color: #121212;
     border: 1px solid #fc6b03;
     width: 100px;
     height: 100px;
@@ -280,9 +298,6 @@
     
 }
 
-.divmdViewer ::-webkit-scrollbar{
-    /* display: none; */
-}
 
 .divContainerUsuarioContent{
     width: 99.9%;
@@ -302,7 +317,7 @@
     color: #fff;
     font-size: 16px;
     transition: 0.5s;
-    z-index: 99;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -343,7 +358,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    border-left: 1px solid #fc6b03;
+    /* border-left: 1px solid #fc6b03; */
 }
 
 .divContainerTeamsOnUserTab div h2{
@@ -410,17 +425,21 @@
 }
 
 .divConfigConfigsContainer div button{
-    width: 40%;
-    height: 50%;
+    width: 14rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 20px;
-    padding: 1%;
+    padding: 0.5rem;
     background-color: #272727;
-    border-radius: 20px;
+    border-radius: 40px;
     border: 2px solid #fc6b03;
     color: #fff;
     font-size: 16px;
     transition: 0.5s;
     z-index: 99;
+    text-align: center;
 }
 
 .divConfigConfigsContainer div button:hover{
@@ -430,7 +449,14 @@
     cursor: pointer;
 }
 
-
+.senhaEmailDivider {
+    width: 90%;
+    height: 1px;
+    padding-left: 5%;
+    display: flex;
+    align-self: flex-start;
+    background-color: #515151;
+}
 
 
 .divConfigConfigsSubContainer{
@@ -459,20 +485,23 @@
 .divOmgConfigs input{
     width: 100%;
     height: 50%;
-    margin: 20px;
-    padding: 1%;
+    margin: 11px;
+    padding: .5rem;
     background-color: #272727;
     border-radius: 10px;
     border: 2px solid #fc6b03;
     color: #fff;
     font-size: 16px;
     transition: 0.5s;
-    z-index: 99;
+    z-index: 1;
 }
 .divOmgConfigs label{
     width: 100%;
     height: 50%;
     margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
 }
 
@@ -597,4 +626,76 @@
     transition: 0.2s;
     opacity: 100%;
 
+}
+
+@media only screen and (max-width: 1230px) {
+	.divUsuarioSubMainContainerD{
+		padding-top: 0vh;
+	}
+    .UserPlan {
+        transform: rotate(0deg); 
+        left: 20%;
+        top: -25%;
+    }
+    .dataFlex {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .divConfigConfigsContainer {
+        padding-left: 0;
+    }
+
+    .divUsuarioComplexContainer {
+        flex-direction: column;
+    }
+
+    .UserPlan {
+        transform: rotate(90deg);
+        left: -60px;
+        top: 37%;
+    }
+
+    .divConfigConfigsSubContainer h1, h2 {
+        text-align: center;
+    }
+
+    .divRightMainComplexoContainerCompo {
+        width: 100%;
+    }
+
+    .perfilNavigation {
+        flex-direction: column;
+    }
+
+    .divOmgConfigs {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .divOmgConfigs label {
+        width: auto;
+    }
+
+    .divConfigConfigsContainer div button {
+        display: flex;
+        justify-content: center;
+        margin-inline: auto;
+    }
+
+    .senhaEmailDivider {
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .divOmgConfigs {
+        /* flex-direction: column; */
+        align-items: center;
+        justify-content: center;
+    }
+    .divOmgConfigs input {
+        width: 50%;
+    };
 }
