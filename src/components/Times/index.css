@@ -111,3 +111,13 @@
     border-radius: 60px;
 }
     
+.divContainerTeamsOnUserTab div h3{
+    margin-left: 2%;
+    margin-top: 3%;
+}
+
+.SeparatorFromGround{
+    border-bottom: 1px solid #fc6b03;
+    margin-top: 6%;
+    width: 105%;
+}

@@ -264,7 +264,7 @@ function Times() {
                             <div className='divEquipesSubMainContainerCompo' >
                                 <div className='divContainerTeamsOnUserTab' style={{width: '95%'}}>
                                     <div style={{width: '100%'}}>
-                                        <h3>Equipe Ativa:</h3>
+                                        <h3>Equipe Ativa</h3>
 
                                         { 
                       
@@ -288,7 +288,57 @@ function Times() {
                                             ) 
                                         }
                                     </div>
+                                    <div style={{width: '100%'}}>
+                                        <h3>Equipe Reserva</h3>
 
+                                        { 
+                      
+                                            users.map( (user) => {
+                                                                    
+                                                for(let i = 0; i < 5;i++){
+
+                                                    if(JSON.parse(time.reserva)[i] === user.id){
+                                                        return  <div key={user.id} className='divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={user.id}>
+                                                                    <div className='divUserOnTeamContainer'>
+                                                                        <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
+                                                                        <div>
+                                                                            <h4>{user.username}</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                    }
+                                                }
+                                            }
+                                            ) 
+                                        }
+                                    </div>
+                                    <div style={{width: '100%'}}>
+                                        <h3>Equipe Técnica</h3>
+
+                                        { 
+                      
+                                            users.map( (user) => {
+                                                                    
+                                                for(let i = 0; i < 5;i++){
+
+                                                    if(JSON.parse(time.comissaoTecnica)[i] === user.id){
+                                                        return  <div key={user.id} className='divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={user.id}>
+                                                                    <div className='divUserOnTeamContainer'>
+                                                                        <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
+                                                                        <div>
+                                                                            <h4>{user.username}</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                    }
+                                                }
+                                            }
+                                            ) 
+                                        }
+                                    </div>
+                                    <div className="SeparatorFromGround"></div>
                                 </div>
                             </div>
                         </div>
