@@ -19,6 +19,7 @@ import NewHome from './components/NewHome'
 import CriarTorneio from './components/CriarTorneio'
 import CriarEquipe from './components/CriarEquipe'
 import Admin from './components/Admin'
+import UsuarioNaoEncontrado from './components/UsuarioNaoEncontrado'
 
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 
@@ -56,6 +57,7 @@ function App() {
                         <Route path="/criarequipe" element={<CriarEquipe/>} />
                         <Route path="/find/:id" element={<FindAll />} />
                         <Route path={`/admin/${process.env.REACT_APP_MYKEY}/:id`} element={<Admin />}/>
+                        <Route path="/userNotFound" element={<UsuarioNaoEncontrado/>}/>
                   </Routes>
               </div>
           </BrowserRouter>

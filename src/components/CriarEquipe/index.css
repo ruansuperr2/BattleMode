@@ -248,6 +248,11 @@
     height: 100%;
 }
 
+.selectInfoCriarEquipe{
+    width: 75%;
+    margin-top: 5%;
+}
+
 @media only screen and (max-width: 850px) {
     .infoContainer {
         flex-direction: column-reverse;

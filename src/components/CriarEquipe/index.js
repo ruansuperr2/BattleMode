@@ -7,6 +7,8 @@ import Footer from '../Footer'
 import Integrante from './components/Integrante';
 import { AiOutlineCheck, AiOutlinePlus } from 'react-icons/ai'
 import { HiX } from 'react-icons/hi'
+import Select from 'react-select'
+
 import ModalCustom, {showModal, closeModal} from '../Modal'
 
 let getUsersTry = 0
@@ -33,6 +35,7 @@ function CriarEquipe() {
     const [tag, setTag] = useState('')
     const [desc, setDesc] = useState('')
     const [teamUser, setTeamUser] = useState([])
+    const [jogoEscolhido, setjogoEscolhido] = useState(0)
 
 
     const [imgUrl, setImgUrl] = useState(null);
@@ -177,6 +180,9 @@ function CriarEquipe() {
     }
     
     if(getUsersTry < 3){
+        if(JSON.parse(localStorage.getItem('dasiBoard')) === null){
+            window.location.href = 'userNotFound'
+        }
         getUsersTry++
         getUsers()
         callGames()
@@ -184,6 +190,10 @@ function CriarEquipe() {
         callTime()
     }
 
+
+    const jogos = jogo.map((jogo) => {
+        return {value: jogo.id, label: jogo.nome}
+    })
     const [inputProcurar, setInputProcurar] = useState('')
     const [jogadores, setJogadores] = useState([])
 
@@ -230,7 +240,7 @@ function CriarEquipe() {
                                     equipeAtiva: JSON.stringify(jogadores.map((item) => {return item['id']})),
                                     reserva: JSON.stringify([]),
                                     comissaoTecnica: JSON.stringify([]),
-                                    jogoPrincipal: 0,
+                                    jogoPrincipal: jogoEscolhido,
                                     conquistas: JSON.stringify([]),
                                     descricao: desc,
                                     imgFundo2: imgUrl3
@@ -256,7 +266,7 @@ function CriarEquipe() {
         }
         
     }
-    
+    console.log(jogoEscolhido)
     return (
         <div className='mainContainerCriarEquipe'>
             <div className='divCriarEquipe paddingLeft'>
@@ -346,6 +356,7 @@ function CriarEquipe() {
                             <input value={name} onChange={event => {setName(event.target.value)}}  className='inputProcurarJogador' placeholder='Nome da equipe...'/>
                             <input value={tag} style={{marginTop: '10px'}} onChange={event => {setTag(event.target.value)}}  className='inputProcurarJogador' placeholder='Tag da equipe...'/>
                             <textarea value={desc} onChange={event => {setDesc(event.target.value)}}  className='textareaEquipeDescricao' placeholder='Descrição da equipe...'/>
+                            <Select onChange={e => setjogoEscolhido(e.value)} className='selectInfoCriarEquipe' options={jogos}  placeholder='Jogos'/>
                             <button className='buttonConfirmarCriarEquipe' onClick={() => sendEverything()}>Confirmar <AiOutlineCheck style={{fontSize: '25px', marginLeft: '.5rem', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
                         </div>
 

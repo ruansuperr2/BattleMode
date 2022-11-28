@@ -6,23 +6,24 @@ import { showModal, closeModal} from "../Modal";
 import './index.css';
 import { useParams } from 'react-router-dom'
 import MDEditor from '@uiw/react-md-editor'
-
+import Loading from '../Loading'
 let callTeamFunction = 0
+let deadOrAlive = false
 function Times() {
     const { id } = useParams();
-    const [value, setValue] = useState('')
     const [page, setPage] = useState('geral')
     const [jogadores, setJogadores] = useState([])
     const [loggedUser, setLoggedUser] = useState({})
-    
+    const [time, setTime] = useState({})
+    const [value, setValue] = useState(time.descricao)
     const callModal = () => {
         setPage('torneio')
         showModal('spin', 'Deseja participar do Torneio?', 'Participar')
         // setTimeout(() => {
-        //     closeModal('success', 'deu certo', 'Participar')
-        // }, 2000);
+            //     closeModal('success', 'deu certo', 'Participar')
+            // }, 2000);
     }
-    const [time, setTime] = useState({})
+
     const callTime = async () => {
         try{
             const responseUser = await fetch('https://web-production-8ce4.up.railway.app/api/time/')
@@ -32,9 +33,8 @@ function Times() {
                 (val) => {
                     setTime(val.data.find((time) => {return time.nome === id}))
                 }
-            )   
-            setValue(time.descricao)
-        }catch(error){
+                )   
+            }catch(error){
         }
     }
 
@@ -106,47 +106,34 @@ function Times() {
         }
     })
 
-
+    const makeEverythingWork = () => {
+        setValue(time.descricao)
+        deadOrAlive = true
+    }  
+    if(deadOrAlive === false){
+        setTimeout(() => {
+            makeEverythingWork()
+        }, 1600);
+    }
 
     return(
         <div className='divParticiparMainContainer'>
             {/* <Navbar page={'usuario'} /> */}
             <ModalCustom/>
+            <Loading/>
             {/* <div className="divMainTorneio" /> */}
 
             <div className='divFundoMainContainer' style={{backgroundImage: `url(${time.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center',}}>
                 <div className='divContainerFundoMainContainer'/>
             </div>
             <div className='divUsuarioSubMainContainerD paddingLeft '>
-                <div className='divUsuarioComplexContainer' >
+                <div className='divUsuarioComplexContainer divEquipeComplexContainer' >
                     <div className='divRightMainComplexoContainerCompo' style={{}} >
                         <div className='divRightUserInfoCompo'  style={{backgroundImage: `url(${time.imgFundo2}`, backgroundSize: 'cover',}}>
                             <div className='imgUserprofileIcon' style={{backgroundImage: `url(${time.logo})`}}></div>
                             <h2>{time.nome}</h2>
                             <h4>{time.tag}</h4>
                             
-                        </div>
-                        <div className='divRightSubMainContainerCompo' style={{}} >
-              
-                      
-                                 {/* time.map( (t) => { */}
-                                
-                                     {/* for(let i = 0; i < 5;i++){ */}
-
-                                        {/* // if(JSON.parse(t.equipeAtiva)[i] === loggedUser.id){ */}
-                                        {/* // return  <div key={JSON.parse(t.equipeAtiva)[i]} className='divTeamsOnUserSubContainer' id={JSON.parse(t.equipeAtiva)[i]}> */}
-                                                    {/* // <div className='divTeamsOnUserContainer'> */}
-                                                        {/* <img className='divTeamsOnUserImg' src={time.logo}/> */}
-                                                        {/* // <div> */}
-                                                            {/* // <h5>{JSON.parse(t.equipeAtiva)[i]}</h5> */}
-                                                        {/* // </div> */}
-                                                    {/* // </div> */}
-                                                {/* // </div> */}
-
-                                    {/* // } */}
-                                {/* // } */}
-                            {/* // }) */}
-             
                         </div>
                     </div>
                     <div className='divUsuarioSubMainContainerGeneral'  style={{}}>

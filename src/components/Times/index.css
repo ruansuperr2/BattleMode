@@ -66,3 +66,16 @@
 .divImgFundoMainContainer2{
     display: none;
 }
+
+.divEquipeComplexContainer{
+    color: white;
+}
+
+.divEquipeComplexContainer h4{
+    margin-top: -2%;
+}
+
+.divEquipeComplexContainer .divRightMainComplexoContainerCompo{
+    border-color: #fc6b03 !important;
+
+}

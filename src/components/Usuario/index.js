@@ -154,6 +154,7 @@ function Usuario(){
                 }
             )   
         }catch(error){
+         
         }
     }
 
@@ -175,6 +176,7 @@ function Usuario(){
                 }
             )   
         }catch(error){
+
         }
     }
     

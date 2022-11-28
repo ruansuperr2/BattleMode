@@ -165,6 +165,9 @@ function CriarTorneio (){
     }
     
     if(getUsersTry < 3){
+        if(JSON.parse(localStorage.getItem('dasiBoard')) === null){
+            window.location.href = 'userNotFound'
+        }
         getUsersTry++
         getUsers()
         callGames()
