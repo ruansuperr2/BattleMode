@@ -558,14 +558,42 @@ function Usuario(){
                                 </div> */}
                             </div>
                             <div className='divEquipesSubMainContainerCompo' >
-                                <div className='divContainerTeamsOnUserTab' style={{borderColor: viewingUser.corP}}>
+                            <div className='divContainerTeamsOnUserTab' style={{borderColor: viewingUser.corP}}>
+                                <div>
+                                    <h2>Atuando na(s) Equipe(s)</h2>
+                                        { 
+                        
+                                                time.map( (time) => {
+                                                
+                                                    for(let i = 0; i < 5;i++){
+
+                                                        if(JSON.parse(time.equipeAtiva)[i] === viewingUser.id){
+                                                            return  <div key={time.id} className='divTeamsOnUserSubContainer' style={{borderColor: viewingUser.corP}} id={time.id}>
+                                                                        <div className='divTeamsOnUserContainer'>
+                                                                            <img className='divTeamsOnUserImg' src={time.logo} style={{borderColor: viewingUser.corP, boxShadow: `0px 0px 11px 0px ${viewingUser.corP}`}}/>
+                                                                            <div>
+                                                                                <h5>{time.nome}</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                        }
+                                                    }
+                                                }
+                                                ) 
+                                        
+                                        }
+                                </div>
+                                    
+                                <div>
+                                    <h2>Reseva na(s) Equipe(s)</h2>
                                     { 
                       
                                             time.map( (time) => {
                                             
                                                 for(let i = 0; i < 5;i++){
 
-                                                    if(JSON.parse(time.equipeAtiva)[i] === viewingUser.id){
+                                                    if(JSON.parse(time.reserva)[i] === viewingUser.id){
                                                         return  <div key={time.id} className='divTeamsOnUserSubContainer' style={{borderColor: viewingUser.corP}} id={time.id}>
                                                                     <div className='divTeamsOnUserContainer'>
                                                                         <img className='divTeamsOnUserImg' src={time.logo} style={{borderColor: viewingUser.corP, boxShadow: `0px 0px 11px 0px ${viewingUser.corP}`}}/>
@@ -581,8 +609,34 @@ function Usuario(){
                                             ) 
                                     
                                     }
-
                                 </div>
+                                <div>
+                                    <h2>Técnico na(s) Equipe(s)</h2>
+                                    { 
+                      
+                                            time.map( (time) => {
+                                            
+                                                for(let i = 0; i < 5;i++){
+
+                                                    if(JSON.parse(time.comissaoTecnica)[i] === viewingUser.id){
+                                                        return  <div key={time.id} className='divTeamsOnUserSubContainer' style={{borderColor: viewingUser.corP}} id={time.id}>
+                                                                    <div className='divTeamsOnUserContainer'>
+                                                                        <img className='divTeamsOnUserImg' src={time.logo} style={{borderColor: viewingUser.corP, boxShadow: `0px 0px 11px 0px ${viewingUser.corP}`}}/>
+                                                                        <div>
+                                                                            <h5>{time.nome}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                    }
+                                                }
+                                            }
+                                            ) 
+                                    
+                                    }
+                                </div>   
+                            </div>
+
                             </div>
                             <div className='divTorneiosSubMainContainerCompo' style={{borderColor: viewingUser.corP}}>
                             </div>

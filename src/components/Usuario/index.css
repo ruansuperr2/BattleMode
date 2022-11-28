@@ -339,8 +339,14 @@
 
 .divContainerTeamsOnUserTab{
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     border-left: 1px solid #fc6b03;
+}
+
+.divContainerTeamsOnUserTab div h2{
+    margin-top: 5%;
+    margin-bottom: 25%;
 }
 
 .divTeamsOnUserSubContainer{
@@ -372,7 +378,7 @@
 }
 
 .divTeamsOnUserContainer h5{
-    margin-top: -10%;
+    margin-top: 45%;
 }
 
 .divTeamsOnUserImg{
@@ -383,7 +389,7 @@
     border-radius: 60px;
     width: 60px;
     height: 60px;
-    margin-top: -3.5%;
+    margin-top: -2%;
 }
 
 .divConfigSubMainContainer{

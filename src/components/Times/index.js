@@ -274,7 +274,7 @@ function Times() {
 
                                                     if(JSON.parse(time.equipeAtiva)[i] === user.id){
                                                         return  <div key={user.id} className='divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={user.id}>
-                                                                    <div className='divUserOnTeamContainer'>
+                                                                    <div onClick={() => {window.location.href = '/u/' + user.username}} className='divUserOnTeamContainer'>
                                                                         <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
                                                                         <div>
                                                                             <h4>{user.username}</h4>
@@ -299,7 +299,7 @@ function Times() {
 
                                                     if(JSON.parse(time.reserva)[i] === user.id){
                                                         return  <div key={user.id} className='divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={user.id}>
-                                                                    <div className='divUserOnTeamContainer'>
+                                                                    <div onClick={() => {window.location.href = '/u/' + user.username}} className='divUserOnTeamContainer'>
                                                                         <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
                                                                         <div>
                                                                             <h4>{user.username}</h4>
@@ -324,7 +324,7 @@ function Times() {
 
                                                     if(JSON.parse(time.comissaoTecnica)[i] === user.id){
                                                         return  <div key={user.id} className='divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={user.id}>
-                                                                    <div className='divUserOnTeamContainer'>
+                                                                    <div onClick={() => {window.location.href = '/u/' + user.username}} className='divUserOnTeamContainer'>
                                                                         <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
                                                                         <div>
                                                                             <h4>{user.username}</h4>
