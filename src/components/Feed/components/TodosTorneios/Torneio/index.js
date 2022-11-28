@@ -73,6 +73,8 @@ function TorneioUm(props) {
                         return  <a key={findTorneio.id} href={`../t/${findTorneio.id}`} className='Torneio' style={{backgroundImage: `url(${findTorneio.thumbnail})`}}>
                                     <h1 className='TorneioH1'>{findTorneio.nome}</h1>
                                 </a>
+                    }else{
+                        return <h1>Não há torneios para esse jogo</h1>
                     }
 
                 }

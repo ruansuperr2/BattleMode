@@ -4,6 +4,8 @@ import ModalCustom ,{ showModal, closeModal } from '../Modal';
 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 function Cadastro (props) {
     props.funcNav(false);
@@ -12,6 +14,9 @@ function Cadastro (props) {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [email, setEmail] = useState('')
+
+    const [showPass1, setShowPass1] = useState(null)
+    const [showPass2, setShowPass2] = useState(null)
 
     const callAgentFinder = async() => {
         try{
@@ -85,15 +90,15 @@ function Cadastro (props) {
                 <ModalCustom/>
                 <div className="divCadastroLeftContainer">
                     <div>
-                        <img src={require("./assets/logo.png")} />
+                        <img className='IMG' src={require("./assets/logo.png")} />
                     </div>
 
                     <div>
-                        <h1>Sua escalada começa aqui!</h1>
+                        <h1>Seu estilo, sua vitória!</h1>
                     </div>
 
                     <div>
-                        <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade</p>
+                        <p>Entre com estilo e ganhe nos mais diversos torneios disponível no site, torneios criado pela comunidade para a comunidade!</p>
                     </div>
 
                     <div className='links'>
@@ -117,8 +122,33 @@ function Cadastro (props) {
 
                         <input value={username} onChange={event => {setUsername(event.target.value)}} placeholder='Usuário'></input>
                         <input value={email} onChange={event => {setEmail(event.target.value)}} placeholder='Email'></input>
-                        <input value={password} onChange={event => {setPassword(event.target.value)}} placeholder='Senha'></input>
-                        <input value={confirmPassword} onChange={event => {setConfirmPassword(event.target.value)}} placeholder='Confirmar senha'></input>
+                        <label>
+                            <input type='password' id='1' value={password} onChange={event => {setPassword(event.target.value)}} placeholder='Senha'></input>
+                            { !showPass1 &&
+                                <VisibilityIcon onClick={() => {setShowPass1('view')
+                                document.getElementById('1').setAttribute("type", "text")
+                            }} className='aVIMG' sx={{fontSize: "4vh", color: "#fc6b03"}} ></VisibilityIcon>
+                            }
+                                                        
+                            { showPass1 &&
+                                <VisibilityOffIcon onClick={() => {setShowPass1(null)
+                                document.getElementById('1').setAttribute("type", "password")
+                                }} className='aVIMG' sx={{fontSize: "4vh", color: "#fc6b03"}} ></VisibilityOffIcon>
+                            }
+                        </label>
+                        <label>
+                            <input type='password' id='2' value={confirmPassword} onChange={event => {setConfirmPassword(event.target.value)}} placeholder='Confirmar senha'></input>
+                            { !showPass2 &&
+                                <VisibilityIcon onClick={() => {setShowPass2('view')
+                                document.getElementById('2').setAttribute("type", "text")
+                            }} className='aVIMG' sx={{fontSize: "4vh", color: "#fc6b03"}} ></VisibilityIcon>
+                            }
+                                                        
+                            { showPass2 &&
+                                <VisibilityOffIcon onClick={() => {setShowPass2(null)
+                                    document.getElementById('2').setAttribute("type", "password")
+                                }} className='aVIMG' sx={{fontSize: "4vh", color: "#fc6b03"}} ></VisibilityOffIcon>
+                            }</label>
                         <button onClick={() => registerUser()}>Cadastrar-se</button>
 
 

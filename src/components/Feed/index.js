@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import './index.css'
 import Prediletos from './components/Prediletos'
 import { useParams } from 'react-router-dom';
+import Loading from '../Loading'
 import Navbar from '../Navbar'
 import Footer from '../Footer'
 import TodosTorneios from './components/TodosTorneios'
@@ -42,9 +43,11 @@ function Feed() {
     if(id === undefined){
         return (
             <div className="divMainContainerD">
+                <Loading/>
                 {/* <Navbar page="torneio"/> */}
                 <div className='paddingLeft divMainFeedContainer'>
                         { jogo.map( (jogo) => 
+
                         <div className='divGamesonFeedContainer'>
                             <h1 className='TitlePrediletos'><img className='logoImgFeedGlobal' src={jogo.logo}/>  {jogo.nome}</h1>
                             <TodosTorneios id={jogo.id}/>
@@ -57,6 +60,7 @@ function Feed() {
     }else{
         return (
             <div className="divMainContainerD">
+                <Loading/>
                 <div className='pagewrap'>
                     <div className='containerThisGame paddingLeft'>
                         {

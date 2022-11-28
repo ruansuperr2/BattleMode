@@ -101,7 +101,7 @@ function Jogos() {
                             <div className='divJogosContainer'>
                                 <img className='divJogosImg' src={jogo.imgFundo}/>
                                 <div className='nomeDescricao'>
-                                    <div className="addButton" id={'add' + jogo.id} onClick={(e) => callAddNewGame(jogo.id)}/>
+                                    {/* <div className="addButton" id={'add' + jogo.id} onClick={(e) => callAddNewGame(jogo.id)}/> */}
                                     <h5>{jogo.nome}</h5>
                                     <p>{jogo.descricaoLonga}</p>
                                 </div>

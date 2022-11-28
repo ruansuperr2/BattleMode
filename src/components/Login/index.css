@@ -6,6 +6,14 @@
     align-items: center;
     background-color: #212121;
 }
+
+.divLoginLeftContainer .IMG{
+    width: 146.16px;
+    height: 146.16px;
+    margin-left: 2%;
+    z-index: 99;
+}
+
 .divLoginMainContainer{
     width: 95vw;
     height: 90vh;
@@ -39,17 +47,17 @@
 .divLoginLeftContainer h1{
     color:#fc6b03;
     font-size: 7vh;
-    padding-inline: 5%;
-    text-align: center;
+    padding-inline: 6%;
+
     margin: 0;
     
 }
 .divLoginLeftContainer p{
     color: #fff;
     font-size: 3.5vh;
-    padding-inline: 10%;
+    padding-inline: 6%;
     margin-top: 0;
-    text-align: center;
+
 }
 
 .divLoginRightContainer {

@@ -5,12 +5,15 @@ import { showModal, closeModal } from '../Modal'
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { SettingsRemoteTwoTone } from '@mui/icons-material';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 let getUsersTry = 0
 function Login(props) {
     props.funcNav(false);
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [showPass1, setShowPass1] = useState(null)
 
     const loggedUser = []
     const [users, setUsers] = useState([])
@@ -63,15 +66,15 @@ function Login(props) {
                 <ModalCustom/>
                 <div className="divLoginLeftContainer">
                     <div>
-                        <img src={require("./assets/logo.png")} />
+                        <img className='IMG' src={require("./assets/logo.png")} />
                     </div>
 
                     <div>
-                        <h1>Sua escalada começa aqui!</h1>
+                        <h1>A comunidade está a sua espera</h1>
                     </div>
 
                     <div>
-                        <p>Escale sua equipe para jogar nos mais diversos torneios criados pela comunidade</p>
+                        <p>Jogadores, organizadores e fãs de todo o mundo juntos em uma única plataforma, você está pronto para mostra o que você é capaz?</p>
                     </div>
 
                     <div className='links'>
@@ -94,7 +97,20 @@ function Login(props) {
                         <p className='p'>Entre com sua conta ja cadastrada</p>
 
                         <input value={username} onChange={event => {setUsername(event.target.value)}} placeholder='Usuário'></input>
-                        <input value={password} onChange={event => {setPassword(event.target.value)}} type='password' placeholder='Senha'></input>
+                        <label>
+                            <input type='password' id='1' value={password} onChange={event => {setPassword(event.target.value)}} placeholder='Senha'></input>
+                            { !showPass1 &&
+                                <VisibilityIcon onClick={() => {setShowPass1('view')
+                                document.getElementById('1').setAttribute("type", "text")
+                            }} className='aVIMG' sx={{fontSize: "4vh", color: "#fc6b03"}} ></VisibilityIcon>
+                            }
+                                                        
+                            { showPass1 &&
+                                <VisibilityOffIcon onClick={() => {setShowPass1(null)
+                                document.getElementById('1').setAttribute("type", "password")
+                                }} className='aVIMG' sx={{fontSize: "4vh", color: "#fc6b03"}} ></VisibilityOffIcon>
+                            }
+                        </label>                        
                         <button onClick={() => Login()}>Entrar</button>
 
                         <a href='/cadastro'><p>Esqueceu sua senha?</p></a>
