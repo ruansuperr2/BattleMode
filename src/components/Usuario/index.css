@@ -170,6 +170,7 @@
 .divRightSubMainContainerCompo div label img{
     position: absolute;
     right: 0;
+    background-color: #111111;
 }
 
 .divRightSubMainContainerCompo div label img:hover{
@@ -197,6 +198,7 @@
 }
 
 .imgUserprofileIcon{
+    background-color: #121212;
     border: 1px solid #fc6b03;
     width: 100px;
     height: 100px;

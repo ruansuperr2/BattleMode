@@ -47,6 +47,7 @@ function Usuario(){
     const [torneio, setTorneio] = useState([])
     const [time, setTime] = useState([])
 
+
     const [imgUrl, setImgUrl] = useState(null);
     const [imgUrl2, setImgUrl2] = useState(null);
     const [imgUrl3, setImgUrl3] = useState(null);

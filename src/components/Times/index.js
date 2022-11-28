@@ -7,6 +7,11 @@ import './index.css';
 import { useParams } from 'react-router-dom'
 import MDEditor from '@uiw/react-md-editor'
 import Loading from '../Loading'
+import DoDisturbIcon from '@mui/icons-material/DoDisturb';
+
+import { storage } from '../FireBase';
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+
 let callTeamFunction = 0
 let deadOrAlive = false
 function Times() {
@@ -18,6 +23,87 @@ function Times() {
     const [time, setTime] = useState({})
     const [value, setValue] = useState(time.descricao)
     const [jogo, setJogo] = useState([])
+    const [tag, setTag] = useState('')
+
+    const [username, setUsername] = useState([])
+
+    const [imgUrl, setImgUrl] = useState(null);
+    const [imgUrl2, setImgUrl2] = useState(null);
+    const [imgUrl3, setImgUrl3] = useState(null);
+    const [progresspercent, setProgresspercent] = useState(0);
+    const [progresspercent2, setProgresspercent2] = useState(0);
+    const [progresspercent3, setProgresspercent3] = useState(0);
+
+    const handleSubmit = (e) => {
+      const file = e.target.files[0]
+      if (!file) return;
+      const storageRef = ref(storage, `PefilIcon/${file.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+  
+      uploadTask.on("state_changed",
+        (snapshot) => {
+          const progress =
+            Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+          setProgresspercent(progress);
+        },
+        (error) => {
+          alert(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setImgUrl(downloadURL)
+          })
+        }
+      )
+    }
+    
+    const handleSubmitImgFundo = (e) => {
+        const file = e.target.files[0]
+        if (!file) return;
+        const storageRef = ref(storage, `ImgFundo/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+    
+        uploadTask.on("state_changed",
+          (snapshot) => {
+            const progress =
+              Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            setProgresspercent2(progress);
+          },
+          (error) => {
+            alert(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              setImgUrl2(downloadURL)
+            })
+          }
+        )
+      }
+
+      const handleSubmitImgFundoDois = (e) => {
+        const file = e.target.files[0]
+        if (!file) return;
+        const storageRef = ref(storage, `ImgFundoDois/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+    
+        uploadTask.on("state_changed",
+          (snapshot) => {
+            const progress =
+              Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            setProgresspercent3(progress);
+          },
+          (error) => {
+            alert(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              setImgUrl3(downloadURL)
+            })
+          }
+        )
+      }
+
+
     const callModal = () => {
         setPage('torneio')
         showModal('spin', 'Deseja participar do Torneio?', 'Participar')
@@ -36,6 +122,7 @@ function Times() {
                     setTime(val.data.find((time) => {return time.nome === id}))
                 }
                 )   
+
             }catch(error){
         }
     }
@@ -81,6 +168,74 @@ function Times() {
         callGames()
     }
 
+    const callMudançasPerfil = async(status) => {
+        switch(status){
+            case 'IG':
+                showModal('loading','Atualizando o Banco','barLoading')
+                    
+                try{
+                    const requestOptions = {
+                        method: 'PUT',
+                        headers: {'Content-type': 'application/json'},
+                        body: JSON.stringify({
+                            nome: username,
+                            tag: tag,
+                            logo: imgUrl,
+                            imgFundo: time.imgFundo,
+                            equipeAtiva: time.equipeAtiva,
+                            reserva: time.reserva,
+                            comissaoTecnica: time.comissaoTecnica,
+                            jogoPrincipal: time.jogoPrincipal,
+                            conquistas: time.conquistas,
+                            descricao: time.descricao,
+                            imgFundo2: time.imgFundo2,
+                            dataCriacao: time.dataCriacao,
+                            donoCriacao: time.donoCriacao,
+                            capitao: time.capitao
+                        })
+                        
+                    }
+                    closeModal('success', 'atualizado!',null)
+                    await fetch('https://web-production-8ce4.up.railway.app/api/time/' + time.id,  requestOptions)
+                    window.location.href = '/e/' + username
+                    }catch(e){
+                    }
+                break
+                        case 'PP':
+                            showModal('loading','Atualizando o Banco','barLoading')
+                                
+                            try{
+                                const requestOptions = {
+                                    method: 'PUT',
+                                    headers: {'Content-type': 'application/json'},
+                                    body: JSON.stringify({
+                                        nome: time.nome,
+                                        tag: time.tag,
+                                        logo: time.logo,
+                                        imgFundo: imgUrl2,
+                                        equipeAtiva: time.equipeAtiva,
+                                        reserva: time.reserva,
+                                        comissaoTecnica: time.comissaoTecnica,
+                                        jogoPrincipal: time.jogoPrincipal,
+                                        conquistas: time.conquistas,
+                                        descricao: time.descricao,
+                                        imgFundo2: imgUrl3,
+                                        dataCriacao: time.dataCriacao,
+                                        donoCriacao: time.donoCriacao,
+                                        capitao: time.capitao
+                                    })
+                                    
+                                }
+                                closeModal('success', 'atualizado!',null)
+                                await fetch('https://web-production-8ce4.up.railway.app/api/time/' + time.id,  requestOptions)
+                                window.location.href = '/e/' + time.nome
+                                }catch(e){
+                                    
+                                }
+                            break
+        }
+    }
+
     console.log(time)
     useEffect(() => {
 
@@ -90,7 +245,7 @@ function Times() {
                 document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'flex'
                 document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
                 // document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
-                // document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
+                document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
 
                 document.querySelector('.geral').classList.add('perfilActive')
                 document.querySelector('.equipe').classList.remove('perfilActive')
@@ -100,7 +255,7 @@ function Times() {
                 document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'none'
                 document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'flex'
                 // document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
-                // document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
+                document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
 
                 document.querySelector('.geral').classList.remove('perfilActive')
                 document.querySelector('.equipe').classList.add('perfilActive')
@@ -117,10 +272,10 @@ function Times() {
                 document.querySelector('.config').classList.remove('perfilActive')
                 break
             case 'config':
-                // document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'none'
-                // document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
+                document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'none'
+                document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
                 // document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
-                // document.querySelector('.divConfigSubMainContainerCompo').style.display = 'flex'
+                document.querySelector('.divConfigSubMainContainerCompo').style.display = 'flex'
 
                 document.querySelector('.geral').classList.remove('perfilActive')
                 document.querySelector('.equipe').classList.remove('perfilActive')
@@ -131,21 +286,89 @@ function Times() {
 
     const makeEverythingWork = () => {
         setValue(time.descricao)
+        setImgUrl(time.logo)
+        setImgUrl2(time.imgFundo)
+        setImgUrl3(time.imgFundo2)
+        console.log(loggedUser.username)
+
+        if(loggedUser.username === time.donoCriacao || loggedUser.username === time.capitao){
+            document.querySelector('.config').style.display = 'flex'
+
+            let list = document.querySelectorAll(`.doDisturbIcon`)
+
+            for(let i = 0; i < 5; i++){
+                list[i].style.display = 'block'
+            }
+        }else{
+            document.querySelector('.config').style.display = 'none'
+        
+            let list = document.querySelectorAll(`.doDisturbIcon`)
+
+            for(let i = 0; i < 5; i++){
+                list[i].style.display = 'none'
+            }
+            
+            
+        }
         deadOrAlive = true
     }  
     if(deadOrAlive === false){
         setTimeout(() => {
             makeEverythingWork()
-        }, 1600);
+        }, 2400);
+    }
+
+    const deleteActiveUser = async(user) => {
+        showModal('loading','Atualizando o Banco','barLoading')
+        let teamActivePlayers = JSON.parse(time.equipeAtiva)              
+        let teamReservePlayers = time.reserva       
+        let teamTCPlayers = time.comissaoTecnica    
+        console.log(teamActivePlayers)
+
+        let indexOf = JSON.parse(time.equipeAtiva).indexOf(user)
+
+        teamActivePlayers.splice(indexOf, 1)
+
+        time.equipeAtiva = teamActivePlayers
+
+        let list = document.querySelectorAll(`.doDisturbIcon`)
+
+        list[indexOf].style.display = 'none'
+
+        // try{
+        //     const requestOptions = {
+        //         method: 'PUT',
+        //         headers: {'Content-type': 'application/json'},
+        //         body: JSON.stringify({
+        //             nome: time.nome,
+        //             tag: time.tag,
+        //             logo: time.logo,
+        //             imgFundo: imgUrl2,
+        //             equipeAtiva: time.equipeAtiva,
+        //             reserva: time.reserva,
+        //             comissaoTecnica: time.comissaoTecnica,
+        //             jogoPrincipal: time.jogoPrincipal,
+        //             conquistas: time.conquistas,
+        //             descricao: time.descricao,
+        //             imgFundo2: imgUrl3,
+        //             dataCriacao: time.dataCriacao,
+        //             donoCriacao: time.donoCriacao,
+        //             capitao: time.capitao
+        //         })
+                
+        //     }
+        //     closeModal('success', 'atualizado!',null)
+        //     await fetch('https://web-production-8ce4.up.railway.app/api/time/' + time.id,  requestOptions)
+        //     // window.location.href = '/e/' + time.nome
+        //     }catch(e){
+                
+        //     }
     }
 
     return(
         <div className='divParticiparMainContainer'>
-            {/* <Navbar page={'usuario'} /> */}
             <ModalCustom/>
             <Loading/>
-            {/* <div className="divMainTorneio" /> */}
-
             <div className='divFundoMainContainer' style={{backgroundImage: `url(${time.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center',}}>
                 <div className='divContainerFundoMainContainer'/>
             </div>
@@ -222,44 +445,8 @@ function Times() {
                                     </div> */}
                                     <div className='divmdViewer' style={{}}>
                                         <MDEditor.Markdown className='markdownShower'  source={value} style={{ whiteSpace: 'pre-wrap'}} />
-                                        {/* <div className='editMarkdownButton enterMarkdown' onClick={() => callEditMarkdownEditor('enter')} ><p>Editar</p></div> */}
                                     </div>
                                 </div>
-                                {/* <div className='divConquistaEfavoritos'>
-                                    <div className='containerFavoriteListOfUser'>
-                                        <h2>Jogos Favoritados</h2>
-                                        <div className='favoriteListOfUser'>
-                                            { jogo.map( (jogo) => {
-                                                for(let i = 0; i < 5;i++){
-                                                    if(jogo.id === favoritados[i+1]){
-                                                        return  <div key={jogo.id} className='divJogosSubContainer' id={jogo.id}>
-                                                                    <div className='divJogosContainer'style={{borderColor: viewingUser.corP}}>
-                                                                        <img className='divJogosImg' src={jogo.imgFundo}/>
-                                                                        <div>
-                                                                            <h5>{jogo.nome}</h5>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                    }
-                                                }
-                                            }) }
-                                        </div>
-                                    </div>
-
-                                    <div className='containerFavoriteListOfUser'>
-                                        <h2>Conquistas</h2>
-                                        { torneio.map( (torneio) => 
-                                            <div key={torneio.id} className='divJogosSubContainer' id={torneio.id}>
-                                                <div className='divJogosContainer' style={{borderColor: viewingUser.corP}}>
-                                                    <img className='divJogosImg' src={torneio.thumbnail}/>
-                                                    <div>
-                                                        <h5>{torneio.nome}</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ) }
-                                    </div>
-                                </div> */}
                             </div>
                             <div className='divEquipesSubMainContainerCompo' >
                                 <div className='divContainerTeamsOnUserTab' style={{width: '95%'}}>
@@ -274,11 +461,12 @@ function Times() {
 
                                                     if(JSON.parse(time.equipeAtiva)[i] === user.id){
                                                         return  <div key={user.id} className='divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={user.id}>
-                                                                    <div onClick={() => {window.location.href = '/u/' + user.username}} className='divUserOnTeamContainer'>
+                                                                    <div  className='divUserOnTeamContainer'>
                                                                         <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
-                                                                        <div>
+                                                                        <div onClick={() => {window.location.href = '/u/' + user.username}}>
                                                                             <h4>{user.username}</h4>
                                                                         </div>
+                                                                        <DoDisturbIcon onClick={() => {deleteActiveUser(user.id)}} className='doDisturbIcon' sx={{fontSize: "4vh", color: "#fc6b03"}}/>
                                                                     </div>
                                                                 </div>
 
@@ -299,9 +487,9 @@ function Times() {
 
                                                     if(JSON.parse(time.reserva)[i] === user.id){
                                                         return  <div key={user.id} className='divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={user.id}>
-                                                                    <div onClick={() => {window.location.href = '/u/' + user.username}} className='divUserOnTeamContainer'>
+                                                                    <div className='divUserOnTeamContainer'>
                                                                         <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
-                                                                        <div>
+                                                                        <div onClick={() => {window.location.href = '/u/' + user.username}}>
                                                                             <h4>{user.username}</h4>
                                                                         </div>
                                                                     </div>
@@ -324,9 +512,9 @@ function Times() {
 
                                                     if(JSON.parse(time.comissaoTecnica)[i] === user.id){
                                                         return  <div key={user.id} className='divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={user.id}>
-                                                                    <div onClick={() => {window.location.href = '/u/' + user.username}} className='divUserOnTeamContainer'>
+                                                                    <div className='divUserOnTeamContainer'>
                                                                         <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
-                                                                        <div>
+                                                                        <div onClick={() => {window.location.href = '/u/' + user.username}}>
                                                                             <h4>{user.username}</h4>
                                                                         </div>
                                                                     </div>
@@ -340,6 +528,108 @@ function Times() {
                                     </div>
                                     <div className="SeparatorFromGround"></div>
                                 </div>
+                            </div>
+                            <div className='divConfigSubMainContainerCompo' style={{borderColor: '#fc6b03'}}>        
+                                <div className='divConfigSubMainContainer' style={{borderColor: '#fc6b03'}}>
+                                    <div className='divConfigConfigsContainer' style={{borderColor: '#fc6b03'}}>
+                                        <div className='divConfigConfigsSubContainer' style={{borderColor: '#fc6b03'}}>
+                                            <h1>Configurar Perfil</h1>
+                                            <h2>Informações Gerais</h2>
+
+                                            <div className='divOmgConfigs'>
+                                                <div className='divContainerConfigSub4' style={{borderColor: '#fc6b03'}}>
+                                                    <label className='premiumConfigs' style={{borderColor: '#fc6b03'}}>Icone:
+                                                        <div className='divContainerNewImage'>
+                                                            <img className='gearSelectImage' src={require('./components/assets/selecionar100x100.png')}/>
+                                                            {
+                                                                !imgUrl &&
+                                                                <div className='outerbar'>
+                                                                <div className='innerbar' style={{ width: `${progresspercent}%` }}>{progresspercent}%</div>
+                                                                </div>
+                                                            }
+                                                            {
+                                                                imgUrl &&
+                                                                
+                                                                <img src={imgUrl} alt='uploaded file' className='imgUploaded' style={{borderColor: '#fc6b03'}} />
+                                                            }
+                                                            
+                                                            <form className='form' >
+                                                                <input style={{display: 'none'}} onChange={(event) => {handleSubmit(event); 
+                                                                    }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                                            </form>
+                                                        </div>
+                                                    </label>
+                                                    <label>Nome da Equipe: <input value={username} onChange={(event) => setUsername(event.target.value)} placeholder={time.nome}/></label>
+                                                    <label>Tag da Equipe: <input value={tag} onChange={(event) => setTag(event.target.value)} placeholder={time.tag}/></label>
+
+                                                </div>
+
+                                                <div className='divContainerConfigSub'>
+
+
+                                                    
+                                                </div>
+                                            </div>
+                            
+
+                                        <div>
+                                            <button onClick={() => callMudançasPerfil('IG')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount1'>Confirmar Mudanças - Informações Gerais</button>
+                                        </div>
+                                        <div className='divConfigConfigsSubContainer premiumConfigs2'>
+                                            <h3>Personalização</h3>
+                                                <div className='divOmgConfigs'>  
+                                                        <div className='divContainerConfigSub2'>
+                                                            <label>Imagem atrás do nome: 
+                                                                <div className='divContainerNewImage' style={{borderColor: '#fc6b03'}}>
+                                                                    <img className='gearSelectImage2' src={require('./components/assets/selecionar450x250.png')}/>
+
+                                                                    {
+                                                                        !imgUrl3 &&
+                                                                        <div className='outerbar'>
+                                                                        <div className='innerbar' style={{ width: `${progresspercent3}%` }}>{progresspercent3}%</div>
+                                                                        </div>
+                                                                    }
+                                                                    {
+                                                                        imgUrl3 &&
+                                                                        <img src={imgUrl3} alt='uploaded file' className='imgUploaded2'  style={{borderColor: '#fc6b03'}}/>
+                                                                    }
+                                                                    <form className='form'>
+                                                                        <input style={{display: 'none'}} onChange={(event) => {handleSubmitImgFundoDois(event); 
+                                                                        }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                                                    </form>
+                                                                </div>
+                                                            </label>
+                                                            <label>Imagem atrás da página: 
+                                                                                                                            
+                                                                <div className='divContainerNewImage' style={{borderColor: '#fc6b03'}}>
+                                                                    <img className='gearSelectImage3' src={require('./components/assets/selecionar1600x250.png')}/>
+                                                                    {
+                                                                        !imgUrl2 &&
+                                                                        <div className='outerbar'>
+                                                                        <div className='innerbar' style={{ width: `${progresspercent2}%` }}>{progresspercent2}%</div>
+                                                                        </div>
+                                                                    }
+                                                                    {
+                                                                        imgUrl2 &&
+                                                                        <img src={imgUrl2} alt='uploaded file' className='imgUploaded3'   style={{borderColor: '#fc6b03'}}/>
+                                                                    }
+                                                                    <form className='form' >
+                                                                        <input style={{display: 'none'}} onChange={(event) => {handleSubmitImgFundo(event); 
+                                                                            }} className='inputTypeFile' type='file' accept=".png,.jpeg, .jpg"/> 
+                                                                    </form>
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                </div>
+                                            
+                                        </div>
+                                        <div id="premiumConfigs2">
+                                            <button onClick={() => callMudançasPerfil('PP')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount4 '>Confirmar Mudanças - Personalização</button>
+                                        </div>
+                                    </div>
+
+                                </div>            
+                            </div>
                             </div>
                         </div>
                     </div>

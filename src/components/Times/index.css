@@ -89,6 +89,7 @@
 }
 
 .divUserOnTeamContainer{
+    position: relative;
     background-color: #363636;
     box-shadow: 6px 6px 10px 0px #030303;
     width: 95%;
@@ -101,6 +102,11 @@
     border-radius: 60px;
 }
 
+.doDisturbIcon{
+    position: absolute;
+    right: 5%;
+}
+
 .divUserOnTeamContainer div{
     margin-top: 20px;
 }
@@ -109,6 +115,7 @@
     width: 60px;
     height: 60px;
     border-radius: 60px;
+    background-color: #121212;
 }
     
 .divContainerTeamsOnUserTab div h3{
@@ -120,4 +127,8 @@
     border-bottom: 1px solid #fc6b03;
     margin-top: 6%;
     width: 105%;
+}
+
+.doDisturbIcon{
+    cursor: pointer;
 }
