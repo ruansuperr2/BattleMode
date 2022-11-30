@@ -90,6 +90,7 @@
 
 .divUserOnTeamContainer{
     position: relative;
+    margin-block: .5rem;
     background-color: #363636;
     box-shadow: 6px 6px 10px 0px #030303;
     width: 95%;
@@ -126,9 +127,16 @@
 .SeparatorFromGround{
     border-bottom: 1px solid #fc6b03;
     margin-top: 6%;
-    width: 105%;
+    width: 100%;
 }
 
 .doDisturbIcon{
     cursor: pointer;
+}
+
+
+@media screen and (max-width: 1350px) {
+    .criador {
+        flex-wrap: nowrap;
+    }
 }
