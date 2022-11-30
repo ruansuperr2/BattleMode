@@ -305,12 +305,13 @@
 }
 
 .editMarkdownButton{
-    position: absolute;
-    top: 95%;
-    right: 2%;
-    width: 12%;
-    height: 30px;
-    margin: 20px;
+    position: relative;
+    /* top: 95%; */
+    /* right: 2%; */
+    width: 6.5rem;
+    height: 2rem;
+    margin-block: 20px;
+    margin-left: 1rem;
     background-color: #272727;
     border-radius: 20px;
     border: 2px solid #fc6b03;
@@ -378,7 +379,7 @@
     background-color: #363636;
     box-shadow: 6px 6px 10px 0px #030303;
     width: 180px;
-    height: 40px;
+    height: 4.3rem;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -395,7 +396,7 @@
 }
 
 .divTeamsOnUserContainer h5{
-    margin-top: 45%;
+    margin-top: 3.5rem;
 }
 
 .divTeamsOnUserImg{
@@ -406,7 +407,7 @@
     border-radius: 60px;
     width: 60px;
     height: 60px;
-    margin-top: -2%;
+    margin-top: -2rem;
 }
 
 .divConfigSubMainContainer{
@@ -453,6 +454,7 @@
     width: 90%;
     height: 1px;
     padding-left: 5%;
+    margin-block: 2rem;
     display: flex;
     align-self: flex-start;
     background-color: #515151;
@@ -466,24 +468,28 @@
 
 .divOmgConfigs{
     display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
 .divContainerConfigSub2, .divContainerConfigSub4{
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    margin-block: 0.5rem;
+    /* flex-direction: column; */
 }
 
 
 
 .divContainerConfigSub{
-    padding-left: 1%;
+    /* padding-left: 1%; */
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    align-items: center;
 }
 
 .divOmgConfigs input{
-    width: 100%;
+    width: 13.4rem;
     height: 50%;
     margin: 11px;
     padding: .5rem;
@@ -496,13 +502,14 @@
     z-index: 1;
 }
 .divOmgConfigs label{
-    width: 100%;
+    width: 5.5rem;
     height: 50%;
-    margin: 20px;
+    margin-block: 20px;
+    margin-right: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    text-align: center;
 }
 
 .inputTypeFile{
@@ -661,6 +668,11 @@
         text-align: center;
     }
 
+    .divEquipesSubMainContainerCompo {
+        align-items: center;
+        justify-content: center;
+    }
+
     .divRightMainComplexoContainerCompo {
         width: 100%;
     }
@@ -674,10 +686,6 @@
         justify-content: center;
     }
 
-    .divOmgConfigs label {
-        width: auto;
-    }
-
     .divConfigConfigsContainer div button {
         display: flex;
         justify-content: center;
@@ -687,6 +695,11 @@
     .senhaEmailDivider {
         align-self: center;
     }
+
+    .perfilActive {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 @media screen and (max-width: 450px) {
@@ -695,7 +708,13 @@
         align-items: center;
         justify-content: center;
     }
-    .divOmgConfigs input {
-        width: 50%;
-    };
+}
+
+@media screen and (max-width: 385px) {
+    .divContainerConfigSub2 {
+        flex-direction: column;
+    }
+    .divOmgConfigs label {
+        margin-right: 0;
+    }
 }

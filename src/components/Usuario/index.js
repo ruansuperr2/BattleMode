@@ -564,7 +564,7 @@ function Usuario(){
                             <div className='divEquipesSubMainContainerCompo' >
                                 <div className='divContainerTeamsOnUserTab' style={{borderColor: viewingUser.corP}}>
                                     <div>
-                                        <h2>Atuando na(s) Equipe(s)</h2>
+                                        <h2>Atuando em:</h2>
                                             { 
                             
                                                     time.map( (time) => {
@@ -588,9 +588,9 @@ function Usuario(){
                                             
                                             }
                                     </div>
-                                        
+                                    <div className='senhaEmailDivider'/>
                                     <div>
-                                        <h2>Reseva na(s) Equipe(s)</h2>
+                                        <h2>Reserva em:</h2>
                                         { 
                         
                                                 time.map( (time) => {
@@ -614,8 +614,9 @@ function Usuario(){
                                         
                                         }
                                     </div>
+                                    <div className='senhaEmailDivider'/>
                                     <div>
-                                        <h2>Técnico na(s) Equipe(s)</h2>
+                                        <h2>Técnico de:</h2>
                                         { 
                         
                                                 time.map( (time) => {
@@ -675,7 +676,10 @@ function Usuario(){
                                                             </form>
                                                         </div>
                                                     </label>
-                                                    <label>Usuário: <input style={{borderColor: viewingUser.corP}} value={username} onChange={(event) => setUsername(event.target.value)} placeholder={loggedUser.username}/></label>
+                                                    <div className='divContainerConfigSub2'>
+                                                        <label>Usuário:</label>
+                                                        <input style={{borderColor: viewingUser.corP}} value={username} onChange={(event) => setUsername(event.target.value)} placeholder={loggedUser.username}/>
+                                                    </div>
                                                 </div>
 
                                                 <div className='divContainerConfigSub' style={{borderColor: viewingUser.corP}}>
@@ -687,7 +691,7 @@ function Usuario(){
                             
 
                                         <div>
-                                            <button onClick={() => callMudançasPerfil('IG')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount1' style={{borderColor: viewingUser.corP}}><p style={{margin: '0'}}>Confirmar Mudanças -</p><p style={{margin: '0'}}>Informações Gerais</p></button>
+                                            <button onClick={() => callMudançasPerfil('IG')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount1' style={{borderColor: viewingUser.corP}}><p style={{margin: '0'}}>Confirmar Mudanças</p></button>
                                         </div>
 
                                         <div className='senhaEmailDivider'/>
@@ -698,11 +702,11 @@ function Usuario(){
                                             <div className='divOmgConfigs'>                                                
                                                 <div className='divContainerConfigSub2'>
                                                     <label>Email: </label>
-                                                    <label>Novo Email: </label>
+                                                    <input style={{borderColor: viewingUser.corP}} value={loggedUser.email}/>
                                                 </div>
 
-                                                <div className='divContainerConfigSub'>
-                                                    <input style={{borderColor: viewingUser.corP}} value={loggedUser.email}/>
+                                                <div className='divContainerConfigSub2'>
+                                                    <label>Novo Email: </label>
                                                     <input style={{borderColor: viewingUser.corP}} value={newEmail} onChange={(event) => setnewEmail(event.target.value)} placeholder={loggedUser.email}/>
                                                 </div>
                                             </div>
@@ -710,11 +714,11 @@ function Usuario(){
                                               <div className='divOmgConfigs'>  
                                                 <div className='divContainerConfigSub2'>
                                                     <label>Senha Atual:</label>
-                                                    <label>Nova Senha:</label>
+                                                    <input style={{borderColor: viewingUser.corP}} type='password' value={password} onChange={(event) => setPassword(event.target.value)}/>
                                                 </div>
 
-                                                <div className='divContainerConfigSub'>
-                                                    <input style={{borderColor: viewingUser.corP}} type='password' value={password} onChange={(event) => setPassword(event.target.value)}/>
+                                                <div className='divContainerConfigSub2'>
+                                                    <label>Nova Senha:</label>
                                                     <input style={{borderColor: viewingUser.corP}} type='password' value={newPassword} onChange={(event) => setnewPassword(event.target.value)}/>
                                                 </div>
                                              </div>
@@ -723,7 +727,7 @@ function Usuario(){
                                 
                                         </div>
                                         <div>
-                                            <button onClick={() => callMudançasPerfil('SC')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount2' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Segurança da Conta</button>
+                                            <button onClick={() => callMudançasPerfil('SC')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount2' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças</button>
                                         </div>
 
                                         <div className='senhaEmailDivider'/>
@@ -733,23 +737,31 @@ function Usuario(){
                                             <div className='divOmgConfigs'>  
                                                     <div className='divContainerConfigSub2'>
                                                         <label>Twitter:</label>
+                                                        <input style={{borderColor: viewingUser.corP}} value={twitter} onChange={(event) => setTwitter(event.target.value)} placeholder={loggedUser.twitter}/>
+                                                    </div>
+                                                    <div className='divContainerConfigSub2'>
                                                         <label>Instagram:</label>
-                                                        <label>Discord:</label>
-                                                        <label>Twitch:</label>
+                                                        <input style={{borderColor: viewingUser.corP}} value={instagram} onChange={(event) => setInstagram(event.target.value)} placeholder={loggedUser.instagram}/>
+                                                        
                                                     </div>
 
-                                                    <div className='divContainerConfigSub'>
-                                                        <input style={{borderColor: viewingUser.corP}} value={twitter} onChange={(event) => setTwitter(event.target.value)} placeholder={loggedUser.twitter}/>
-                                                        <input style={{borderColor: viewingUser.corP}} value={instagram} onChange={(event) => setInstagram(event.target.value)} placeholder={loggedUser.instagram}/>
+                                                    <div className='divContainerConfigSub2'>
+                                                        <label>Discord:</label>
                                                         <input style={{borderColor: viewingUser.corP}} value={discord} onChange={(event) => setDiscord(event.target.value)} placeholder={loggedUser.discord}/>
+
+                                                    </div>
+
+                                                    <div className='divContainerConfigSub2'>
+                                                        <label>Twitch:</label>
                                                         <input style={{borderColor: viewingUser.corP}} value={twitch} onChange={(event) => setTwitch(event.target.value)} placeholder={loggedUser.twitch}/>
+
                                                     </div>
                                             </div>
                                             
                 
                                         </div>
                                         <div>
-                                            <button onClick={() => callMudançasPerfil('RS')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount3' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Redes Sociais</button>
+                                            <button onClick={() => callMudançasPerfil('RS')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount3' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças</button>
                                         </div>
 
                                         <div className='senhaEmailDivider'/>
@@ -833,7 +845,7 @@ function Usuario(){
                                             
                                         </div>
                                         <div id="premiumConfigs2">
-                                            <button onClick={() => callMudançasPerfil('PP')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount4 ' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças - Personalização</button>
+                                            <button onClick={() => callMudançasPerfil('PP')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount4 ' style={{borderColor: viewingUser.corP}}>Confirmar Mudanças</button>
                                         </div>
                                     </div>
 
