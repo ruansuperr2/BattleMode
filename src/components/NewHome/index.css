@@ -612,6 +612,7 @@ sliderRightTitle {
     }
     .customizationSliderImageSlide {
         border: none;
+        height: 0;
         box-shadow: none;
     }
     .logoLabel {
@@ -621,5 +622,11 @@ sliderRightTitle {
     }
     .labelTorneios {
         text-align: center;
+    }
+    .sliderRightFirstText {
+        margin-block: .5em;
+    }
+    .sliderRightSecondText {
+        margin-block: .5em;
     }
 }
