@@ -9,9 +9,12 @@ import MDEditor from '@uiw/react-md-editor'
 import Loading from '../Loading'
 import DoDisturbIcon from '@mui/icons-material/DoDisturb';
 
+import $ from 'jquery'
+
 import { storage } from '../FireBase';
-import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-let teamActivePlayers
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage"; 
+let fed = false
+
 let callTeamFunction = 0
 let deadOrAlive = false
 
@@ -296,7 +299,24 @@ function Times() {
         setImgUrl2(time.imgFundo)
         setImgUrl3(time.imgFundo2)
         console.log(loggedUser.username)
-        teamActivePlayers = JSON.parse(time.equipeAtiva)
+        if(fed === false){
+            fed = true
+            console.log(JSON.parse(time.equipeAtiva).length)
+                if (JSON.parse(time.equipeAtiva).length < 5) {
+                    $('.divAppendAP').append(
+                        `
+                            <div class='usersOnActive divUsersOnTeamSubContainer' style="borderColor: #fc6b03" id="selectById+user.id">
+                                <div  class='divUserOnTeamContainer'>
+                                    <img class='divUserOnTeamImg' src="url('https://raw.githubusercontent.com/MonoDryad/BattleMode/main/Source/userDefault.png')" style="borderColor: #fc6b03, boxShadow: '0px 0px 11px 0px #fc6b03'"/>
+                                    <div style="cursor: 'pointer'">
+                                        <h4>Adicionar Jogador</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    )
+                }
+        }
         if(loggedUser.username === time.donoCriacao || loggedUser.username === time.capitao){
             document.querySelector('.config').style.display = 'flex'
 
@@ -324,76 +344,124 @@ function Times() {
         }, 2400);
     }
 
-    const deleteActiveUser = async(user) => {
+    const deleteTCUser = async(user,pos) => {
         showModal('loading','Atualizando o Banco','barLoading')
         console.log('log', user)
-        let teamReservePlayers = time.reserva       
-        let teamTCPlayers = time.comissaoTecnica    
-        console.log(teamActivePlayers)
+        let timeA = JSON.parse(time.comissaoTecnica)
 
-        let indexOf = JSON.parse(time.equipeAtiva).map((val, idx) => {
-            console.log(`Index of ${val} is ${idx}`);
-            if(user === val){
-                console.log(user, idx)
-                respira = idx
-                return idx;
+
+        let indexOf = JSON.parse(time.comissaoTecnica).indexOf(user)
+        timeA.splice(indexOf,1)
+        time.comissaoTecnica = timeA
+        document.querySelector('#selectById3'+user).style.display = 'none'
+        try{
+            const requestOptions = {
+                method: 'PUT',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify({
+                    nome: time.nome,
+                    tag: time.tag,
+                    logo: time.logo,
+                    imgFundo: time.imgFundo,
+                    equipeAtiva: time.equipeAtiva,
+                    reserva: time.reserva,
+                    comissaoTecnica: JSON.stringify(timeA),
+                    jogoPrincipal: time.jogoPrincipal,
+                    conquistas: time.conquistas,
+                    descricao: time.descricao,
+                    imgFundo2: time.imgFundo2,
+                    dataCriacao: time.dataCriacao,
+                    donoCriacao: time.donoCriacao,
+                    capitao: time.capitao
+                })
+                
             }
-        })
-        console.log(respira)
-        console.log(indexOf)
-       
-        document.querySelectorAll('#selectById')[respira].style.display = 'none'
-        // teamActivePlayers.splice(indexOf, 1)
-
-        // time.equipeAtiva = teamActivePlayers
-
-        // let list = document.querySelectorAll(`.doDisturbIcon`)
-
-        // document.querySelectorAll(`.${list[user].parentNode.className}`)[user].style.display = 'none'
-        // console.log(JSON.stringify({
-        //     nome: time.nome,
-        //     tag: time.tag,
-        //     logo: time.logo,
-        //     imgFundo: time.imgFundo,
-        //     equipeAtiva: time.equipeAtiva,
-        //     reserva: time.reserva,
-        //     comissaoTecnica: time.comissaoTecnica,
-        //     jogoPrincipal: time.jogoPrincipal,
-        //     conquistas: time.conquistas,
-        //     descricao: time.descricao,
-        //     imgFundo2: time.imgFundo2,
-        //     dataCriacao: time.dataCriacao,
-        //     donoCriacao: time.donoCriacao,
-        //     capitao: time.capitao
-        // }))
-        // try{
-        //     const requestOptions = {
-        //         method: 'PUT',
-        //         headers: {'Content-type': 'application/json'},
-        //         body: JSON.stringify({
-        //             nome: time.nome,
-        //             tag: time.tag,
-        //             logo: time.logo,
-        //             imgFundo: time.imgFundo,
-        //             equipeAtiva: JSON.stringify(time.equipeAtiva.sort()),
-        //             reserva: time.reserva,
-        //             comissaoTecnica: time.comissaoTecnica,
-        //             jogoPrincipal: time.jogoPrincipal,
-        //             conquistas: time.conquistas,
-        //             descricao: time.descricao,
-        //             imgFundo2: time.imgFundo2,
-        //             dataCriacao: time.dataCriacao,
-        //             donoCriacao: time.donoCriacao,
-        //             capitao: time.capitao
-        //         })
+            closeModal('success', 'atualizado!',null)
+            await fetch(`https://web-production-8ce4.up.railway.app/api/time/${time.id}`,  requestOptions)
+            // window.location.href = '/e/' + time.nome
+            }catch(e){
                 
-        //     }
-        //     closeModal('success', 'atualizado!',null)
-        //     await fetch(`https://web-production-8ce4.up.railway.app/api/time/${time.id}`,  requestOptions)
-        //     // window.location.href = '/e/' + time.nome
-        //     }catch(e){
+            }
+    }
+
+    const deleteReserveUser = async(user,pos) => {
+        showModal('loading','Atualizando o Banco','barLoading')
+        console.log('log', user)
+        let timeA = JSON.parse(time.reserva)
+
+
+        let indexOf = JSON.parse(time.reserva).indexOf(user)
+        timeA.splice(indexOf,1)
+        time.reserva = timeA
+        document.querySelector('#selectById2'+user).style.display = 'none'
+        try{
+            const requestOptions = {
+                method: 'PUT',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify({
+                    nome: time.nome,
+                    tag: time.tag,
+                    logo: time.logo,
+                    imgFundo: time.imgFundo,
+                    equipeAtiva: time.equipeAtiva,
+                    reserva: JSON.stringify(timeA),
+                    comissaoTecnica: time.comissaoTecnica,
+                    jogoPrincipal: time.jogoPrincipal,
+                    conquistas: time.conquistas,
+                    descricao: time.descricao,
+                    imgFundo2: time.imgFundo2,
+                    dataCriacao: time.dataCriacao,
+                    donoCriacao: time.donoCriacao,
+                    capitao: time.capitao
+                })
                 
-        //     }
+            }
+            closeModal('success', 'atualizado!',null)
+            await fetch(`https://web-production-8ce4.up.railway.app/api/time/${time.id}`,  requestOptions)
+            // window.location.href = '/e/' + time.nome
+            }catch(e){
+                
+            }
+    }
+
+    const deleteActiveUser = async(user,pos) => {
+        showModal('loading','Atualizando o Banco','barLoading')
+        console.log('log', user)
+        let timeA = JSON.parse(time.equipeAtiva)
+
+
+        let indexOf = JSON.parse(time.equipeAtiva).indexOf(user)
+        timeA.splice(indexOf,1)
+        time.equipeAtiva = timeA
+        document.querySelector('#selectById'+user).style.display = 'none'
+        try{
+            const requestOptions = {
+                method: 'PUT',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify({
+                    nome: time.nome,
+                    tag: time.tag,
+                    logo: time.logo,
+                    imgFundo: time.imgFundo,
+                    equipeAtiva: JSON.stringify(timeA),
+                    reserva: time.reserva,
+                    comissaoTecnica: time.comissaoTecnica,
+                    jogoPrincipal: time.jogoPrincipal,
+                    conquistas: time.conquistas,
+                    descricao: time.descricao,
+                    imgFundo2: time.imgFundo2,
+                    dataCriacao: time.dataCriacao,
+                    donoCriacao: time.donoCriacao,
+                    capitao: time.capitao
+                })
+                
+            }
+            closeModal('success', 'atualizado!',null)
+            await fetch(`https://web-production-8ce4.up.railway.app/api/time/${time.id}`,  requestOptions)
+            // window.location.href = '/e/' + time.nome
+            }catch(e){
+                
+            }
     }
 
     return(
@@ -433,7 +501,7 @@ function Times() {
                                         
                                         if(user.username === time.donoCriacao){
                                             return <div>
-                                                        <label onClick={() => window.location.href = '/u/' + user.username} style={{textAlign: 'center', display: 'flex', alignItems: 'center', flexWrap: 'wrap-reverse'}}>
+                                                        <label className='criador' onClick={() => window.location.href = '/u/' + user.username} style={{textAlign: 'center', display: 'flex', alignItems: 'center', flexWrap: 'wrap-reverse'}}>
                                                             <label>{user.username}</label>
                                                             <img style={{marginRight: '10px', borderRadius: 50, border: '1px solid' + user.corP}} width={50} height={50} src={user.icon}/>
                                                         </label>
@@ -447,6 +515,7 @@ function Times() {
                                         
                                     })
                                 }
+                                
                                 
                                 
                             </div>
@@ -490,7 +559,7 @@ function Times() {
                       
                                             users.map( (user) => {
                                                     if(JSON.parse(time.equipeAtiva).find((ac) => {return ac === user.id})){
-                                                        return  <div key={user.id} className='usersOnActive divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={'selectById'}>
+                                                        return  <div key={user.id} className='usersOnActive divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={'selectById'+user.id}>
                                                                     <div  className='divUserOnTeamContainer'>
                                                                         <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
                                                                         <div style={{cursor: 'pointer'}} onClick={() => {window.location.href = '/u/' + user.username}}>
@@ -502,10 +571,11 @@ function Times() {
 
                                                     }
                                                 
-                                                
-                                            }
+                                                    
+                                                }
                                             ) 
                                         }
+                                        <div className='divAppendAP'></div>
                                     </div>
                                     <div style={{width: '100%'}}>
                                         <h3>Equipe Reserva</h3>
@@ -517,12 +587,14 @@ function Times() {
                                                 for(let i = 0; i < 5;i++){
 
                                                     if(JSON.parse(time.reserva)[i] === user.id){
-                                                        return  <div key={user.id} className='divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={user.id}>
+                                                        return  <div key={user.id} className='divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={'selectById2'+user.id}>
                                                                     <div className='divUserOnTeamContainer'>
                                                                         <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
                                                                         <div onClick={() => {window.location.href = '/u/' + user.username}}>
                                                                             <h4>{user.username}</h4>
                                                                         </div>
+                                                                        <DoDisturbIcon onClick={() => {deleteReserveUser(user.id)}} className='doDisturbIcon' id={user.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/>
+
                                                                     </div>
                                                                 </div>
 
@@ -542,12 +614,14 @@ function Times() {
                                                 for(let i = 0; i < 5;i++){
 
                                                     if(JSON.parse(time.comissaoTecnica)[i] === user.id){
-                                                        return  <div key={user.id} className='divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={user.id}>
+                                                        return  <div key={user.id} className='divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={'selectById3'+user.id}>
                                                                     <div className='divUserOnTeamContainer'>
                                                                         <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
                                                                         <div onClick={() => {window.location.href = '/u/' + user.username}}>
                                                                             <h4>{user.username}</h4>
                                                                         </div>
+                                                                        <DoDisturbIcon onClick={() => {deleteTCUser(user.id)}} className='doDisturbIcon' id={user.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/>
+
                                                                     </div>
                                                                 </div>
 
