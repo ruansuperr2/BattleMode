@@ -8,6 +8,8 @@ import { useParams } from 'react-router-dom'
 import MDEditor from '@uiw/react-md-editor'
 import Loading from '../Loading'
 import DoDisturbIcon from '@mui/icons-material/DoDisturb';
+import { HiX } from 'react-icons/hi'
+import { AiOutlineCheck, AiOutlinePlus } from 'react-icons/ai'
 
 import $ from 'jquery'
 
@@ -244,7 +246,51 @@ function Times() {
                             break
         }
     }
+    const [inputProcurar, setInputProcurar] = useState('')
 
+    if(fed === true){
+
+        document.querySelector('.usersOnActiveAdd').addEventListener('click', () => {
+            document.querySelector('.newModal').innerHTML = `
+                <div style="position: fixed;z-index: 484;margin-top: 10%;margin-left: 21.2%; background-color: #fff;width:40%">
+                    <div style="padding-left: 30px;padding-right: 30px">
+                        <h2>Adicionar novo jogador</h2>
+                    </div>
+                    <hr>
+                    <div>
+                        <div>
+                            <div class='inputButtonFlex'>
+                            <input 
+                                class='inputProcurarJogador' 
+                                placeholder='Adicionar jogador...'
+                                onchange="handleChange"
+                                value="${inputProcurar}"/>
+                            <button 
+                                class='addJogador addButtonCriarEquipe'
+                                onclick='addJogador(${inputProcurar})'>+</button>
+                            </div>
+                            <div class='divMostrarJogadores'>
+                                    ${JSON.parse(time.equipeAtiva).map((item) => (
+                                        `<div class='cardBody' key='${item.id}'>
+                                            <div class='userIcon' style='background-position: center; background-size: cover;background-image: '${item.icon}'}}/>
+                                            <span class='userName'><a href='#'>${item.username}</a></span>
+                                            <button 
+                                                class='buttonRemoveJogador'
+                                                onclick='handleRemove(${item.id})'><HiX style="fontSize: 20px; color: #fc6b03"/></button>
+                                        </div>`
+                                    ))}
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div>
+                        <button>Confirmar adição</button>
+                    </div>
+                </div>
+            
+            `
+        })
+    }
     console.log(time)
     useEffect(() => {
 
@@ -269,6 +315,50 @@ function Times() {
                 document.querySelector('.geral').classList.remove('perfilActive')
                 document.querySelector('.equipe').classList.add('perfilActive')
                 document.querySelector('.config').classList.remove('perfilActive')
+
+                if(fed === false){
+                    
+                    console.log(JSON.parse(time.equipeAtiva).length)
+                        if (JSON.parse(time.equipeAtiva).length < 5) {
+                                document.querySelector('.divAppendAP').innerHTML = 
+                                `
+                                    <div class='usersOnActiveAdd divUsersOnTeamSubContainer' style="borderColor: #fc6b03" id="selectById+user.id">
+                                        <div style="cursor: pointer" class='divUserOnTeamContainer'>
+                                            <img class='divUserOnTeamImg' src="https://raw.githubusercontent.com/MonoDryad/BattleMode/main/Source/userDefault.png" style="borderColor: #fc6b03, boxShadow: '0px 0px 11px 0px #fc6b03'"/>
+                                            <div >
+                                                <h4>Adicionar Jogador</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `
+                                if (JSON.parse(time.reserva).length < 9) {
+                                document.querySelector('.divAppendRP').innerHTML = 
+                                `
+                                    <div class='usersOnReserveAdd divUsersOnTeamSubContainer' style="borderColor: #fc6b03" id="selectById+user.id">
+                                        <div style="cursor: pointer" class='divUserOnTeamContainer'>
+                                            <img class='divUserOnTeamImg' src="https://raw.githubusercontent.com/MonoDryad/BattleMode/main/Source/userDefault.png" style="borderColor: #fc6b03, boxShadow: '0px 0px 11px 0px #fc6b03'"/>
+                                            <div >
+                                                <h4>Adicionar Reserva</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `
+                                }if (JSON.parse(time.comissaoTecnica).length < 3) {
+                                document.querySelector('.divAppendCT').innerHTML = 
+                                `
+                                    <div class='usersOnTecnicoAdd divUsersOnTeamSubContainer' style="borderColor: #fc6b03" id="selectById+user.id">
+                                        <div style="cursor: pointer" class='divUserOnTeamContainer'>
+                                            <img class='divUserOnTeamImg' src="https://raw.githubusercontent.com/MonoDryad/BattleMode/main/Source/userDefault.png" style="borderColor: #fc6b03, boxShadow: '0px 0px 11px 0px #fc6b03'"/>
+                                            <div >
+                                                <h4>Adicionar Técnico</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `}
+                            
+                        }
+                        fed = true
+                }
                 break
             case 'torneio':
                 // document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'none'
@@ -289,6 +379,7 @@ function Times() {
                 document.querySelector('.geral').classList.remove('perfilActive')
                 document.querySelector('.equipe').classList.remove('perfilActive')
                 document.querySelector('.config').classList.add('perfilActive')
+                
                 break
         }
     })
@@ -299,30 +390,13 @@ function Times() {
         setImgUrl2(time.imgFundo)
         setImgUrl3(time.imgFundo2)
         console.log(loggedUser.username)
-        if(fed === false){
-            fed = true
-            console.log(JSON.parse(time.equipeAtiva).length)
-                if (JSON.parse(time.equipeAtiva).length < 5) {
-                    $('.divAppendAP').append(
-                        `
-                            <div class='usersOnActive divUsersOnTeamSubContainer' style="borderColor: #fc6b03" id="selectById+user.id">
-                                <div  class='divUserOnTeamContainer'>
-                                    <img class='divUserOnTeamImg' src="url('https://raw.githubusercontent.com/MonoDryad/BattleMode/main/Source/userDefault.png')" style="borderColor: #fc6b03, boxShadow: '0px 0px 11px 0px #fc6b03'"/>
-                                    <div style="cursor: 'pointer'">
-                                        <h4>Adicionar Jogador</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        `
-                    )
-                }
-        }
+
         if(loggedUser.username === time.donoCriacao || loggedUser.username === time.capitao){
             document.querySelector('.config').style.display = 'flex'
 
             let list = document.querySelectorAll(`.doDisturbIcon`)
 
-            for(let i = 0; i < 5; i++){
+            for(let i = 0; i < 16; i++){
                 list[i].style.display = 'block'
             }
         }else{
@@ -330,7 +404,7 @@ function Times() {
         
             let list = document.querySelectorAll(`.doDisturbIcon`)
 
-            for(let i = 0; i < 5; i++){
+            for(let i = 0; i < 16; i++){
                 list[i].style.display = 'none'
             }
             
@@ -341,7 +415,7 @@ function Times() {
     if(deadOrAlive === false){
         setTimeout(() => {
             makeEverythingWork()
-        }, 2400);
+        }, 2500);
     }
 
     const deleteTCUser = async(user,pos) => {
@@ -468,6 +542,10 @@ function Times() {
         <div className='divParticiparMainContainer'>
             <ModalCustom/>
             <Loading/>
+
+            <div className="newModal">
+                
+            </div>
             <div className='divFundoMainContainer' style={{backgroundImage: `url(${time.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center',}}>
                 <div className='divContainerFundoMainContainer'/>
             </div>
@@ -603,6 +681,7 @@ function Times() {
                                             }
                                             ) 
                                         }
+                                        <div className='divAppendRP'></div>
                                     </div>
                                     <div style={{width: '100%'}}>
                                         <h3>Equipe Técnica</h3>
@@ -630,6 +709,7 @@ function Times() {
                                             }
                                             ) 
                                         }
+                                        <div className='divAppendCT'></div>
                                     </div>
                                     <div className="SeparatorFromGround"></div>
                                 </div>
@@ -743,49 +823,6 @@ function Times() {
                         
                 <Footer/>
         </div>
-        // <div style={{background : '#121212'}}>
-        //     {/* <Navbar></Navbar> */}
-        //     <div className='DivMainContainerTimes'>
-        //         <div className='DivSecondMainContainerTimes'>
-        //             <div className='DivInfoTimes'>
-        //                 <div className='ImgDivInfo'></div>
-        //                 <p>Nome do time</p>
-        //             </div>
-
-        //             <div className='DivGeraisTimes'>
-                    
-        //             <div onClick={() => callSubPage('geral')} className='perfilConfig geral'><div className='imgUsuarioGearEditing'/>Visão Geral</div>
-        //                 <div onClick={() => callSubPage('equipe')} className='perfilConfig1 equipe'><div className='imgUsuarioGearEditing'/>Equipes</div>
-        //                 <div onClick={() => callSubPage('torneio')} className='perfilConfig2 torneio'><div className='imgUsuarioGearEditing'/>Torneios</div>
-        //                 <div onClick={() => callSubPage('config')} className='perfilConfig3 config'><div className='imgUsuarioGearEditing'/>Configurar Perfil</div>
-
-
-        //             </div>
-        //                 <div className='InfoVisaoGeral'>
-        //                     <div className='divUsuarioSubMainContainerCompo' >
-        //                         <h1 className="UserNameOnProfile"><div className='divImgFundoMainContainer' /></h1>
-                            
-        //                     </div>
-        //                     <div className='divEquipesSubMainContainerCompo' >
-        //                         <h1 className="UserNameOnProfile"><div className='divImgFundoMainContainer2'/></h1>
-                            
-        //                     </div>
-        //                     <div className='divTorneiosSubMainContainerCompo' >
-        //                         <h1 className="UserNameOnProfile"><div className='divImgFundoMainContainer2'/></h1>
-                            
-        //                     </div>
-        //                     <div className='divConfigSubMainContainerCompo' >
-        //                         <h1 className="UserNameOnProfile"><div className='divImgFundoMainContainer2'/></h1>
-                            
-        //                     </div>
-        //                 </div>
-
-
-        //         </div>
-        //     </div>
-        //      <Footer></Footer>
-        // </div>
-
     )
 }
 
