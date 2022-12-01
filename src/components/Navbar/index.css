@@ -326,6 +326,12 @@
 	display: none;
 }
 
+.navbarGrid {
+	display: flex;
+	flex-direction: row;
+	gap: 1.5rem;
+}
+
 
 @keyframes showBlock{
 	0%{
@@ -492,6 +498,28 @@
 	}
 	.loggedUserNameNavBar {
 		display: none;
+	}
+
+	.navbarGrid {
+		display: grid;
+		flex-direction: row;
+		grid-template-columns: 5;
+		grid-template-rows: 1;
+		gap: 1.5rem;
+	}
+}
+
+@media screen and (max-height: 595px) {
+	.navbarGrid {
+		grid-template-columns: repeat(2, auto);
+		grid-template-rows: repeat(3, auto) ;
+	}
+
+	.navbarGrid label:nth-child(5) {
+		display: flex;
+		grid-row: 3;
+		grid-column: 1 / span 2;
+		width: auto;
 	}
 }
 

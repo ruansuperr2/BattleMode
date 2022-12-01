@@ -137,15 +137,17 @@ export const Navbar = (props) => {
 
                 <div className='loggedUserFunctions' style={{borderColor: `${loggedUser.corP}`}}>
                     <label onClick={handleNavRes} id='hamburguer' style={{ height: 'auto' }}>{icon}</label>
-                    <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo navbarGo'/> Perfil</label>
-                    <label onClick={() => {window.location.href = `/criarEquipe`}}><div className='imgNavbarTeamGo navbarGo'/> Criar Equipe</label>
-                    <label onClick={() => {window.location.href = `/criarTorneio`}}><div className='imgNavbarTourneamentGo navbarGo'/> Criar Torneio</label>
-                    <label onClick={() => {window.location.href = `/find/u`}}><FaSearch style={{fontSize: '25px', color: '#fc6b03', paddingRight: '5px'}}/> Procurar</label>
+                    <div className='navbarGrid'>
+                        <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo navbarGo'/> Perfil</label>
+                        <label onClick={() => {window.location.href = `/criarEquipe`}}><div className='imgNavbarTeamGo navbarGo'/> Criar Equipe</label>
+                        <label onClick={() => {window.location.href = `/criarTorneio`}}><div className='imgNavbarTourneamentGo navbarGo'/> Criar Torneio</label>
+                        <label onClick={() => {window.location.href = `/find/u`}}><FaSearch style={{height: '30px', width: '30px', color: '#fc6b03', paddingRight: '5px'}}/> Procurar</label>
 
-                    <label onClick={() => {
-                        localStorage.clear('dasiBoard')
-                        window.location.reload(true)
-                    }}><FaDoorOpen style={{fontSize: '25px', color: '#fc6b03', paddingRight: '5px'}}/> Sair</label>
+                        <label onClick={() => {
+                            localStorage.clear('dasiBoard')
+                            window.location.reload(true)
+                        }}><FaDoorOpen style={{height: '30px', width: '30px', color: '#fc6b03', paddingRight: '5px'}}/> Sair</label>
+                    </div>
                 </div>
                 <div className='EntrarRegistroNavBar'>
                     <button onClick={() => {window.location.href = '/cadastro'}}>Cadastrar-se </button>
