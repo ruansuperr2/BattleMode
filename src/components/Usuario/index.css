@@ -654,6 +654,10 @@
         padding-left: 0;
     }
 
+    .divOmgConfigs label {
+        margin-right: 0;
+    }
+
     .divUsuarioComplexContainer {
         flex-direction: column;
     }
@@ -699,6 +703,26 @@
     .perfilActive {
         width: 100%;
         justify-content: center;
+        padding: 0;
+    }
+
+    .divContainerConfigSub4 {
+        flex-direction: column;
+    }
+    .divContainerConfigSub4 label {
+        width: 15rem;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    .divContainerConfigSub {
+        flex-direction: column;
+    }
+    .imgUploaded3 {
+        width: 280px;
+    }
+    .gearSelectImage3 {
+        width: 280px;
     }
 }
 
@@ -716,5 +740,6 @@
     }
     .divOmgConfigs label {
         margin-right: 0;
+        width: 10rem;
     }
 }

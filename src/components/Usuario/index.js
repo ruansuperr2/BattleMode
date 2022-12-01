@@ -654,38 +654,34 @@ function Usuario(){
                                             <h2>Informações Gerais</h2>
 
                                             <div className='divOmgConfigs'>
-                                                <div className='divContainerConfigSub4'>
-                                                    <label className='premiumConfigs'>Icone:
-                                                        <div className='divContainerNewImage' style={{borderColor: viewingUser.corP}}>
-                                                            <img className='gearSelectImage' src={require('./components/assets/selecionar100x100.png')}/>
-                                                            {
-                                                                !imgUrl &&
-                                                                <div className='outerbar'>
-                                                                <div className='innerbar' style={{ width: `${progresspercent}%` }}>{progresspercent}%</div>
-                                                                </div>
-                                                            }
-                                                            {
-                                                                imgUrl &&
+                                                <div className='divContainerConfigSub'>
+                                                    <div className='divContainerConfigSub2'>
+                                                        <label className='premiumConfigs'>Icone:</label>
+                                                            <div className='divContainerNewImage' style={{borderColor: viewingUser.corP}}>
+                                                                <img className='gearSelectImage' src={require('./components/assets/selecionar100x100.png')}/>
+                                                                {
+                                                                    !imgUrl &&
+                                                                    <div className='outerbar'>
+                                                                    <div className='innerbar' style={{ width: `${progresspercent}%` }}>{progresspercent}%</div>
+                                                                    </div>
+                                                                }
+                                                                {
+                                                                    imgUrl &&
+                                                                    
+                                                                    <img src={imgUrl} alt='uploaded file' className='imgUploaded' style={{borderColor: viewingUser.corP}} />
+                                                                }
                                                                 
-                                                                <img src={imgUrl} alt='uploaded file' className='imgUploaded' style={{borderColor: viewingUser.corP}} />
-                                                            }
-                                                            
-                                                            <form className='form' style={{borderColor: viewingUser.corP}}>
-                                                                <input style={{borderColor: viewingUser.corP, display: 'none'}} onChange={(event) => {handleSubmit(event); 
-                                                                    }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
-                                                            </form>
-                                                        </div>
-                                                    </label>
+                                                                <form className='form' style={{borderColor: viewingUser.corP}}>
+                                                                    <input style={{borderColor: viewingUser.corP, display: 'none'}} onChange={(event) => {handleSubmit(event); 
+                                                                        }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                                                </form>
+                                                            </div>
+                                                        
+                                                    </div>
                                                     <div className='divContainerConfigSub2'>
                                                         <label>Usuário:</label>
                                                         <input style={{borderColor: viewingUser.corP}} value={username} onChange={(event) => setUsername(event.target.value)} placeholder={loggedUser.username}/>
                                                     </div>
-                                                </div>
-
-                                                <div className='divContainerConfigSub' style={{borderColor: viewingUser.corP}}>
-
-
-                                                    
                                                 </div>
                                             </div>
                             
@@ -769,16 +765,17 @@ function Usuario(){
                                         <div className='divConfigConfigsSubContainer premiumConfigs2'>
                                             <h2>Personalização - Premium</h2>
                                                 <div className='divOmgConfigs'>  
-                                                        <div className='divContainerConfigSub2'>
-                                                            <label>Cor Principal do perfil e site: 
+                                                        <div className='divContainerConfigSub4'>
+                                                            <label>Cor Principal do perfil e site:</label>
                                                                 <ChromePicker 
                                                                     color={corP}
                                                                     onChange={(color) => {
                                                                         setCorP(color.hex);
                                                                     }}
                                                                     />
-                                                            </label>
-                                                            <label>Cor Secundário do perfil: 
+                                                        </div>
+                                                        <div className='divContainerConfigSub4'>
+                                                            <label>Cor Secundário do perfil: </label>
                                                             <div className="blockpicker">
                                                                     {/* Div to display the color  */}
 
@@ -791,9 +788,10 @@ function Usuario(){
                                                                     }}
                                                                     />
                                                             </div>
-                                                                
-                                                            </label>
-                                                            <label>Imagem atrás do nome - perfil: 
+                                                        </div>
+
+                                                        <div className='divContainerConfigSub4'>
+                                                            <label>Imagem atrás do nome - perfil:</label>
                                                                 <div className='divContainerNewImage' style={{borderColor: viewingUser.corP}}>
                                                                     <img className='gearSelectImage2' src={require('./components/assets/selecionar450x250.png')}/>
 
@@ -805,15 +803,17 @@ function Usuario(){
                                                                     }
                                                                     {
                                                                         imgUrl3 &&
-                                                                        <img src={imgUrl3} alt='uploaded file' className='imgUploaded2' style={{borderColor: viewingUser.corP}} />
+                                                                        <img src={imgUrl3} alt='uploaded file' className='imgUploaded2' style={{borderColor: viewingUser.corP, display: 'flex', alignItems: 'center', justifyItems: 'center'}} />
                                                                     }
                                                                     <form className='form' style={{borderColor: viewingUser.corP}}>
                                                                         <input style={{borderColor: viewingUser.corP, display: 'none'}} onChange={(event) => {handleSubmitImgFundoDois(event); 
                                                                         }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
                                                                     </form>
                                                                 </div>
-                                                            </label>
-                                                            <label>Imagem atrás da página - perfil: 
+                                                            </div>
+                                                            
+                                                            <div className='divContainerConfigSub4' style={{flexDirection: 'column'}}>
+                                                                <label style={{width: '15rem', marginRight: '0',}}>Imagem atrás da página - perfil:</label>
                                                                                                                             
                                                                 <div className='divContainerNewImage' style={{borderColor: viewingUser.corP}}>
                                                                     <img className='gearSelectImage3' src={require('./components/assets/selecionar1600x250.png')}/>
@@ -832,15 +832,10 @@ function Usuario(){
                                                                             }} className='inputTypeFile' type='file' accept=".png,.jpeg, .jpg"/> 
                                                                     </form>
                                                                 </div>
-                                                            </label>
-                                                        </div>
+                                                            </div>
+                                                            
+                                                        
 
-                                                        <div className='divContainerConfigSub'>
-                                                            {/* <input style={{borderColor: viewingUser.corP}} value={corP} onChange={(event) => setCorP(event.target.value)} placeholder={loggedUser.corP}/>
-                                                            <input style={{borderColor: viewingUser.corP}} value={corS} onChange={(event) => setCorS(event.target.value)} placeholder={loggedUser.corS}/> */}
-
-
-                                                        </div>
                                                 </div>
                                             
                                         </div>
