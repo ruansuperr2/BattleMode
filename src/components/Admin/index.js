@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import './index.css'
 import ModalCustom ,{ showModal, closeModal } from '../Modal';
+import Footer from '../Footer';
 import { storage } from '../FireBase';
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { saveAs } from 'file-saver'
@@ -131,7 +132,7 @@ function Admin () {
                                 <div className='AdicionarImagemJogo'>
                                     <div className='d'>
                                         <h4>Imagem do Jogo</h4>
-                                        <label>
+                                        <label></label>
                                             {
                                                 !imgUrl2 &&
                                                 <div className='outerbar'>
@@ -148,16 +149,16 @@ function Admin () {
                                                 <input style={{display: 'none'}} onChange={(event) => {handleSubmitImgFundo(event); 
                                                     }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
                                             </form>
-                                        </label>
+                                        
 
                                     </div>
                                     
                                     
-                                </div>
+                                
                                 <div className='AdicionarAdminGame2'>
                                     <div className='f'>
                                         <h4>Logo do Jogo</h4>
-                                        <label>
+                                        <label></label>
                                             {
                                                 !imgUrl &&
                                                 <div className='outerbar'>
@@ -174,7 +175,7 @@ function Admin () {
                                                 <input style={{display: 'none'}} onChange={(event) => {handleSubmit(event); 
                                                     }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
                                             </form>
-                                        </label>
+                                        
                                     </div>
 
                                     <div>
@@ -190,6 +191,7 @@ function Admin () {
                                         <input value={descricaoLonga} onChange={event => {setDescricaoLonga(event.target.value)}}/>
                                     </div>
                                     <button onClick={() => {addGameOnBackend()}}>Adicionar Jogo</button>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -208,7 +210,7 @@ function Admin () {
                 }
                 {
                     !access &&
-                    <div className="divAdminSubContainerD">
+                    // <div className="divAdminSubContainerD">
                         <div className='divAdminContentContainerD'>
                             <h1>Acesso Administrador</h1>
 
@@ -218,9 +220,10 @@ function Admin () {
 
 
                         </div>
-                    </div>    
+                    // </div>    
                 }
             </div>
+            <Footer/>
         </div>
         )
 }
