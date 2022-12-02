@@ -51,6 +51,10 @@
 	color: white;
 }
 
+.divRightNavbar label{
+	white-space: nowrap;
+}
+
 .divDividerNavbar {
 	z-index: 240;
 	height: 100vh;
@@ -86,7 +90,7 @@
 }
 
 .fontNavbar{
-	width: 4.4vw !important;
+	width: 4vw !important;
 	border-radius: 10px !important;
 }
 
@@ -473,7 +477,7 @@
 	}
 
 	.fontNavbar {
-		width: 2.2rem !important;
+		width: 2rem !important;
 	}
 }
 

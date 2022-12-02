@@ -251,17 +251,20 @@ function Times() {
     if(fed === true){
         if (JSON.parse(time.equipeAtiva).length < 5 && time.capitao === loggedUser.username || JSON.parse(time.equipeAtiva).length < 5 && time.donoCriacao === loggedUser.username) {
             document.querySelector('.usersOnActiveAdd').addEventListener('click', () => {
-                document.querySelector('.newModal').style.display = `block`
+                document.querySelector('.newModal').style.display = `flex`
+                document.querySelector('body').style.overflow = 'hidden'
             })
         }
         if (JSON.parse(time.reserva).length < 9 && time.capitao === loggedUser.username ||JSON.parse(time.reserva).length < 9 && time.donoCriacao === loggedUser.username) {
             document.querySelector('.usersOnReserveAdd').addEventListener('click', () => {
-                document.querySelector('.newModal2').style.display = `block`
+                document.querySelector('.newModal2').style.display = `flex`
+                document.querySelector('body').style.overflow = 'hidden'
             })
         }
         if (JSON.parse(time.comissaoTecnica).length < 3 && time.capitao === loggedUser.username || JSON.parse(time.comissaoTecnica).length < 3 && time.donoCriacao === loggedUser.username) {
             document.querySelector('.usersOnTecnicoAdd').addEventListener('click', () => {
-                document.querySelector('.newModal3').style.display = `block`
+                document.querySelector('.newModal3').style.display = `flex`
+                document.querySelector('body').style.overflow = 'hidden'
             })
         }
     }
@@ -676,6 +679,8 @@ function Times() {
             }
     }
 
+    
+
     const confirmarAdicaoTecnico = async() => {
         let newTeam = JSON.parse(time.comissaoTecnica)
         newTeam.push(tecnicos[0].id)
@@ -710,17 +715,27 @@ function Times() {
             }
     }
 
+    const apagarEquipe = async() => { 
+        const requestOptions = {
+            method: 'DELETE',
+        }
+        await fetch(`https://web-production-8ce4.up.railway.app/api/time/${time.id}`,  requestOptions)
+        window.location.href = '/find/t'
+    }
 
     console.log(jogadores)
     return(
         <div className='divParticiparMainContainer'>
             <ModalCustom/>
             <Loading/>
-            <div className="newModal3" style={{display: 'none'}}>
-                <div style={{position: 'fixed',zIndex: '484',marginTop: '10%',marginLeft: '24.2%', backgroundColor: '#fff',width: '40%'}}>
+            <div className="newModal3" style={{display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems:'center',position: 'fixed', zIndex: '184', overflow: 'hidden',display: 'none', backgroundColor: '#00000066', width: '100vw', height: '101vh', marginTop: '-80px'}}>
+                <div style={{position: 'fixed', backgroundColor: '#121212',width: '40%', borderRadius: 20, marginTop: '-150px'}}>
                     <div style={{paddingLeft: '30px',paddingRight: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                        <h2>Adicionar novo técnico</h2>
-                        <div>X</div>
+                        <h2 style={{color: 'white'}}>Adicionar novo técnico</h2>
+                        <div style={{borderRadius: '5px', color: 'black',width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', backgroundColor: '#f05e54', cursor: 'pointer', fontSize: '20px', fontWeight: 'bold'}} onClick={() => {document.querySelector('.newModal3').style.display = 'none'
+                        document.querySelector('body').style.overflowY = 'scroll'
+
+                    }}>X</div>
                     </div>
                     <hr/>
                     <div>
@@ -749,16 +764,19 @@ function Times() {
                         </div>
                     </div>
                     <hr/>
-                    <div>
-                        <button onClick={() => confirmarAdicaoTecnico()}>Confirmar adição</button>
+                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                        <button className='buttonFromModal'  onClick={() => confirmarAdicaoTecnico()}>Confirmar adição</button>
                     </div>
                 </div>
             </div>
-            <div className="newModal2" style={{display: 'none'}}>
-                <div style={{position: 'fixed',zIndex: '484',marginTop: '10%',marginLeft: '24.2%', backgroundColor: '#fff',width: '40%'}}>
+            <div className="newModal2" style={{display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems:'center',position: 'fixed', zIndex: '184', overflow: 'hidden',display: 'none', backgroundColor: '#00000066', width: '100vw', height: '101vh', marginTop: '-80px'}}>
+                <div style={{position: 'fixed', backgroundColor: '#121212',width: '40%', borderRadius: 20, marginTop: '-150px'}}>
                     <div style={{paddingLeft: '30px',paddingRight: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                        <h2>Adicionar novo reserva</h2>
-                        <div>X</div>
+                        <h2 style={{color: 'white'}}>Adicionar novo reserva</h2>
+                        <div style={{borderRadius: '5px', color: 'black',width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', backgroundColor: '#f05e54', cursor: 'pointer', fontSize: '20px', fontWeight: 'bold'}} onClick={() => {document.querySelector('.newModal2').style.display = 'none'
+                        document.querySelector('body').style.overflowY = 'scroll'
+
+                    }}>X</div>
                     </div>
                     <hr/>
                     <div>
@@ -787,16 +805,19 @@ function Times() {
                         </div>
                     </div>
                     <hr/>
-                    <div>
-                        <button onClick={() => confirmarAdicaoReserva()}>Confirmar adição</button>
+                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                        <button className='buttonFromModal' onClick={() => confirmarAdicaoReserva()}>Confirmar adição</button>
                     </div>
                 </div>
             </div>
-            <div className="newModal" style={{display: 'none'}}>
-                <div style={{position: 'fixed',zIndex: '484',marginTop: '10%',marginLeft: '24.2%', backgroundColor: '#fff',width: '40%'}}>
+            <div className="newModal" style={{display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems:'center',position: 'fixed', zIndex: '184', overflow: 'hidden',display: 'none', backgroundColor: '#00000066', width: '100vw', height: '101vh', marginTop: '-80px'}}>
+                <div style={{position: 'fixed', backgroundColor: '#121212',width: '40%', borderRadius: 20, marginTop: '-150px'}}>
                     <div style={{paddingLeft: '30px',paddingRight: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                        <h2>Adicionar novo jogador</h2>
-                        <div>X</div>
+                        <h2 style={{color: 'white'}}>Adicionar novo jogador</h2>
+                        <div style={{borderRadius: '5px', color: 'black',width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', backgroundColor: '#f05e54', cursor: 'pointer', fontSize: '20px', fontWeight: 'bold'}} onClick={() => {document.querySelector('.newModal').style.display = 'none'
+                        document.querySelector('body').style.overflowY = 'scroll'
+
+                    }}>X</div>
                     </div>
                     <hr/>
                     <div>
@@ -825,8 +846,8 @@ function Times() {
                         </div>
                     </div>
                     <hr/>
-                    <div>
-                        <button onClick={() => confirmarAdicaoJogador()}>Confirmar adição</button>
+                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                        <button className='buttonFromModal'  onClick={() => confirmarAdicaoJogador()}>Confirmar adição</button>
                     </div>
                 </div>
             </div>
@@ -940,7 +961,7 @@ function Times() {
                                                                     <div  className='divUserOnTeamContainer'>
                                                                         <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
                                                                         <div style={{cursor: 'pointer'}} onClick={() => {window.location.href = '/u/' + user.username}}>
-                                                                            <h4 style={{display: 'flex'}}>{user.username} <SiEdotleclerc style={{marginLeft: '6px'}} id={user.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/></h4>
+                                                                            <h4 style={{display: 'flex', alignItems: 'center'}}>{user.username} <SiEdotleclerc style={{marginLeft: '6px'}} id={user.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/><h5 style={{marginLeft: '4px'}}>Criador</h5></h4>
                                                                         </div>
                                                                         <DoDisturbIcon onClick={() => {deleteActiveUser(user.id)}} className='doDisturbIcon' id={user.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/>
                                                                     </div>
@@ -951,7 +972,7 @@ function Times() {
                                                                     <div  className='divUserOnTeamContainer'>
                                                                         <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
                                                                         <div style={{cursor: 'pointer'}} onClick={() => {window.location.href = '/u/' + user.username}}>
-                                                                            <h4>{user.username} <AiFillCrown style={{marginLeft: '6px'}} id={user.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/></h4>
+                                                                            <h4 style={{display: 'flex', alignItems: 'center'}}>{user.username} <AiFillCrown style={{marginLeft: '6px'}} id={user.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/><h5 style={{marginLeft: '4px'}}>Capitão</h5></h4>
                                                                         </div>
                                                                         <DoDisturbIcon onClick={() => {deleteActiveUser(user.id)}} className='doDisturbIcon' id={user.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/>
                                                                     </div>
@@ -1131,6 +1152,9 @@ function Times() {
                                         </div>
                                         <div id="premiumConfigs2">
                                             <button onClick={() => callMudançasPerfil('PP')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount4 '>Confirmar Mudanças - Personalização</button>
+                                        </div>
+                                        <div>
+                                            <button onClick={() => apagarEquipe()}>Apagar Equipe</button>
                                         </div>
                                     </div>
 

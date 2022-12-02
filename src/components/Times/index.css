@@ -134,6 +134,29 @@
     cursor: pointer;
 }
 
+.buttonFromModal{
+    width: 26.5rem;
+    height: 2rem;
+    margin-block: 20px;
+    margin-left: 1rem;
+    background-color: #272727;
+    border-radius: 20px;
+    border: 2px solid #fc6b03;
+    color: #fff;
+    font-size: 16px;
+    transition: 0.5s;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonFromModal:hover{
+    border: 2px solid rgb(224, 219, 219);
+    transition: 0.5s;
+    color: rgb(224, 219, 219);
+    cursor: pointer;
+}
 
 @media screen and (max-width: 1350px) {
     .criador {

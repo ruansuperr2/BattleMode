@@ -119,13 +119,14 @@ export const Navbar = (props) => {
             <div className="divDividerNavbar" style={{borderColor: `${loggedUser.corP}`}}>
 
                 <div className="divLeftNavbar" style={{borderColor: `${loggedUser.corP}`}}>
-                    <Link to="/now" className="fontNavbar"><HomeIcon className='iconNavbar iconHome' sx={{color: defaultColorHome, fontSize: 35}}/>Home</Link>
-                    <Link to="/feed" className="feedLinkDetector fontNavbar"><EmojiEventsIcon className='iconNavbar iconTorneios' sx={{color: defaultColorTorneios, fontSize: 35}}/>Torneios</Link>
-                    <Link to="/games" className="fontNavbar"><SportsEsportsIcon className='iconNavbar iconJogos' sx={{color: defaultColorJogos, fontSize: 35}}/>Jogos</Link>
-                    <Link to="/about" className="fontNavbar"><InfoIcon className='iconNavbar iconAbout' sx={{color: defaultColorAbout, fontSize: 35}}/>Sobre</Link>
+                    <Link to="/now" className="fontNavbar"><HomeIcon className='iconNavbar iconHome' sx={{color: defaultColorHome, fontSize: 32}}/>Home</Link>
+                    <Link to="/feed" className="feedLinkDetector fontNavbar"><EmojiEventsIcon className='iconNavbar iconTorneios' sx={{color: defaultColorTorneios, fontSize: 32}}/>Feed</Link>
+                    <Link to="/games" className="fontNavbar"><SportsEsportsIcon className='iconNavbar iconJogos' sx={{color: defaultColorJogos, fontSize: 32}}/>Biblioteca</Link>
+                    <Link to="/about" className="fontNavbar"><InfoIcon className='iconNavbar iconAbout' sx={{color: defaultColorAbout, fontSize: 32}}/>FaQ</Link>
                 </div>
                 <div className="divRightNavbar" style={{borderColor: `${loggedUser.corP}`}}>
-                    <p><LanguageIcon className="LanguageIcon" sx={{color: "#fff", fontSize: 35}}/> pt-br</p>
+
+                    <label>pt-br</label>
                     
 
                 </div>
@@ -150,8 +151,8 @@ export const Navbar = (props) => {
                     </div>
                 </div>
                 <div className='EntrarRegistroNavBar'>
-                    <button onClick={() => {window.location.href = '/cadastro'}}>Cadastrar-se </button>
-                    <button onClick={() => {window.location.href = '/login'}}>Entrar</button>
+                    <button onClick={() => {window.location.href = '/cadastro'}}> Cadastrar-se </button>
+                    <button onClick={() => {window.location.href = '/login'}}> Entrar</button>
                 </div>
                 <div className='loggedUserNameNavBar'>
                     <img className='imgIconP' style={{borderColor: `${loggedUser.corP}`}}/>
