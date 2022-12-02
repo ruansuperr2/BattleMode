@@ -7,7 +7,7 @@ import { storage } from '../FireBase';
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { SketchPicker } from 'react-color';
 import { ChromePicker  } from "react-color";
-
+import UsuarioNaoEncontrado from '../UsuarioNaoEncontrado'
 
 import MDEditor from '@uiw/react-md-editor'
 import ModalCustom, { showModal, closeModal } from '../Modal'
@@ -39,6 +39,7 @@ function Usuario(){
     const [dataCriacao, setdataCriação] = useState('')
     const [newEmail, setnewEmail] = useState('')
     const [newPassword, setnewPassword] = useState('')
+    const [users, setUsers] = useState([])
 
     const [loggedUser, setLoggedUser] = useState({})
     const [viewingUser, setViewingUser] = useState([])
@@ -173,6 +174,14 @@ function Usuario(){
             dataUser.then(
                 (val) => {
                     setLoggedUser(val.data)
+                }
+            )   
+            const responseUser2 = await fetch('https://web-production-8ce4.up.railway.app/api/user/')
+            const dataUser2 = responseUser2.json()
+
+            dataUser2.then(
+                (val) => {
+                    setUsers(val.data)
                 }
             )   
         }catch(error){
@@ -463,7 +472,14 @@ function Usuario(){
         }
     }
 
-
+    const apagarUser = async() => { 
+        const requestOptions = {
+            method: 'DELETE',
+        }
+        await fetch(`https://web-production-8ce4.up.railway.app/api/user/${loggedUser.id}`,  requestOptions)
+        localStorage.removeItem('dasiBoard')
+        window.location.href = '/find/t'
+    }
     return(
         
         <div className="divUsuarioDMainContainer" style={{borderColor: `${loggedUser.corP} !important`}}>
@@ -707,7 +723,7 @@ function Usuario(){
                                                 </div>
                                             </div>
 
-                                              <div className='divOmgConfigs'>  
+                                                <div className='divOmgConfigs'>  
                                                 <div className='divContainerConfigSub2'>
                                                     <label>Senha Atual:</label>
                                                     <input style={{borderColor: viewingUser.corP}} type='password' value={password} onChange={(event) => setPassword(event.target.value)}/>
@@ -717,9 +733,9 @@ function Usuario(){
                                                     <label>Nova Senha:</label>
                                                     <input style={{borderColor: viewingUser.corP}} type='password' value={newPassword} onChange={(event) => setnewPassword(event.target.value)}/>
                                                 </div>
-                                             </div>
-                                         
-                                         
+                                                </div>
+                                            
+                                            
                                 
                                         </div>
                                         <div>
@@ -855,6 +871,8 @@ function Usuario(){
             <Footer/>
         </div>
     )
+
+
 }
 
 
