@@ -180,7 +180,7 @@ function Usuario(){
         }
     }
     
-    if(getUsersTry < 3){
+    if(getUsersTry < 2){
         getUsersTry++
         getUsers()
         callGames()
@@ -275,7 +275,7 @@ function Usuario(){
                     
                 }
                 closeModal('success', 'atualizado!',null)
-                await fetch('https://web-production-8ce4.up.railway.app/api/api/user/' + loggedUser.id,  requestOptions)
+                await fetch('https://web-production-8ce4.up.railway.app/api/user/' + loggedUser.id,  requestOptions)
                 }catch(e){
                 }
         }

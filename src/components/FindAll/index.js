@@ -48,7 +48,7 @@ export default function FindAll() {
         }
     }
     
-    if(getUsersTry < 3){
+    if(getUsersTry < 2){
         getUsersTry++
         getUsers()
         getTeam()

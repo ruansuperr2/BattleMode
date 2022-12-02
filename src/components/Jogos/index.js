@@ -41,7 +41,7 @@ function Jogos() {
     const callHtmlGames = () => {
     }
 
-    if(getGamesTry < 10){
+    if(getGamesTry < 2){
         getUsers()
         getGamesTry++
         gamesAdded.pop()

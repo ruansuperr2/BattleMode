@@ -6,6 +6,7 @@ import { showModal, closeModal} from "../Modal";
 import './index.css';
 import { useParams } from 'react-router-dom'
 import MDEditor from '@uiw/react-md-editor'
+
 import Loading from '../Loading'
 import DoDisturbIcon from '@mui/icons-material/DoDisturb';
 import { HiX } from 'react-icons/hi'
@@ -172,7 +173,7 @@ function Times() {
         }
     }
 
-    if(callTeamFunction < 3){
+    if(callTeamFunction < 2){
         callTeamFunction++
         callTime()
         getUsers()
@@ -372,13 +373,16 @@ function Times() {
 
         if(loggedUser.username === time.donoCriacao || loggedUser.username === time.capitao){
             document.querySelector('.config').style.display = 'flex'
-
+            document.querySelector('.divmdEditor').style.display = 'none'
+            document.querySelector('.enterMarkdown').style.display = 'flex'
             let list = document.querySelectorAll(`.doDisturbIcon`)
 
             for(let i = 0; i < 16; i++){
                 list[i].style.display = 'block'
             }
         }else{
+            document.querySelector('.divmdEditor').style.display = 'none'
+            document.querySelector('.enterMarkdown').style.display = 'none'
             document.querySelector('.config').style.display = 'none'
         
             let list = document.querySelectorAll(`.doDisturbIcon`)
@@ -723,13 +727,52 @@ function Times() {
         window.location.href = '/find/t'
     }
 
+    const callEditMarkdownEditor = async(type) =>{
+        if(type === 'enter'){
+            document.querySelector('.divmdEditor').style.display = 'block'
+            document.querySelector('.divmdViewer').style.display = 'none'
+        }else{
+            document.querySelector('.divmdEditor').style.display = 'none'
+            document.querySelector('.divmdViewer').style.display = 'block'
+
+            showModal('loading','Atualizando o Banco','barLoading')
+                    
+            try{
+                const requestOptions = {
+                    method: 'PUT',
+                    headers: {'Content-type': 'application/json'},
+                    body: JSON.stringify({
+                        nome: time.nome,
+                        tag: time.tag,
+                        logo: time.logo,
+                        imgFundo: time.imgFundo,
+                        equipeAtiva: time.equipeAtiva,
+                        reserva: time.reserva,
+                        comissaoTecnica: time.equipeAtiva,
+                        jogoPrincipal: time.jogoPrincipal,
+                        conquistas: time.conquistas,
+                        descricao: value,
+                        imgFundo2: time.imgFundo2,
+                        dataCriacao: time.dataCriacao,
+                        donoCriacao: time.donoCriacao,
+                        capitao: time.capitao
+                    })
+                    
+                }
+                closeModal('success', 'atualizado!',null)
+                await fetch('https://web-production-8ce4.up.railway.app/api/time/' + time.id,  requestOptions)
+                }catch(e){
+                }
+        }
+    }
+
     console.log(jogadores)
     return(
         <div className='divParticiparMainContainer'>
             <ModalCustom/>
             <Loading/>
             <div className="newModal3" style={{display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems:'center',position: 'fixed', zIndex: '184', overflow: 'hidden',display: 'none', backgroundColor: '#00000066', width: '100vw', height: '101vh', marginTop: '-80px'}}>
-                <div style={{position: 'fixed', backgroundColor: '#121212',width: '40%', borderRadius: 20, marginTop: '-150px'}}>
+                <div style={{border: '1px solid #fc6b03', position: 'fixed', backgroundColor: '#121212',width: '40%', borderRadius: 20, marginTop: '-150px'}}>
                     <div style={{paddingLeft: '30px',paddingRight: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                         <h2 style={{color: 'white'}}>Adicionar novo técnico</h2>
                         <div style={{borderRadius: '5px', color: 'black',width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', backgroundColor: '#f05e54', cursor: 'pointer', fontSize: '20px', fontWeight: 'bold'}} onClick={() => {document.querySelector('.newModal3').style.display = 'none'
@@ -769,8 +812,8 @@ function Times() {
                     </div>
                 </div>
             </div>
-            <div className="newModal2" style={{display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems:'center',position: 'fixed', zIndex: '184', overflow: 'hidden',display: 'none', backgroundColor: '#00000066', width: '100vw', height: '101vh', marginTop: '-80px'}}>
-                <div style={{position: 'fixed', backgroundColor: '#121212',width: '40%', borderRadius: 20, marginTop: '-150px'}}>
+            <div className="newModal2" style={{ display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems:'center',position: 'fixed', zIndex: '184', overflow: 'hidden',display: 'none', backgroundColor: '#00000066', width: '100vw', height: '101vh', marginTop: '-80px'}}>
+                <div style={{border: '1px solid #fc6b03', position: 'fixed', backgroundColor: '#121212',width: '40%', borderRadius: 20, marginTop: '-150px'}}>
                     <div style={{paddingLeft: '30px',paddingRight: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                         <h2 style={{color: 'white'}}>Adicionar novo reserva</h2>
                         <div style={{borderRadius: '5px', color: 'black',width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', backgroundColor: '#f05e54', cursor: 'pointer', fontSize: '20px', fontWeight: 'bold'}} onClick={() => {document.querySelector('.newModal2').style.display = 'none'
@@ -811,7 +854,7 @@ function Times() {
                 </div>
             </div>
             <div className="newModal" style={{display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems:'center',position: 'fixed', zIndex: '184', overflow: 'hidden',display: 'none', backgroundColor: '#00000066', width: '100vw', height: '101vh', marginTop: '-80px'}}>
-                <div style={{position: 'fixed', backgroundColor: '#121212',width: '40%', borderRadius: 20, marginTop: '-150px'}}>
+                <div style={{border: '1px solid #fc6b03', position: 'fixed', backgroundColor: '#121212',width: '40%', borderRadius: 20, marginTop: '-150px'}}>
                     <div style={{paddingLeft: '30px',paddingRight: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                         <h2 style={{color: 'white'}}>Adicionar novo jogador</h2>
                         <div style={{borderRadius: '5px', color: 'black',width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', backgroundColor: '#f05e54', cursor: 'pointer', fontSize: '20px', fontWeight: 'bold'}} onClick={() => {document.querySelector('.newModal').style.display = 'none'
@@ -929,7 +972,7 @@ function Times() {
                         <div className='divAllContainersUser' style={{}} >
                             <div className='divUsuarioSubMainContainerCompo'  style={{}} >
                                 <div className='divContainerUsuarioContent' style={{}} >
-                                    {/* <div className='divmdEditor' style={{}}>
+                                    <div className='divmdEditor' style={{}}>
                                         <MDEditor
                                             className='wrapper'
                                             style={{boxShadow: '0px 1px 0px 0px '}} 
@@ -942,9 +985,10 @@ function Times() {
                                             
                                         />
                                          <div className='editMarkdownButton exitMarkdown' onClick={() => callEditMarkdownEditor('exit')}><p>Editar</p></div>
-                                    </div> */}
+                                    </div>
                                     <div className='divmdViewer' style={{}}>
                                         <MDEditor.Markdown className='markdownShower'  source={value} style={{ whiteSpace: 'pre-wrap'}} />
+                                        <div className='editMarkdownButton enterMarkdown' onClick={() => callEditMarkdownEditor('enter')} style={{borderColor: `${loggedUser.corP}`}} ><p>Editar</p></div>
                                     </div>
                                 </div>
                             </div>

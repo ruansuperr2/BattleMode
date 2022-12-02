@@ -55,7 +55,7 @@ function Login(props) {
         }
     }
 
-    if(getUsersTry < 10){
+    if(getUsersTry < 2){
         getUsersTry++
         callAgentFinder()
     }
