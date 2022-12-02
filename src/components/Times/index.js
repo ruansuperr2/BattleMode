@@ -9,8 +9,8 @@ import MDEditor from '@uiw/react-md-editor'
 import Loading from '../Loading'
 import DoDisturbIcon from '@mui/icons-material/DoDisturb';
 import { HiX } from 'react-icons/hi'
-import { AiOutlineCheck, AiOutlinePlus } from 'react-icons/ai'
-
+import { AiOutlineCheck, AiOutlinePlus, AiFillCrown } from 'react-icons/ai'
+import {SiEdotleclerc} from 'react-icons/si'
 import $ from 'jquery'
 
 import { storage } from '../FireBase';
@@ -28,7 +28,7 @@ let detectPositionCT = 0
 function Times() {
     const { id } = useParams();
     const [page, setPage] = useState('geral')
-    const [jogadores, setJogadores] = useState([])
+
     const [loggedUser, setLoggedUser] = useState({})
     const [users, setUsers] = useState([])
     const [time, setTime] = useState({})
@@ -246,51 +246,27 @@ function Times() {
                             break
         }
     }
-    const [inputProcurar, setInputProcurar] = useState('')
+
 
     if(fed === true){
-
-        document.querySelector('.usersOnActiveAdd').addEventListener('click', () => {
-            document.querySelector('.newModal').innerHTML = `
-                <div style="position: fixed;z-index: 484;margin-top: 10%;margin-left: 21.2%; background-color: #fff;width:40%">
-                    <div style="padding-left: 30px;padding-right: 30px">
-                        <h2>Adicionar novo jogador</h2>
-                    </div>
-                    <hr>
-                    <div>
-                        <div>
-                            <div class='inputButtonFlex'>
-                            <input 
-                                class='inputProcurarJogador' 
-                                placeholder='Adicionar jogador...'
-                                onchange="handleChange"
-                                value="${inputProcurar}"/>
-                            <button 
-                                class='addJogador addButtonCriarEquipe'
-                                onclick='addJogador(${inputProcurar})'>+</button>
-                            </div>
-                            <div class='divMostrarJogadores'>
-                                    ${JSON.parse(time.equipeAtiva).map((item) => (
-                                        `<div class='cardBody' key='${item.id}'>
-                                            <div class='userIcon' style='background-position: center; background-size: cover;background-image: '${item.icon}'}}/>
-                                            <span class='userName'><a href='#'>${item.username}</a></span>
-                                            <button 
-                                                class='buttonRemoveJogador'
-                                                onclick='handleRemove(${item.id})'><HiX style="fontSize: 20px; color: #fc6b03"/></button>
-                                        </div>`
-                                    ))}
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div>
-                        <button>Confirmar adição</button>
-                    </div>
-                </div>
-            
-            `
-        })
+        if (JSON.parse(time.equipeAtiva).length < 5 && time.capitao === loggedUser.username || JSON.parse(time.equipeAtiva).length < 5 && time.donoCriacao === loggedUser.username) {
+            document.querySelector('.usersOnActiveAdd').addEventListener('click', () => {
+                document.querySelector('.newModal').style.display = `block`
+            })
+        }
+        if (JSON.parse(time.reserva).length < 9 && time.capitao === loggedUser.username ||JSON.parse(time.reserva).length < 9 && time.donoCriacao === loggedUser.username) {
+            document.querySelector('.usersOnReserveAdd').addEventListener('click', () => {
+                document.querySelector('.newModal2').style.display = `block`
+            })
+        }
+        if (JSON.parse(time.comissaoTecnica).length < 3 && time.capitao === loggedUser.username || JSON.parse(time.comissaoTecnica).length < 3 && time.donoCriacao === loggedUser.username) {
+            document.querySelector('.usersOnTecnicoAdd').addEventListener('click', () => {
+                document.querySelector('.newModal3').style.display = `block`
+            })
+        }
     }
+    
+    
     console.log(time)
     useEffect(() => {
 
@@ -319,7 +295,7 @@ function Times() {
                 if(fed === false){
                     
                     console.log(JSON.parse(time.equipeAtiva).length)
-                        if (JSON.parse(time.equipeAtiva).length < 5) {
+                        if (JSON.parse(time.equipeAtiva).length < 5 && time.capitao === loggedUser.username || JSON.parse(time.equipeAtiva).length < 5 && time.donoCriacao === loggedUser.username) {
                                 document.querySelector('.divAppendAP').innerHTML = 
                                 `
                                     <div class='usersOnActiveAdd divUsersOnTeamSubContainer' style="borderColor: #fc6b03" id="selectById+user.id">
@@ -331,7 +307,7 @@ function Times() {
                                         </div>
                                     </div>
                                 `
-                                if (JSON.parse(time.reserva).length < 9) {
+                                if (JSON.parse(time.reserva).length < 9 && time.capitao === loggedUser.username || JSON.parse(time.reserva).length < 9 && time.donoCriacao === loggedUser.username) {
                                 document.querySelector('.divAppendRP').innerHTML = 
                                 `
                                     <div class='usersOnReserveAdd divUsersOnTeamSubContainer' style="borderColor: #fc6b03" id="selectById+user.id">
@@ -343,7 +319,7 @@ function Times() {
                                         </div>
                                     </div>
                                 `
-                                }if (JSON.parse(time.comissaoTecnica).length < 3) {
+                                }if (JSON.parse(time.comissaoTecnica).length < 3 && time.donoCriacao === loggedUser.username || JSON.parse(time.comissaoTecnica).length < 3 && time.capitao === loggedUser.username) {
                                 document.querySelector('.divAppendCT').innerHTML = 
                                 `
                                     <div class='usersOnTecnicoAdd divUsersOnTeamSubContainer' style="borderColor: #fc6b03" id="selectById+user.id">
@@ -538,13 +514,321 @@ function Times() {
             }
     }
 
+    const [inputProcurar, setInputProcurar] = useState('')
+    const [jogadores, setJogadores] = useState([])
+
+    const [inputReserva, setInputReserva] = useState('')
+    const [reservas, setReservas] = useState([])
+
+    const [inputTec, setInputTec] = useState('')
+    const [tecnicos, setTecnicos] = useState([])
+
+    const handleRemoveTec = id => {
+        document.querySelector('.addJogador3').style.display = 'block'
+
+        const novaListaJogadores = tecnicos.filter((item) => item.id !== id)
+        setTecnicos(novaListaJogadores)
+    }
+
+    const handleChangeTec = e => {
+        setInputTec(e.target.value)
+    }
+
+    const addTecnico = nomeJogador => {
+        let backup = reservas
+        document.querySelector('.addJogador3').style.display = 'none'
+        try{
+            console.log('1',tecnicos)
+            setTecnicos([...tecnicos, users.find(usuario => {return usuario.username === nomeJogador} )])
+            console.log('2',tecnicos)
+        }catch(e){
+            console.log('3',tecnicos)
+            showModal('erro', 'Não foi possível encontrar esse usuário.', 'barLoading')
+            console.log(e)
+            setTecnicos(tecnicos)
+        }
+        
+        setInputReserva('')
+    }
+
+
+    const handleRemoveReserva = id => {
+        document.querySelector('.addJogador2').style.display = 'block'
+
+        const novaListaJogadores = reservas.filter((item) => item.id !== id)
+        setReservas(novaListaJogadores)
+    }
+
+    const handleChangeReserva = e => {
+        setInputReserva(e.target.value)
+    }
+
+    const addReserva = nomeJogador => {
+        let backup = reservas
+        document.querySelector('.addJogador2').style.display = 'none'
+        try{
+            console.log('1',reservas)
+            setReservas([...reservas, users.find(usuario => {return usuario.username === nomeJogador} )])
+            console.log('2',reservas)
+        }catch(e){
+            console.log('3',reservas)
+            showModal('erro', 'Não foi possível encontrar esse usuário.', 'barLoading')
+            console.log(e)
+            setReservas(reservas)
+        }
+        
+        setInputReserva('')
+    }
+
+    const handleRemove = id => {
+        document.querySelector('.addButtonCriarEquipe').style.display = 'block'
+
+        const novaListaJogadores = jogadores.filter((item) => item.id !== id)
+        setJogadores(novaListaJogadores)
+    }
+
+    const handleChange = e => {
+        setInputProcurar(e.target.value)
+    }
+
+    const addJogador = nomeJogador => {
+        let backup = jogadores
+        document.querySelector('.addButtonCriarEquipe').style.display = 'none'
+        try{
+            console.log('1',jogadores)
+            setJogadores([...jogadores, users.find(usuario => {return usuario.username === nomeJogador} )])
+            console.log('2',jogadores)
+        }catch(e){
+            console.log('3',jogadores)
+            showModal('erro', 'Não foi possível encontrar esse usuário.', 'barLoading')
+            console.log(e)
+            setJogadores(jogadores)
+        }
+        
+        setInputProcurar('')
+    }
+
+    const confirmarAdicaoJogador = async() => {
+        let newTeam = JSON.parse(time.equipeAtiva)
+        newTeam.push(jogadores[0].id)
+        console.log(newTeam)
+
+        try{
+            const requestOptions = {
+                method: 'PUT',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify({
+                    nome: time.nome,
+                    tag: time.tag,
+                    logo: time.logo,
+                    imgFundo: time.imgFundo,
+                    equipeAtiva: JSON.stringify(newTeam),
+                    reserva: time.reserva,
+                    comissaoTecnica: time.comissaoTecnica,
+                    jogoPrincipal: time.jogoPrincipal,
+                    conquistas: time.conquistas,
+                    descricao: time.descricao,
+                    imgFundo2: time.imgFundo2,
+                    dataCriacao: time.dataCriacao,
+                    donoCriacao: time.donoCriacao,
+                    capitao: time.capitao
+                })
+                
+            }
+            await fetch(`https://web-production-8ce4.up.railway.app/api/time/${time.id}`,  requestOptions)
+            window.location.href = '/e/' + time.nome
+            }catch(e){
+                
+            }
+    }
+
+    const confirmarAdicaoReserva = async() => {
+        let newTeam = JSON.parse(time.reserva)
+        newTeam.push(reservas[0].id)
+        console.log(newTeam)
+
+        try{
+            const requestOptions = {
+                method: 'PUT',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify({
+                    nome: time.nome,
+                    tag: time.tag,
+                    logo: time.logo,
+                    imgFundo: time.imgFundo,
+                    equipeAtiva: time.equipeAtiva,
+                    reserva: JSON.stringify(newTeam),
+                    comissaoTecnica: time.comissaoTecnica,
+                    jogoPrincipal: time.jogoPrincipal,
+                    conquistas: time.conquistas,
+                    descricao: time.descricao,
+                    imgFundo2: time.imgFundo2,
+                    dataCriacao: time.dataCriacao,
+                    donoCriacao: time.donoCriacao,
+                    capitao: time.capitao
+                })
+                
+            }
+            await fetch(`https://web-production-8ce4.up.railway.app/api/time/${time.id}`,  requestOptions)
+            window.location.href = '/e/' + time.nome
+            }catch(e){
+                
+            }
+    }
+
+    const confirmarAdicaoTecnico = async() => {
+        let newTeam = JSON.parse(time.comissaoTecnica)
+        newTeam.push(tecnicos[0].id)
+        console.log(newTeam)
+
+        try{
+            const requestOptions = {
+                method: 'PUT',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify({
+                    nome: time.nome,
+                    tag: time.tag,
+                    logo: time.logo,
+                    imgFundo: time.imgFundo,
+                    equipeAtiva: time.equipeAtiva,
+                    reserva: time.reserva,
+                    comissaoTecnica: JSON.stringify(newTeam),
+                    jogoPrincipal: time.jogoPrincipal,
+                    conquistas: time.conquistas,
+                    descricao: time.descricao,
+                    imgFundo2: time.imgFundo2,
+                    dataCriacao: time.dataCriacao,
+                    donoCriacao: time.donoCriacao,
+                    capitao: time.capitao
+                })
+                
+            }
+            await fetch(`https://web-production-8ce4.up.railway.app/api/time/${time.id}`,  requestOptions)
+            window.location.href = '/e/' + time.nome
+            }catch(e){
+                
+            }
+    }
+
+
+    console.log(jogadores)
     return(
         <div className='divParticiparMainContainer'>
             <ModalCustom/>
             <Loading/>
-
-            <div className="newModal">
-                
+            <div className="newModal3" style={{display: 'none'}}>
+                <div style={{position: 'fixed',zIndex: '484',marginTop: '10%',marginLeft: '24.2%', backgroundColor: '#fff',width: '40%'}}>
+                    <div style={{paddingLeft: '30px',paddingRight: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                        <h2>Adicionar novo técnico</h2>
+                        <div>X</div>
+                    </div>
+                    <hr/>
+                    <div>
+                        <div>
+                            <div className='inputButtonFlex'>
+                                <input 
+                                    className='inputProcurarJogador' 
+                                    placeholder='Adicionar jogador...'
+                                    onChange={handleChangeTec}
+                                    value={inputTec}/>
+                                <button 
+                                    className='addJogador3 addButtonCriarEquipe'
+                                    onClick={() => addTecnico(inputTec)}><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
+                            </div>
+                            <div className='divMostrarJogadores'>
+                            {tecnicos.map((item) => (
+                                        <div className='cardBody' style={{width: '100%', marginLeft: '190px'}} key={item.id}>
+                                            <div className='userIcon' style={{backgroundPosition: 'center', backgroundSize: 'cover',backgroundImage: `url(${item.icon})`}}/>
+                                            <span className='userName'><a href='#'>{item.username}</a></span>
+                                            <button 
+                                                className='buttonRemoveJogador'
+                                                onClick={() => handleRemoveTec(item.id)}><HiX style={{fontSize: '20px', color: '#fc6b03'}}/></button>
+                                        </div>
+                                    ))}
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div>
+                        <button onClick={() => confirmarAdicaoTecnico()}>Confirmar adição</button>
+                    </div>
+                </div>
+            </div>
+            <div className="newModal2" style={{display: 'none'}}>
+                <div style={{position: 'fixed',zIndex: '484',marginTop: '10%',marginLeft: '24.2%', backgroundColor: '#fff',width: '40%'}}>
+                    <div style={{paddingLeft: '30px',paddingRight: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                        <h2>Adicionar novo reserva</h2>
+                        <div>X</div>
+                    </div>
+                    <hr/>
+                    <div>
+                        <div>
+                            <div className='inputButtonFlex'>
+                                <input 
+                                    className='inputProcurarJogador' 
+                                    placeholder='Adicionar jogador...'
+                                    onChange={handleChangeReserva}
+                                    value={inputReserva}/>
+                                <button 
+                                    className='addJogador2 addButtonCriarEquipe'
+                                    onClick={() => addReserva(inputReserva)}><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
+                            </div>
+                            <div className='divMostrarJogadores'>
+                            {reservas.map((item) => (
+                                        <div className='cardBody' style={{width: '100%', marginLeft: '190px'}} key={item.id}>
+                                            <div className='userIcon' style={{backgroundPosition: 'center', backgroundSize: 'cover',backgroundImage: `url(${item.icon})`}}/>
+                                            <span className='userName'><a href='#'>{item.username}</a></span>
+                                            <button 
+                                                className='buttonRemoveJogador'
+                                                onClick={() => handleRemoveReserva(item.id)}><HiX style={{fontSize: '20px', color: '#fc6b03'}}/></button>
+                                        </div>
+                                    ))}
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div>
+                        <button onClick={() => confirmarAdicaoReserva()}>Confirmar adição</button>
+                    </div>
+                </div>
+            </div>
+            <div className="newModal" style={{display: 'none'}}>
+                <div style={{position: 'fixed',zIndex: '484',marginTop: '10%',marginLeft: '24.2%', backgroundColor: '#fff',width: '40%'}}>
+                    <div style={{paddingLeft: '30px',paddingRight: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                        <h2>Adicionar novo jogador</h2>
+                        <div>X</div>
+                    </div>
+                    <hr/>
+                    <div>
+                        <div>
+                            <div className='inputButtonFlex'>
+                                <input 
+                                    className='inputProcurarJogador' 
+                                    placeholder='Adicionar jogador...'
+                                    onChange={handleChange}
+                                    value={inputProcurar}/>
+                                <button 
+                                    className='addJogador addButtonCriarEquipe'
+                                    onClick={() => addJogador(inputProcurar)}><AiOutlinePlus style={{fontSize: '20px', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
+                            </div>
+                            <div className='divMostrarJogadores'>
+                            {jogadores.map((item) => (
+                                        <div className='cardBody' style={{width: '100%', marginLeft: '190px'}} key={item.id}>
+                                            <div className='userIcon' style={{backgroundPosition: 'center', backgroundSize: 'cover',backgroundImage: `url(${item.icon})`}}/>
+                                            <span className='userName'><a href='#'>{item.username}</a></span>
+                                            <button 
+                                                className='buttonRemoveJogador'
+                                                onClick={() => handleRemove(item.id)}><HiX style={{fontSize: '20px', color: '#fc6b03'}}/></button>
+                                        </div>
+                                    ))}
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div>
+                        <button onClick={() => confirmarAdicaoJogador()}>Confirmar adição</button>
+                    </div>
+                </div>
             </div>
             <div className='divFundoMainContainer' style={{backgroundImage: `url(${time.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center',}}>
                 <div className='divContainerFundoMainContainer'/>
@@ -553,7 +837,7 @@ function Times() {
                 <div className='divUsuarioComplexContainer divEquipeComplexContainer' >
                     <div className='divRightMainComplexoContainerCompo' style={{}} >
                         <div className='divRightUserInfoCompo'  style={{backgroundImage: `url(${time.imgFundo2}`, backgroundSize: 'cover',}}>
-                            <div className='imgUserprofileIcon' style={{backgroundImage: `url(${time.logo})`}}></div>
+                            <div className='imgUserprofileIcon' style={{backgroundImage: `url(${time.logo})`, backgroundColor: '#121212'}}></div>
                             <h2>{time.nome}</h2>
                             <h4>{time.tag}</h4>
                             
@@ -573,19 +857,34 @@ function Times() {
                                 
                             </div>
                             <div className='divRightSubMainContainerCompo' >
-                                <h3>Criado por:</h3>
                                 {
                                     users.map((user) => {
                                         
                                         if(user.username === time.donoCriacao){
-                                            return <div>
-                                                        <label className='criador' onClick={() => window.location.href = '/u/' + user.username} style={{textAlign: 'center', display: 'flex', alignItems: 'center', flexWrap: 'wrap-reverse'}}>
-                                                            <label>{user.username}</label>
-                                                            <img style={{marginRight: '10px', borderRadius: 50, border: '1px solid' + user.corP}} width={50} height={50} src={user.icon}/>
+                                            return <div style={{width: '80%'}}>
+                                                        <label className='criador' onClick={() => window.location.href = '/u/' + user.username} style={{ display: 'flex', alignItems: 'flex-start', flexWrap: 'no-wrap', flexDirection: 'row'}}>
+                                                            <img style={{marginRight: '10px', borderRadius: 50, border: '1px solid' + user.corP,backgroundColor: '#121212'}} width={37} height={37} src={user.icon}/>
+                                                            <label>Criado por <SiEdotleclerc sx={{fontSize: "2vh", color: "#fc6b03"}}/> {user.username}</label>
                                                         </label>
-                                                        <label>
-                                                            <label>Data de Criação: </label>
-                                                            {time.dataCriacao}
+
+                                                    </div>
+
+                                        }
+                                        
+                                    })
+                                }
+                                {
+                                    users.map((user) => {
+                                        
+                                        if(user.username === time.capitao){
+                                            return <div style={{width: '80%'}}>
+                                                        <label className='criador' onClick={() => window.location.href = '/u/' + user.username} style={{ display: 'flex', alignItems: 'flex-start', flexWrap: 'no-wrap', flexDirection: 'row'}}>
+                                                            <img style={{marginRight: '10px', borderRadius: 50, border: '1px solid' + user.corP,backgroundColor: '#121212'}} width={37} height={37} src={user.icon}/>
+                                                            <label>Capitão <AiFillCrown sx={{fontSize: "2vh", color: "#fc6b03"}}/> {user.username}</label>
+                                                        </label>
+                                                        <label style={{ display: 'flex', alignItems: 'flex-start', flexWrap: 'wrap'}}>
+                                                            <label>Data de Criação: {time.dataCriacao}</label>
+                                                            
                                                         </label>
                                                     </div>
 
@@ -636,7 +935,29 @@ function Times() {
                                         { 
                       
                                             users.map( (user) => {
-                                                    if(JSON.parse(time.equipeAtiva).find((ac) => {return ac === user.id})){
+                                                    if(time.donoCriacao === user.username && JSON.parse(time.equipeAtiva).find((ac) => {return ac === user.id})){
+                                                        return  <div key={user.id} className='usersOnActive divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={'selectById'+user.id}>
+                                                                    <div  className='divUserOnTeamContainer'>
+                                                                        <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
+                                                                        <div style={{cursor: 'pointer'}} onClick={() => {window.location.href = '/u/' + user.username}}>
+                                                                            <h4 style={{display: 'flex'}}>{user.username} <SiEdotleclerc style={{marginLeft: '6px'}} id={user.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/></h4>
+                                                                        </div>
+                                                                        <DoDisturbIcon onClick={() => {deleteActiveUser(user.id)}} className='doDisturbIcon' id={user.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/>
+                                                                    </div>
+                                                                </div>
+                                                        
+                                                    }else if(time.capitao === user.username && JSON.parse(time.equipeAtiva).find((ac) => {return ac === user.id})){
+                                                        return  <div key={user.id} className='usersOnActive divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={'selectById'+user.id}>
+                                                                    <div  className='divUserOnTeamContainer'>
+                                                                        <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
+                                                                        <div style={{cursor: 'pointer'}} onClick={() => {window.location.href = '/u/' + user.username}}>
+                                                                            <h4>{user.username} <AiFillCrown style={{marginLeft: '6px'}} id={user.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/></h4>
+                                                                        </div>
+                                                                        <DoDisturbIcon onClick={() => {deleteActiveUser(user.id)}} className='doDisturbIcon' id={user.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/>
+                                                                    </div>
+                                                                </div>
+
+                                                    }else if(JSON.parse(time.equipeAtiva).find((ac) => {return ac === user.id})){
                                                         return  <div key={user.id} className='usersOnActive divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={'selectById'+user.id}>
                                                                     <div  className='divUserOnTeamContainer'>
                                                                         <img className='divUserOnTeamImg' src={user.icon} style={{borderColor: user.corP, boxShadow: `0px 0px 11px 0px ${user.corP}`}}/>
@@ -722,7 +1043,7 @@ function Times() {
                                             <h2>Informações Gerais</h2>
 
                                             <div className='divOmgConfigs'>
-                                                <div className='divContainerConfigSub4' style={{borderColor: '#fc6b03'}}>
+                                                <div className='divContainerConfigSub4' style={{borderColor: '#fc6b03', flexDirection: 'column', gap: 15, marginLeft: '120px', alignItems: 'flex-start'}}>
                                                     <label className='premiumConfigs' style={{borderColor: '#fc6b03'}}>Icone:
                                                         <div className='divContainerNewImage'>
                                                             <img className='gearSelectImage' src={require('./components/assets/selecionar100x100.png')}/>
@@ -763,7 +1084,7 @@ function Times() {
                                         <div className='divConfigConfigsSubContainer premiumConfigs2'>
                                             <h3>Personalização</h3>
                                                 <div className='divOmgConfigs'>  
-                                                        <div className='divContainerConfigSub2'>
+                                                        <div className='divContainerConfigSub2 ' style={{borderColor: '#fc6b03', flexDirection: 'column', gap: 15, marginLeft: '320px', alignItems: 'flex-start', padding: '20px'}}>
                                                             <label>Imagem atrás do nome: 
                                                                 <div className='divContainerNewImage' style={{borderColor: '#fc6b03'}}>
                                                                     <img className='gearSelectImage2' src={require('./components/assets/selecionar450x250.png')}/>

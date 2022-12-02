@@ -175,7 +175,6 @@
     align-items: center;
     position: relative;
     gap: 5px;
-    flex-direction: column;
 }
 
 .divRightSubMainContainerCompo div label img{
