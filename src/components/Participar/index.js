@@ -6,6 +6,7 @@ import { showModal, closeModal} from "../Modal";
 import './index.css';
 import { useParams } from 'react-router-dom'
 import MDEditor from '@uiw/react-md-editor'
+import Select from 'react-select'
 
 import Loading from '../Loading'
 import DoDisturbIcon from '@mui/icons-material/DoDisturb';
@@ -41,6 +42,8 @@ function Participar() {
     const [progresspercent, setProgresspercent] = useState(0);
     const [progresspercent2, setProgresspercent2] = useState(0);
 
+    const [TimeEscolhido,setTimeEscolhido] = useState(null)
+
     const [nome, setNome] = useState('')
     const [desc, setDesc] = useState('')
     const [descB, setDescB] = useState('')
@@ -51,11 +54,9 @@ function Participar() {
     const [page, setPage] = useState('geral')
 
     const callModal = () => {
-        setPage('torneio')
-        showModal('spin', 'Deseja participar do Torneio?', 'Participar')
-        // setTimeout(() => {
-        //     closeModal('success', 'deu certo', 'Participar')
-        // }, 2000);
+        document.querySelector('.newModal3').style.display = 'flex'
+        document.querySelector('body').style.overflowY = 'hidden'
+
     }
 
 
@@ -392,173 +393,218 @@ function Participar() {
         <div className='divParticiparMainContainer'>
         <ModalCustom/>
         <Loading/>
-        <div className='divFundoMainContainer' style={{backgroundImage: `url(${torneio.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center',}}>
-            <div className='divContainerFundoMainContainer'/>
-        </div>
-        <div className='divUsuarioSubMainContainerD paddingLeft '>
-            <div className='divUsuarioComplexContainer divEquipeComplexContainer' >
-                <div className='divRightMainComplexoContainerCompo' style={{}} >
-                    <div className='divRightUserInfoCompo'>
-                        <div className='imgUserprofileIcon' style={{backgroundImage: `url(${torneio.logo})`, backgroundColor: '#121212'}}></div>
-                        <h4 style={{marginTop: '25px'}}>{torneio.nome}</h4>
-                        
-                    </div>
-                    <div>
-                        <div className='divRightSubMainContainerCompo' >
-                            <h2>Jogo</h2>
-                            {
-                                jogo.map((jogo) => {
-                                    if(jogo.id === parseInt(torneio.gameId)){
-                                        return <label style={{textAlign: 'center', display: 'flex', alignItems: 'center'}}><img style={{marginRight: '10px'}} width={50} height={50} src={jogo.logo}/>{jogo.nome}</label>
+        <div className="newModal3" style={{display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems:'center',position: 'fixed', zIndex: '184', overflow: 'hidden',display: 'none', backgroundColor: '#00000066', width: '100vw', height: '101vh', marginTop: '-80px'}}>
+                <div style={{border: '1px solid #fc6b03', position: 'fixed', backgroundColor: '#121212',width: '40%', borderRadius: 20, marginTop: '-150px'}}>
+                    <div style={{paddingLeft: '30px',paddingRight: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                        <h2 style={{color: 'white'}}>Com qual time você deseja participar?</h2>
+                        <div style={{borderRadius: '5px', color: 'black',width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', backgroundColor: '#f05e54', cursor: 'pointer', fontSize: '20px', fontWeight: 'bold'}} onClick={() => {document.querySelector('.newModal3').style.display = 'none'
+                        document.querySelector('body').style.overflowY = 'scroll'
 
+                    }}>X</div>
+                    </div>
+                    <hr/>
+                    <div>
+                        <div>
+                            <div className='inputButtonFlex'>
+                                {
+                                                                                 
+
+                                    time.map( (times) => {
+                                        for(let i = 0; i < 5;i++){
+
+                                            if(JSON.parse(times.equipeAtiva)[i] === loggedUser.id){
+                                                let values = time.map((time) => {
+                                                    if(JSON.parse(times.equipeAtiva)[i] === loggedUser.id){
+
+                                                        return {value: time.id, label: time.nome}
+                                                    }
+                                                })
+                                                return <Select onChange={e => setTimeEscolhido(e.value)} className='selectInfoCriarEquipe' style={{zIndex: '424'}} options={values}  placeholder='Seu Time'/>
+
+
+                                            }
+                                        }
                                     }
-                                })
-                            }
+                                    ) 
                             
+                                                                            
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                        <button className='buttonFromModal'  onClick={() => {}}>Confirmar participação</button>
+                    </div>
+                </div>
+            </div>
+            <div className='divFundoMainContainer' style={{backgroundImage: `url(${torneio.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center',}}>
+                <div className='divContainerFundoMainContainer'/>
+            </div>
+            <div className='divUsuarioSubMainContainerD paddingLeft '>
+                <div className='divUsuarioComplexContainer divEquipeComplexContainer' >
+                    <div className='divRightMainComplexoContainerCompo' style={{}} >
+                        <div className='divRightUserInfoCompo'>
+                            <div className='imgUserprofileIcon' style={{backgroundImage: `url(${torneio.logo})`, backgroundColor: '#121212'}}></div>
+                            <h4 style={{marginTop: '25px'}}>{torneio.nome}</h4>
                             
                         </div>
-                        <div className='divRightSubMainContainerCompo' >
-                            <h2>Administradores</h2>
-                            {
-                                users.map((user) => {
-                                    
-                                    if(user.username === torneio.donoCriacao){
-                                        return <div style={{width: '80%'}}>
-                                                    <label className='criador' onClick={() => window.location.href = '/u/' + user.username} style={{ display: 'flex', alignItems: 'flex-start', flexWrap: 'no-wrap', flexDirection: 'row'}}>
-                                                        <img style={{marginRight: '10px', borderRadius: 50, border: '1px solid' + user.corP,backgroundColor: '#121212'}} width={37} height={37} src={user.icon}/>
-                                                        <label>Criado por <SiEdotleclerc sx={{fontSize: "2vh", color: "#fc6b03"}}/> {user.username}</label>
+                        <div>
+                            <div className='divRightSubMainContainerCompo' >
+                                <h2>Jogo</h2>
+                                {
+                                    jogo.map((jogo) => {
+                                        if(jogo.id === parseInt(torneio.gameId)){
+                                            return <label style={{textAlign: 'center', display: 'flex', alignItems: 'center'}}><img style={{marginRight: '10px'}} width={50} height={50} src={jogo.logo}/>{jogo.nome}</label>
+
+                                        }
+                                    })
+                                }
+                                
+                                
+                            </div>
+                            <div className='divRightSubMainContainerCompo' >
+                                <h2>Administradores</h2>
+                                {
+                                    users.map((user) => {
+                                        
+                                        if(user.username === torneio.donoCriacao){
+                                            return <div style={{width: '80%'}}>
+                                                        <label className='criador' onClick={() => window.location.href = '/u/' + user.username} style={{ display: 'flex', alignItems: 'flex-start', flexWrap: 'no-wrap', flexDirection: 'row'}}>
+                                                            <img style={{marginRight: '10px', borderRadius: 50, border: '1px solid' + user.corP,backgroundColor: '#121212'}} width={37} height={37} src={user.icon}/>
+                                                            <label>Criado por <SiEdotleclerc sx={{fontSize: "2vh", color: "#fc6b03"}}/> {user.username}</label>
+                                                        </label>
+
+                                                    </div>
+
+                                        }
+                                        
+                                    })
+                                }                        
+                            </div>
+                            <div className='divRightSubMainContainerCompo'>
+                            <div onClick={() => callModal()} style={{padding: '1%', backgroundColor: '#222222', border: '1px solid #fc6b03', borderRadius: '10px', textAlign: 'center', cursor: 'pointer'}}>Participar</div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div className='divUsuarioSubMainContainerGeneral'  style={{}}>
+                        <div className='perfilNavigation' style={{}}>
+                            <div onClick={() => setPage('geral')} className='perfilConfig geral'><div className='imgUsuarioGearEditing visaoImg'/>Visão Geral</div>
+                            <div onClick={() => setPage('equipe')} className='perfilConfig equipe'><div className='imgUsuarioGearEditing equipesImg'/>Equipes</div>
+                            <div onClick={() => setPage('config')} className='perfilConfig config'><div className='imgUsuarioGearEditing'/>Configurar Torneio</div>
+                        </div>
+
+                        <div className='divAllContainersUser' style={{}} >
+                            <div className='divUsuarioSubMainContainerCompo'  style={{}} >
+                                <div className='divContainerUsuarioContent' style={{}} >
+                                    <div className='divmdEditor' style={{}}>
+                                        <MDEditor
+                                            className='wrapper'
+                                            style={{boxShadow: '0px 1px 0px 0px '}} 
+                                            visibleDragbar={false}
+                                            height={'52.4vh'}
+                                            fullscreen={false}
+                                            value={descB}
+                                            onChange={setDescB}
+                                            preview={'edit'}
+                                            
+                                        />
+                                    </div>
+                                    <div className='divmdViewer' style={{}}>
+                                        <MDEditor.Markdown className='markdownShower'  source={descB} style={{ whiteSpace: 'pre-wrap'}} />
+                                    </div>
+                                    <div className='divmdEditor' style={{}}>
+                                        <MDEditor
+                                            className='wrapper'
+                                            style={{boxShadow: '0px 1px 0px 0px '}} 
+                                            visibleDragbar={false}
+                                            height={'52.4vh'}
+                                            fullscreen={false}
+                                            value={desc}
+                                            onChange={setDesc}
+                                            preview={'edit'}
+                                            
+                                        />
+                                        <div className='editMarkdownButton exitMarkdown' onClick={() => callEditMarkdownEditor('exit')}><p>Editar</p></div>
+                                    </div>
+                                    <div className='divmdViewer' style={{}}>
+                                        <MDEditor.Markdown className='markdownShower'  source={desc} style={{ whiteSpace: 'pre-wrap'}} />
+                                        <div className='editMarkdownButton enterMarkdown' onClick={() => callEditMarkdownEditor('enter')} style={{borderColor: `${loggedUser.corP}`}} ><p>Editar</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='divEquipesSubMainContainerCompo' >
+                                <div className='divContainerTeamsOnUserTab' style={{width: '95%'}}>
+                                    <div style={{width: '100%'}}>
+                                        <h3>Equipes Participando</h3>
+
+                                        { 
+                    
+                                            time.map( (time) => {
+                                                    if(JSON.parse(torneio.participantes).find((ac) => {return ac === time.id})){
+                                                        return  <div key={time.id} className='usersOnActive divUsersOnTeamSubContainer' id={'selectById'+time.id}>
+                                                                    <div  className='divUserOnTeamContainer'>
+                                                                        <img className='divUserOnTeamImg' src={time.logo} style={{border: '1px solid #fc6b03', boxShadow: `0px 0px 11px 0px #121212`}}/>
+                                                                        <div style={{cursor: 'pointer'}} onClick={() => {window.location.href = '/e/' + time.nome}}>
+                                                                            <h4>{time.nome}</h4>
+                                                                        </div>
+                                                                        <DoDisturbIcon onClick={() => {// deleteActiveUser(user.id)
+                                                                        }} 
+                                                                        className='doDisturbIcon' id={time.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/>
+                                                                    </div>
+                                                                </div>
+
+                                                    }
+                                                
+                                                    
+                                                }
+                                            ) 
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='divConfigSubMainContainerCompo' style={{borderColor: '#fc6b03'}}>        
+                                <div className='divConfigSubMainContainer' style={{borderColor: '#fc6b03'}}>
+                                    <div className='divConfigConfigsContainer' style={{borderColor: '#fc6b03'}}>
+                                        <div className='divConfigConfigsSubContainer' style={{borderColor: '#fc6b03'}}>
+                                            <h1>Configurar Perfil</h1>
+                                            <h2>Informações Gerais</h2>
+
+                                            <div className='divOmgConfigs'>
+                                                <div className='divContainerConfigSub4' style={{borderColor: '#fc6b03', flexDirection: 'column', gap: 15, marginLeft: '120px', alignItems: 'flex-start'}}>
+                                                    <label className='premiumConfigs' style={{borderColor: '#fc6b03'}}>Icone:
+                                                        <div className='divContainerNewImage'>
+                                                            <img className='gearSelectImage' src={require('./components/assets/selecionar100x100.png')}/>
+                                                            {
+                                                                !imgUrl &&
+                                                                <div className='outerbar'>
+                                                                <div className='innerbar' style={{ width: `${progresspercent}%` }}>{progresspercent}%</div>
+                                                                </div>
+                                                            }
+                                                            {
+                                                                imgUrl &&
+                                                                
+                                                                <img src={imgUrl} alt='uploaded file' className='imgUploaded' style={{borderColor: '#fc6b03'}} />
+                                                            }
+                                                            
+                                                            <form className='form' >
+                                                                <input style={{display: 'none'}} onChange={(event) => {handleSubmit(event); 
+                                                                    }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
+                                                            </form>
+                                                        </div>
                                                     </label>
+                                                    <label>Nome do Torneio: <input value={nome} onChange={(event) => setNome(event.target.value)} placeholder={torneio.nome}/></label>
 
                                                 </div>
 
-                                    }
-                                    
-                                })
-                            }                        
-                        </div>
-                        <div className='divRightSubMainContainerCompo'>
-                        <div onClick={() => callModal()} style={{padding: '1%', backgroundColor: '#222222', border: '1px solid #fc6b03', borderRadius: '10px', textAlign: 'center', cursor: 'pointer'}}>Participar</div>
+                                                <div className='divContainerConfigSub'>
 
-                        </div>
-                    </div>
-                </div>
-                <div className='divUsuarioSubMainContainerGeneral'  style={{}}>
-                    <div className='perfilNavigation' style={{}}>
-                        <div onClick={() => setPage('geral')} className='perfilConfig geral'><div className='imgUsuarioGearEditing visaoImg'/>Visão Geral</div>
-                        <div onClick={() => setPage('equipe')} className='perfilConfig equipe'><div className='imgUsuarioGearEditing equipesImg'/>Equipes</div>
-                        <div onClick={() => setPage('config')} className='perfilConfig config'><div className='imgUsuarioGearEditing'/>Configurar Torneio</div>
-                    </div>
 
-                    <div className='divAllContainersUser' style={{}} >
-                        <div className='divUsuarioSubMainContainerCompo'  style={{}} >
-                            <div className='divContainerUsuarioContent' style={{}} >
-                                <div className='divmdEditor' style={{}}>
-                                    <MDEditor
-                                        className='wrapper'
-                                        style={{boxShadow: '0px 1px 0px 0px '}} 
-                                        visibleDragbar={false}
-                                        height={'52.4vh'}
-                                        fullscreen={false}
-                                        value={descB}
-                                        onChange={setDescB}
-                                        preview={'edit'}
-                                        
-                                    />
-                                </div>
-                                <div className='divmdViewer' style={{}}>
-                                    <MDEditor.Markdown className='markdownShower'  source={descB} style={{ whiteSpace: 'pre-wrap'}} />
-                                </div>
-                                <div className='divmdEditor' style={{}}>
-                                    <MDEditor
-                                        className='wrapper'
-                                        style={{boxShadow: '0px 1px 0px 0px '}} 
-                                        visibleDragbar={false}
-                                        height={'52.4vh'}
-                                        fullscreen={false}
-                                        value={desc}
-                                        onChange={setDesc}
-                                        preview={'edit'}
-                                        
-                                    />
-                                     <div className='editMarkdownButton exitMarkdown' onClick={() => callEditMarkdownEditor('exit')}><p>Editar</p></div>
-                                </div>
-                                <div className='divmdViewer' style={{}}>
-                                    <MDEditor.Markdown className='markdownShower'  source={desc} style={{ whiteSpace: 'pre-wrap'}} />
-                                    <div className='editMarkdownButton enterMarkdown' onClick={() => callEditMarkdownEditor('enter')} style={{borderColor: `${loggedUser.corP}`}} ><p>Editar</p></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='divEquipesSubMainContainerCompo' >
-                            <div className='divContainerTeamsOnUserTab' style={{width: '95%'}}>
-                                <div style={{width: '100%'}}>
-                                    <h3>Equipes Participando</h3>
-
-                                    { 
-                  
-                                        time.map( (time) => {
-                                                if(JSON.parse(torneio.participantes).find((ac) => {return ac === time.id})){
-                                                    return  <div key={time.id} className='usersOnActive divUsersOnTeamSubContainer' id={'selectById'+time.id}>
-                                                                <div  className='divUserOnTeamContainer'>
-                                                                    <img className='divUserOnTeamImg' src={time.logo} style={{border: '1px solid #fc6b03', boxShadow: `0px 0px 11px 0px #121212`}}/>
-                                                                    <div style={{cursor: 'pointer'}} onClick={() => {window.location.href = '/e/' + time.nome}}>
-                                                                        <h4>{time.nome}</h4>
-                                                                    </div>
-                                                                    <DoDisturbIcon onClick={() => {// deleteActiveUser(user.id)
-                                                                    }} 
-                                                                    className='doDisturbIcon' id={time.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/>
-                                                                </div>
-                                                            </div>
-
-                                                }
-                                            
-                                                
-                                            }
-                                        ) 
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                        <div className='divConfigSubMainContainerCompo' style={{borderColor: '#fc6b03'}}>        
-                            <div className='divConfigSubMainContainer' style={{borderColor: '#fc6b03'}}>
-                                <div className='divConfigConfigsContainer' style={{borderColor: '#fc6b03'}}>
-                                    <div className='divConfigConfigsSubContainer' style={{borderColor: '#fc6b03'}}>
-                                        <h1>Configurar Perfil</h1>
-                                        <h2>Informações Gerais</h2>
-
-                                        <div className='divOmgConfigs'>
-                                            <div className='divContainerConfigSub4' style={{borderColor: '#fc6b03', flexDirection: 'column', gap: 15, marginLeft: '120px', alignItems: 'flex-start'}}>
-                                                <label className='premiumConfigs' style={{borderColor: '#fc6b03'}}>Icone:
-                                                    <div className='divContainerNewImage'>
-                                                        <img className='gearSelectImage' src={require('./components/assets/selecionar100x100.png')}/>
-                                                        {
-                                                            !imgUrl &&
-                                                            <div className='outerbar'>
-                                                            <div className='innerbar' style={{ width: `${progresspercent}%` }}>{progresspercent}%</div>
-                                                            </div>
-                                                        }
-                                                        {
-                                                            imgUrl &&
-                                                            
-                                                            <img src={imgUrl} alt='uploaded file' className='imgUploaded' style={{borderColor: '#fc6b03'}} />
-                                                        }
-                                                        
-                                                        <form className='form' >
-                                                            <input style={{display: 'none'}} onChange={(event) => {handleSubmit(event); 
-                                                                }} className='inputTypeFile' type='file' accept=".png,.jpeg"/> 
-                                                        </form>
-                                                    </div>
-                                                </label>
-                                                <label>Nome do Torneio: <input value={nome} onChange={(event) => setNome(event.target.value)} placeholder={torneio.nome}/></label>
-
+                                                    
+                                                </div>
                                             </div>
-
-                                            <div className='divContainerConfigSub'>
-
-
-                                                
-                                            </div>
-                                        </div>
-                        
+                            
 
                                     <div>
                                         <button onClick={() => callMudançasPerfil('IG')} id='buttonChangeSettingsAccount buttonChangeSettingsAccount1'>Confirmar Mudanças - Informações Gerais</button>
@@ -625,9 +671,9 @@ function Participar() {
                     </div>
                 </div>
             </div> 
-            </div>
-                    
-            <Footer/>
+        </div>
+                
+        <Footer/>
     </div>
         // <div className='divParticiparMainContainer'>
         //     {/* <Navbar page={'usuario'} /> */}
