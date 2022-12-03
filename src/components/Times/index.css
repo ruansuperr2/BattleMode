@@ -124,10 +124,11 @@
     margin-top: 3%;
 }
 
-.SeparatorFromGround{
+
+
+.divAllContainersUser{
     border-bottom: 1px solid #fc6b03;
-    margin-top: 6%;
-    width: 100%;
+    padding-bottom: 3%;
 }
 
 .doDisturbIcon{

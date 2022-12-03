@@ -181,7 +181,7 @@ function CriarEquipe() {
     
     if(getUsersTry < 2){
         if(JSON.parse(localStorage.getItem('dasiBoard')) === null){
-            window.location.href = 'userNotFound'
+            window.location.href = '/userNotFound'
         }
         getUsersTry++
         getUsers()

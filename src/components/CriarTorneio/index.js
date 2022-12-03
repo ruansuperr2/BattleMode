@@ -17,10 +17,11 @@ function CriarTorneio (){
     const [jogo, setJogo] = useState([])
     const [torneio, setTorneio] = useState([])
     const [time, setTime] = useState([])
-    const [name, setName] = useState('')
-    const [tag, setTag] = useState('')
+    const [nome, setNome] = useState('')
+    const [descB, setDescB] = useState('')
     const [desc, setDesc] = useState('')
-    const [teamUser, setTeamUser] = useState([])
+    const [chave, setChave] = useState('')
+    const [quantiaParticipantes, setQuantiaParticipantes] = useState(0)
 
 
     const [imgUrl, setImgUrl] = useState(null);
@@ -29,6 +30,8 @@ function CriarTorneio (){
     const [progresspercent, setProgresspercent] = useState(0);
     const [progresspercent2, setProgresspercent2] = useState(0);
     const [progresspercent3, setProgresspercent3] = useState(0);
+
+    const [gameId, setGameId] = useState()
 
     const handleSubmit = (e) => {
         showModal('spin', `Carregando sua Imagem, aguarde`,false)
@@ -166,7 +169,7 @@ function CriarTorneio (){
     
     if(getUsersTry < 3){
         if(JSON.parse(localStorage.getItem('dasiBoard')) === null){
-            window.location.href = 'userNotFound'
+            window.location.href = '/userNotFound'
         }
         getUsersTry++
         getUsers()
@@ -175,70 +178,42 @@ function CriarTorneio (){
         callTime()
     }
 
-    const [inputProcurar, setInputProcurar] = useState('')
-    const [jogadores, setJogadores] = useState([])
 
-    const handleChange = e => {
-        setInputProcurar(e.target.value)
-    }
-
-    const addJogador = nomeJogador => {
-        let backup = jogadores
-        try{
-            console.log('1',jogadores)
-            setJogadores([...jogadores, users.find(usuario => {return usuario.username === nomeJogador} )])
-            console.log('2',jogadores)
-        }catch(e){
-            console.log('3',jogadores)
-            showModal('erro', 'Não foi possível encontrar esse usuário.', 'barLoading')
-            console.log(e)
-            setJogadores(jogadores)
-        }
-        
-        setInputProcurar('')
-    }
-
-    const handleRemove = id => {
-        const novaListaJogadores = jogadores.filter((item) => item.id !== id)
-        setJogadores(novaListaJogadores)
-    }
 
     const sendEverything = async() => {
         showModal('spin', 'Enviando informações...', 'barLoading')
-        if(name.length > 3){
-            if(tag.length > 1){
-                if(jogadores.length > 0){
-
+        if(nome.length > 3){
+            if(desc.length > 1){
                     try{
                         const requestOptions = {
                                 method: 'POST',
                                 headers: {'Content-type': 'application/json'},
                                 body: JSON.stringify({
-                                    nome: name,
-                                    tag: tag,
+                                    nome: nome,
                                     logo: imgUrl,
-                                    imgFundo: imgUrl2,
-                                    equipeAtiva: JSON.stringify(jogadores.map((item) => {return item['id']})),
-                                    reserva: JSON.stringify([]),
-                                    comissaoTecnica: JSON.stringify([]),
-                                    jogoPrincipal: 0,
-                                    conquistas: JSON.stringify([])
+                                    descricaoLonga: desc,
+                                    descricaoBreve: descB,
+                                    thumbnail: imgUrl2,
+                                    imgFundo: imgUrl3,
+                                    participantes: JSON.stringify([]),
+                                    gameId: gameId,
+                                    chave: chave,
+                                    quantiaParticipantes: quantiaParticipantes,
+                                    donoCriacao: loggedUser.username,
+                                    admins: JSON.stringify([])
                                 })
                                 
                         }
                         await fetch('https://web-production-8ce4.up.railway.app/api/torneio/', requestOptions)
                         closeModal('success', 'Redirecionando...', false)
                         setTimeout(() => {
-                            window.location.href = '/t/' + name + ''
+                            window.location.href = '/t/' 
                         }, 1000)
                     }catch(error){
                             
                     }
-                }else{
-                    closeModal('erro', 'Quantia insuficiente de jogadores...', false)
-                }
             }else{
-                closeModal('erro', 'Tag inválida...', false)
+                closeModal('erro', 'Descrição inválida...', false)
             }
         }else{
             closeModal('erro', 'Nome inválido...', false)
@@ -302,7 +277,7 @@ function CriarTorneio (){
                                 {
                                         !imgUrl2 &&
                                         <div className='outerbar'>
-                                        <div className='innerbar' style={{ width: `100%` }}>Capa {progresspercent3}%</div>
+                                        <div className='innerbar' style={{ width: `100%` }}>Thumbnail {progresspercent3}%</div>
                                         </div>
                                     }
                                     {
@@ -374,17 +349,18 @@ function CriarTorneio (){
                     </div>
 
                     <div className="divInfoCriarTorneio">
-                        <input className="torneioInput" placeholder="Nome seu do torneio..."></input>
-                        <textarea className="textAreaTorneio" placeholder="Informações do seu torneio..."></textarea>
-                        <button className='buttonConfirmarCriarTorneio'>Confirmar <AiOutlineCheck style={{fontSize: '25px', marginLeft: '.5rem', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
+                        <input className="torneioInput" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Nome seu do torneio..."></input>
+                        <textarea className="textAreaTorneio" value={descB} onChange={(e) => setDescB(e.target.value)} placeholder="Informações breve do seu torneio... 1000 Caracteres - MarkDown File"></textarea>
+                        <textarea className="textAreaTorneio" value={desc} onChange={(e) => setDesc(e.target.value)} placeholder="Informações do seu torneio... 3000 Caracteres - MarkDown File"></textarea>
+                        <div className="divMoreinfoCriarTorneios" style={{color: 'black'}}>
+                            <Select options={chaves} onChange={(e) => setChave(e.value)} className="select" placeholder='Chaves' />
+                            <Select options={jogos} onChange={(e) => setGameId(e.value)} className="select"  placeholder='Jogos'/>
+                            <Select options={quantia} onChange={(e) => setQuantiaParticipantes(e.value)} className="select"  placeholder='Quantia de Jogadores'/>
+                        </div>
+                        <button className='buttonConfirmarCriarTorneio' onClick={() => {sendEverything()}}>Confirmar <AiOutlineCheck style={{fontSize: '25px', marginLeft: '.5rem', color: '#fc6b03', backgroundColor: 'transparent'}}/></button>
                     </div>
                 </div>
 
-                <div className="divMoreinfoCriarTorneios">
-                    <Select options={chaves} className="select" placeholder='Chaves' />
-                    <Select options={jogos} className="select"  placeholder='Jogos'/>
-                    <Select options={quantia} className="select"  placeholder='Quantia de Jogadores'/>
-                </div>
             </div>
             <Footer/>
         </div>

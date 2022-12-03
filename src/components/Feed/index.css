@@ -75,9 +75,10 @@
 
 .Torneio{
     flex: none;
-    width: 66.3rem;
+    width: 26.3rem;
     height: 80%;
     background-size: cover;
+    background-position: center;
     align-items: center;
     justify-content: center;
     margin-inline: 20px;
@@ -93,20 +94,28 @@
     color: #ffffff;
     margin-top: 13rem;
     /* padding-top: 80px; */
-    padding-left: 1.5rem;
+    padding-left: 0.5rem;
 }
 .containerTorneioSetas {
     display: flex;
     flex-direction: row;
     margin-top: .5rem;
 }
+
+.divGamesonFeedContainer{
+    width: 100%;
+    margin-left: 10%
+}
+
 .torneioSetasMainContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    
+    width: 80%;
+    background-color: #3a3a3a;
+    border-radius: 30px;
+    padding: 2%;
 }
 .buttonSeta {
     display: flex;

@@ -300,7 +300,6 @@
 
 .divContainerUsuarioContent{
     width: 99.9%;
-    border-left: 1px solid #fc6b03;
 }
 
 .editMarkdownButton{
@@ -415,7 +414,6 @@
 }
 
 .divConfigConfigsContainer{
-    border: 1px solid;
     border-right: none;
     border-top: none;
     padding: 2%;

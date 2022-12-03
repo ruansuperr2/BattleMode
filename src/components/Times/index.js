@@ -1097,7 +1097,6 @@ function Times() {
                                         }
                                         <div className='divAppendCT'></div>
                                     </div>
-                                    <div className="SeparatorFromGround"></div>
                                 </div>
                             </div>
                             <div className='divConfigSubMainContainerCompo' style={{borderColor: '#fc6b03'}}>        

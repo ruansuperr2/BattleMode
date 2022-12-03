@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef } from 'react'
 import './index.css'
 import Prediletos from './components/Prediletos'
 import { useParams } from 'react-router-dom';
@@ -6,6 +6,10 @@ import Loading from '../Loading'
 import Navbar from '../Navbar'
 import Footer from '../Footer'
 import TodosTorneios from './components/TodosTorneios'
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
+
+
+
 let getGamesTry = 0
 function Feed() {
     const { id } = useParams();
@@ -21,7 +25,28 @@ function Feed() {
         }
     }
 
-    
+    const carousel = useRef(null)
+    const [cooldown, setCooldown] = useState('')
+
+    const handleLeftClick = e => {
+        setCooldown('disabled')
+        e.preventDefault()
+
+        carousel.current.scrollLeft -= carousel.current.offsetWidth -14
+        setTimeout(() => {
+            setCooldown('')
+        }, 550);
+    }
+
+    const handleRightClick = e => {
+        e.preventDefault()
+        setCooldown('disabled')
+
+        carousel.current.scrollLeft += carousel.current.offsetWidth -14
+        setTimeout(() => {
+            setCooldown('')
+        }, 550);
+    }
     
     const [jogo, setJogo] = useState([])
     const callGames = async() => {
@@ -34,7 +59,7 @@ function Feed() {
         }
     }
 
-    if(getGamesTry < 10){
+    if(getGamesTry < 3){
         getGamesTry++
         callGames()
         callTorneio()
@@ -50,7 +75,27 @@ function Feed() {
 
                         <div className='divGamesonFeedContainer'>
                             <h1 className='TitlePrediletos'><img className='logoImgFeedGlobal' src={jogo.logo}/>  {jogo.nome}</h1>
-                            <TodosTorneios id={jogo.id}/>
+                            <div className='torneioSetasMainContainer'>
+                                <div className='torneioContainer' ref={carousel}>
+                                    { torneio.map( (findTorneio) => {
+                                        if(jogo.id === findTorneio.gameId){
+                                            return  <a key={findTorneio.id} href={`../t/${findTorneio.id}`} className='Torneio' style={{backgroundImage: `url(${findTorneio.thumbnail})`}}>
+                                                        <h5 className='TorneioH1'>{findTorneio.nome}</h5>
+                                                    </a>
+                                                    
+                                        }else{
+                                            return <h3>Não há torneios para esse jogo</h3>
+                                        }
+
+                                    }
+
+                                    ) }
+                                </div>
+                                <div className='containerTorneioSetas'>
+                                    <button className='buttonSeta' onClick={handleLeftClick} disabled={cooldown}><AiOutlineArrowLeft/></button>
+                                    <button className='buttonSeta' onClick={handleRightClick} disabled={cooldown}><AiOutlineArrowRight/></button>
+                                </div>
+                            </div>
                         </div>
                         ) }
                     <Footer/>
