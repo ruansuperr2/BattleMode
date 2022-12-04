@@ -8,7 +8,9 @@ import { useParams } from 'react-router-dom'
 import MDEditor from '@uiw/react-md-editor'
 import Select from 'react-select'
 
+import Delayed from './components/delay';
 import Loading from '../Loading'
+
 import DoDisturbIcon from '@mui/icons-material/DoDisturb';
 import { HiX } from 'react-icons/hi'
 import { AiOutlineCheck, AiOutlinePlus, AiFillCrown } from 'react-icons/ai'
@@ -34,7 +36,7 @@ function Participar() {
     const [users, setUsers] = useState([])
     const [time, setTime] = useState([])
     const [jogo, setJogo] = useState([])
-    const [torneio, setTorneio] = useState({})
+    const [torneio, setTorneio] = useState(null)
 
     const [imgUrl, setImgUrl] = useState(null);
     const [imgUrl2, setImgUrl2] = useState(null);
@@ -199,48 +201,51 @@ function Participar() {
 
         useEffect(() => {
 
-    
+
             switch(page){
                 case 'geral':
                     document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'flex'
                     document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
-                    // document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
+                    document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
                     document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
     
                     document.querySelector('.geral').classList.add('perfilActive')
                     document.querySelector('.equipe').classList.remove('perfilActive')
+                    document.querySelector('.torneio').classList.remove('perfilActive')
                     document.querySelector('.config').classList.remove('perfilActive')
                     break
                 case 'equipe':
                     document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'none'
                     document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'flex'
-                    // document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
+                    document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
                     document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
     
                     document.querySelector('.geral').classList.remove('perfilActive')
                     document.querySelector('.equipe').classList.add('perfilActive')
+                    document.querySelector('.torneio').classList.remove('perfilActive')
                     document.querySelector('.config').classList.remove('perfilActive')
                     break
                 case 'torneio':
-                    // document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'none'
-                    // document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
-                    // document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'flex'
-                    // document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
+                    document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'none'
+                    document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
+                    document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'flex'
+                    document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
     
                     document.querySelector('.geral').classList.remove('perfilActive')
                     document.querySelector('.equipe').classList.remove('perfilActive')
+                    document.querySelector('.torneio').classList.add('perfilActive')
                     document.querySelector('.config').classList.remove('perfilActive')
                     break
                 case 'config':
                     document.querySelector('.divUsuarioSubMainContainerCompo').style.display = 'none'
                     document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
-                    // document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
+                    document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
                     document.querySelector('.divConfigSubMainContainerCompo').style.display = 'flex'
     
                     document.querySelector('.geral').classList.remove('perfilActive')
                     document.querySelector('.equipe').classList.remove('perfilActive')
+                    document.querySelector('.torneio').classList.remove('perfilActive')
                     document.querySelector('.config').classList.add('perfilActive')
-                    
                     break
             }
         })
@@ -295,8 +300,9 @@ function Participar() {
         console.log(loggedUser.username)
 
         if(loggedUser.username === torneio.donoCriacao){
+            document.querySelector('.adminStartTourneament').style.display = 'block'
             document.querySelector('.config').style.display = 'flex'
-
+            document.querySelector('.playerPartTourneament').style.display = 'none'
             document.querySelectorAll('.divmdEditor')[0].style.display = 'none'
             document.querySelectorAll('.divmdEditor')[1].style.display = 'none'
             document.querySelectorAll('.enterMarkdown')[0].style.display = 'flex'
@@ -388,8 +394,8 @@ function Participar() {
         await fetch(`https://web-production-8ce4.up.railway.app/api/torneio/${torneio.id}`,  requestOptions)
         window.location.href = '/now'
     }
-
     return (
+    
         <div className='divParticiparMainContainer'>
         <ModalCustom/>
         <Loading/>
@@ -407,7 +413,7 @@ function Participar() {
                         <div>
                             <div className='inputButtonFlex'>
                                 {
-                                                                                 
+                                                                                
 
                                     time.map( (times) => {
                                         for(let i = 0; i < 5;i++){
@@ -438,21 +444,28 @@ function Participar() {
                     </div>
                 </div>
             </div>
-            <div className='divFundoMainContainer' style={{backgroundImage: `url(${torneio.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center',}}>
-                <div className='divContainerFundoMainContainer'/>
-            </div>
+            {
+            torneio &&
+                <div className='divFundoMainContainer' style={{backgroundImage: `url(${torneio.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center',}}>
+                    <div className='divContainerFundoMainContainer'/>
+                </div>
+            }
             <div className='divUsuarioSubMainContainerD paddingLeft '>
                 <div className='divUsuarioComplexContainer divEquipeComplexContainer' >
                     <div className='divRightMainComplexoContainerCompo' style={{}} >
-                        <div className='divRightUserInfoCompo'>
-                            <div className='imgUserprofileIcon' style={{backgroundImage: `url(${torneio.logo})`, backgroundColor: '#121212'}}></div>
-                            <h4 style={{marginTop: '25px'}}>{torneio.nome}</h4>
+                        
+                            {
+                                torneio &&
+                                <div className='divRightUserInfoCompo'>
+                                    <div className='imgUserprofileIcon' style={{backgroundImage: `url(${torneio.logo})`, backgroundColor: '#121212'}}></div>
+                                    <h4 style={{marginTop: '25px'}}>{torneio.nome}</h4>
+                                </div>
+                            }
                             
-                        </div>
                         <div>
                             <div className='divRightSubMainContainerCompo' >
                                 <h2>Jogo</h2>
-                                {
+                                { torneio &&
                                     jogo.map((jogo) => {
                                         if(jogo.id === parseInt(torneio.gameId)){
                                             return <label style={{textAlign: 'center', display: 'flex', alignItems: 'center'}}><img style={{marginRight: '10px'}} width={50} height={50} src={jogo.logo}/>{jogo.nome}</label>
@@ -465,7 +478,7 @@ function Participar() {
                             </div>
                             <div className='divRightSubMainContainerCompo' >
                                 <h2>Administradores</h2>
-                                {
+                                {torneio &&
                                     users.map((user) => {
                                         
                                         if(user.username === torneio.donoCriacao){
@@ -483,7 +496,8 @@ function Participar() {
                                 }                        
                             </div>
                             <div className='divRightSubMainContainerCompo'>
-                            <div onClick={() => callModal()} style={{padding: '1%', backgroundColor: '#222222', border: '1px solid #fc6b03', borderRadius: '10px', textAlign: 'center', cursor: 'pointer'}}>Participar</div>
+                            <div onClick={() => callModal()} className='playerPartTourneament' style={{padding: '1%', backgroundColor: '#222222', border: '1px solid #fc6b03', borderRadius: '10px', textAlign: 'center', cursor: 'pointer'}}>Participar</div>
+                            <div onClick={() => callModal()} className='adminStartTourneament' style={{padding: '1%', backgroundColor: '#222222', border: '1px solid #fc6b03', borderRadius: '10px', textAlign: 'center', cursor: 'pointer', display: 'none'}}>Começar Torneio</div>
 
                             </div>
                         </div>
@@ -492,6 +506,7 @@ function Participar() {
                         <div className='perfilNavigation' style={{}}>
                             <div onClick={() => setPage('geral')} className='perfilConfig geral'><div className='imgUsuarioGearEditing visaoImg'/>Visão Geral</div>
                             <div onClick={() => setPage('equipe')} className='perfilConfig equipe'><div className='imgUsuarioGearEditing equipesImg'/>Equipes</div>
+                            <div onClick={() => setPage('torneio')} className='perfilConfig torneio'><div className='imgUsuarioGearEditing torneiosImg'/>Chave</div>
                             <div onClick={() => setPage('config')} className='perfilConfig config'><div className='imgUsuarioGearEditing'/>Configurar Torneio</div>
                         </div>
 
@@ -536,34 +551,39 @@ function Participar() {
                             </div>
                             <div className='divEquipesSubMainContainerCompo' >
                                 <div className='divContainerTeamsOnUserTab' style={{width: '95%'}}>
+                                { torneio && 
                                     <div style={{width: '100%'}}>
-                                        <h3>Equipes Participando</h3>
+                                        
+                                        <h3>Equipes Participando - {JSON.parse(torneio.participantes).length}/{torneio.quantiaParticipantes}</h3>
+                                        
+                                        
+                                            {time.map( (time) => {
 
-                                        { 
-                    
-                                            time.map( (time) => {
-                                                    if(JSON.parse(torneio.participantes).find((ac) => {return ac === time.id})){
-                                                        return  <div key={time.id} className='usersOnActive divUsersOnTeamSubContainer' id={'selectById'+time.id}>
-                                                                    <div  className='divUserOnTeamContainer'>
-                                                                        <img className='divUserOnTeamImg' src={time.logo} style={{border: '1px solid #fc6b03', boxShadow: `0px 0px 11px 0px #121212`}}/>
-                                                                        <div style={{cursor: 'pointer'}} onClick={() => {window.location.href = '/e/' + time.nome}}>
-                                                                            <h4>{time.nome}</h4>
+                                                        if(JSON.parse(torneio.participantes)?.find((ac) => {return ac === time.id})){
+                                                            return  <div key={time.id} className='usersOnActive divUsersOnTeamSubContainer' id={'selectById'+time.id}>
+                                                                        <div  className='divUserOnTeamContainer'>
+                                                                            <img className='divUserOnTeamImg' src={time.logo} style={{border: '1px solid #fc6b03', boxShadow: `0px 0px 11px 0px #121212`}}/>
+                                                                            <div style={{cursor: 'pointer'}} onClick={() => {window.location.href = '/e/' + time.nome}}>
+                                                                                <h4>{time.nome}</h4>
+                                                                            </div>
+                                                                            <DoDisturbIcon onClick={() => {// deleteActiveUser(user.id)
+                                                                            }} 
+                                                                            className='doDisturbIcon' id={time.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/>
                                                                         </div>
-                                                                        <DoDisturbIcon onClick={() => {// deleteActiveUser(user.id)
-                                                                        }} 
-                                                                        className='doDisturbIcon' id={time.id} sx={{fontSize: "4vh", color: "#fc6b03"}}/>
                                                                     </div>
-                                                                </div>
-
-                                                    }
-                                                
-                                                    
+                                                        }
                                                 }
-                                            ) 
-                                        }
+                                            )
+
+
+                                        } 
                                     </div>
+                                }
                                 </div>
                             </div>
+                            <div className='divTorneiosSubMainContainerCompo'>
+                            </div>
+                            
                             <div className='divConfigSubMainContainerCompo' style={{borderColor: '#fc6b03'}}>        
                                 <div className='divConfigSubMainContainer' style={{borderColor: '#fc6b03'}}>
                                     <div className='divConfigConfigsContainer' style={{borderColor: '#fc6b03'}}>
@@ -594,8 +614,9 @@ function Participar() {
                                                             </form>
                                                         </div>
                                                     </label>
-                                                    <label>Nome do Torneio: <input value={nome} onChange={(event) => setNome(event.target.value)} placeholder={torneio.nome}/></label>
-
+                                                    {torneio && 
+                                                        <label>Nome do Torneio: <input value={nome} onChange={(event) => setNome(event.target.value)} placeholder={torneio.nome}/></label>
+                                                    }
                                                 </div>
 
                                                 <div className='divContainerConfigSub'>
@@ -667,7 +688,9 @@ function Participar() {
 
                             </div>            
                         </div>
+                        
                         </div>
+                        
                     </div>
                 </div>
             </div> 
@@ -675,38 +698,9 @@ function Participar() {
                 
         <Footer/>
     </div>
-        // <div className='divParticiparMainContainer'>
-        //     {/* <Navbar page={'usuario'} /> */}
-        //     <ModalCustom/>
-        //     <div className="divMainTorneio" />
-
-        //     <div>
-        //         <div className='perfilNavegacao'>
-        //             <div onClick={() => setPage('geral')} className='perfilConfiguracao geral'><div className='imgVisaoGearEditing gearEditing'/>Visão Geral</div>
-        //             <div onClick={() => setPage('equipe')} className='perfilConfiguracao equipe'><div className='imgEquipeGearEditing gearEditing'/>Equipes</div>
-        //             <div onClick={() => callModal()} className='perfilConfiguracao torneio'><div className='imgParticiparGearEditing gearEditing'/>Participar</div>
-        //             {/* <div onClick={() => setPage('config')} className='perfilConfig config'><div className='imgUsuarioGearEditing'/>Configurar Perfil</div> */}
-        //         </div>
-        //         <div className='divCampoGeral campos' >
-        //             <div style={{display: 'flex', flexDirection: 'column'}}>
-        //                 <TorneioHeader/>
-        //                 <TorneioHeader/>
-        //             </div>
-        //             <div className="divDesc">
-        //                 <p className="descricao">Esse texto é um ilustrativo da descrição de um torneio</p>
-        //             </div>
-        //         </div>
-        //         <div className='divCampoEquipe campos' >
-        //             <h1 className="TeamsOnProfile"><div className='divImgFundoMainContainer'/>2</h1>
-        //         </div>
-        //         <div className='divCampoParticipar campos' >
-        //             <h1 className="UserNameOnProfile"><div className='divImgFundoMainContainer'/>3</h1>
-                
-        //         </div>
-        //     </div>
-        //     <Footer/>
-        // </div>
+    
     )
+
 }
 
 export default Participar
