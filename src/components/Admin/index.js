@@ -150,33 +150,33 @@ function Admin () {
                                                     }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
                                             </form>
                                         
-
+                                    </div>
+                                        <div className='d'>
+                                            <h4>Logo do Jogo</h4>
+                                            <label></label>
+                                                {
+                                                    !imgUrl &&
+                                                    <div className='outerbar'>
+                                                    <div className='innerbar' style={{ width: `100%` }}>Logo {progresspercent}%</div>
+                                                    </div>
+                                                }
+                                                {
+                                                    imgUrl &&
+                                                    
+                                                    <img src={imgUrl} alt='uploaded file' className='imgUploadedLogoAdmin' />
+                                                }
+                                                
+                                                <form className='form' style={{}}>
+                                                    <input style={{display: 'none'}} onChange={(event) => {handleSubmit(event); 
+                                                        }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
+                                                </form>
+                                            
                                     </div>
                                     
                                     
                                 
                                 <div className='AdicionarAdminGame2'>
-                                    <div className='f'>
-                                        <h4>Logo do Jogo</h4>
-                                        <label></label>
-                                            {
-                                                !imgUrl &&
-                                                <div className='outerbar'>
-                                                <div className='innerbar' style={{ width: `100%` }}>Logo {progresspercent}%</div>
-                                                </div>
-                                            }
-                                            {
-                                                imgUrl &&
-                                                
-                                                <img src={imgUrl} alt='uploaded file' className='imgUploadedLogoAdmin' />
-                                            }
-                                            
-                                            <form className='form' style={{}}>
-                                                <input style={{display: 'none'}} onChange={(event) => {handleSubmit(event); 
-                                                    }} className='inputTypeFile' type='file' accept=".png,.jpeg,.jpg"/> 
-                                            </form>
-                                        
-                                    </div>
+                                    
 
                                     <div>
                                         <h4>Nome do Jogo</h4>
@@ -195,7 +195,7 @@ function Admin () {
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div className='adminBaixarRelatorio'>
                             <h3>Baixar Dados <button onClick={() => saveAs(window.URL.createObjectURL(new Blob([
                                 JSON.stringify(jogo.map((jogo) => {
                                     return {
@@ -223,7 +223,7 @@ function Admin () {
                     // </div>    
                 }
             </div>
-            <Footer/>
+            {/* <Footer/> */}
         </div>
         )
 }
