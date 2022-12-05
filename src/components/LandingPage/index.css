@@ -57,13 +57,13 @@
 }
 .divImgInfoLandingPage h1{
     font-style: SegoeUI-Bold;
-    color:#fc6b03;
+    color: #fc6b03;
     width: 35%;
     margin: 0;
     margin-top: 2rem;
     padding-left: 5%;
-    font-size: 55px;
-
+    margin-top: -6%;
+    font-size: 7vh;
     animation: slideInLeft;
     animation-duration: 1s;
     
@@ -71,7 +71,7 @@
 
 .divImgInfoLandingPage p{
     color: #fff;
-    font-size: 35px;
+    font-size: 4vh;
     margin: 0;
     width: 40%;
     padding-left: 5%;
@@ -106,10 +106,9 @@
     background-size: cover;
     display: flex;
     align-items: stretch;
-    height: 102vh;
+    height: 113vh;
     margin-left: 22%;
-    margin-top: -0.62%;
-    width: 91vw;
+    margin-top: -6.62%;
 }
 .divVideoLandingPage{
     width: 100vw;
@@ -118,13 +117,13 @@
 }
 
 .logoL{
-    width: 5rem;
-    height: 5rem;
+    width: 15vw;
+    height: 15vw;
     z-index: 99;
-    padding-left: 5%;
-    position: absolute;
-    top: 0;
-
+    padding-left: 4%;
+    margin-top: -4%;
+    /* position: absolute; */
+    /* top: 0; */
     animation: slideInLeft;
     animation-duration: 1s;
 }
