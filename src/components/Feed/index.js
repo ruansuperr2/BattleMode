@@ -83,8 +83,6 @@ function Feed() {
                                                         <h5 className='TorneioH1'>{findTorneio.nome}</h5>
                                                     </a>
                                                     
-                                        }else{
-                                            return <h3>Não há torneios para esse jogo</h3>
                                         }
 
                                     }
