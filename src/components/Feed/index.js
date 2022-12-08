@@ -1,109 +1,130 @@
-import React, {useState, useRef } from 'react'
-import './index.css'
-import Prediletos from './components/Prediletos'
+import React, { useState, useEffect, useRef } from 'react';
+import './index.css';
 import { useParams } from 'react-router-dom';
-import Loading from '../Loading'
-import Navbar from '../Navbar'
-import Footer from '../Footer'
-import TodosTorneios from './components/TodosTorneios'
-import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
+import Loading from '../Loading';
+import Footer from '../Footer';
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai';
 
-
-
-let getGamesTry = 0
 function Feed() {
-    const { id } = useParams();
+  const { id } = useParams();
 
-    const [torneio, setTorneio] = useState([])
-    const callTorneio = async() => {
-        try{
-            const response = await fetch('https://web-production-8ce4.up.railway.app/api/torneio')
-            const data = response.json()
-            data.then(
-                (val) => {setTorneio(val.data)})
-        }catch(error){
-        }
-    }
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const carousel = useRef(null)
-    const [cooldown, setCooldown] = useState('')
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [jogoResponse, torneioResponse] = await Promise.all([
+          fetch('https://web-production-8ce4.up.railway.app/api/jogo'),
+          fetch('https://web-production-8ce4.up.railway.app/api/torneio'),
+        ]);
+        const [jogoData, torneioData] = await Promise.all([
+          jogoResponse.json(),
+          torneioResponse.json(),
+        ]);
+        setData({ jogo: jogoData.data, torneio: torneioData.data });
+        setIsLoading(false);
+      } catch (e) {
+        setError(e);
+        setIsLoading(false);
+      }
+    };
 
-    const handleLeftClick = e => {
-        setCooldown('disabled')
-        e.preventDefault()
+    loadData();
+  }, []);
 
-        carousel.current.scrollLeft -= carousel.current.offsetWidth -14
-        setTimeout(() => {
-            setCooldown('')
-        }, 550);
-    }
+  const carousel = useRef(null);
+  const [cooldown, setCooldown] = useState('');
 
-    const handleRightClick = e => {
-        e.preventDefault()
-        setCooldown('disabled')
+  const handleLeftClick = (e) => {
+    setCooldown('disabled');
+    e.preventDefault();
 
-        carousel.current.scrollLeft += carousel.current.offsetWidth -14
-        setTimeout(() => {
-            setCooldown('')
-        }, 550);
-    }
-    
-    const [jogo, setJogo] = useState([])
-    const callGames = async() => {
-        try{
-            const response = await fetch('https://web-production-8ce4.up.railway.app/api/jogo')
-            const data = response.json()
-            data.then(
-                (val) => {setJogo(val.data)})
-        }catch(error){
-        }
-    }
+    carousel.current.scrollLeft -= carousel.current.offsetWidth - 14;
+    setTimeout(() => {
+      setCooldown('');
+    }, 550);
+  };
 
-    if(getGamesTry < 3){
-        getGamesTry++
-        callGames()
-        callTorneio()
-    }
+  const handleRightClick = (e) => {
+    e.preventDefault();
+    setCooldown('disabled');
+
+    carousel.current.scrollLeft += carousel.current.offsetWidth - 14;
+    setTimeout(() => {
+      setCooldown('');
+    }, 550);
+  };
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <div>Ocorreu um erro ao carregar os dados: {error.message}</div>;
+  }
 
     if(id === undefined){
         return (
             <div className="divMainContainerD">
-                <Loading/>
-                {/* <Navbar page="torneio"/> */}
-                <div className='paddingLeft divMainFeedContainer'>
-                        { jogo.map( (jogo) => 
-
-                        <div className='divGamesonFeedContainer'>
-                            <h1 className='TitlePrediletos'><img className='logoImgFeedGlobal' src={jogo.logo}/>  {jogo.nome}</h1>
-                            <div className='torneioSetasMainContainer'>
-                                <div className='torneioContainer' ref={carousel}>
-                                    { torneio.map( (findTorneio) => {
-                                        if(jogo.id === findTorneio.gameId){
-                                            return  <a key={findTorneio.id} href={`../t/${findTorneio.id}`} className='Torneio' style={{backgroundImage: `url(${findTorneio.thumbnail})`}}>
-                                                        <h5 className='TorneioH1'>{findTorneio.nome}</h5>
-                                                    </a>
-                                                    
-                                        }
-
-                                    }
-
-                                    ) }
-                                </div>
-                                <div className='containerTorneioSetas'>
-                                    <button className='buttonSeta' onClick={handleLeftClick} disabled={cooldown}><AiOutlineArrowLeft/></button>
-                                    <button className='buttonSeta' onClick={handleRightClick} disabled={cooldown}><AiOutlineArrowRight/></button>
-                                </div>
-                            </div>
-                        </div>
-                        ) }
-                    <Footer/>
+              <div className="paddingLeft divMainFeedContainer">
+                {data.jogo.map((jogo) => (
+                  <div className="divGamesonFeedContainer">
+                    <h1 className="TitlePrediletos">
+                      <img
+                        className="logoImgFeedGlobal"
+                        src={jogo.logo}
+                        alt={jogo.nome}
+                      />{' '}
+                      {jogo.nome}
+                    </h1>
+                    <div className="torneioSetasMainContainer">
+                    <div className="torneioContainer" ref={carousel}>
+                  {data.torneio.map((findTorneio) => {
+                    if (jogo.id === findTorneio.gameId) {
+                      return (
+                        <a
+                          key={findTorneio.id}
+                          href={`../t/${findTorneio.id}`}
+                          className="Torneio"
+                          style={{
+                            backgroundImage: `url(${findTorneio.thumbnail})`,
+                          }}
+                        >
+                          <h5 className="TorneioH1">{findTorneio.nome}</h5>
+                        </a>
+                      );
+                    }
+                  })}
                 </div>
+                <div className="containerTorneioSetas">
+                  <button
+                    className="buttonSeta"
+                    onClick={handleLeftClick}
+                    disabled={cooldown}
+                  >
+                    <AiOutlineArrowLeft />
+                  </button>
+                  <button
+                    className="buttonSeta"
+                    onClick={handleRightClick}
+                    disabled={cooldown}
+                  >
+                    <AiOutlineArrowRight />
+                  </button>
+                </div>
+              </div>
             </div>
-        )
+          ))}
+          <Footer />
+        </div>
+      </div>
+    )
     }else{
         return (
             <div className="divMainContainerD">
-                <Loading/>
+                {/* <Loading/>
                 <div className='pagewrap'>
                     <div className='containerThisGame paddingLeft'>
                         {
@@ -133,7 +154,7 @@ function Feed() {
                         </div>
                     </div>
                 </div>
-                <Footer/>
+                <Footer/> */}
             </div>
         )
     }

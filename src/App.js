@@ -7,7 +7,6 @@ import Feed from './components/Feed'
 import Jogos from './components/Jogos'
 import Sobre from './components/Sobre'
 import Cadastro from './components/Cadastro'
-import Footer from './components/Footer'
 import Times from './components/Times'
 import Login from './components/Login'
 import Usuario from './components/Usuario'
@@ -20,12 +19,7 @@ import CriarTorneio from './components/CriarTorneio'
 import CriarEquipe from './components/CriarEquipe'
 import Admin from './components/Admin'
 import UsuarioNaoEncontrado from './components/UsuarioNaoEncontrado'
-
 import { BrowserRouter, Routes, Route} from "react-router-dom"
-
-console.log(process.env.REACT_APP_MYKEY)
-
-
 
 function App() {
   const [showNav, setShowNav] = useState(true);

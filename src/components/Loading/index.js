@@ -1,83 +1,77 @@
-import React, {useEffect, useState, version} from 'react'
-import './index.css'
-import text from '../../version.json'
+import React, { useState, useEffect } from "react";
+import "./index.css";
+import text from "../../version.json";
 
-let isLoading = false
-let barValue = 0
-let textValue = 'Olá'
-function Loading(prop) {
+function Loading(props) {
+    const [barValue, setBarValue] = useState(0);
+    const [textValue, setTextValue] = useState("Olá");
+    const [isLoading, setIsLoading] = useState(false);
 
-
-    
-
-
-    function func(){
-        window.scrollTo(0,0)
-        document.body.style.overflow = 'hidden';
+    function func() {
+        window.scrollTo(0, 0);
+        document.body.style.overflow = "hidden";
         setTimeout(() => {
-            window.scrollTo(0,0)
-            barValue = 12
-            textValue = 'Pensando'
-        }, 400)
+            window.scrollTo(0, 0);
+            setBarValue(12);
+            setTextValue("Pensando");
+        }, 400);
         setTimeout(() => {
-            window.scrollTo(0,0)
-            barValue = 35
-            textValue = 'Fazendo a lógica'
-            
-        }, 1500)
+            window.scrollTo(0, 0);
+            setBarValue(35);
+            setTextValue("Fazendo a lógica");
+        }, 1500);
         setTimeout(() => {
-            window.scrollTo(0,0)
-            barValue = 66
-            textValue = 'Esperando resposta do servidor'
-        }, 2600)
+            window.scrollTo(0, 0);
+            setBarValue(66);
+            setTextValue("Esperando resposta do servidor");
+        }, 2600);
         setTimeout(() => {
-            barValue = 100
-            textValue = 'Resposta recebida, finalizando'
+            setBarValue(100);
+            setTextValue("Resposta recebida, finalizando");
         }, 4000);
         setTimeout(() => {
-            
-            document.querySelector('.loadingMainDiv').classList.add('desaparecer')
-            window.scrollTo(0,0)
-            // document.body.style.overflow = 'visible';
-            
-            // document.querySelector('.loadingMainDiv').classList.remove('desaparecer')
-            // document.querySelector('.loadingMainDiv').style.display = 'none'
-        
-        },4800)
+            document.querySelector(".loadingMainDiv").classList.add("desaparecer");
+            window.scrollTo(0, 0);
+        }, 4800);
         setTimeout(() => {
-            barValue = 101
-            window.scrollTo(0,0)
-            document.body.style.overflow = 'visible';
-            
-            document.querySelector('.loadingMainDiv').classList.remove('desaparecer')
-            document.querySelector('.loadingMainDiv').style.display = 'none'
-        
-        },5000)
+            setBarValue(101);
+            window.scrollTo(0, 0);
+            document.body.style.overflow = "visible";
+            document
+                .querySelector(".loadingMainDiv")
+                .classList.remove("desaparecer");
+            document.querySelector(".loadingMainDiv").style.display = "none";
+        }, 5000);
     }
 
-    
-    if(isLoading === false){
-        isLoading = true
-        func()
-    }
     useEffect(() => {
-        if(barValue === 101){
-            document.querySelector('.loadingMainDiv').style.display = 'none'
+        if (!isLoading) {
+            setIsLoading(true);
+            func();
         }
-    })
+    });
+
+    useEffect(() => {
+        if (barValue === 101) {
+            document.querySelector(".loadingMainDiv").style.display = "none";
+        }
+    });
+
     return (
-        <div className='paddingLeft loadingMainDiv'>
-            <div className='LoadingPageMainContainer'>
-                <img src={require('./logo.png')}></img>
+        <div className="paddingLeft loadingMainDiv">
+            <div className="LoadingPageMainContainer">
+                <img src={require("./logo.png")}></img>
                 <label>{textValue}</label>
-                <div className='barLoadingFull'>
-                    <div className='barInsideGenerating' style={{backgroundColor: prop.cor, width: `${barValue}%`}}></div>
+                <div className="barLoadingFull">
+                    <div
+                        className="barInsideGenerating"
+                        style={{ backgroundColor: props.cor, width: `${barValue}%` }}></div>
                 </div>
                 <label>{text.version}</label>
                 <p>Erros podem & irão ocorrer</p>
             </div>
-        </div>
-        )
+        </div >
+);
 }
 
-export default Loading
+export default Loading;
