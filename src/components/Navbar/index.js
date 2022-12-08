@@ -1,161 +1,122 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import './index.css'
 import { FaBars, FaTimes } from 'react-icons/fa'
+import { FaSearch, FaDoorOpen } from 'react-icons/fa'
+import './index.css'
 import HomeIcon from '@mui/icons-material/Home';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import InfoIcon from '@mui/icons-material/Info';
-import LanguageIcon from '@mui/icons-material/Language';
-import { FaSearch, FaDoorOpen } from 'react-icons/fa'
 
-let defaultColorHome = '#fff'
-let defaultColorTorneios = '#fff'
-let defaultColorJogos = '#fff'
-let defaultColorAbout = '#fff'
-
-let deadOrAlive = false
-let getUsersTry = 0
 export const Navbar = (props) => {
+    const DEFAULT_COLOR = '#fc6b03'
     let root = document.querySelector(':root')
-    const [icon, setIcon] = useState(<FaBars style={{ fontSize: '30px', color: '#fc6b03' }}/>)
-    const  [navAberta, setNavAberta] = useState(false)
+    const [icon, setIcon] = useState(<FaBars style={{ fontSize: '30px', color: '#fc6b03' }} />)
+    const [navAberta, setNavAberta] = useState(false)
     getComputedStyle(document.documentElement).getPropertyValue('--responsiveHeight')
 
-    const [loggedUser, setLoggedUser] = useState({})
-    const getUsers = async () => {
-        try{
-            if(JSON.parse(localStorage.getItem('dasiBoard') !== null)){
+    const [loggedUser, setLoggedUser] = useState(null)
+    const [isLoading, setIsLoading] = useState(null);
+    const [error, setError] = useState(null);
 
-                const responseUser = await fetch('https://web-production-8ce4.up.railway.app/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
-                const dataUser = responseUser.json()
-                dataUser.then(
-                    (val) => {
-                        setLoggedUser(val.data)
-                        
-                    }
-                )
+
+
+
+
+    useEffect(() => {
+        const loadData = async () => {
+            try {
+                const [response] = await Promise.all([
+                    fetch('https://web-production-8ce4.up.railway.app/api/user/' + JSON.parse(localStorage.getItem('dasiBoard'))),
+                ]);
+                const [user] = await Promise.all([
+                    response.json(),
+                ]);
+                setLoggedUser(user.data);
+                console.log(Object.keys(loggedUser).length === 0)
+                setIsLoading(false);
+            } catch (e) {
+                setError(e);
+                setIsLoading(false);
             }
+        };
 
-        }catch(e){
+        loadData();
+
+    }, []);
+
+    useEffect(() => {
+        if (loggedUser) { // Se o usuário já foi carregado, execute o código abaixo
+            document.querySelector('.loggedUserNameNavBar').style.display = 'flex'
+            document.querySelector('.loggedUserFunctions').style.display = 'flex'
+            document.querySelector('.EntrarRegistroNavBar').style.display = 'none'
+            document.querySelector('.userNameP').textContent = loggedUser.username
+            document.querySelector('.imgIconP').setAttribute("src", loggedUser.icon)
+            root.style.setProperty("--scrollbar-color", loggedUser.corS)
+        } else {
             document.querySelector('.loggedUserNameNavBar').style.display = 'none'
             document.querySelector('.loggedUserFunctions').style.display = 'none'
             document.querySelector('.EntrarRegistroNavBar').style.display = 'flex'
-            
+            root.style.setProperty("--scrollbar-color", '#fc6b03')
         }
-    }
-        
-    if(getUsersTry < 5){
-        getUsersTry++
-        getUsers()
-    } 
+    }, [loggedUser]);
+    console.log(loggedUser)
     // console.clear()
-    const makeEverythingWork = () => {
-        if(props.page !== 'usuario'){
-            if(loggedUser.username !== undefined && props.page != 'usuario'){
-                document.querySelector('.loggedUserNameNavBar').style.display = 'flex'
-                document.querySelector('.loggedUserFunctions').style.display = 'flex'
-                document.querySelector('.EntrarRegistroNavBar').style.display = 'none'
-                document.querySelector('.userNameP').textContent = loggedUser.username 
-                document.querySelector('.imgIconP').setAttribute("src", loggedUser.icon)
-                root.style.setProperty("--scrollbar-color", loggedUser.corS) 
-
-            }else{
-                document.querySelector('.loggedUserNameNavBar').style.display = 'none'
-                document.querySelector('.loggedUserFunctions').style.display = 'none'
-                document.querySelector('.EntrarRegistroNavBar').style.display = 'flex'
-                root.style.setProperty("--scrollbar-color", '#fc6b03') 
-            }
-        }else{
-            document.querySelector('.divSideLoginRegister').style.display = 'none'
-        }
-    }
-
-    if(deadOrAlive === false){
-        setTimeout(() => {
-            
-            makeEverythingWork()
-        }, 1400);
-    }
-
-    if(props.page === 'home'){
-
-        defaultColorHome = '#fc6b03'
-        defaultColorTorneios = '#fff'
-        defaultColorJogos = '#fff'
-        defaultColorAbout = '#fff'
-    }if(props.page === 'torneio'){
-        defaultColorTorneios = '#fc6b03'
-        defaultColorHome = '#fff'
-        defaultColorJogos = '#fff'
-        defaultColorAbout = '#fff'
-    }if(props.page === 'jogo'){
-
-        defaultColorTorneios = '#fff'
-        defaultColorJogos = '#fc6b03'
-        defaultColorAbout = '#fff'
-        defaultColorHome = '#fff'
-    }if(props.page === 'about'){
-
-        defaultColorTorneios = '#fff'
-        defaultColorJogos = '#fff'
-        defaultColorHome = '#fff'
-        defaultColorAbout = '#fc6b03'
-    }
 
     const handleNavRes = () => {
         if (!navAberta) {
             setNavAberta(true)
-            setIcon(<FaTimes style={{ fontSize: '30px', color: '#fc6b03' }}/>)
+            setIcon(<FaTimes style={{ fontSize: '30px', color: '#fc6b03' }} />)
             return document.documentElement.style.setProperty('--responsiveHeight', '30rem')
         }
         setNavAberta(false)
-        setIcon(<FaBars style={{ fontSize: '30px', color: '#fc6b03' }}/>)
+        setIcon(<FaBars style={{ fontSize: '30px', color: '#fc6b03' }} />)
         document.documentElement.style.setProperty('--responsiveHeight', '4%')
     }
-    
+
+
     return (
         <div className="">
-            <div className="divDividerNavbar" style={{borderColor: `${loggedUser.corP}`}}>
+            <div className="divDividerNavbar" style={{ borderColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }}>
 
-                <div className="divLeftNavbar" style={{borderColor: `${loggedUser.corP}`}}>
-                    <Link to="/now" className="fontNavbar"><HomeIcon className='iconNavbar iconHome' sx={{color: defaultColorHome, fontSize: 32}}/>Home</Link>
-                    <Link to="/feed" className="feedLinkDetector fontNavbar"><EmojiEventsIcon className='iconNavbar iconTorneios' sx={{color: defaultColorTorneios, fontSize: 32}}/>Feed</Link>
-                    <Link to="/games" className="fontNavbar"><SportsEsportsIcon className='iconNavbar iconJogos' sx={{color: defaultColorJogos, fontSize: 32}}/>Biblioteca</Link>
-                    <Link to="/about" className="fontNavbar"><InfoIcon className='iconNavbar iconAbout' sx={{color: defaultColorAbout, fontSize: 32}}/>FaQ</Link>
+                <div className="divLeftNavbar" style={{ borderColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }}>
+                    <Link to="/now" className="fontNavbar"><HomeIcon className='iconNavbar iconHome' sx={{ fontSize: 32, fill: loggedUser ? loggedUser.corS : DEFAULT_COLOR }} />Home</Link>
+                    <Link to="/feed" className="feedLinkDetector fontNavbar"><EmojiEventsIcon className='iconNavbar iconTorneios' sx={{ fontSize: 32, fill: loggedUser ? loggedUser.corS : DEFAULT_COLOR }} />Eventos</Link>
+                    <Link to="/games" className="fontNavbar"><SportsEsportsIcon className='iconNavbar iconJogos' sx={{ fontSize: 32, fill: loggedUser ? loggedUser.corS : DEFAULT_COLOR }} />Esports</Link>
+                    <Link to="/about" className="fontNavbar"><InfoIcon className='iconNavbar iconAbout' sx={{ fontSize: 32, fill: loggedUser ? loggedUser.corS : DEFAULT_COLOR }} />Sobre</Link>
                 </div>
-                <div className="divRightNavbar" style={{borderColor: `${loggedUser.corP}`}}>
+                <div className="divRightNavbar" style={{ borderColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }}>
 
                     <label>pt-br</label>
-                    
+
 
                 </div>
             </div>
 
-            <div className={`divSideLoginRegister` } style={{borderBottomColor: `${loggedUser.corP}`}}>
-                <img className='logoNavbar' src={require("./assets/logo.png")} style={{marginRight: '1rem'}} />
+            <div className={`divSideLoginRegister`} style={{ borderBottomColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }}>
+                <img className='logoNavbar' src={require("./assets/logo.png")} style={{ marginRight: '1rem' }} />
 
 
-                <div className='loggedUserFunctions' style={{borderColor: `${loggedUser.corP}`}}>
+                <div className='loggedUserFunctions' style={{ borderColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }}>
                     <label onClick={handleNavRes} id='hamburguer' style={{ height: 'auto' }}>{icon}</label>
                     <div className='navbarGrid'>
-                        <label onClick={() => {window.location.href = `/u/${loggedUser.username}`}}><div className='imgNavbarUserGo navbarGo'/> Perfil</label>
-                        <label onClick={() => {window.location.href = `/criarEquipe`}}><div className='imgNavbarTeamGo navbarGo'/> Criar Equipe</label>
-                        <label onClick={() => {window.location.href = `/criarTorneio`}}><div className='imgNavbarTourneamentGo navbarGo'/> Criar Torneio</label>
-                        <label onClick={() => {window.location.href = `/find/u`}}><FaSearch style={{height: '30px', width: '30px', color: '#fc6b03', paddingRight: '5px'}}/> Procurar</label>
+                        <label onClick={() => { window.location.href = `/u/${loggedUser ? loggedUser.username : 'null'}` }}><div className='imgNavbarUserGo navbarGo' /> Perfil</label>
+                        <label onClick={() => { window.location.href = `/criarEquipe` }}><div className='imgNavbarTeamGo navbarGo' /> Criar Equipe</label>
+                        <label onClick={() => { window.location.href = `/criarTorneio` }}><div className='imgNavbarTourneamentGo navbarGo' /> Criar Torneio</label>
+                        <label onClick={() => { window.location.href = `/find/u` }}><FaSearch style={{ height: '30px', width: '30px', color: DEFAULT_COLOR, paddingRight: '5px' }} /> Procurar</label>
 
                         <label onClick={() => {
                             localStorage.clear('dasiBoard')
                             window.location.reload(true)
-                        }}><FaDoorOpen style={{height: '30px', width: '30px', color: '#fc6b03', paddingRight: '5px'}}/> Sair</label>
+                        }}><FaDoorOpen style={{ height: '30px', width: '30px', color: DEFAULT_COLOR, paddingRight: '5px' }} /> Sair</label>
                     </div>
                 </div>
                 <div className='EntrarRegistroNavBar'>
-                    <button onClick={() => {window.location.href = '/cadastro'}}> Cadastrar-se </button>
-                    <button onClick={() => {window.location.href = '/login'}}> Entrar</button>
+                    <button onClick={() => { window.location.href = '/cadastro' }}> Cadastrar-se </button>
+                    <button onClick={() => { window.location.href = '/login' }}> Entrar</button>
                 </div>
                 <div className='loggedUserNameNavBar'>
-                    <img className='imgIconP' style={{borderColor: `${loggedUser.corP}`}}/>
+                    <img className='imgIconP' style={{ borderColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }} />
                     <p className='userNameP'></p>
                 </div>
             </div>
