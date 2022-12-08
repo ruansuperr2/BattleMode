@@ -207,7 +207,7 @@ function CriarTorneio (){
                         await fetch('https://web-production-8ce4.up.railway.app/api/torneio/', requestOptions)
                         closeModal('success', 'Redirecionando...', false)
                         setTimeout(() => {
-                            window.location.href = '/t/' 
+                            window.location.href = '/t/' + (torneio[torneio.length - 1].id + 1)
                         }, 1000)
                     }catch(error){
                             
