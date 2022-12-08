@@ -316,6 +316,7 @@
 }
 
 .customizationSliderImageSlide{
+
     width: 60%;
     height: 100%;
     position: relative;
@@ -413,20 +414,20 @@ sliderRightTitle {
     background-size: cover;
 }
 
-.divSliderPageOne{
+.slideOne{
     background-color: deepskyblue;
     background-image: url('./firstSlide.png');
     width: 0%;
     image-rendering: crisp-edges;
 }
 
-.divSliderPageTwo{
+.slideTwo{
     background-color: darkkhaki;
 
     width: 100%;
 }
 
-.divSliderPageThree{
+.slideThree{
     width: 0%;
     background-color: sienna;
 
