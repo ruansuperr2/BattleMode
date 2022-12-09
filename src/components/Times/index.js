@@ -29,12 +29,13 @@ let detectPositionCT = 0
 function Times() {
     const { id } = useParams();
     const [page, setPage] = useState('geral')
+    const DEFAULT_COLOR = '#fc6b03'
 
-    const [loggedUser, setLoggedUser] = useState({})
-    const [users, setUsers] = useState([])
-    const [time, setTime] = useState({})
-    const [value, setValue] = useState(time.descricao)
-    const [jogo, setJogo] = useState([])
+    const [loggedUser, setLoggedUser] = useState(null)
+    const [users, setUsers] = useState(null)
+    const [time, setTime] = useState(null)
+    const [value, setValue] = useState('')
+    const [jogo, setJogo] = useState(null)
     const [tag, setTag] = useState('')
 
     const [username, setUsername] = useState([])
@@ -119,20 +120,23 @@ function Times() {
       useEffect(() => {
         const loadData = async () => {
             try {
-                const [jogoResponse, torneioResponse, userResponse, timeResponse] = await Promise.all([
+                const [jogoResponse, userResponse, viewResponse, timeResponse] = await Promise.all([
                     fetch('https://web-production-8ce4.up.railway.app/api/jogo'),
                     fetch('https://web-production-8ce4.up.railway.app/api/user/' + JSON.parse(localStorage.getItem('dasiBoard'))),
-                    fetch('https://web-production-8ce4.up.railway.app/api/time')
+                    fetch('https://web-production-8ce4.up.railway.app/api/user/'),
+                    fetch('https://web-production-8ce4.up.railway.app/api/time/')
                 ])
-                const [jogoData, torneioData, userData, viewData, timeData] = await Promise.all([
+                const [jogoData, userData, viewData, timeData] = await Promise.all([
                     jogoResponse.json(),
-                    torneioResponse.json(),
                     userResponse.json(),
+                    viewResponse.json(),
                     timeResponse.json()
                 ])
                 setJogo(jogoData.data)
                 setLoggedUser(userData.data)
-                setTime(timeData.data)
+                setUsers(viewData.data)
+                setTime(timeData.data.find((e) => {return e.nome === id}))
+                setValue(time.descricao)
             } catch (e) {
             }
         }
@@ -854,22 +858,22 @@ function Times() {
                     </div>
                 </div>
             </div>
-            <div className='divFundoMainContainer' style={{backgroundImage: `url(${time.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center',}}>
+            <div className='divFundoMainContainer' style={{backgroundImage: `url(${time && time.imgFundo})`, backgroundSize: 'cover', backgroundPosition: 'center',}}>
                 <div className='divContainerFundoMainContainer'/>
             </div>
             <div className='divUsuarioSubMainContainerD paddingLeft '>
                 <div className='divUsuarioComplexContainer divEquipeComplexContainer' >
                     <div className='divRightMainComplexoContainerCompo' style={{}} >
-                        <div className='divRightUserInfoCompo'  style={{backgroundImage: `url(${time.imgFundo2}`, backgroundSize: 'cover',}}>
-                            <div className='imgUserprofileIcon' style={{backgroundImage: `url(${time.logo})`, backgroundColor: '#121212'}}></div>
-                            <h2>{time.nome}</h2>
-                            <h4>{time.tag}</h4>
+                        <div className='divRightUserInfoCompo'  style={{backgroundImage: `url(${time && time.imgFundo2}`, backgroundSize: 'cover',}}>
+                            <div className='imgUserprofileIcon' style={{backgroundImage: `url(${time && time.logo})`, backgroundColor: '#121212'}}></div>
+                            <h2>{time && time.nome}</h2>
+                            <h4>{time && time.tag}</h4>
                             
                         </div>
                         <div>
                             <div className='divRightSubMainContainerCompo' >
                                 <h2>Jogo Principal</h2>
-                                {
+                                { jogo &&
                                     jogo.map((jogo) => {
                                         if(jogo.id === parseInt(time.jogoPrincipal)){
                                             return <label style={{textAlign: 'center', display: 'flex', alignItems: 'center'}}><img style={{marginRight: '10px'}} width={50} height={50} src={jogo.logo}/>{jogo.nome}</label>
@@ -881,7 +885,7 @@ function Times() {
                                 
                             </div>
                             <div className='divRightSubMainContainerCompo' >
-                                {
+                                { users &&
                                     users.map((user) => {
                                         
                                         if(user.username === time.donoCriacao){
@@ -897,7 +901,7 @@ function Times() {
                                         
                                     })
                                 }
-                                {
+                                { users &&
                                     users.map((user) => {
                                         
                                         if(user.username === time.capitao){
@@ -948,7 +952,7 @@ function Times() {
                                     </div>
                                     <div className='divmdViewer' style={{}}>
                                         <MDEditor.Markdown className='markdownShower'  source={value} style={{ whiteSpace: 'pre-wrap'}} />
-                                        <div className='editMarkdownButton enterMarkdown' onClick={() => callEditMarkdownEditor('enter')} style={{borderColor: `${loggedUser.corP}`}} ><p>Editar</p></div>
+                                        <div className='editMarkdownButton enterMarkdown' onClick={() => callEditMarkdownEditor('enter')} style={{borderColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR}} ><p>Editar</p></div>
                                     </div>
                                 </div>
                             </div>
@@ -957,9 +961,9 @@ function Times() {
                                     <div style={{width: '100%'}}>
                                         <h3>Equipe Ativa</h3>
 
-                                        { 
+                                        { time &&
                       
-                                            users.map( (user) => {
+                                                users.map( (user) => {
                                                     if(time.donoCriacao === user.username && JSON.parse(time.equipeAtiva).find((ac) => {return ac === user.id})){
                                                         return  <div key={user.id} className='usersOnActive divUsersOnTeamSubContainer' style={{borderColor: user.corP}} id={'selectById'+user.id}>
                                                                     <div  className='divUserOnTeamContainer'>
@@ -1004,7 +1008,7 @@ function Times() {
                                     <div style={{width: '100%'}}>
                                         <h3>Equipe Reserva</h3>
 
-                                        { 
+                                        { users &&
                       
                                             users.map( (user) => {
                                                                     
@@ -1032,7 +1036,7 @@ function Times() {
                                     <div style={{width: '100%'}}>
                                         <h3>Equipe Técnica</h3>
 
-                                        { 
+                                        { users &&
                       
                                             users.map( (user) => {
                                                                     
@@ -1089,8 +1093,8 @@ function Times() {
                                                             </form>
                                                         </div>
                                                     </label>
-                                                    <label>Nome da Equipe: <input value={username} onChange={(event) => setUsername(event.target.value)} placeholder={time.nome}/></label>
-                                                    <label>Tag da Equipe: <input value={tag} onChange={(event) => setTag(event.target.value)} placeholder={time.tag}/></label>
+                                                    <label>Nome da Equipe: <input value={username} onChange={(event) => setUsername(event.target.value)} placeholder={time && time.nome}/></label>
+                                                    <label>Tag da Equipe: <input value={tag} onChange={(event) => setTag(event.target.value)} placeholder={time && time.tag}/></label>
 
                                                 </div>
 
