@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FaBars, FaTimes } from 'react-icons/fa'
-import { FaSearch, FaDoorOpen } from 'react-icons/fa'
+import { FaSearch, FaDoorOpen, FaRegUserCircle, FaTrophy, FaUsers } from 'react-icons/fa'
+
 import './index.css'
 import HomeIcon from '@mui/icons-material/Home';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
@@ -45,7 +46,7 @@ export const Navbar = (props) => {
 
         loadData();
 
-    }, []);
+    }, [loggedUser]);
 
     useEffect(() => {
         if (loggedUser) { // Se o usuário já foi carregado, execute o código abaixo
@@ -102,15 +103,15 @@ export const Navbar = (props) => {
                 <div className='loggedUserFunctions' style={{ borderColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }}>
                     <label onClick={handleNavRes} id='hamburguer' style={{ height: 'auto' }}>{icon}</label>
                     <div className='navbarGrid'>
-                        <label onClick={() => { window.location.href = `/u/${loggedUser ? loggedUser.username : 'null'}` }}><div className='imgNavbarUserGo navbarGo' /> Perfil</label>
-                        <label onClick={() => { window.location.href = `/criarEquipe` }}><div className='imgNavbarTeamGo navbarGo' /> Criar Equipe</label>
-                        <label onClick={() => { window.location.href = `/criarTorneio` }}><div className='imgNavbarTourneamentGo navbarGo' /> Criar Torneio</label>
-                        <label onClick={() => { window.location.href = `/find/u` }}><FaSearch style={{ height: '30px', width: '30px', color: DEFAULT_COLOR, paddingRight: '5px' }} /> Procurar</label>
+                        <label onClick={() => { window.location.href = `/u/${loggedUser ? loggedUser.username : 'null'}` }}><FaRegUserCircle style={{ height: '25px', width: '25px', color: loggedUser ? loggedUser.corS : DEFAULT_COLOR, paddingRight: '5px' }} /> Perfil</label>
+                        <label onClick={() => { window.location.href = `/criarEquipe` }}><FaUsers style={{ height: '25px', width: '25px', color: loggedUser ? loggedUser.corS : DEFAULT_COLOR, paddingRight: '5px' }}/> Criar Equipe</label>
+                        <label onClick={() => { window.location.href = `/criarTorneio` }}><FaTrophy style={{ height: '25px', width: '25px', color: loggedUser ? loggedUser.corS : DEFAULT_COLOR, paddingRight: '5px' }}/> Criar Torneio</label>
+                        <label onClick={() => { window.location.href = `/find/u` }}><FaSearch style={{ height: '25px', width: '25px', color: loggedUser ? loggedUser.corS : DEFAULT_COLOR, paddingRight: '5px' }} /> Procurar</label>
 
                         <label onClick={() => {
                             localStorage.clear('dasiBoard')
                             window.location.reload(true)
-                        }}><FaDoorOpen style={{ height: '30px', width: '30px', color: DEFAULT_COLOR, paddingRight: '5px' }} /> Sair</label>
+                        }}><FaDoorOpen style={{ height: '30px', width: '30px', color: loggedUser ? loggedUser.corS : DEFAULT_COLOR, paddingRight: '5px' }} /> Sair</label>
                     </div>
                 </div>
                 <div className='EntrarRegistroNavBar'>

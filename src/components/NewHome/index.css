@@ -1,3 +1,7 @@
+:root{
+    --customPageColor: '#ffa86b'
+}
+
 .containerNewHome{
     background-color: #121212;
     margin: 0%;
@@ -196,7 +200,7 @@
 
 .currentPageHome{
     transition: 0.5s;
-    background-color: #fc6b03 !important ;
+    background-color: var(--customPageColor) !important ;
 }
 
 .containerDivider{

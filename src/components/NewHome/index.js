@@ -8,6 +8,9 @@ let able = 0
 
 export default function NewHome() {
     const DEFAULT_COLOR = '#fc6b03'
+    let root = document.querySelector(':root')
+
+    
     // Define os estados iniciais para os valores de página e slide atuais.
     const [currentPage, setCurrentPage] = useState('PageOne')
     const [currentSlide, setCurrentSlide] = useState('slideOne')
@@ -26,6 +29,7 @@ export default function NewHome() {
             for (const page of pages) {
                 if (page.classList.contains(`${currentPage}`)) {
                     page.classList.add('currentPageHome')
+                    
                 } else {
                     page.classList.remove('currentPageHome')
                 }
@@ -108,6 +112,8 @@ export default function NewHome() {
                 ]);
                 setData({ jogo: jogoData.data, torneio: torneioData.data });
                 setLoggedUser(userData.data);
+                root.style.setProperty("--customPageColor", loggedUser.corS)
+
             } catch (e) {
                 if (JSON.parse(localStorage.getItem('dasiBoard')) === null) {
                     const [jogoResponse, torneioResponse] = await Promise.all([
@@ -119,6 +125,7 @@ export default function NewHome() {
                         torneioResponse.json(),
                     ]);
                     setData({ jogo: jogoData.data, torneio: torneioData.data });
+
                 }
             }
         }
