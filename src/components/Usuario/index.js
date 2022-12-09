@@ -214,7 +214,6 @@ function Usuario() {
             document.querySelector('.divmdViewer').style.display = 'block'
 
             showModal('loading', 'Atualizando o Banco', 'barLoading')
-            console.log(value)
             try {
                 const requestOptions = {
                     method: 'PUT',

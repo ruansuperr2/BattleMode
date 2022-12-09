@@ -5,7 +5,6 @@ import text from '../../version.json'
 import Footer from '../Footer'
 
 function PaginaNaoEncontrada() {
-    console.log(text)
     return (
         <div className='mainContainerNotFound paddingLeft'>
 

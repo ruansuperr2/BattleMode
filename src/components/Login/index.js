@@ -24,12 +24,10 @@ function Login(props) {
 
         // Verificar se o usuário existe
         const userExists = users.find(account => account.username === username)
-        console.log(userExists)
         if (userExists) {
             // Verificar se a senha está correta
             if (userExists.password === password) {
                 setLoggedUser(userExists)
-                console.log(loggedUser)
                 localStorage.setItem('dasiBoard', JSON.stringify(userExists.id))
 
                 setTimeout(() => {

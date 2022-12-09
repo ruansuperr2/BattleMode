@@ -235,7 +235,6 @@ function Times() {
     }
     
     
-    console.log(time)
     useEffect(() => {
 
     
@@ -262,7 +261,6 @@ function Times() {
 
                 if(fed === false){
                     
-                    console.log(JSON.parse(time.equipeAtiva).length)
                         if (JSON.parse(time.equipeAtiva).length < 5 && time.capitao === loggedUser.username || JSON.parse(time.equipeAtiva).length < 5 && time.donoCriacao === loggedUser.username) {
                                 document.querySelector('.divAppendAP').innerHTML = 
                                 `
@@ -333,7 +331,6 @@ function Times() {
         setImgUrl(time.logo)
         setImgUrl2(time.imgFundo)
         setImgUrl3(time.imgFundo2)
-        console.log(loggedUser.username)
 
         if(loggedUser.username === time.donoCriacao || loggedUser.username === time.capitao){
             document.querySelector('.config').style.display = 'flex'
@@ -367,7 +364,6 @@ function Times() {
 
     const deleteTCUser = async(user,pos) => {
         showModal('loading','Atualizando o Banco','barLoading')
-        console.log('log', user)
         let timeA = JSON.parse(time.comissaoTecnica)
 
 
@@ -407,7 +403,6 @@ function Times() {
 
     const deleteReserveUser = async(user,pos) => {
         showModal('loading','Atualizando o Banco','barLoading')
-        console.log('log', user)
         let timeA = JSON.parse(time.reserva)
 
 
@@ -447,7 +442,6 @@ function Times() {
 
     const deleteActiveUser = async(user,pos) => {
         showModal('loading','Atualizando o Banco','barLoading')
-        console.log('log', user)
         let timeA = JSON.parse(time.equipeAtiva)
 
 
@@ -509,11 +503,8 @@ function Times() {
         let backup = reservas
         document.querySelector('.addJogador3').style.display = 'none'
         try{
-            console.log('1',tecnicos)
             setTecnicos([...tecnicos, users.find(usuario => {return usuario.username === nomeJogador} )])
-            console.log('2',tecnicos)
         }catch(e){
-            console.log('3',tecnicos)
             showModal('erro', 'Não foi possível encontrar esse usuário.', 'barLoading')
             console.log(e)
             setTecnicos(tecnicos)
@@ -538,11 +529,8 @@ function Times() {
         let backup = reservas
         document.querySelector('.addJogador2').style.display = 'none'
         try{
-            console.log('1',reservas)
             setReservas([...reservas, users.find(usuario => {return usuario.username === nomeJogador} )])
-            console.log('2',reservas)
         }catch(e){
-            console.log('3',reservas)
             showModal('erro', 'Não foi possível encontrar esse usuário.', 'barLoading')
             console.log(e)
             setReservas(reservas)
@@ -566,11 +554,8 @@ function Times() {
         let backup = jogadores
         document.querySelector('.addButtonCriarEquipe').style.display = 'none'
         try{
-            console.log('1',jogadores)
             setJogadores([...jogadores, users.find(usuario => {return usuario.username === nomeJogador} )])
-            console.log('2',jogadores)
         }catch(e){
-            console.log('3',jogadores)
             showModal('erro', 'Não foi possível encontrar esse usuário.', 'barLoading')
             console.log(e)
             setJogadores(jogadores)
@@ -582,7 +567,6 @@ function Times() {
     const confirmarAdicaoJogador = async() => {
         let newTeam = JSON.parse(time.equipeAtiva)
         newTeam.push(jogadores[0].id)
-        console.log(newTeam)
 
         try{
             const requestOptions = {
@@ -616,7 +600,6 @@ function Times() {
     const confirmarAdicaoReserva = async() => {
         let newTeam = JSON.parse(time.reserva)
         newTeam.push(reservas[0].id)
-        console.log(newTeam)
 
         try{
             const requestOptions = {
@@ -652,7 +635,6 @@ function Times() {
     const confirmarAdicaoTecnico = async() => {
         let newTeam = JSON.parse(time.comissaoTecnica)
         newTeam.push(tecnicos[0].id)
-        console.log(newTeam)
 
         try{
             const requestOptions = {
@@ -730,7 +712,6 @@ function Times() {
         }
     }
 
-    console.log(jogadores)
     return(
         <div className='divParticiparMainContainer'>
             <ModalCustom/>

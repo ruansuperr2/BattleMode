@@ -36,7 +36,6 @@ export const Navbar = (props) => {
                     response.json(),
                 ]);
                 setLoggedUser(user.data);
-                console.log(Object.keys(loggedUser).length === 0)
                 setIsLoading(false);
             } catch (e) {
                 setError(e);
@@ -63,7 +62,6 @@ export const Navbar = (props) => {
             root.style.setProperty("--scrollbar-color", '#fc6b03')
         }
     }, [loggedUser]);
-    console.log(loggedUser)
     // console.clear()
 
     const handleNavRes = () => {

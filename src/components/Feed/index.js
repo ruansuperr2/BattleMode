@@ -45,7 +45,6 @@ function Feed() {
     const handleLeftClick = (e) => {
         e.preventDefault();
         setCooldown('disabled');
-        console.log('olá')
 
 
         carousel.current.scrollLeft -= carousel.current.offsetWidth - 14;
@@ -56,7 +55,6 @@ function Feed() {
 
     const handleRightClick = (e) => {
         e.preventDefault();
-        console.log('olá')
         setCooldown('disabled');
 
         carousel.current.scrollLeft += carousel.current.offsetWidth - 14;

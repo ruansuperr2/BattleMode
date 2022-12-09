@@ -297,7 +297,6 @@ function Participar() {
         setImgUrl3(torneio.imgFundo)
         setDesc(torneio.descricaoLonga)
         setDescB(torneio.descricaoBreve)
-        console.log(loggedUser.username)
 
         if(loggedUser.username === torneio.donoCriacao){
             document.querySelector('.adminStartTourneament').style.display = 'block'
