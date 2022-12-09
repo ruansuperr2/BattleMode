@@ -125,7 +125,7 @@ export default function NewHome() {
                         torneioResponse.json(),
                     ]);
                     setData({ jogo: jogoData.data, torneio: torneioData.data });
-
+                    root.style.setProperty("--customPageColor", DEFAULT_COLOR)
                 }
             }
         }
@@ -244,12 +244,12 @@ export default function NewHome() {
                     setCurrentPage('PageOne')
                     callPageChanger()
 
-                }} className="pageSelector pageNumber PageOne currentPageHome" style={{ borderColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }}></div>
+                }} className="pageSelector pageNumber PageOne currentPageHome" style={{ backgroundColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }}></div>
                 <div onClick={() => {
                     setCurrentPage('PageTwo')
                     callPageChanger()
 
-                }} className="pageSelector pageNumber PageTwo" style={{ borderColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }}></div>
+                }} className="pageSelector pageNumber PageTwo" style={{ backgroundColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }}></div>
                 <div onClick={() => {
                     setCurrentPage('PageThree')
                     callPageChanger()
