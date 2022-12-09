@@ -19,7 +19,7 @@ function Loading(props) {
             window.scrollTo(0, 0);
             setBarValue(35);
             setTextValue("Fazendo a lógica");
-        }, 1500);
+        }, 900);
         setTimeout(() => {
             window.scrollTo(0, 0);
             setBarValue(66);
@@ -28,11 +28,11 @@ function Loading(props) {
         setTimeout(() => {
             setBarValue(100);
             setTextValue("Resposta recebida, finalizando");
-        }, 4000);
+        }, 3100);
         setTimeout(() => {
             document.querySelector(".loadingMainDiv").classList.add("desaparecer");
             window.scrollTo(0, 0);
-        }, 4800);
+        }, 3800);
         setTimeout(() => {
             setBarValue(101);
             window.scrollTo(0, 0);
@@ -41,7 +41,7 @@ function Loading(props) {
                 .querySelector(".loadingMainDiv")
                 .classList.remove("desaparecer");
             document.querySelector(".loadingMainDiv").style.display = "none";
-        }, 5000);
+        }, 4000);
     }
 
     useEffect(() => {

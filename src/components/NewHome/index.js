@@ -131,7 +131,7 @@ export default function NewHome() {
         }
 
         loadData()
-    }, [loggedUser])
+    }, [])
 
 
     return (

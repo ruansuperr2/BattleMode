@@ -124,78 +124,35 @@ function Usuario() {
         )
     }
 
-    const callTorneio = async () => {
-        try {
-            const response = await fetch('https://web-production-8ce4.up.railway.app/api/torneio')
-            const data = response.json()
-            data.then(
-                (val) => { setTorneio(val.data) })
-        } catch (error) {
+    useEffect(() => {
+        const loadData = async () => {
+            try {
+                const [jogoResponse, torneioResponse, userResponse, viewResponse, timeResponse] = await Promise.all([
+                    fetch('https://web-production-8ce4.up.railway.app/api/jogo'),
+                    fetch('https://web-production-8ce4.up.railway.app/api/torneio'),
+                    fetch('https://web-production-8ce4.up.railway.app/api/user/' + JSON.parse(localStorage.getItem('dasiBoard'))),
+                    fetch('https://web-production-8ce4.up.railway.app/api/user/'),
+                    fetch('https://web-production-8ce4.up.railway.app/api/time')
+                ])
+                const [jogoData, torneioData, userData, viewData, timeData] = await Promise.all([
+                    jogoResponse.json(),
+                    torneioResponse.json(),
+                    userResponse.json(),
+                    viewResponse.json(),
+                    timeResponse.json()
+                ])
+                setTorneio(torneioData.data)
+                setJogo(jogoData.data)
+                setLoggedUser(userData.data)
+                setViewingUser(viewData.data.find((e) => { return e.username === id }))
+                setTime(timeData.data)
+            } catch (e) {
+            }
         }
-    }
 
-    const callGames = async () => {
-        try {
-            const response = await fetch('https://web-production-8ce4.up.railway.app/api/jogo')
-            const data = response.json()
-            data.then(
-                (val) => { setJogo(val.data) })
-        } catch (error) {
-        }
-    }
+        loadData()
+    }, [])
 
-    const callTime = async () => {
-        try {
-            const responseUser = await fetch('https://web-production-8ce4.up.railway.app/api/time/')
-            const dataTime = responseUser.json()
-
-            dataTime.then(
-                (val) => {
-                    setTime(val.data)
-                }
-            )
-        } catch (error) {
-
-        }
-    }
-
-    const getUsers = async () => {
-        try {
-            const responseUser = await fetch('https://web-production-8ce4.up.railway.app/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
-            const dataUser = responseUser.json()
-
-            const responseUsers = await fetch('https://web-production-8ce4.up.railway.app/api/user/')
-            const dataUsers = responseUsers.json()
-            dataUsers.then(
-                (val) => {
-                    setViewingUser(val.data.find((account) => { return account.username === id }))
-                }
-            )
-            dataUser.then(
-                (val) => {
-                    setLoggedUser(val.data)
-                }
-            )
-            const responseUser2 = await fetch('https://web-production-8ce4.up.railway.app/api/user/')
-            const dataUser2 = responseUser2.json()
-
-            dataUser2.then(
-                (val) => {
-                    setUsers(val.data)
-                }
-            )
-        } catch (error) {
-
-        }
-    }
-
-    if (getUsersTry < 2) {
-        getUsersTry++
-        getUsers()
-        callGames()
-        callTorneio()
-        callTime()
-    }
     useEffect(() => {
 
         switch (page) {
@@ -257,7 +214,7 @@ function Usuario() {
             document.querySelector('.divmdViewer').style.display = 'block'
 
             showModal('loading', 'Atualizando o Banco', 'barLoading')
-
+            console.log(value)
             try {
                 const requestOptions = {
                     method: 'PUT',
@@ -290,42 +247,54 @@ function Usuario() {
         }
     }
 
+    useEffect(() => {
+        
+    })
     const makeEverythingWork = () => {
+        document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none';
+        document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none';
+        document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none';
 
-        document.querySelector('.divEquipesSubMainContainerCompo').style.display = 'none'
-        document.querySelector('.divTorneiosSubMainContainerCompo').style.display = 'none'
-        document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
         if (loggedUser.username === id) {
-            document.querySelector('.divmdEditor').style.display = 'none'
-            document.querySelector('.enterMarkdown').style.display = 'flex'
-            document.querySelector('.config').style.display = 'flex'
-            setImgUrl(loggedUser.icon)
-            setImgUrl2(loggedUser.imgFundo)
-            setImgUrl3(loggedUser.imgFundoDois)
-            setCorS(loggedUser.corS)
-            setCorP(loggedUser.corS)
-            document.querySelector('.UserPlan').textContent = 'Plano ' + viewingUser.status
+            document.querySelector('.divmdEditor').style.display = 'none';
+            document.querySelector('.enterMarkdown').style.display = 'flex';
+            document.querySelector('.config').style.display = 'flex';
+
+            setImgUrl(loggedUser.icon);
+            setImgUrl2(loggedUser.imgFundo);
+            setImgUrl3(loggedUser.imgFundoDois);
+
+            setCorS(loggedUser.corS);
+            setCorP(loggedUser.corS);
+
+            document.querySelector('.UserPlan').textContent = 'Plano ' + viewingUser.status;
+
             if (loggedUser.status !== 'Premium') {
-                document.querySelector('.premiumConfigs2').style.display = 'none'
-                document.querySelector('.premiumConfigs').style.display = 'none'
-                document.querySelector('#premiumConfigs2').style.display = 'none'
+                document.querySelector('.premiumConfigs2').style.display = 'none';
+                document.querySelector('.premiumConfigs').style.display = 'none';
+                document.querySelector('#premiumConfigs2').style.display = 'none';
             }
         } else {
-            document.querySelector('.divmdEditor').style.display = 'none'
-            document.querySelector('.enterMarkdown').style.display = 'none'
-            document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none'
-            document.querySelector('.config').style.display = 'none'
-            document.querySelector('.UserPlan').textContent = 'Plano ' + viewingUser.status
+            document.querySelector('.divmdEditor').style.display = 'none';
+            document.querySelector('.enterMarkdown').style.display = 'none';
+            document.querySelector('.divConfigSubMainContainerCompo').style.display = 'none';
+            document.querySelector('.config').style.display = 'none';
+
+            document.querySelector('.UserPlan').textContent = 'Plano ' + viewingUser.status;
         }
-        document.querySelector('.geral').classList.add('perfilActive')
-        setValue(viewingUser.biografia)
-        document.querySelector('.divContainerFundoMainContainer').style.backgroundImage = `url(${viewingUser.imgFundo})`
+
+        document.querySelector('.geral').classList.add('perfilActive');
+
+        setValue(viewingUser.biografia);
+
+        document.querySelector('.divContainerFundoMainContainer').style.backgroundImage = `url(${viewingUser.imgFundo})`;
         deadOrAlive = true
-    }
+    };
+
     if (deadOrAlive === false) {
         setTimeout(() => {
-            makeEverythingWork()
-        }, 2000);
+            makeEverythingWork();
+        }, 1600);
     }
 
     const callMudançasPerfil = async (status) => {
@@ -579,8 +548,8 @@ function Usuario() {
 
                             <div className='divEquipesSubMainContainerCompo' >
                                 <div className='divContainerTeamsOnUserTab' style={{ borderColor: viewingUser.corP }}>
-                                    <div>
-                                        <h2>Atuando em:</h2>
+                                    <h2>Atuando em:</h2>
+                                    <div style={{ display: 'flex', width: '90%', flexWrap: 'wrap' }}>
                                         {
 
                                             time.map((time) => {
@@ -605,8 +574,8 @@ function Usuario() {
                                         }
                                     </div>
                                     <div className='senhaEmailDivider' />
-                                    <div>
-                                        <h2>Reserva em:</h2>
+                                    <h2>Reserva em:</h2>
+                                    <div style={{ display: 'flex', width: '90%', flexWrap: 'wrap' }}>
                                         {
 
                                             time.map((time) => {
@@ -631,8 +600,8 @@ function Usuario() {
                                         }
                                     </div>
                                     <div className='senhaEmailDivider' />
-                                    <div>
-                                        <h2>Técnico de:</h2>
+                                    <h2>Técnico de:</h2>
+                                    <div style={{ display: 'flex', width: '90%', flexWrap: 'wrap' }}>
                                         {
 
                                             time.map((time) => {

@@ -46,7 +46,7 @@ export const Navbar = (props) => {
 
         loadData();
 
-    }, [loggedUser]);
+    }, []);
 
     useEffect(() => {
         if (loggedUser) { // Se o usuário já foi carregado, execute o código abaixo

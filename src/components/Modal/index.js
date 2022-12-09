@@ -68,7 +68,6 @@ export const showModal = (titulo, corpo, funcao) => {
     // Adição dos Textos inseridos pelos props.
     const modalTitulo = document.querySelector('.modalTitulo');
     const modalCorpo = document.querySelector('.modalCorpo');
-    modalTitulo.textContent = titulo;
     modalCorpo.textContent = corpo;
 
     // Adicionar icones no titulo
