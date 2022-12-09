@@ -12,7 +12,7 @@ export default function UsuarioNaoEncontrado(){
                 <img src={require('../PaginaNaoEncontrada/assets/branco.png')}></img>
                 <h2 className='notFoundTitle'>Você não está conectado em uma conta. <br/>Faça o <Link className='homeBackhome' to="/login">login</Link> ou <Link className='homeBackhome' to="/cadastro">crie uma nova conta</Link></h2>
                 <h4 className='notFoundBody'>Encontrou um problema? Nos ajudaria muito se você abrisse um ticket <a className='homeBackhome' href="https://github.com/MonoDryad/BattleMode">no nosso github</a>!</h4>
-                <p className='errorVersion'>v{text.version}</p>
+                <p className='errorVersion'>{text.version}</p>
 
             </div>
             <Footer></Footer>

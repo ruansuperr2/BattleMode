@@ -7,6 +7,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import InfoIcon from '@mui/icons-material/Info';
+import text from '../../version.json'
+
 
 export const Navbar = (props) => {
     const DEFAULT_COLOR = '#fc6b03'
@@ -87,7 +89,7 @@ export const Navbar = (props) => {
                 </div>
                 <div className="divRightNavbar" style={{ borderColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }}>
 
-                    <label>pt-br</label>
+                    <label>{text.version}</label>
 
 
                 </div>

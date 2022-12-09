@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import FindAll from './components/FindAll'
@@ -19,44 +19,44 @@ import CriarTorneio from './components/CriarTorneio'
 import CriarEquipe from './components/CriarEquipe'
 import Admin from './components/Admin'
 import UsuarioNaoEncontrado from './components/UsuarioNaoEncontrado'
-import { BrowserRouter, Routes, Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 function App() {
-  const [showNav, setShowNav] = useState(true);
-  return (
-      <div className="divAppContainer">
-          <BrowserRouter>
-	    	<div>
-			{   showNav &&
-				<nav>
-				    <Navbar />
-				</nav>
-			} 
-                  <Routes>
-                    	<Route path="/*" element={<PaginaNaoEncontrada/>}/>
-                    	<Route path="/" element={<LandingPage funcNav={setShowNav} />} />
-                    	<Route exact path="/login" element={<Login funcNav={setShowNav} />} />
-                    	<Route exact path="/cadastro" element={<Cadastro funcNav={setShowNav} />} />
+    const [showNav, setShowNav] = useState(true);
+    return (
+        <div className="divAppContainer">
+            <BrowserRouter>
+                <div>
+                    {showNav &&
+                        <nav>
+                            <Navbar />
+                        </nav>
+                    }
+                    <Routes>
+                        <Route path="/*" element={<PaginaNaoEncontrada />} />
+                        <Route path="/" element={<LandingPage funcNav={setShowNav} />} />
+                        <Route exact path="/login" element={<Login funcNav={setShowNav} />} />
+                        <Route exact path="/cadastro" element={<Cadastro funcNav={setShowNav} />} />
                         <Route path="/now" element={<NewHome />} />
                         <Route path="/demo" element={<Home />} />
                         <Route path="/feed" element={<Feed />} />
-			            <Route path="/feed/:id" element={<Feed />} />
+                        <Route path="/feed/:id" element={<Feed />} />
                         <Route path="/games" element={<Jogos />} />
                         <Route path="/about" element={<Sobre />} />
-                        <Route path="/u/:id" element={<Usuario/>} />
-                        <Route path="/t/:id" element={<Participar/>} />
-                        <Route path="/e/:id" element={<Times/>} />
-                        <Route path="/chaves" element={<Chaves/>} />
-                        <Route path="/criartorneio" element={<CriarTorneio/>} />
-                        <Route path="/criarequipe" element={<CriarEquipe/>} />
+                        <Route path="/u/:id" element={<Usuario />} />
+                        <Route path="/t/:id" element={<Participar />} />
+                        <Route path="/e/:id" element={<Times />} />
+                        <Route path="/chaves" element={<Chaves />} />
+                        <Route path="/criartorneio" element={<CriarTorneio />} />
+                        <Route path="/criarequipe" element={<CriarEquipe />} />
                         <Route path="/find/:id" element={<FindAll />} />
-                        <Route path={`/admin/${process.env.REACT_APP_MYKEY}/:id`} element={<Admin />}/>
-                        <Route path="/userNotFound" element={<UsuarioNaoEncontrado/>}/>
-                  </Routes>
-              </div>
-          </BrowserRouter>
-      </div>
-  );
+                        <Route path={`/admin/${process.env.REACT_APP_MYKEY}/:id`} element={<Admin />} />
+                        <Route path="/userNotFound" element={<UsuarioNaoEncontrado />} />
+                    </Routes>
+                </div>
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App
