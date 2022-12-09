@@ -62,7 +62,7 @@ export const Navbar = (props) => {
             root.style.setProperty("--scrollbar-color", '#fc6b03')
         }
     }, [loggedUser]);
-    // console.clear()
+    console.clear()
 
     const handleNavRes = () => {
         if (!navAberta) {
