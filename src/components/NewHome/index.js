@@ -244,17 +244,17 @@ export default function NewHome() {
                     setCurrentPage('PageOne')
                     callPageChanger()
 
-                }} className="pageSelector pageNumber PageOne currentPageHome" style={{ backgroundColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }}></div>
+                }} className="pageSelector pageNumber PageOne currentPageHome" ></div>
                 <div onClick={() => {
                     setCurrentPage('PageTwo')
                     callPageChanger()
 
-                }} className="pageSelector pageNumber PageTwo" style={{ backgroundColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }}></div>
+                }} className="pageSelector pageNumber PageTwo" ></div>
                 <div onClick={() => {
                     setCurrentPage('PageThree')
                     callPageChanger()
 
-                }} className="pageSelector pageNumber PageThree" style={{ borderColor: loggedUser ? loggedUser.corP : DEFAULT_COLOR }}></div>
+                }} className="pageSelector pageNumber PageThree" ></div>
             </div>
         </div>
     )
