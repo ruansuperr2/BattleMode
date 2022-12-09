@@ -116,69 +116,29 @@ function Times() {
       }
 
 
-    const callModal = () => {
-        setPage('torneio')
-        showModal('spin', 'Deseja participar do Torneio?', 'Participar')
-        // setTimeout(() => {
-            //     closeModal('success', 'deu certo', 'Participar')
-            // }, 2000);
-    }
-
-    const callTime = async () => {
-        try{
-            const responseUser = await fetch('https://web-production-8ce4.up.railway.app/api/time/')
-            const dataTime = responseUser.json()
-
-            dataTime.then(
-                (val) => {
-                    setTime(val.data.find((time) => {return time.nome === id}))
-                }
-                )   
-                
-            }catch(error){
+      useEffect(() => {
+        const loadData = async () => {
+            try {
+                const [jogoResponse, torneioResponse, userResponse, timeResponse] = await Promise.all([
+                    fetch('https://web-production-8ce4.up.railway.app/api/jogo'),
+                    fetch('https://web-production-8ce4.up.railway.app/api/user/' + JSON.parse(localStorage.getItem('dasiBoard'))),
+                    fetch('https://web-production-8ce4.up.railway.app/api/time')
+                ])
+                const [jogoData, torneioData, userData, viewData, timeData] = await Promise.all([
+                    jogoResponse.json(),
+                    torneioResponse.json(),
+                    userResponse.json(),
+                    timeResponse.json()
+                ])
+                setJogo(jogoData.data)
+                setLoggedUser(userData.data)
+                setTime(timeData.data)
+            } catch (e) {
+            }
         }
-    }
 
-    const getUsers = async () => {
-        try{
-            const responseUser = await fetch('https://web-production-8ce4.up.railway.app/api/user/' + JSON.parse(localStorage.getItem('dasiBoard')))
-            const dataUser = responseUser.json()
-
-            dataUser.then(
-                (val) => {
-                    setLoggedUser(val.data)
-                }
-            )   
-
-            const responseUser2 = await fetch('https://web-production-8ce4.up.railway.app/api/user/')
-            const dataUser2 = responseUser2.json()
-
-            dataUser2.then(
-                (val) => {
-                    setUsers(val.data)
-                }
-            )   
-        }catch(error){
-        }
-    }
-
-    const callGames = async() => {
-        try{
-            const response = await fetch('https://web-production-8ce4.up.railway.app/api/jogo')
-            const data = response.json()
-            data.then(
-                (val) => {setJogo(val.data)})
-        }catch(error){
-            
-        }
-    }
-
-    if(callTeamFunction < 2){
-        callTeamFunction++
-        callTime()
-        getUsers()
-        callGames()
-    }
+        loadData()
+    }, [])
 
     const callMudançasPerfil = async(status) => {
         switch(status){
