@@ -1,5 +1,5 @@
 # BattleMode
-Plataforma de criação, organização e participação de torneios para vários jogos disponível.
+BattleMode é uma plataforma que permite criar, organizar e participar de torneios para diversos jogos. Com ela, você pode personalizar o seu torneio, o seu time e o seu perfil de usuário, além de encontrar torneios de seu interesse no feed.
 
 ## Equipe
 
@@ -8,27 +8,12 @@ Plataforma de criação, organização e participação de torneios para vários
 - [Matheus](https://github.com/notmathee)
 - [Raí Souza](https://github.com/MonoDryad)
 
-## Criação de Torneio
-Possui várias opções de personalização para o seu torneio, além de muita custumização para melhorar o seu torneio!
-- Brackets gerada aleatóriamente;
-- Brackets geradas manualmente;
-- Adição manual de times nas brackets.
+## Features
+Algumas das funcionalidades da BattleMode são:
 
-## Criação de Equipe
-Assim como a criação de torneio, possui alta custumização e gerenciamento para o seu time.
+- Criação de Torneio: Você pode escolher entre gerar as brackets (chaves) do torneio de forma aleatória ou manual, e também adicionar times manualmente nas brackets. Você também pode personalizar outros aspectos do seu torneio, como o nome, a descrição, o jogo, o formato, o prêmio, etc.
+- Criação de Equipe: Você pode criar o seu próprio time, convidar outros jogadores, definir o nome, o logo, a descrição e o jogo do seu time. Você também pode gerenciar o seu time, aceitando ou recusando convites, removendo ou adicionando membros, etc.
+- Perfil do Usuário: Você pode personalizar o seu perfil de usuário, adicionando uma biografia, uma capa de fundo, um avatar, um nome de usuário, etc. Você também pode ver as suas estatísticas, os seus torneios, os seus times e os seus amigos.
+- Feed: Você pode explorar o feed para encontrar torneios que te interessam, filtrando por jogo, por formato, por prêmio, etc. Você também pode marcar os seus jogos favoritos para facilitar a busca.
+- Entrada de equipes em torneio: Você pode inscrever o seu time em um torneio, desde que ele tenha o número mínimo de membros exigido pelo torneio. Você também pode sair de um torneio a qualquer momento, desde que ele ainda não tenha começado.
 
-## Perfil do Usuário
-O perfil do usuário é bem custumizável, o usuário pode personalizar o seu perfil da forma que quiser, adicionando biografia, personalizando a capa de fundo e outros.
-- Capa de fundo;
-- Mudança fácil de nome;
-- Biografia;
-- Customização 
-
-## Feed
-Um vasto feed que ajuda o jogador a procurar torneios que possa ter interesse.
-- Vários lugares para procurar seu torneio;
-- Filtragem de jogos;
-- Jogos favoritos.
-
-## Entrada de equipes em torneio
-Uma equipe completa, ou não completa pode entrar em um torneio.
